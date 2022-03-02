@@ -1,0 +1,14 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.robot.poison": {
+            "loop": true,
+            "animation_length": 1,
+            "timeline": {
+                "0.0": [
+                    "/effect @s poison 2 0 true"
+                ]
+            }
+        }
+    }
+}

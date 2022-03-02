@@ -1,0 +1,74 @@
+{
+    "format_version": "1.12.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "compass:robot",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "animations": {
+                "poison": "animation.robot.poison",
+                "in_water": "controller.animation.robot.in_water"
+            },
+            "scripts": {
+                "animate": [
+                    "in_water"
+                ]
+            }
+        },
+        "components": {
+            "minecraft:physics": {},
+			"minecraft:nameable": {},
+            "minecraft:movement": {
+                "value": 0.25
+            },
+            "minecraft:movement.basic": {},
+            "minecraft:jump.static": {},
+            "minecraft:navigation.walk": {
+				"avoid_water": true
+            },
+			"minecraft:behavior.tempt": {
+				"priority": 1,
+                "speed_multiplier": 1.4,
+				"items": ["diamond"],
+				"within_radius": 7.0
+			},
+            "minecraft:behavior.random_stroll": {
+				"priority": 3,
+                "speed_multiplier": 0.8
+			},
+            "minecraft:experience_reward": {
+                "on_death": 8
+            }
+        },
+        "component_groups": {
+            "compass:color_0": {
+                "minecraft:variant": {"value": 0}
+            },
+            "compass:color_1": {
+                "minecraft:variant": {"value": 1}
+            },
+            "compass:color_2": {
+                "minecraft:variant": {"value": 2}
+            }
+        },
+        "events": {
+            "minecraft:entity_spawned": {
+                "randomize": [
+                    {
+                        "add": {
+                            "component_groups": ["compass:color_0"]
+                        }
+                    }, {
+                        "add": {
+                            "component_groups": ["compass:color_1"]
+                        }
+                    }, {
+                        "add": {
+                            "component_groups": ["compass:color_2"]
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}

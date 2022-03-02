@@ -1,0 +1,32 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "compass:robot",
+            "spawn_egg": {
+                "base_color": "#505152",
+                "overlay_color": "#3b9dff"
+            },
+            "render_controllers": [
+                "controller.render.robot"
+            ],
+            "geometry": {
+                "default": "geometry.robot"
+            },
+            "textures": {
+                "default": "textures/entity/robot",
+                "variant_b": "textures/entity/robot_b",
+                "variant_c": "textures/entity/robot_c"
+            },
+            "materials": {
+                "default": "entity"
+            },
+            "animations": {
+                "drive": "animation.robot.drive"
+            },
+            "scripts": {
+                "animate": ["drive"]
+            }
+        }
+    }
+}

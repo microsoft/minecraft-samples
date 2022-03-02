@@ -1,0 +1,18 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "Robot Add-Entity Full Example - Behavior",
+        "description": "",
+        "uuid": "6eaedf14-74c0-49e1-907d-3a8974cb006b",
+        "min_engine_version": [1, 12, 0],
+        "version": [0, 0, 2]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "data",
+            "uuid": "ac0dbc5d-6267-4bcc-ac65-521e5054c31b",
+            "version": [0, 0, 2]
+        }
+    ]
+}

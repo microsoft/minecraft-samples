@@ -1,0 +1,13 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.robot.drive": {
+            "loop": true,
+            "bones": {
+                "wheel": {
+                    "rotation": ["query.modified_distance_moved*40", 0, 0]
+                }
+            }
+        }
+    }
+}
