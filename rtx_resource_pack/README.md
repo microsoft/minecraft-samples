@@ -14,7 +14,7 @@ products:
 
 This sample is the resource pack used in the Physically Based Rendering Workflow tutorial.
 
-See the [Physically Based Rendering Workflow](https://docs.microsoft.com/en-us/minecraft/creator/documents/rtx_pbrtexturingguide_workflow) documentation for the full walkthrough of creating a new RTX texture.
+See the [Physically Based Rendering Workflow](https://docs.microsoft.com/minecraft/creator/documents/rtx_pbrtexturingguide_workflow) documentation for the full walkthrough of creating a new RTX texture.
 
 ## Using the RTX Sample Resource Pack
 
@@ -47,5 +47,5 @@ You can now give yourself concrete blocks, emerald ore, or an iron block to test
 
 ## Manifest
 
-- [textures/blocks](https://github.com/microsoft/minecraft-samples/blob/main/add_entity_robot/min/): These are the textures, texture_set JSON, and blocks used throughout the PBR sample. 
-- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/add_entity_robot/full/): This is the manifest.json folder with the raytraced capability on.
+- [textures/blocks](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/textures/blocks): These are the textures, texture_set JSON, and blocks used throughout the PBR sample.
+- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/manifest.json/): This is the manifest.json folder with the raytraced capability on.
