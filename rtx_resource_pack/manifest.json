@@ -1,0 +1,21 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "RTX Sample Resource Pack",
+        "description": "",
+        "uuid": "58d4560c-106d-4b0c-9847-eee47417fb05",
+        "min_engine_version": [1, 12, 0],
+        "version": [1, 0, 0]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "resources",
+            "uuid": "2d3df25b-856a-406d-9a57-c87b9a4d7af8",
+            "version": [0, 0, 1]
+        }
+    ],
+    "capabilities" : [
+        "raytraced"
+    ]
+}
