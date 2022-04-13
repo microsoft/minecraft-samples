@@ -14,7 +14,7 @@ products:
 
 This sample is the resource pack used in the Physically Based Rendering Workflow tutorial.
 
-See the [Physically Based Rendering Workflow](https://docs.microsoft.com/minecraft/creator/documents/rtx_pbrtexturingguide_workflow) documentation for the full walkthrough of creating a new RTX texture.
+See the [Physically Based Rendering Workflow](https://docs.microsoft.com/minecraft/creator/documents/rtxpbrtutorial) documentation for the full walkthrough of creating a new RTX texture.
 
 ## Using the RTX Sample Resource Pack
 
