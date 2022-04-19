@@ -1,0 +1,18 @@
+{
+    "format_version": 1,
+    "header": {
+        "name": "My Structure Block Sample Pack",
+        "description": "",
+        "uuid": "1ea13dec-f1d4-4b0c-90f9-710566efd112",
+        "min_engine_version": [1, 12, 0],
+        "version": [0, 0, 1]
+    },
+    "modules": [
+        {
+            "description": "",
+            "type": "data",
+            "uuid": "22ee2494-0d1d-49a6-a48c-f8748ec3b853",
+            "version": [0, 0, 1]
+        }
+    ]
+}
