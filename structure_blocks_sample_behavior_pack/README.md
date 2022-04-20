@@ -10,11 +10,11 @@ products:
 - minecraft
 ---
 
-# RTX behavior Pack
+# Structure Blocks Sample Behavior Pack
 
 This sample is the behavior pack used in the Structure Blocks Tutorial.
 
-See the [Structure Blocks Tutorial](https://docs.microsoft.com/minecraft/creator/documents/structureblockstutorial) documentation for the full walkthrough of creating a new RTX texture.
+See the [Structure Blocks Tutorial](https://docs.microsoft.com/minecraft/creator/documents/structureblockstutorial) documentation for the full walkthrough of using structure blocks and the `/structure` command to place buildings.
 
 ## Using the Structure Blocks behavior pack
 
@@ -41,8 +41,7 @@ The Structure Blocks behavior pack is a useful tool to check your work while com
 1. Select Structure Blocks Sample Behavior Pack and click Activate to add the behavior pack to the world.
 1. Click Create to create your world.
 
-
-You now have several precreated structures to practice saving, loading, and animating.
+You now have several precreated structures to practice saving, loading, and animating. Feel free to make your own as well!
 
 ## Manifest
 
