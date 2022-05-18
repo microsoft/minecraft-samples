@@ -10,7 +10,7 @@ products:
 - minecraft
 ---
 
-# Behavior Pack Sample
+# NPC Dialogue Sample
 
 This sample is the behavior pack used in the NPC Dialogue Tutorial.
 
