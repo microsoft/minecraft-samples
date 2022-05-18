@@ -45,5 +45,5 @@ You now have aggressive cows in your world (for better or worse). Good luck!
 
 ## Manifest
 
-- [entities/cow.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/entities/cow.json): This is a modified cow entity programmed with aggressive behavior.
-- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/manifest.json/): This is the manifest.json folder for the sample behavior pack.
+- [entities/cow.json](https://github.com/microsoft/minecraft-samples/blob/main/behavior_pack_sample/entities/cow.json): This is a modified cow entity programmed with aggressive behavior.
+- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/behavior_pack_sample/manifest.json/): This is the manifest.json folder for the sample behavior pack.

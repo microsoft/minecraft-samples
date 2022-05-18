@@ -45,5 +45,5 @@ Your plain dirt blocks are now bright green. Neat!
 
 ## Manifest
 
-- [textures/blocks/dirt.png](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/textures/blocks/dirt.jpg): A new bright green dirt texture to modify the existing blocks in your world.
-- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/manifest.json/): This is the manifest.json folder for the sample resource pack.
+- [textures/blocks/dirt.png](https://github.com/microsoft/minecraft-samples/blob/main/resource_pack_sample/textures/blocks/dirt.jpg): A new bright green dirt texture to modify the existing blocks in your world.
+- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/resource_pack_sample/manifest.json/): This is the manifest.json folder for the sample resource pack.
