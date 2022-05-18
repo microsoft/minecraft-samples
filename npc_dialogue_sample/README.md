@@ -12,7 +12,7 @@ products:
 
 # Behavior Pack Sample
 
-This sample is the behavior pack used in the Structure Blocks Tutorial.
+This sample is the behavior pack used in the NPC Dialogue Tutorial.
 
 See the [NPC Dialogue](https://docs.microsoft.com/minecraft/creator/documents/NPCDialogue) documentation for the full walkthrough adding custom dialogue for an NPC.
 
@@ -41,7 +41,7 @@ The behavior pack sample is a useful tool to check your work while completing th
 1. Select My NPC Dialogue Behavior Pack and click Activate to add the behavior pack to the world.
 1. Click Create to create your world.
 
-Now, you can create an NPC named Ducky and receive a very cool item for chatting with them.
+Now you can create an NPC named Ducky and receive a very cool item for chatting with them.
 
 ## Manifest
 

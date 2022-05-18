@@ -12,7 +12,7 @@ products:
 
 # Resource Pack Sample
 
-This sample is the resource pack used in the Structure Blocks Tutorial.
+This sample is the resource pack used in the Intro to Resource Packs Tutorial.
 
 See the [Intro to Resource Packs](https://docs.microsoft.com/minecraft/creator/documents/resourcepack) documentation for the full walkthrough creating an aggressive cow using a resource pack.
 
