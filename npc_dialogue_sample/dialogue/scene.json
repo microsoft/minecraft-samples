@@ -1,0 +1,26 @@
+{
+    "format_version":"1.17",
+    "minecraft:npc_dialogue":{
+        "scenes":[
+            {
+                "scene_tag":"ducky_intro",
+                "npc_name":"Ducky",
+                "text":"Hello new friend",
+                "on_open_commands":[
+                    "/clear @p"
+                ],
+                "on_close_commands":[
+                    "/say Farewell! "
+                ],
+                "buttons":[
+                    {
+                        "name":"Take Gold?",
+                        "commands":[
+                            "/give @initiator gold_ingot"
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}

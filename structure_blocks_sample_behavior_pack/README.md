@@ -45,5 +45,5 @@ You now have several precreated structures to practice saving, loading, and anim
 
 ## Manifest
 
-- [structures](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/structures): These are three sample buildings and a statue to use throughout the tutorial.
-- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/manifest.json/): This is the manifest.json folder for the sample behavior pack.
+- [structures](https://github.com/microsoft/minecraft-samples/blob/main/structure_blocks_sample_behavior_pack/structures): These are three sample buildings and a statue to use throughout the tutorial.
+- [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/structure_blocks_sample_behavior_pack/manifest.json/): This is the manifest.json folder for the sample behavior pack.
