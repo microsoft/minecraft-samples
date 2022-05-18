@@ -45,5 +45,5 @@ Now you can create an NPC named Ducky and receive a very cool item for chatting 
 
 ## Manifest
 
-- [structures](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/dialogue/scene.json): This defines the dialogue that an NPC named Ducky will use when you run the command in the NPC Dialogue tutorial.
+- [dialogue/scene.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/dialogue/scene.json): This defines the dialogue that an NPC named Ducky will use when you run the command in the NPC Dialogue tutorial.
 - [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/manifest.json/): This is the manifest.json folder for the sample behavior pack.

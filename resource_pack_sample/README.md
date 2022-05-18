@@ -12,7 +12,7 @@ products:
 
 # Resource Pack Sample
 
-This sample is the resource pack used in the Intro to Resource Packs Tutorial.
+This sample is the resource pack used in the Intro to Resource Packsg Tutorial.
 
 See the [Intro to Resource Packs](https://docs.microsoft.com/minecraft/creator/documents/resourcepack) documentation for the full walkthrough creating an aggressive cow using a resource pack.
 
@@ -45,5 +45,5 @@ Your plain dirt blocks are now bright green. Neat!
 
 ## Manifest
 
-- [structures](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/textures/blocks/dirt.jpg): A new bright green dirt texture to modify the existing blocks in your world.
+- [textures/blocks/dirt.png](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/textures/blocks/dirt.jpg): A new bright green dirt texture to modify the existing blocks in your world.
 - [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_resource_pack/manifest.json/): This is the manifest.json folder for the sample resource pack.

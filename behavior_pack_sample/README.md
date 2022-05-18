@@ -12,9 +12,9 @@ products:
 
 # Behavior Pack Sample
 
-This sample is the behavior pack used in the Structure Blocks Tutorial.
+This sample is the behavior pack used in the Behavior Pack Tutorial.
 
-See the [Intro to Behavior Packs](https://docs.microsoft.com/minecraft/creator/documents/behaviorpack) documentation for the full walkthrough creating an aggressive cow using a behavior pack.
+See the [Intro to Behavior Packs](https://docs.microsoft.com/minecraft/creator/documents/behaviorpack) documentation for a full tutorial on creating an aggressive cow using a behavior pack.
 
 ## Using the Behavior Pack Sample
 
@@ -41,9 +41,9 @@ The behavior pack sample is a useful tool to check your work while completing th
 1. Select My Behavior Pack and click Activate to add the behavior pack to the world.
 1. Click Create to create your world.
 
-You now have aggressive cows in your world (for better or worse). Keep your eyes peeled for them!
+You now have aggressive cows in your world (for better or worse). Good luck!
 
 ## Manifest
 
-- [structures](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/entities/cow.json): This is a modified cow entity programmed with aggressive behavior.
+- [entities/cow.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/entities/cow.json): This is a modified cow entity programmed with aggressive behavior.
 - [manifest.json](https://github.com/microsoft/minecraft-samples/blob/main/rtx_behavior_pack/manifest.json/): This is the manifest.json folder for the sample behavior pack.
