@@ -2,7 +2,7 @@
     "format_version": "1.12.0",
     "minecraft:entity": {
         "description": {
-            "identifier": "compass:robot",
+            "identifier": "sample:robot",
             "is_spawnable": true,
             "is_summonable": true,
             "animations": {
@@ -41,13 +41,13 @@
             }
         },
         "component_groups": {
-            "compass:color_0": {
+            "sample:color_0": {
                 "minecraft:variant": {"value": 0}
             },
-            "compass:color_1": {
+            "sample:color_1": {
                 "minecraft:variant": {"value": 1}
             },
-            "compass:color_2": {
+            "sample:color_2": {
                 "minecraft:variant": {"value": 2}
             }
         },
@@ -56,15 +56,15 @@
                 "randomize": [
                     {
                         "add": {
-                            "component_groups": ["compass:color_0"]
+                            "component_groups": ["sample:color_0"]
                         }
                     }, {
                         "add": {
-                            "component_groups": ["compass:color_1"]
+                            "component_groups": ["sample:color_1"]
                         }
                     }, {
                         "add": {
-                            "component_groups": ["compass:color_2"]
+                            "component_groups": ["sample:color_2"]
                         }
                     }
                 ]

@@ -2,7 +2,7 @@
     "format_version": "1.12.0",
     "minecraft:entity": {
         "description": {
-            "identifier": "compass:robot",
+            "identifier": "sample:robot",
             "is_spawnable": true,
             "is_summonable": true
         },
