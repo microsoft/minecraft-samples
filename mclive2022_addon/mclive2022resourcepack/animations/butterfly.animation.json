@@ -1,0 +1,59 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.butterfly.flying": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": ["45.0 - math.cos(query.life_time * 1489.6) * 8.59", 0, 0],
+					"position": [0, "math.cos(query.life_time * 343.774) * 1.6", 0]
+				},
+				"head": {
+					"rotation": ["query.target_x_rotation", "query.target_y_rotation", 0],
+					"position": ["-this", "math.cos(query.life_time * 343.774) * 1.6 - this", "-this"]
+				},
+				"leftWing": {
+					"rotation": [0, "math.cos(query.life_time * 1489.6) * -45.0", 0],
+					"position": ["-this", "-this", "-this"]
+				},
+				"leftWingTip": {
+					"rotation": [0, "math.cos(query.life_time * 1489.6) * -22.0", 0]
+				},
+				"rightWing": {
+					"rotation": [0, "math.cos(query.life_time * 1489.6) * 45.0", 0],
+					"position": ["-this", "-this", "-this"]
+				},
+				"rightWingTip": {
+					"rotation": [0, "math.cos(query.life_time * 1489.6) * 22.0", 0]
+				}
+			}
+		},
+		"animation.butterfly.resting": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [180, 0, 0],
+					"position": [0, -0.035, 0]
+				},
+				"head": {
+					"rotation": ["query.target_x_rotation", "180.0f - query.target_y_rotation", 180],
+					"position": [0, -0.035, 0]
+				},
+				"leftWing": {
+					"rotation": [-9, 72, 0],
+					"position": [3, 0, 3]
+				},
+				"leftWingTip": {
+					"rotation": [0, 99, 0]
+				},
+				"rightWing": {
+					"rotation": [-9, -72, 0],
+					"position": [-3, 0, 3]
+				},
+				"rightWingTip": {
+					"rotation": [0, -99, 0]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,36 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:spooky_golem",
+			"materials": {
+				"default": "snow_golem"
+			},
+			"textures": {
+				"default": "textures/entity/spooky_golem"
+			},
+			"geometry": {
+				"default": "geometry.spooky_golem"
+			},
+			"animations": {
+				"move": "animation.spooky_golem.move",
+				"sheared": "animation.spooky_golem.sheared",
+				"look_at_target": "animation.common.look_at_target",
+				"move_controller": "controller.animation.snowgolem.move.v1.8"
+			},
+			"scripts": {
+				"animate": [
+					"move_controller",
+					{
+						"sheared": "query.is_sheared"
+					}
+				]
+			},
+			"render_controllers": ["controller.render.default"],
+			"spawn_egg": {
+				"base_color": "#ffcb45",
+				"overlay_color": "#ec4b1d"
+			}
+		}
+	}
+}

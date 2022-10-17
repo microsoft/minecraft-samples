@@ -1,0 +1,29 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Minecraft Live",
+		"description": "Minecraft Live Resource Pack",
+		"uuid": "8cee9cd5-6ce6-a8da-da8c-f06d93c3ea12",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 16, 0]
+	},
+	"metadata": {
+		"generated_with": {
+			"blockbench_entity_wizard": ["1.0.9"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Minecraft Live",
+			"type": "resources",
+			"uuid": "9c92ab90-325c-262b-2bae-f12515125c3b",
+			"version": [1, 0, 0]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "9d352270-22bb-f1e0-75ab-34b4049544e2",
+			"version": [1, 0, 0]
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:snow_wizard",
+			"min_engine_version": "1.8.0",
+			"materials": {
+				"default": "witch"
+			},
+			"textures": {
+				"default": "textures/entity/snow_wizard"
+			},
+			"geometry": {
+				"default": "geometry.snow_wizard"
+			},
+			"scripts": {
+				"scale": "0.9375"
+			},
+			"animations": {
+				"villager_general": "animation.snow_wizard.villager_general",
+				"look_at_target": "animation.common.look_at_target",
+				"move": "animation.snow_wizard.move",
+				"general": "animation.snow_wizard.general"
+			},
+			"animation_controllers": [
+				{
+					"general": "controller.animation.witch.general"
+				},
+				{
+					"move": "controller.animation.villager.move"
+				}
+			],
+			"render_controllers": ["controller.render.default"],
+			"spawn_egg": {
+				"base_color": "#48270a",
+				"overlay_color": "#949494"
+			}
+		}
+	}
+}

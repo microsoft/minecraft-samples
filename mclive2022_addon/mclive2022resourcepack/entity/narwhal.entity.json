@@ -1,0 +1,30 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:narwhal",
+			"materials": {
+				"default": "dolphin"
+			},
+			"textures": {
+				"default": "textures/entity/narwhal"
+			},
+			"geometry": {
+				"default": "geometry.narwhal"
+			},
+			"animations": {
+				"move": "animation.narwhal.move"
+			},
+			"animation_controllers": [
+				{
+					"general": "controller.animation.dolphin.general"
+				}
+			],
+			"render_controllers": ["controller.render.default"],
+			"spawn_egg": {
+				"base_color": "#22446f",
+				"overlay_color": "#d7dcd1"
+			}
+		}
+	}
+}

@@ -1,0 +1,109 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.booshroom",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 19, 2],
+					"cubes": [
+						{"origin": [-6, 7, -5], "size": [12, 22, 4], "pivot": [0, 19, 2], "rotation": [90, 0, 0], "uv": [18, 4]},
+						{"origin": [-2, 11, -6], "size": [4, 6, 1], "pivot": [0, 19, 2], "rotation": [90, 0, 0], "uv": [52, 0]}
+					]
+				},
+				{
+					"name": "mushroom1",
+					"parent": "body",
+					"pivot": [2.5, 22, 8.5],
+					"cubes": [
+						{"origin": [-1.5, 16, 7.5], "size": [8, 5, 3], "pivot": [2.5, 22, 8.5], "rotation": [0, 90, 0], "uv": [0, 33]}
+					]
+				},
+				{
+					"name": "mushroom4",
+					"parent": "body",
+					"pivot": [16.5, 22, 1.5],
+					"rotation": [0, 42.5, 0],
+					"cubes": [
+						{"origin": [12.5, 16, 0.5], "size": [8, 5, 3], "pivot": [16.5, 22, 1.5], "rotation": [0, 90, 0], "uv": [0, 33]}
+					]
+				},
+				{
+					"name": "mushroom5",
+					"parent": "body",
+					"pivot": [-17.5, 22, 1.5],
+					"rotation": [0, 10, 0],
+					"cubes": [
+						{"origin": [-21.5, 16, 0.5], "size": [8, 5, 3], "pivot": [-17.5, 22, 1.5], "rotation": [0, 90, 0], "uv": [0, 33]}
+					]
+				},
+				{
+					"name": "mushroom2",
+					"parent": "body",
+					"pivot": [-3, 22, 0],
+					"rotation": [0, 45, 0],
+					"cubes": [
+						{"origin": [-7, 16, 0], "size": [8, 5, 3], "uv": [0, 33]}
+					]
+				},
+				{
+					"name": "leg0",
+					"parent": "body",
+					"pivot": [-4, 12, 2]
+				},
+				{
+					"name": "leg1",
+					"parent": "body",
+					"pivot": [4, 12, 7],
+					"mirror": true
+				},
+				{
+					"name": "leg2",
+					"parent": "body",
+					"pivot": [-7, 16, -6],
+					"cubes": [
+						{"origin": [-23, 14, -2], "size": [17, 2, 6], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "leg3",
+					"parent": "body",
+					"pivot": [4, 12, -6],
+					"mirror": true,
+					"cubes": [
+						{"origin": [6, 14, -2], "size": [17, 2, 6], "uv": [0, 16]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 16, -8],
+					"cubes": [
+						{"origin": [-4, 12, -14], "size": [8, 8, 6], "uv": [0, 0]},
+						{"origin": [-5, 18, -12], "size": [1, 15, 1], "uv": [22, 0]},
+						{"origin": [4, 18, -12], "size": [1, 15, 1], "uv": [22, 0]}
+					],
+					"locators": {
+						"lead": [0, 16, -8]
+					}
+				},
+				{
+					"name": "mushroom3",
+					"parent": "head",
+					"pivot": [0, 20, -11.25],
+					"rotation": [0, -40, 0],
+					"cubes": [
+						{"origin": [-4, 20, -11.25], "size": [8, 5, 3], "pivot": [0, 20, -11.25], "rotation": [0, 90, 0], "uv": [0, 33]}
+					]
+				}
+			]
+		}
+	]
+}

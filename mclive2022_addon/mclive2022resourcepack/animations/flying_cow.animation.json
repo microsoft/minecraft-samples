@@ -1,0 +1,32 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.flying_cow.baby_transform": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, 4, 4],
+					"scale": 2
+				}
+			}
+		},
+		"animation.flying_cow.walk": {
+			"loop": true,
+			"anim_time_update": "query.modified_distance_moved",
+			"bones": {
+				"leg0": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				}
+			}
+		}
+	}
+}

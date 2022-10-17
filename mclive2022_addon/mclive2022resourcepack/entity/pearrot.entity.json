@@ -1,0 +1,45 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:pearrot",
+			"materials": {
+				"default": "parrot"
+			},
+			"textures": {
+				"blue": "textures/entity/pearrot/blue",
+				"green": "textures/entity/pearrot/green",
+				"red_blue": "textures/entity/pearrot/red_blue",
+				"yellow_blue": "textures/entity/pearrot/yellow_blue",
+				"grey": "textures/entity/pearrot/grey"
+			},
+			"geometry": {
+				"default": "geometry.pearrot"
+			},
+			"animations": {
+				"moving": "animation.pearrot.moving",
+				"base": "animation.pearrot.base",
+				"dance": "animation.pearrot.dance",
+				"sitting": "animation.pearrot.sitting",
+				"flying": "animation.pearrot.flying",
+				"standing": "animation.pearrot.standing",
+				"look_at_target": "animation.common.look_at_target",
+				"movement_controller": "controller.animation.parrot.move"
+			},
+			"scripts": {
+				"pre_animation": [
+					"variable.state = query.is_dancing ? 3 : (query.is_sitting ? 2 : (!query.is_on_ground && !query.is_jumping && !query.is_riding ? 0 : 1));",
+					"variable.dance.x = Math.cos(query.life_time * 57.3 * 20.0);",
+					"variable.dance.y = -Math.sin(query.life_time * 57.3 * 20.0);",
+					"variable.wing_flap = ((math.sin(query.wing_flap_position * 57.3) + 1) * query.wing_flap_speed);"
+				],
+				"animate": ["look_at_target", "movement_controller"]
+			},
+			"render_controllers": ["controller.render.parrot"],
+			"spawn_egg": {
+				"base_color": "#96bc39",
+				"overlay_color": "#ebbc63"
+			}
+		}
+	}
+}
