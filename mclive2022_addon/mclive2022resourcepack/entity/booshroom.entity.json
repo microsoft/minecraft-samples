@@ -1,0 +1,36 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:booshroom",
+			"min_engine_version": "1.8.0",
+			"materials": {
+				"default": "entity_alphatest"
+			},
+			"textures": {
+				"default": "textures/entity/booshroom"
+			},
+			"geometry": {
+				"default": "geometry.booshroom"
+			},
+			"animations": {
+				"walk": "animation.booshroom.walk",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.booshroom.baby_transform"
+			},
+			"animation_controllers": [
+				{
+					"move": "controller.animation.mooshroom.move"
+				},
+				{
+					"baby": "controller.animation.mooshroom.baby"
+				}
+			],
+			"render_controllers": ["controller.render.mooshroom"],
+			"spawn_egg": {
+				"base_color": "#000000",
+				"overlay_color": "#332551"
+			}
+		}
+	}
+}

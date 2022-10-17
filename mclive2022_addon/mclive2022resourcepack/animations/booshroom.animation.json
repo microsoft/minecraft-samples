@@ -1,0 +1,33 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.booshroom.baby_transform": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, "query.is_baby ? 4.0 : 0.0", "query.is_baby ? 4.0 : 0.0"],
+					"scale": "query.is_baby ? 2.0 : 1.0"
+				}
+			}
+		},
+		"animation.booshroom.walk": {
+			"loop": true,
+			"animation_length": 8,
+			"anim_time_update": "query.modified_distance_moved",
+			"bones": {
+				"leg0": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				}
+			}
+		}
+	}
+}

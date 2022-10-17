@@ -1,0 +1,249 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.spooky_golem",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "piece2",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-6, 0, -6],
+							"size": [12, 12, 12],
+							"inflate": -0.5,
+							"uv": {
+								"north": {
+									"uv": [12, 48],
+									"uv_size": [12, 12]
+								},
+								"east": {
+									"uv": [0, 48],
+									"uv_size": [12, 12]
+								},
+								"south": {
+									"uv": [36, 48],
+									"uv_size": [12, 12]
+								},
+								"west": {
+									"uv": [24, 48],
+									"uv_size": [12, 12]
+								},
+								"up": {
+									"uv": [12, 36],
+									"uv_size": [12, 12]
+								},
+								"down": {
+									"uv": [24, 48],
+									"uv_size": [12, -12]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "piece1",
+					"parent": "piece2",
+					"pivot": [0, 11, 0],
+					"cubes": [
+						{
+							"origin": [-5, 11, -5],
+							"size": [10, 10, 10],
+							"inflate": -0.5,
+							"uv": {
+								"north": {
+									"uv": [10, 26],
+									"uv_size": [10, 10]
+								},
+								"east": {
+									"uv": [0, 26],
+									"uv_size": [10, 10]
+								},
+								"south": {
+									"uv": [30, 26],
+									"uv_size": [10, 10]
+								},
+								"west": {
+									"uv": [20, 26],
+									"uv_size": [10, 10]
+								},
+								"up": {
+									"uv": [10, 16],
+									"uv_size": [10, 10]
+								},
+								"down": {
+									"uv": [20, 26],
+									"uv_size": [10, -10]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "piece1",
+					"pivot": [0, 20, 0],
+					"cubes": [
+						{
+							"origin": [-4, 20, -4],
+							"size": [8, 8, 8],
+							"inflate": -0.5,
+							"uv": {
+								"north": {
+									"uv": [8, 8],
+									"uv_size": [8, 8]
+								},
+								"east": {
+									"uv": [0, 8],
+									"uv_size": [8, 8]
+								},
+								"south": {
+									"uv": [24, 8],
+									"uv_size": [8, 8]
+								},
+								"west": {
+									"uv": [16, 8],
+									"uv_size": [8, 8]
+								},
+								"up": {
+									"uv": [8, 0],
+									"uv_size": [8, 8]
+								},
+								"down": {
+									"uv": [16, 8],
+									"uv_size": [8, -8]
+								}
+							}
+						}
+					],
+					"locators": {
+						"lead": [0, 20, 0]
+					}
+				},
+				{
+					"name": "pumpkin",
+					"parent": "head",
+					"pivot": [0, 25.5, 0],
+					"cubes": [
+						{
+							"origin": [-8, 17.5, -8],
+							"size": [16, 16, 16],
+							"inflate": -3,
+							"uv": {
+								"north": {
+									"uv": [48, 48],
+									"uv_size": [16, 16]
+								},
+								"east": {
+									"uv": [48, 32],
+									"uv_size": [16, 16]
+								},
+								"south": {
+									"uv": [48, 32],
+									"uv_size": [16, 16]
+								},
+								"west": {
+									"uv": [48, 32],
+									"uv_size": [16, 16]
+								},
+								"up": {
+									"uv": [64, 32],
+									"uv_size": [-16, -16]
+								},
+								"down": {
+									"uv": [64, 32],
+									"uv_size": [-16, -16]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "arm1",
+					"parent": "piece1",
+					"pivot": [0, 18, 0],
+					"rotation": [0, 0, 57.3],
+					"cubes": [
+						{
+							"origin": [1, 20, -1],
+							"size": [12, 2, 2],
+							"inflate": -0.5,
+							"uv": {
+								"north": {
+									"uv": [34, 2],
+									"uv_size": [12, 2]
+								},
+								"east": {
+									"uv": [32, 2],
+									"uv_size": [2, 2]
+								},
+								"south": {
+									"uv": [48, 2],
+									"uv_size": [12, 2]
+								},
+								"west": {
+									"uv": [46, 2],
+									"uv_size": [2, 2]
+								},
+								"up": {
+									"uv": [34, 0],
+									"uv_size": [12, 2]
+								},
+								"down": {
+									"uv": [46, 2],
+									"uv_size": [12, -2]
+								}
+							}
+						}
+					]
+				},
+				{
+					"name": "arm2",
+					"parent": "piece1",
+					"pivot": [0, 18, 0],
+					"rotation": [0, 0, -57.3],
+					"cubes": [
+						{
+							"origin": [-13, 20, -1],
+							"size": [12, 2, 2],
+							"inflate": -0.5,
+							"uv": {
+								"north": {
+									"uv": [46, 2],
+									"uv_size": [-12, 2]
+								},
+								"east": {
+									"uv": [48, 2],
+									"uv_size": [-2, 2]
+								},
+								"south": {
+									"uv": [60, 2],
+									"uv_size": [-12, 2]
+								},
+								"west": {
+									"uv": [34, 2],
+									"uv_size": [-2, 2]
+								},
+								"up": {
+									"uv": [46, 0],
+									"uv_size": [-12, 2]
+								},
+								"down": {
+									"uv": [58, 2],
+									"uv_size": [-12, -2]
+								}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

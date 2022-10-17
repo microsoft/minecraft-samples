@@ -1,0 +1,21 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.spooky_golem.move": {
+			"loop": true,
+			"bones": {
+				"piece1": {
+					"rotation": [0, "query.target_y_rotation * 0.25", 0]
+				}
+			}
+		},
+		"animation.spooky_golem.sheared": {
+			"loop": true,
+			"bones": {
+				"pumpkin": {
+					"scale": 0
+				}
+			}
+		}
+	}
+}

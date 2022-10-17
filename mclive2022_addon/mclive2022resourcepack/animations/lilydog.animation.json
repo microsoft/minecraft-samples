@@ -1,0 +1,98 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.lilydog.angry": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": [0, "query.is_angry ? -this : (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed * 80.22 - this)", 0]
+				}
+			}
+		},
+		"animation.lilydog.baby_scaling": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"position": [0, 1, -2],
+					"scale": 1.6
+				}
+			}
+		},
+		"animation.lilydog.head_rot_z": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"rotation": [0, 0, "(query.is_interested ? (query.head_roll_angle * 57.3) : 0) + (query.is_shaking_wetness ? variable.head_rot_z : 0) - this"]
+				}
+			}
+		},
+		"animation.lilydog.leg_default": {
+			"loop": true,
+			"bones": {
+				"leg0": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17) * 80.22 * query.modified_move_speed - this", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17 + 180) * 80.22 * query.modified_move_speed - this", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17 + 180) * 80.22 * query.modified_move_speed - this", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["math.cos(query.modified_distance_moved * 38.17) * 80.22 * query.modified_move_speed - this", 0, 0]
+				}
+			}
+		},
+		"animation.lilydog.shaking": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [0, 0, "variable.body_rot_z - this"]
+				},
+				"upperbody": {
+					"rotation": [0, 0, "variable.upper_body_rot_z - this"]
+				}
+			}
+		},
+		"animation.lilydog.sitting": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"rotation": [-45, 0, 0],
+					"position": [0, -4, -2]
+				},
+				"leg0": {
+					"rotation": [270, 0, 0],
+					"position": [0, -7, -5]
+				},
+				"leg1": {
+					"rotation": [270, 0, 0],
+					"position": [0, -7, -5]
+				},
+				"leg2": {
+					"rotation": [333, 0, 0],
+					"position": [0.01, -1, 0]
+				},
+				"leg3": {
+					"rotation": [333, 0, 0],
+					"position": [0.01, -1, 0]
+				},
+				"tail": {
+					"position": [0, -9, -2]
+				},
+				"upperBody": {
+					"rotation": [-18, 0, 0],
+					"position": [0, -2, 0]
+				}
+			}
+		},
+		"animation.lilydog.tail_default": {
+			"loop": true,
+			"bones": {
+				"tail": {
+					"rotation": ["query.tail_angle * 57.3 - this", 0, "variable.tail_rot_z - this"]
+				}
+			}
+		}
+	}
+}

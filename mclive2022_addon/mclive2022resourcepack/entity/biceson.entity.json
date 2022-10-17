@@ -1,0 +1,39 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:biceson",
+			"materials": {
+				"default": "polar_bear"
+			},
+			"textures": {
+				"default": "textures/entity/biceson"
+			},
+			"geometry": {
+				"default": "geometry.biceson"
+			},
+			"animations": {
+				"walk": "animation.biceson.walk",
+				"move": "animation.biceson.move",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.biceson.baby_transform"
+			},
+			"scripts": {
+				"scale": "1.2"
+			},
+			"animation_controllers": [
+				{
+					"move": "controller.animation.polarbear.move"
+				},
+				{
+					"baby": "controller.animation.polarbear.baby"
+				}
+			],
+			"render_controllers": ["controller.render.polarbear"],
+			"spawn_egg": {
+				"base_color": "#00a4ff",
+				"overlay_color": "#4b95c6"
+			}
+		}
+	}
+}

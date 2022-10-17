@@ -1,0 +1,46 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.snow_wizard.general": {
+			"loop": true,
+			"bones": {
+				"nose": {
+					"rotation": [
+						"(variable.isholdingitem ? -25.7831 : (math.sin(query.life_time * 57.296) * 4.5)) - this",
+						0,
+						"(math.cos(query.life_time * 57.296) * 2.5) - this"
+					]
+				}
+			}
+		},
+		"animation.snow_wizard.villager_general": {
+			"loop": true,
+			"bones": {
+				"arms": {
+					"position": [0, -1, -1],
+					"rotation": ["-42.97 - this", 0, 0]
+				}
+			}
+		},
+		"animation.snow_wizard.move": {
+			"loop": true,
+			"animation_length": 21.08333,
+			"anim_time_update": "query.modified_distance_moved",
+			"bones": {
+				"leg0": {
+					"rotation": ["(math.cos(query.anim_time * 38.17) * 40.0) - this", "-this", 0],
+					"position": {
+						"0.0": [0, -2, 0],
+						"7.625": [0, -4.56, -1.13],
+						"7.9167": [0, -3.66, -1.12],
+						"15.0417": [0, -7, -1]
+					}
+				},
+				"leg1": {
+					"rotation": ["(math.cos(query.anim_time * 38.17 + 180) * 40.0) - this", "-this", 0],
+					"position": [0, 2, 0]
+				}
+			}
+		}
+	}
+}

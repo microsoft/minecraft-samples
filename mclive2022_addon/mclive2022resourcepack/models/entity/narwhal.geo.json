@@ -1,0 +1,111 @@
+{
+	"format_version": "1.10.0",
+	"geometry.narwhal": {
+		"texturewidth": 64,
+		"textureheight": 64,
+		"visible_bounds_width": 4,
+		"visible_bounds_height": 1.5,
+		"visible_bounds_offset": [0, 0.25, 0],
+		"bones": [
+			{
+				"name": "body",
+				"pivot": [0, 0, -11],
+				"cubes": [
+					{
+						"origin": [-4, 0, -11],
+						"size": [8, 7, 13],
+						"uv": [0, 13]
+					}
+				]
+			},
+			{
+				"name": "head",
+				"parent": "body",
+				"pivot": [0, 0, -11],
+				"cubes": [
+					{
+						"origin": [-4, 0, -17],
+						"size": [8, 7, 6],
+						"uv": [0, 0]
+					}
+				],
+				"locators": {
+					"lead": [0, 0, 0]
+				}
+			},
+			{
+				"name": "nose",
+				"parent": "head",
+				"pivot": [0, 0, -21]
+			},
+			{
+				"name": "tail",
+				"parent": "body",
+				"pivot": [0, 2.5, 3],
+				"cubes": [
+					{
+						"origin": [-2, 0, 2],
+						"size": [4, 5, 13],
+						"uv": [0, 33]
+					}
+				]
+			},
+			{
+				"name": "tail_fin",
+				"parent": "tail",
+				"pivot": [0, 2.5, 12],
+				"cubes": [
+					{
+						"origin": [-4, 2, 14],
+						"size": [8, 1, 7],
+						"uv": [0, 56]
+					}
+				]
+			},
+			{
+				"name": "back_fin",
+				"parent": "body",
+				"pivot": [0, 7, -6],
+				"rotation": [-30, 0, 0]
+			},
+			{
+				"name": "left_fin",
+				"parent": "body",
+				"pivot": [3, 1, -9],
+				"rotation": [0, -25, 20],
+				"cubes": [
+					{
+						"origin": [3, 1, -2.5],
+						"size": [3, 1, 2],
+						"uv": [40, 0]
+					}
+				]
+			},
+			{
+				"name": "right_fin",
+				"parent": "body",
+				"pivot": [-3, 1, -9],
+				"rotation": [0, 25, -20],
+				"cubes": [
+					{
+						"origin": [-7, 1, -2.5],
+						"size": [4, 1, 2],
+						"uv": [40, 6]
+					}
+				]
+			},
+			{
+				"name": "Horn",
+				"parent": "head",
+				"pivot": [0, 0, 0],
+				"cubes": [
+					{
+						"origin": [-1, 0, -37],
+						"size": [2, 2, 20],
+						"uv": [24, 41]
+					}
+				]
+			}
+		]
+	}
+}

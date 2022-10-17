@@ -1,0 +1,39 @@
+{
+	"format_version": "1.10.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mcl:flying_cow",
+			"min_engine_version": "1.8.0",
+			"materials": {
+				"default": "cow"
+			},
+			"textures": {
+				"default": "textures/entity/flying_cow"
+			},
+			"geometry": {
+				"default": "geometry.flying_cow"
+			},
+			"animations": {
+				"walk": "animation.flying_cow.walk",
+				"look_at_target": "animation.common.look_at_target",
+				"baby_transform": "animation.flying_cow.baby_transform"
+			},
+			"scripts": {
+				"animate": [
+					{
+						"walk": "query.modified_move_speed"
+					},
+					"look_at_target",
+					{
+						"baby_transform": "query.is_baby"
+					}
+				]
+			},
+			"render_controllers": ["controller.render.default"],
+			"spawn_egg": {
+				"base_color": "#e0ff00",
+				"overlay_color": "#402800"
+			}
+		}
+	}
+}

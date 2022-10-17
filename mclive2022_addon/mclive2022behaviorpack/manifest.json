@@ -1,0 +1,29 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Minecraft Live",
+		"description": "Minecraft Live Behavior Pack",
+		"uuid": "9d352270-22bb-f1e0-75ab-34b4049544e2",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 16, 0]
+	},
+	"metadata": {
+		"generated_with": {
+			"blockbench_entity_wizard": ["1.0.9"]
+		}
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"version": [1, 0, 0],
+			"uuid": "f516d7ba-8afd-2fb8-9ad5-6f01f4d7512f",
+			"type": "data"
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "8cee9cd5-6ce6-a8da-da8c-f06d93c3ea12",
+			"version": [1, 0, 0]
+		}
+	]
+}

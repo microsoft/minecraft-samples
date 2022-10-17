@@ -1,0 +1,93 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.sea_chicken",
+				"texture_width": 64,
+				"texture_height": 32,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 2.25,
+				"visible_bounds_offset": [0, 0.875, 0]
+			},
+			"bones": [
+				{
+					"name": "body2",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, -4, -3], "size": [6, 6, 5], "pivot": [0, 8, 0], "rotation": [90, 0, 0], "uv": [1, 12]}
+					]
+				},
+				{
+					"name": "body",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, 9, -3], "size": [6, 3, 6], "pivot": [0, 8, 0], "rotation": [90, 0, 0], "uv": [0, 13]}
+					]
+				},
+				{
+					"name": "body1",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [0, 12, -2], "size": [0, 4, 8], "uv": [38, 13]},
+						{"origin": [-3, 3, -3], "size": [6, 6, 6], "inflate": 1, "pivot": [0, 8, 0], "rotation": [90, 0, 0], "uv": [0, 10]}
+					]
+				},
+				{
+					"name": "head",
+					"pivot": [0, 9, -4],
+					"cubes": [
+						{"origin": [-2, 5, -6], "size": [4, 6, 3], "uv": [0, 0]}
+					],
+					"locators": {
+						"lead": [0, 9, -4]
+					}
+				},
+				{
+					"name": "comb",
+					"parent": "head",
+					"pivot": [0, 9, -4],
+					"cubes": [
+						{"origin": [-1, 5, -7], "size": [2, 2, 2], "uv": [14, 4]}
+					]
+				},
+				{
+					"name": "beak",
+					"parent": "head",
+					"pivot": [0, 9, -4],
+					"cubes": [
+						{"origin": [-2, 7, -8], "size": [4, 2, 2], "uv": [14, 0]}
+					]
+				},
+				{
+					"name": "wing0",
+					"pivot": [-4, 11, 0],
+					"cubes": [
+						{"origin": [-5, 7, -1], "size": [1, 4, 6], "uv": [24, 13]}
+					]
+				},
+				{
+					"name": "wing1",
+					"pivot": [4, 11, 2],
+					"cubes": [
+						{"origin": [4, 7, -1], "size": [1, 4, 6], "uv": [24, 13]}
+					]
+				},
+				{
+					"name": "body3",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-3, -5, -3], "size": [6, -2, 5], "inflate": -1, "pivot": [0, 8, 0], "rotation": [90, 0, 0], "uv": [0, 13]}
+					]
+				},
+				{
+					"name": "body4",
+					"pivot": [0, 8, 0],
+					"cubes": [
+						{"origin": [-2, -9, -3], "size": [4, -2, 3], "inflate": -1, "pivot": [0, 8, 0], "rotation": [90, 0, 0], "uv": [1, 16]}
+					]
+				}
+			]
+		}
+	]
+}
