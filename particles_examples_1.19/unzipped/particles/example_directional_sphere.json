@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "particle_effect": {
+    "description": {
+      "identifier": "minecraft:example_directional_sphere",
+      "basic_render_parameters": {
+        "material": "particles_alpha",
+        "texture": "textures/items/diamond_pickaxe"
+      }
+    },
+    "components": {
+      "minecraft:emitter_rate_instant": {
+        "num_particles": 150
+      },
+      "minecraft:emitter_lifetime_once": {
+        "active_time": 0
+      },
+      "minecraft:emitter_shape_sphere": {
+        "radius": 1,
+        "direction": "outwards",
+        "surface_only": true
+      },
+      "minecraft:particle_lifetime_expression": {
+        "max_lifetime": 10
+      },
+      "minecraft:particle_motion_parametric": {
+        "rotation": "variable.particle_random_1 * 360 + variable.particle_age * 500"
+      },
+      "minecraft:particle_appearance_billboard": {
+        "size": [ 0.2, 0.2 ],
+        "facing_camera_mode": "direction_z"
+      },
+      "minecraft:particle_appearance_lighting": {}
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "format_version": 1,
+  "header": {
+    "description": "Particle System Examples 1.19",
+    "name": "Particle System Examples 1.19",
+    "uuid": "6208b7b2-41b1-4492-9eb2-0461d44ddeb1",
+    "version": [ 0, 0, 1 ],
+    "min_engine_version": [ 1, 10, 0 ]
+  },
+  "modules": [
+    {
+      "description": "",
+      "type": "resources",
+      "uuid": "5d76c5ce-7f03-4f3b-9874-27ba6c0be298",
+      "version": [ 0, 0, 1 ]
+    }
+  ]
+}
+
