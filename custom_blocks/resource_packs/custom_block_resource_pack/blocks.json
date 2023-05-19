@@ -1,0 +1,23 @@
+{
+  "format_version": "1.19.80",
+  "demo:die": {
+    "textures": {
+      "up": "die_1",
+      "down": "die_6",
+      "north": "die_3",
+      "south": "die_4",
+      "east": "die_2",
+      "west": "die_5"
+    },
+    "carried_textures": "die_red",
+    "isotropic": true,
+    "brightness_gamma": 1,
+    "sound": "stone"
+  },
+  "demo:tuna_roll": {
+    "sound": "mud"
+  },
+  "demo:california_roll": {
+    "sound": "mud"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Demo Resource Pack",
+    "name": "Custom Blocks Resource Pack",
+    "uuid": "7ae29fa1-0853-448d-850c-87dbdd583c4f",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 0]
+  },
+  "modules": [
+    {
+      "description": "Demo Resource Pack",
+      "type": "resources",
+      "uuid": "ea15c0dd-4192-4be5-a53c-8dbd3b58d9d2",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "874f1a8c-2c74-4be1-8770-1bcb40e0cd74",
+      "version": [1, 0, 0]
+    }
+  ]
+}
