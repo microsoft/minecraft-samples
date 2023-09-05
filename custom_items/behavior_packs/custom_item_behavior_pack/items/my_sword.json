@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_sword",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "demo:my_sword"
+      },
+      "minecraft:display_name": {
+        "value": "Secret Weapon"
+      },
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 10,
+          "max": 50
+        },
+        "max_durability": 36
+      },
+      "minecraft:fuel": {
+        "duration": 3.0
+      }
+    }
+  }
+}

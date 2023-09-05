@@ -1,0 +1,27 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_sword_weak",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "demo:my_sword"
+      },
+      "minecraft:display_name": {
+        "value": "Really Just Wet Paper"
+      },
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 100,
+          "max": 100
+        },
+        "max_durability": 2
+      },
+      "minecraft:fuel": {
+        "duration": 3.0
+      }
+    }
+  }
+}

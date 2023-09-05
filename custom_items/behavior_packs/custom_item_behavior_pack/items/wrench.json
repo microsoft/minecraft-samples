@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:wrench",
+      "category": "Items"
+    },
+
+    "components": {
+      "minecraft:max_stack_size": 16,
+      "minecraft:icon": {
+        "texture": "demo:wrench"
+      },
+      "minecraft:wearable": {
+        "dispensable": true,
+        "slot": "slot.weapon.offhand"
+      }
+    }
+  }
+}

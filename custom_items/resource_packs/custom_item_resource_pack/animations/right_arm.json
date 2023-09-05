@@ -1,0 +1,17 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.wiki.first_person_guide.right_arm.method_one": {
+			"loop": true,
+			"bones": {
+				"rightArm": {
+					"rotation": [95, -45, 115],
+					"position": [13.5, -10, 12]
+				},
+				"rightItem": {
+					"position": [0, 0, -1]
+				}
+			}
+		}
+	}
+}

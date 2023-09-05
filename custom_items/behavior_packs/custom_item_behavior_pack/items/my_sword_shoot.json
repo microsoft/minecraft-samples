@@ -1,0 +1,53 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_sword_shoot",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "demo:my_sword"
+      },
+      "minecraft:display_name": {
+        "value": "Oh Shoot"
+      },
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 10,
+          "max": 50
+        },
+        "max_durability": 10
+      },
+      "minecraft:fuel": {
+        "duration": 3.0
+      },
+
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:diamond"],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:shooter": {
+        "ammunition": [
+          {
+            "item": "minecraft:snowball",
+            "use_offhand": true,
+            "search_inventory": true,
+            "use_in_creative": true
+          }
+        ],
+        "max_draw_duration": 1.0,
+        "scale_power_by_draw_duration": true,
+        "charge_on_draw": false
+      },
+      "minecraft:projectile": {
+        "minimum_critical_power": 1.25,
+        "projectile_entity": "minecraft:snowball"
+      }
+    }
+  }
+}

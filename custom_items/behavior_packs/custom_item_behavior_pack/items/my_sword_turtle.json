@@ -1,0 +1,40 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_sword_turtle",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "demo:my_sword"
+      },
+      "minecraft:display_name": {
+        "value": "Turtle Sword"
+      },
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 10,
+          "max": 50
+        },
+        "max_durability": 10
+      },
+      "minecraft:fuel": {
+        "duration": 3.0
+      },
+      "minecraft:entity_placer": {
+        "entity": "minecraft:turtle",
+        "use_on": ["minecraft:sand"]
+      },
+
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:diamond"],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      }
+    }
+  }
+}

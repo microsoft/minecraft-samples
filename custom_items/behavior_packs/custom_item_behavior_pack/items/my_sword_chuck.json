@@ -1,0 +1,48 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_sword_chuck",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "demo:my_sword"
+      },
+      "minecraft:display_name": {
+        "value": "Chuck"
+      },
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 10,
+          "max": 50
+        },
+        "max_durability": 10
+      },
+      "minecraft:fuel": {
+        "duration": 3.0
+      },
+
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:diamond"],
+            "repair_amount": "query.max_durability * 0.25"
+          }
+        ]
+      },
+      "minecraft:throwable": {
+        "do_swing_animation": true,
+        "launch_power_scale": 1.0,
+        "max_draw_duration": 0.0,
+        "max_launch_power": 1.0,
+        "min_draw_duration": 0.0,
+        "scale_power_by_draw_duration": false
+      },
+      "minecraft:projectile": {
+        "minimum_critical_power": 1.25,
+        "projectile_entity": "minecraft:snowball"
+      }
+    }
+  }
+}

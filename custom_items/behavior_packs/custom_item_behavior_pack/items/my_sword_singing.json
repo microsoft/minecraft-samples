@@ -1,0 +1,36 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_sword_singing",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:icon": {
+        "texture": "demo:my_sword"
+      },
+      "minecraft:display_name": {
+        "value": "Sword Singer"
+      },
+      "minecraft:durability": {
+        "damage_chance": {
+          "min": 0,
+          "max": 0
+        },
+        "max_durability": 1000
+      },
+      "minecraft:fuel": {
+        "duration": 3.0
+      },
+      "minecraft:block_placer": {
+        "block": "minecraft:dirt",
+        "use_on": ["dirt", "grass", "anvil"]
+      },
+      "minecraft:record": {
+        "comparator_signal": 1,
+        "duration": 5,
+        "sound_event": "pre_ram.screamer"
+      }
+    }
+  }
+}
