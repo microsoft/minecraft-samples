@@ -5,7 +5,7 @@ This project contains samples that further extend the [Minecraft: Bedrock Editio
 ## Current Samples
 
  * [Add Entity Robot](add_entity_robot/README.md) - A simple project that demonstrates how to create a new entity, that accompanies [this article](https://docs.microsoft.com/minecraft/creator/documents/introductiontoaddentity).
- * [RTX Resource Pack](rtx_resource_pack/README.md) - The RTX enabled sample resource pack that accompanies the [Physically Based Rendering Workflow](https://docs.microsoft.com/en-us/minecraft/creator/documents/rtx_pbrtexturingguide_workflow) tutorial documentation.
+ * [RTX Resource Pack](rtx_resource_pack/README.md) - The RTX enabled sample resource pack that accompanies the [Physically Based Rendering Workflow](https://learn.microsoft.com/en-us/minecraft/creator/documents/rtxpbrtutorial) tutorial documentation.
 
 ## Contributing
 
