@@ -8,7 +8,7 @@
     "components": {
       "minecraft:max_stack_size": 16,
       "minecraft:icon": {
-        "texture": "demo.goo"
+        "texture": "demo:goo"
       },
       "minecraft:display_name": {
         "value": "Weird Goo"
