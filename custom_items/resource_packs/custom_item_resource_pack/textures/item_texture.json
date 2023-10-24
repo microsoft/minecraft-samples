@@ -1,0 +1,36 @@
+{
+  "resource_pack_name": "custom_item_resource_pack",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "demo:goo": {
+      "textures": "textures/items/goo"
+    },
+    "demo:crown": {
+      "textures": "textures/items/crown_ico"
+    },
+    "demo:chestplate": {
+      "textures": "textures/items/diamond_chestplate_purple"
+    },
+    "demo:my_boots": {
+      "textures": "textures/items/diamond_boots_purple"
+    },
+    "demo:my_helm": {
+      "textures": "textures/items/diamond_helmet_purple"
+    },
+    "demo:my_leggings": {
+      "textures": "textures/items/diamond_leggings_purple"
+    },
+    "demo:my_sword": {
+      "textures": "textures/items/my_sword"
+    },
+    "demo:my_sword1": {
+      "textures": "textures/items/my_sword1"
+    },
+    "demo:my_sword2": {
+      "textures": "textures/items/my_sword2"
+    },
+    "demo:wrench": {
+      "textures": "textures/items/wrench_ico"
+    }
+  }
+}

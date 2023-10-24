@@ -1,0 +1,24 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "demo:my_sword"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["e", "E", "#"],
+    "key": {
+      "#": {
+        "item": "minecraft:stick"
+      },
+      "E": {
+        "item": "minecraft:ender_eye"
+      },
+      "e": {
+        "item": "minecraft:ender_pearl"
+      }
+    },
+    "result": {
+      "item": "demo:my_sword"
+    }
+  }
+}

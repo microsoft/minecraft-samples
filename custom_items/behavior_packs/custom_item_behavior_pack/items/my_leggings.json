@@ -1,0 +1,41 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "demo:my_leggings",
+      "category": "equipment"
+    },
+    "components": {
+      "minecraft:menu_category": {
+        "category": "none",
+        "group": "itemGroup.name.leggings"
+      },
+      "minecraft:icon": {
+        "texture": "demo:my_leggings"
+      },
+      "minecraft:display_name": {
+        "value": "My Custom Leggings"
+      },
+      "minecraft:max_stack_size": 1,
+      "minecraft:enchantable": {
+        "value": 10,
+        "slot": "armor_legs"
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["minecraft:stick"],
+            "repair_amount": "context.other->query.remaining_durability + 0.05 * context.other->query.max_durability"
+          }
+        ]
+      },
+      "minecraft:wearable": {
+        "dispensable": true,
+        "slot": "slot.armor.legs"
+      },
+      "minecraft:durability": {
+        "max_durability": 200
+      }
+    }
+  }
+}
