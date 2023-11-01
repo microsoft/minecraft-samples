@@ -7,6 +7,7 @@ This project contains samples that further extend the [Minecraft: Bedrock Editio
  * [Add Entity Robot](add_entity_robot/README.md) - A simple project that demonstrates how to create a new entity, that accompanies the [Introduction to Add Entity article](https://docs.microsoft.com/minecraft/creator/documents/introductiontoaddentity)
  * [Behavior Pack Sample](behavior_pack_sample/README.md) - This is the behavior pack that accompanies the [Behavior Pack Tutorial](https://docs.microsoft.com/minecraft/creator/documents/behaviorpack)
  * [Custom Blocks](custom_blocks/README.md) - Behavior Pack and Resource pack that accompanies the custom block tutorials, starting with [Custom Blocks Part 1: The Simplest Block](https://docs.microsoft.com/minecraft/creator/documents/addcustomdieblock)
+ * [Features Samples](https://github.com/microsoft/minecraft-samples/blob/main/FeaturesSamples.mcaddon) - A sample pack that can be used as a tutorial on how feature and feature rules work.
  * [Custom Items](custom_items/README.md)
  * [Minecraft Live 2022 Add-Ons](mclive2022_addon) - Behavior Pack and Resource Pack that accompany the [Minecraft Live 2022 Creator Recap](https://docs.microsoft.com/minecraft/creator/documents/minecraftlive2022creatorrecap)
  * [NPC Dialog Sample](npc_dialogue_sample/README.md) - See the [NPC Dialogue](https://docs.microsoft.com/minecraft/creator/documents/NPCDialogue) documentation for the full walkthrough adding custom dialogue for an NPC
