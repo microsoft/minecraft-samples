@@ -1,0 +1,39 @@
+{   
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "git.ignoreLimitWarning": true,
+    "editor.formatOnSave": true,
+    "search.exclude": {
+        "**/.git": true,
+        "**/node_modules": true,
+        "**/build": true
+    },
+    "files.exclude": {
+        "**/.git": true,    
+        "**/.DS_Store": true,
+        "**/node_modules": true, 
+        "**/build": true
+    },
+    "cSpell.words": [
+        "boomfly",
+        "gametest",
+        "gametests",
+        "minecart",
+        "sheepomelon",
+        "shulker",
+        "spawnable",
+        "summonable",
+        "zoglin"
+    ],
+    "editor.tabSize": 2
+}

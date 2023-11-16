@@ -1,0 +1,185 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "aop_mobs:nardolphle",
+      "population_control": "water_animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underwater": {},
+
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        },
+        "minecraft:weight": {
+          "default": 75
+        },
+        "minecraft:density_limit": {
+          "surface": 20
+        },
+        "minecraft:height_filter": {
+          "min": 0,
+          "max": 64
+        },
+        "minecraft:herd": [
+          {
+            "min_size": 3,
+            "max_size": 5
+          }
+        ],
+
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "ocean"
+          },
+          {
+            "any_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "warm"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "lukewarm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underwater": {},
+
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        },
+        "minecraft:weight": {
+          "default": 25
+        },
+        "minecraft:density_limit": {
+          "surface": 20
+        },
+        "minecraft:height_filter": {
+          "min": 50,
+          "max": 64
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "ocean"
+          },
+          {
+            "any_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "warm"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "==",
+                "value": "lukewarm"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_underwater": {},
+
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        },
+        "minecraft:weight": {
+          "default": 75
+        },
+        "minecraft:density_limit": {
+          "underground": 20
+        },
+        "minecraft:herd": [
+          {
+            "min_size": 3,
+            "max_size": 5
+          }
+        ],
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "lush_caves"
+        }
+      },
+      {
+        "minecraft:spawns_underground": {},
+        "minecraft:spawns_underwater": {},
+
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        },
+        "minecraft:weight": {
+          "default": 25
+        },
+        "minecraft:density_limit": {
+          "underground": 20
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 3
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "lush_caves"
+        }
+      },
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_underwater": {},
+
+        "minecraft:distance_filter": {
+          "min": 12,
+          "max": 32
+        },
+        "minecraft:weight": {
+          "default": 25
+        },
+        "minecraft:density_limit": {
+          "surface": 20
+        },
+        "minecraft:height_filter": {
+          "min": 0,
+          "max": 64
+        },
+        "minecraft:herd": [
+          {
+            "min_size": 3,
+            "max_size": 5
+          }
+        ],
+
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "mangrove_swamp"
+          }
+        ]
+      }
+    ]
+  }
+}

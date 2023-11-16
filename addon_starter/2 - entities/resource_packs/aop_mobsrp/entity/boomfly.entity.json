@@ -1,0 +1,38 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aop_mobs:boomfly",
+      "materials": {
+        "default": "phantom",
+        "invisible": "phantom_invisible"
+      },
+      "textures": {
+        "default": "textures/entity/boomfly"
+      },
+      "geometry": {
+        "default": "geometry.boomfly"
+      },
+      "scripts": {
+        "initialize": ["variable.runtimeid = 0;", "variable.tailrotx = -5.0;", "variable.wingrotz = 0.0;"],
+        "animate": ["phantom_base_pose_controller", "move"]
+      },
+      "animations": {
+        "phantom_base_pose": "animation.boomfly.base_pose",
+        "phantom_base_pose_controller": "controller.animation.phantom.base_pose",
+        "move": "animation.boomfly.move"
+      },
+      "particle_effects": {
+        "wing_dust": "minecraft:phantom_trail_particle"
+      },
+      "sound_effects": {
+        "flap": "mob.phantom.flap"
+      },
+      "render_controllers": ["controller.render.phantom"],
+      "spawn_egg": {
+        "base_color": "#be1616",
+        "overlay_color": "#5ad100"
+      }
+    }
+  }
+}
