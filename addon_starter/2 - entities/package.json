@@ -20,6 +20,6 @@
   "dependencies": {
     "@minecraft/server-ui": "^1.1.0",
     "decode-uri-component": "^0.2.2",
-    "gulp-zip": "^6.0.0"
+    "gulp-zip": "^5.1.0"
   }
 }
