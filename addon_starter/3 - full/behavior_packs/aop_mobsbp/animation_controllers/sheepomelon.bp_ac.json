@@ -1,0 +1,17 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.sheepomelon_commands": {
+      "states": {
+        "default": {
+          "animations": ["spawn"],
+          "transitions": [{ "sheared": "query.is_sheared" }]
+        },
+        "sheared": {
+          "animations": ["sheared"],
+          "transitions": [{ "default": "!query.is_sheared" }]
+        }
+      }
+    }
+  }
+}

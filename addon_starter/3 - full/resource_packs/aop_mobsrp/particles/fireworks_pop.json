@@ -1,0 +1,76 @@
+{
+  "format_version": "1.10.0",
+  "particle_effect": {
+    "description": {
+      "identifier": "aop_mobs:fireworks_pop",
+      "basic_render_parameters": {
+        "material": "particles_alpha",
+        "texture": "textures/particle/particles"
+      }
+    },
+    "events": {
+      "twinkle": {
+        "particle_effect": {
+          "effect": "minecraft:fireworks_twinkles",
+          "type": "particle_with_velocity"
+        }
+      }
+    },
+    "components": {
+      "minecraft:emitter_rate_instant": {
+        "num_particles": 300
+      },
+      "minecraft:emitter_lifetime_once": {
+        "active_time": 0
+      },
+      "minecraft:emitter_shape_sphere": {
+        "radius": 0.1,
+        "direction": "outwards"
+      },
+      "minecraft:particle_initial_speed": 15,
+      "minecraft:particle_initial_spin": {
+        "rotation": "Math.random(0, 360)",
+        "rotation_rate": "Math.random(-300, 300)"
+      },
+      "minecraft:particle_lifetime_expression": {
+        "max_lifetime": "Math.random(1.0, 1.3)"
+      },
+      "minecraft:particle_lifetime_events": {
+        "expiration_event": ["twinkle", "twinkle", "twinkle"]
+      },
+      "minecraft:particle_motion_dynamic": {
+        "linear_acceleration": [0, -5, 0],
+        "linear_drag_coefficient": 3,
+        "rotation_drag_coefficient": 0.2
+      },
+      "minecraft:particle_appearance_billboard": {
+        "size": ["0.2 + variable.particle_random_1 * 0.3f", "0.2 + variable.particle_random_1 * 0.3f"],
+        "facing_camera_mode": "lookat_xyz",
+        "uv": {
+          "texture_width": 16,
+          "texture_height": 16,
+          "flipbook": {
+            "base_UV": [7, 0],
+            "size_UV": [1, 1],
+            "step_UV": [-1, 0],
+            "frames_per_second": 8,
+            "max_frame": 8,
+            "stretch_to_lifetime": true,
+            "loop": false
+          }
+        }
+      },
+      "minecraft:particle_appearance_tinting": {
+        "color": {
+          "gradient": {
+            "0.0": [1, 0, 0],
+            "0.25": [1, 0, 0],
+            "0.5": [0, 1, 0],
+            "1.0": [0, 0, 1]
+          },
+          "interpolant": "variable.particle_age"
+        }
+      }
+    }
+  }
+}

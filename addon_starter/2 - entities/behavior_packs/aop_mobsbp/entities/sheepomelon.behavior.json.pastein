@@ -1,0 +1,23 @@
+
+        "minecraft:behavior.nearest_attackable_target": {
+          "priority": 1,
+          "must_see": true,
+          "reselect_targets": true,
+          "within_radius": 25.0,
+          "entity_types": [
+            {
+              "filters": {
+                "test": "is_family",
+                "subject": "other",
+                "value": "player"
+              },
+              "max_dist": 32
+            }
+          ]
+        },
+        "minecraft:behavior.melee_attack": {
+          "priority": 2
+        },
+        "minecraft:attack": {
+          "damage": 3
+        }

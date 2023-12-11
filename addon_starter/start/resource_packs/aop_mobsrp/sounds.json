@@ -1,0 +1,184 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "aop_mobs:black_bear": {
+        "events": {
+          "ambient": "mob.polarbear.idle",
+          "ambient.baby": "mob.polarbear_baby.idle",
+          "death": "mob.polarbear.death",
+          "hurt": {
+            "sound": "mob.polarbear.hurt",
+            "volume": 0.7
+          },
+          "mob.warning": {
+            "pitch": 1,
+            "sound": "mob.polarbear.warning",
+            "volume": 1.2
+          },
+          "step": {
+            "pitch": 1,
+            "sound": "mob.polarbear.step",
+            "volume": 0.7
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "aop_mobs:wraith": {
+        "events": {
+          "ambient": "mob.evocation_illager.ambient",
+          "ambient.in.raid": {
+            "pitch": [0.8, 1.2],
+            "sound": "mob.evocation_illager.ambient",
+            "volume": 3
+          },
+          "cast.spell": "mob.evocation_illager.cast_spell",
+          "celebrate": "mob.evocation_illager.celebrate",
+          "death": "mob.evocation_illager.death",
+          "hurt": "mob.evocation_illager.hurt",
+          "prepare.attack": "mob.evocation_illager.prepare_attack",
+          "prepare.summon": "mob.evocation_illager.prepare_summon",
+          "prepare.wololo": "mob.evocation_illager.prepare_wololo"
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "aop_mobs:nardolphle": {
+        "events": {
+          "ambient": "mob.dolphin.idle",
+          "ambient.in.water": "mob.dolphin.idle_water",
+          "attack": "mob.dolphin.attack",
+          "breathe": "mob.dolphin.blowhole",
+          "death": "mob.dolphin.death",
+          "death.in.water": "mob.dolphin.death",
+          "eat": {
+            "pitch": 1,
+            "sound": "mob.dolphin.eat",
+            "volume": 0.7
+          },
+          "hurt": "mob.dolphin.hurt",
+          "hurt.in.water": "mob.dolphin.hurt",
+          "jump": {
+            "pitch": 1,
+            "sound": "mob.dolphin.jump",
+            "volume": 0.7
+          },
+          "splash": "mob.dolphin.splash",
+          "swim": "mob.dolphin.swim"
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "aop_mobs:boomfly": {
+        "events": {
+          "ambient": "mob.phantom.idle",
+          "attack": "mob.phantom.bite",
+          "death": "mob.phantom.death",
+          "flap": "mob.phantom.flap",
+          "hurt": "mob.phantom.hurt",
+          "swoop": {
+            "pitch": [0.95, 1.05],
+            "sound": "mob.phantom.swoop"
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 10
+      },
+      "aop_mobs:biceson": {
+        "events": {
+          "ambient": "mob.polarbear.idle",
+          "ambient.baby": "mob.polarbear_baby.idle",
+          "death": "mob.polarbear.death",
+          "hurt": {
+            "sound": "mob.polarbear.hurt",
+            "volume": 0.7
+          },
+          "mob.warning": {
+            "pitch": 1,
+            "sound": "mob.polarbear.warning",
+            "volume": 1.2
+          },
+          "step": {
+            "pitch": 1,
+            "sound": "mob.polarbear.step",
+            "volume": 0.7
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "aop_mobs:frost_moose": {
+        "events": {
+          "add.chest": {
+            "pitch": [0.8, 1.2],
+            "sound": "mob.horse.armor",
+            "volume": 1
+          },
+          "ambient": "mob.llama.idle",
+          "armor": {
+            "pitch": 1,
+            "sound": "mob.llama.swag",
+            "volume": 0.5
+          },
+          "death": "mob.llama.death",
+          "eat": {
+            "pitch": [0.8, 1.2],
+            "sound": "mob.llama.eat",
+            "volume": [0.5, 1.5]
+          },
+          "hurt": "mob.llama.hurt",
+          "mad": "mob.llama.angry",
+          "shoot": "mob.llama.angry",
+          "step": {
+            "pitch": 0.5,
+            "sound": "mob.llama.step",
+            "volume": 0.15
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 0.8
+      },
+      "aop_mobs:ghost": {
+        "events": {
+          "death": "mob.creeper.death",
+          "fuse": {
+            "pitch": 0.5,
+            "sound": "random.fuse",
+            "volume": 1
+          },
+          "hurt": "mob.creeper.say"
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "aop_mobs:sheepomelon": {
+        "events": {
+          "ambient": "mob.sheep.say",
+          "death": "mob.sheep.say",
+          "hurt": "mob.sheep.say",
+          "step": {
+            "pitch": 1,
+            "sound": "mob.sheep.step",
+            "volume": 0.4
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "aop_mobs:robot": {
+        "events": {
+          "ambient": "mob.zombie.say",
+          "death": "mob.zombie.death",
+          "hurt": "mob.zombie.hurt",
+          "step": {
+            "pitch": 1,
+            "sound": "mob.zombie.step",
+            "volume": 0.45
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      }
+    }
+  }
+}
