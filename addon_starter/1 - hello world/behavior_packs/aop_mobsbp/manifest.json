@@ -13,6 +13,14 @@
       "version": [1, 0, 0],
       "uuid": "2d59a3f6-d348-496d-a0c7-6d59ddb05c5e",
       "type": "data"
+    },
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "f43bb32a-c814-45e4-a428-3f4f1f59b2a3",
+      "version": [0, 0, 1],
+      "entry": "scripts/main.js"
     }
   ],
   "dependencies": [
