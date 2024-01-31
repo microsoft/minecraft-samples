@@ -1,0 +1,124 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.frost_moose",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 5,
+				"visible_bounds_height": 5.25,
+				"visible_bounds_offset": [0, 2.375, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 19, 2],
+					"cubes": [
+						{"origin": [-7, -1, -5], "size": [14, 30, 19], "pivot": [0, 19, 2], "rotation": [90, 0, 0], "uv": [0, 0]},
+						{"origin": [-1, -4, 7], "size": [3, 3, 5], "pivot": [0, 19, 2], "rotation": [90, 0, 0], "uv": [66, 13]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 17, -7],
+					"cubes": [
+						{"origin": [-4, 26, -21], "size": [8, 5, 8], "uv": [47, 0]},
+						{"origin": [-1, 19, -14], "size": [2, 7, 5], "uv": [0, 64]},
+						{"origin": [-4, 24, -13], "size": [8, 9, 6], "uv": [0, 49]},
+						{"origin": [-6, 31, -11], "size": [2, 4, 2], "uv": [47, 13]},
+						{"origin": [4, 31, -11], "size": [2, 4, 2], "uv": [47, 13]}
+					],
+					"locators": {
+						"lead": [0, 18, -12]
+					}
+				},
+				{
+					"name": "antler",
+					"parent": "head",
+					"pivot": [5.16667, 33.58333, -6.08333],
+					"rotation": [0, 0, 0],
+					"cubes": [
+						{"origin": [3, 39, -12], "size": [4, 3, 10], "uv": [28, 49]},
+						{"origin": [1, 38, -12], "size": [4, 1, 6], "uv": [38, 62]},
+						{"origin": [1, 33, -12], "size": [2, 5, 6], "uv": [22, 62]},
+						{"origin": [5, 42, -3], "size": [2, 3, 1], "uv": [12, 0]},
+						{"origin": [4, 40, -13], "size": [3, 10, 1], "uv": [14, 64]},
+						{"origin": [5, 39, -2], "size": [3, 10, 1], "uv": [14, 64]},
+						{"origin": [5, 42, -7], "size": [3, 4, 3], "uv": [66, 21]},
+						{"origin": [5, 42, -11], "size": [4, 2, 2], "uv": [22, 49]},
+						{"origin": [9, 43, -11], "size": [2, 8, 2], "uv": [47, 0]}
+					]
+				},
+				{
+					"name": "antler2",
+					"parent": "head",
+					"pivot": [-5.83333, 33.58333, -12.08333],
+					"rotation": [0, 180, 0],
+					"cubes": [
+						{"origin": [-8, 39, -20], "size": [4, 3, 10], "uv": [28, 49]},
+						{"origin": [-10, 38, -18], "size": [4, 1, 6], "uv": [38, 62]},
+						{"origin": [-10, 33, -18], "size": [2, 5, 6], "uv": [22, 62]},
+						{"origin": [-6, 42, -20], "size": [2, 3, 1], "uv": [12, 0]},
+						{"origin": [-7, 40, -21], "size": [3, 10, 1], "uv": [14, 64]},
+						{"origin": [-6, 39, -10], "size": [3, 10, 1], "uv": [14, 64]},
+						{"origin": [-6, 42, -18], "size": [3, 4, 3], "uv": [66, 21]},
+						{"origin": [-5, 42, -14], "size": [3, 2, 2], "uv": [22, 49]},
+						{"origin": [-2, 43, -14], "size": [2, 11, 2], "uv": [47, 0]}
+					]
+				},
+				{
+					"name": "chest1",
+					"parent": "body",
+					"pivot": [-8.5, 21, 3],
+					"rotation": [0, 90, 0],
+					"cubes": [
+						{"origin": [-11.5, 13, 3], "size": [8, 8, 3], "uv": [45, 28]}
+					]
+				},
+				{
+					"name": "chest2",
+					"parent": "body",
+					"pivot": [5.5, 21, 3],
+					"rotation": [0, 90, 0],
+					"cubes": [
+						{"origin": [2.5, 13, 3], "size": [8, 8, 3], "uv": [45, 41]}
+					]
+				},
+				{
+					"name": "leg0",
+					"parent": "body",
+					"pivot": [-3.5, 14, 6],
+					"cubes": [
+						{"origin": [-5.5, 0, 16], "size": [4, 14, 4], "uv": [56, 49]}
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "body",
+					"pivot": [3.5, 14, 6],
+					"cubes": [
+						{"origin": [1.5, 0, 16], "size": [4, 14, 4], "uv": [56, 49]}
+					]
+				},
+				{
+					"name": "leg2",
+					"parent": "body",
+					"pivot": [-3.5, 14, -5],
+					"cubes": [
+						{"origin": [-5.5, 0, -7], "size": [4, 14, 4], "uv": [56, 49]}
+					]
+				},
+				{
+					"name": "leg3",
+					"parent": "body",
+					"pivot": [3.5, 14, -5],
+					"cubes": [
+						{"origin": [1.5, 0, -7], "size": [4, 14, 4], "uv": [0, 0]}
+					]
+				}
+			]
+		}
+	]
+}

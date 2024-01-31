@@ -1,0 +1,30 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aop_mobs:nardolphle",
+      "materials": {
+        "default": "dolphin"
+      },
+      "textures": {
+        "default": "textures/entity/nardolphle"
+      },
+      "geometry": {
+        "default": "geometry.nardolphle"
+      },
+      "animations": {
+        "move": "animation.nardolphle.move"
+      },
+      "animation_controllers": [
+        {
+          "general": "controller.animation.dolphin.general"
+        }
+      ],
+      "render_controllers": ["controller.render.default"],
+      "spawn_egg": {
+        "base_color": "#b421d1",
+        "overlay_color": "#f407b1"
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "min_engine_version": "1.8.0",
+      "identifier": "aop_mobs:wraith",
+      "materials": {
+        "default": "evoker"
+      },
+      "textures": {
+        "default": "textures/entity/wraith"
+      },
+      "geometry": {
+        "default": "geometry.wraith"
+      },
+      "scripts": {
+        "scale": "0.9375",
+        "animate": ["controller_general", "controller_move"]
+      },
+      "animations": {
+        "general": "animation.wraith.general",
+        "casting": "animation.wraith.casting",
+        "look_at_target": "animation.common.look_at_target",
+        "move": "animation.wraith.move",
+        "celebrating": "animation.humanoid.celebrating",
+        "controller_general": "controller.animation.villager.general",
+        "controller_move": "controller.animation.villager.move"
+      },
+      "particle_effects": {
+        "spell": "minecraft:evoker_spell"
+      },
+      "render_controllers": ["controller.render.evoker"],
+      "spawn_egg": {
+        "base_color": "#ff0000",
+        "overlay_color": "#000000"
+      }
+    }
+  }
+}

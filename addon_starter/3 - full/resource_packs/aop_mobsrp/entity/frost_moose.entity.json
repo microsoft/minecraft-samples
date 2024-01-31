@@ -1,0 +1,59 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "aop_mobs:frost_moose",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "llama"
+      },
+      "textures": {
+        "creamy": "textures/entity/frost_moose/frost1",
+        "white": "textures/entity/frost_moose/white",
+        "brown": "textures/entity/frost_moose/brown",
+        "gray": "textures/entity/frost_moose/gray",
+        "decor_none": "textures/entity/frost_moose/decor_none",
+        "decor_white": "textures/entity/frost_moose/decor_white",
+        "decor_orange": "textures/entity/frost_moose/decor_orange",
+        "decor_magenta": "textures/entity/frost_moose/decor_magenta",
+        "decor_light_blue": "textures/entity/frost_moose/decor_light_blue",
+        "decor_yellow": "textures/entity/frost_moose/decor_yellow",
+        "decor_lime": "textures/entity/frost_moose/decor_lime",
+        "decor_pink": "textures/entity/frost_moose/decor_pink",
+        "decor_gray": "textures/entity/frost_moose/decor_gray",
+        "decor_silver": "textures/entity/frost_moose/decor_silver",
+        "decor_cyan": "textures/entity/frost_moose/decor_cyan",
+        "decor_purple": "textures/entity/frost_moose/decor_purple",
+        "decor_blue": "textures/entity/frost_moose/decor_blue",
+        "decor_brown": "textures/entity/frost_moose/decor_brown",
+        "decor_green": "textures/entity/frost_moose/decor_green",
+        "decor_red": "textures/entity/frost_moose/decor_red",
+        "decor_black": "textures/entity/frost_moose/decor_black",
+        "decor_wandering_trader": "textures/entity/llama/decor/trader_llama_decor",
+        "trader_llama_decor": "textures/entity/frost_moose/trader_llama_decor"
+      },
+      "geometry": {
+        "default": "geometry.frost_moose"
+      },
+      "animations": {
+        "setup": "animation.llama.setup",
+        "walk": "animation.frost_moose.walk",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.llama.baby_transform"
+      },
+      "animation_controllers": [
+        {
+          "move": "controller.animation.llama.move"
+        },
+        {
+          "baby": "controller.animation.llama.baby"
+        }
+      ],
+      "render_controllers": ["controller.render.llama"],
+      "spawn_egg": {
+        "base_color": "#ebfaf1",
+        "overlay_color": "#a1d0f6"
+      }
+    }
+  }
+}

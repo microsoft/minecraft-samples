@@ -1,0 +1,19 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.sheepomelon.spawn": {
+      "loop": false,
+      "animation_length": 0.5,
+      "timeline": {
+        "0.2": ["/say Bahhhh melon"]
+      }
+    },
+    "animation.sheepomelon.sheared": {
+      "loop": false,
+      "timeline": {
+        "0.0": ["/summon salmon ^ ^1 ^"]
+      },
+      "animation_length": 1.0
+    }
+  }
+}

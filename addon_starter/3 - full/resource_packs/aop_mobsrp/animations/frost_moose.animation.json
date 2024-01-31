@@ -1,0 +1,52 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.frost_moose.baby_transform": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [0, -5.5, -5],
+					"scale": [1.2, 1, 1]
+				},
+				"head": {
+					"position": [0, 2, 0],
+					"scale": [1.3, 1.2, 1.2]
+				},
+				"leg0": {
+					"position": [0, -1, 0],
+					"scale": [0.91, 0.56, 0.91]
+				},
+				"leg1": {
+					"position": [0, -1, 0],
+					"scale": [0.91, 0.56, 0.91]
+				},
+				"leg2": {
+					"position": [0, -1, 0],
+					"scale": [0.91, 0.56, 0.91]
+				},
+				"leg3": {
+					"position": [0, -1, 0],
+					"scale": [0.91, 0.56, 0.91]
+				}
+			}
+		},
+		"animation.frost_moose.walk": {
+			"anim_time_update": "query.modified_distance_moved",
+			"loop": true,
+			"bones": {
+				"leg0": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				},
+				"leg1": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg2": {
+					"rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0, 0]
+				},
+				"leg3": {
+					"rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0, 0]
+				}
+			}
+		}
+	}
+}
