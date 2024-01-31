@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Culled Blocks",
+    "description": "My behavior pack description",
+    "uuid": "<First BP UUID>",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 19, 80]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "<Second BP UUID>",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    },
+    {
+      "description": "Demo Behavior Pack",
+      "type": "data",
+      "uuid": "<Third BP UUID>",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.0.0"
+    },
+    {
+      "uuid": "<First UUID from the resource pack>",
+      "version": [1, 0, 0]
+    }
+  ]
+}

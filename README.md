@@ -6,6 +6,7 @@ This project contains samples that further extend the [Minecraft: Bedrock Editio
 
  * [Add Entity Robot](add_entity_robot/README.md) - A simple project that demonstrates how to create a new entity, that accompanies the [Introduction to Add Entity article](https://docs.microsoft.com/minecraft/creator/documents/introductiontoaddentity)
  * [Behavior Pack Sample](behavior_pack_sample/README.md) - This is the behavior pack that accompanies the [Behavior Pack Tutorial](https://docs.microsoft.com/minecraft/creator/documents/behaviorpack)
+ * [Culled Block Sample](culled_block_sample/README.md) - Behavior Pack and Resource pack that accompanies the [Culling section](https://learn.microsoft.com/en-us/minecraft/creator/documents/customblockoversized?view=minecraft-bedrock-stable&branch=main#culling) of the Advanced Block Visuals: Sizing and Culling tutorial.
  * [Custom Blocks](custom_blocks/README.md) - Behavior Pack and Resource pack that accompanies the custom block tutorials, starting with [Custom Blocks Part 1: The Simplest Block](https://docs.microsoft.com/minecraft/creator/documents/addcustomdieblock)
  * [Features Samples](https://github.com/microsoft/minecraft-samples/blob/main/FeaturesSamples.mcaddon) - A sample pack that can be used as a tutorial on how feature and feature rules work.
  * [Custom Items](custom_items/README.md)

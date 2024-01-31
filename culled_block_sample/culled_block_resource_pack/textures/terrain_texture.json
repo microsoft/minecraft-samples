@@ -1,0 +1,50 @@
+{
+  "resource_pack_name": "custom_block_resource_pack",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "die_1": {
+      "textures": "textures/blocks/die_1"
+    },
+    "die_2": {
+      "textures": "textures/blocks/die_2"
+    },
+    "die_3": {
+      "textures": "textures/blocks/die_3"
+    },
+    "die_4": {
+      "textures": "textures/blocks/die_4"
+    },
+    "die_5": {
+      "textures": "textures/blocks/die_5"
+    },
+    "die_6": {
+      "textures": "textures/blocks/die_6"
+    },
+    "die_red": {
+      "textures": "textures/blocks/die_red"
+    },
+    "sushi_wrap": {
+      "textures": "textures/blocks/sushi_wrap"
+    },
+    "salmon_roll": {
+      "textures": "textures/blocks/salmon_roll"
+    },
+    "tuna_roll": {
+      "textures": "textures/blocks/tuna_roll"
+    },
+    "california_roll": {
+      "textures": "textures/blocks/california_roll"
+    },
+    "bubble_fish": {
+      "textures": "textures/blocks/bubble_fish"
+    },
+    "bubble_fish_blue": {
+      "textures": "textures/blocks/bubble_fish_blue"
+    },
+    "bubble_fish_green": {
+      "textures": "textures/blocks/bubble_fish_green"
+    }
+  }
+}
