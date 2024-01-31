@@ -1,0 +1,34 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.bubble_fish",
+        "texture_width": 64,
+        "texture_height": 64,
+        "visible_bounds_width": 2,
+        "visible_bounds_height": 2.5,
+        "visible_bounds_offset": [0, 0.75, 0]
+      },
+      "bones": [
+        {
+          "name": "bb_main",
+          "pivot": [0, 0, 0],
+          "cubes": [{ "origin": [-8, 0, -8], "size": [16, 16, 16], "uv": [0, 0] }]
+        },
+        {
+          "name": "fish",
+          "pivot": [0, -14, 0],
+          "cubes": [
+            { "origin": [-4, 6, -1], "size": [5, 4, 3], "uv": [0, 34] },
+            { "origin": [1, 7, 0], "size": [1, 1, 1], "uv": [0, 41] },
+            { "origin": [2, 8, 0], "size": [1, 1, 1], "uv": [0, 41] },
+            { "origin": [3, 9, 0], "size": [1, 1, 1], "uv": [0, 41] },
+            { "origin": [3, 5, 0], "size": [1, 1, 1], "uv": [0, 41] },
+            { "origin": [2, 6, 0], "size": [1, 1, 1], "uv": [0, 41] }
+          ]
+        }
+      ]
+    }
+  ]
+}

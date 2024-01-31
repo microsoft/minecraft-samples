@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Demo Resource Pack",
+    "name": "Culled Blocks Resource Pack",
+    "uuid": "<First RP UUID>",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 0]
+  },
+  "modules": [
+    {
+      "description": "Demo Resource Pack",
+      "type": "resources",
+      "uuid": "<Second RP UUID>",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "<First UUID from the behavior pack",
+      "version": [1, 0, 0]
+    }
+  ]
+}
