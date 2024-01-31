@@ -1,11 +1,9 @@
 ---
 page_type: sample
 author: mammerla
-description: A basic Hello World example of developing Minecraft scripts using TypeScript and a build process.
+description: A basic progressive example of using custom block features within Minecraft.
 ms.author: mikeam@microsoft.com
-ms.date: 04/01/2022
-languages:
-  - typescript
+ms.date: 01/31/2024
 products:
   - minecraft
 ---
@@ -30,14 +28,14 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 ## Getting Started
 
-1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **cotta**.
+1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **custom_blocks**.
 
-1. Put the extracted contents of the TypeScript Starter Project folder into **cotta**.
+1. Put the extracted contents of the custom_blocks folder into **custom_blocks**.
 
-1. Open a Windows Terminal or PowerShell window and change the working directory to your **cotta** folder:
+1. Open a Windows Terminal or PowerShell window and change the working directory to your **custom_blocks** folder:
 
    ```powershell
-   cd c:\projects\cotta\
+   cd c:\projects\culled blocks\
    ```
 
 1. Use npm to install our tools:
@@ -63,7 +61,7 @@ It might also ask you to install the Minecraft Debugger and Blockception's Visua
 ### Summary
 
 This sample demonstrates how you can build incrementally more sophisticated blocks, and how you can leverage custom block features and components.
- 
+
 ## Manifest
 
 - [gulpfile.js](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/gulpfile.js): This file contains build instructions for Gulp, for building out TypeScript code.

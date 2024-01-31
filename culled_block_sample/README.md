@@ -1,11 +1,9 @@
 ---
 page_type: sample
 author: mammerla
-description: A basic Hello World example of developing Minecraft scripts using TypeScript and a build process.
+description: A basic example of using new culled block features within Minecraft 1.20.60 and beyond.
 ms.author: mikeam@microsoft.com
-ms.date: 04/01/2022
-languages:
-  - typescript
+ms.date: 01/31/2024
 products:
   - minecraft
 ---
@@ -30,14 +28,14 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 ## Getting Started
 
-1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **cotta**.
+1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **culled_blocks**.
 
-1. Put the extracted contents of the TypeScript Starter Project folder into **cotta**.
+1. Put the extracted contents of the culled_block_sample folder into **culled_blocks**.
 
-1. Open a Windows Terminal or PowerShell window and change the working directory to your **cotta** folder:
+1. Open a Windows Terminal or PowerShell window and change the working directory to your **culled_blocks** folder:
 
    ```powershell
-   cd c:\projects\cotta\
+   cd c:\projects\culled blocks\
    ```
 
 1. Use npm to install our tools:
