@@ -81,3 +81,12 @@ jobs:
           asset_path: ./addon_starter/3 - full/build/packages/addon_starter_full_source.zip
           asset_name: addon_starter_full_source-${{ steps.get-package-version.outputs.version }}.zip
           asset_content_type: application/zip
+      
+      - name: Commit version changes
+        run: |
+          VERSION=${{ toJSON(steps.version.outputs.result) }}
+          BRANCH="main"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git commit -am "Bump version to $VERSION"
+          git push origin $BRANCH          
