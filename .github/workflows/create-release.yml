@@ -1,0 +1,85 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    permissions:
+      actions: read
+      contents: write
+      deployments: none
+      packages: none
+      pull-requests: none
+      security-events: none
+      checks: none
+      id-token: none
+      issues: none
+      repository-projects: none
+      statuses: none
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Bump version for web
+        id: version
+        uses: vemel/nextversion@0.1.1
+        with:
+          path: ./app/package.json
+          type: semver
+          result: ${{ github.event.inputs.bump }}
+          release: ${{ github.event.inputs.release }}
+          update: |
+            ./addon_starter/3 - full/package.json
+            ./addon_starter/3 - full/README.md
+
+      - name: Build
+        env:
+          CI: ""
+        run: |
+          pushd addon_starter
+          pushd 3 - full
+          npm run all
+          popd
+          popd
+
+      - name: Get Package Version
+        id: get-package-version
+        with:
+          path: addon_starter/3 - full/
+        uses: stevenbenitez/get-package-version-action@v1
+            
+      - name: Create draft Minecraft Samples release
+        id: create_samples_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ steps.get-package-version.outputs.version }}-alpha
+          release_name: Minecraft Samples
+          draft: true
+          prerelease: true
+          
+      - name: Upload aop_mobsbp_full-v.mcaddon to node_module release
+        id: upload_aop_mobsbp_full-v
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
+          asset_path: ./addon_starter/3 - full/build/packages/aop_mobsbp_full.mcaddon
+          asset_name: aop_mobsbp_full-${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_content_type: application/zip
+
+      - name: Upload addon_starter_full_source-v.zip to node_module release
+        id: upload_addon_starter_full_source-v
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
+          asset_path: ./addon_starter/3 - full/build/packages/addon_starter_full_source.zip
+          asset_name: addon_starter_full_source-${{ steps.get-package-version.outputs.version }}.zip
+          asset_content_type: application/zip

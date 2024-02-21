@@ -3,13 +3,12 @@
   "minecraft:item": {
     "description": {
       "identifier": "demo:my_boots",
-      "category": "equipment"
-    },
-    "components": {
-      "minecraft:menu_category": {
+      "menu_category": {
         "category": "none",
         "group": "itemGroup.name.boots"
-      },
+      }
+    },
+    "components": {
       "minecraft:icon": {
         "texture": "demo:my_boots"
       },
