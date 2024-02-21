@@ -39,10 +39,8 @@ jobs:
         env:
           CI: ""
         run: |
-          pushd addon_starter
-          pushd 3 - full
+          pushd "addon_starter/3 - full"
           npm run all
-          popd
           popd
 
       - name: Get Package Version
