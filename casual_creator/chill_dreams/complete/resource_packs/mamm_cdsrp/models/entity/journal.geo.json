@@ -1,0 +1,45 @@
+{
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.mamm_cds.journal",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 0.5, 0]
+			},
+			"bones": [
+				{
+					"name": "journalbase",
+					"pivot": [0, 0, 0],
+					"binding": "q.item_slot_to_bone_name(context.item_slot)",
+					"cubes": [
+						{"origin": [-4, 11, -4.4], "size": [7, 11, 1], "pivot": [-1, 11, -1.4], "rotation": [0, 135, 0], "uv": [0, 0]},
+						{"origin": [-1.4, 11, 1.6], "size": [8, 11, 1], "pivot": [0, -20, 0], "rotation": [0, 30, 0], "uv": [14, 0]}
+					]
+				},
+				{
+					"name": "journalprongs",
+					"pivot": [0, 0, 0],
+					"binding": "q.item_slot_to_bone_name(context.item_slot)"
+				},
+				{
+					"name": "journalextraprongs",
+					"pivot": [0, 0, 0],
+					"binding": "q.item_slot_to_bone_name(context.item_slot)"
+				},
+				{
+					"name": "journaljewels",
+					"pivot": [0, 0, 0],
+					"binding": "q.item_slot_to_bone_name(context.item_slot)",
+					"cubes": [
+						{"origin": [-5.35, 11.9, 1.2], "size": [6, 9.5, 0.5], "pivot": [0, -20, 0], "rotation": [0, -45, 0], "uv": [0, 23]},
+						{"origin": [-0.5, 11.9, 1.2], "size": [6, 9.5, 0.5], "pivot": [0, -20, 0], "rotation": [0, 30, 0], "uv": [22, 23]}
+					]
+				}
+			]
+		}
+	]
+}

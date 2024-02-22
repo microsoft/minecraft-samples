@@ -2,6 +2,7 @@
 
 const bpfoldername = "aop_mobsbp";
 const rpfoldername = "aop_mobsrp";
+const projectname = "addon_starter";
 const useMinecraftPreview = true; // Whether to target the "Minecraft Preview" version of Minecraft vs. the main store version of Minecraft
 const useMinecraftDedicatedServer = false; // Whether to use Bedrock Dedicated Server - see https://www.minecraft.net/download/server/bedrock
 const dedicatedServerPath = "C:/mc/bds/1.19.0/"; // if using Bedrock Dedicated Server, where to find the extracted contents of the zip package
@@ -102,28 +103,37 @@ function deploy_localmc_behavior_packs() {
 function create_bp_mcpack() {
   return gulp
     .src(["build/behavior_packs/" + bpfoldername + "/**/*"])
-    .pipe(zip(bpfoldername + "_full.mcpack"))
+    .pipe(zip(bpfoldername + "_complete.mcpack"))
     .pipe(gulp.dest("build/packages/"));
 }
 
 function create_rp_mcpack() {
   return gulp
     .src(["build/resource_packs/" + rpfoldername + "/**/*"])
-    .pipe(zip(rpfoldername + "_full.mcpack"))
+    .pipe(zip(rpfoldername + "_complete.mcpack"))
     .pipe(gulp.dest("build/packages/"));
 }
 
 function create_mcaddon() {
   return gulp
-    .src(["build/packages/" + bpfoldername + "_full.mcpack", "build/packages/" + rpfoldername + "_full.mcpack"])
-    .pipe(zip(bpfoldername + "_full.mcaddon"))
+    .src(["build/packages/" + bpfoldername + "_complete.mcpack", "build/packages/" + rpfoldername + "_complete.mcpack"])
+    .pipe(zip(projectname + "_complete.mcaddon"))
     .pipe(gulp.dest("build/packages/"));
 }
 
 function create_source_pack() {
   return gulp
-    .src(["./**/*", "./../../LICENSE", "./../README.md", "./**/.vscode/*", "!./build/**/*", "!./node_modules/**/*", "!./build/", "!./node_modules/"])
-    .pipe(zip("addon_starter_full_source.zip"))
+    .src([
+      "./**/*",
+      "./../../LICENSE",
+      "./../README.md",
+      "./**/.vscode/*",
+      "!./build/**/*",
+      "!./node_modules/**/*",
+      "!./build/",
+      "!./node_modules/",
+    ])
+    .pipe(zip("addon_starter_complete_source.zip"))
     .pipe(gulp.dest("build/packages/"));
 }
 
@@ -340,7 +350,12 @@ exports.default = gulp.series(build, deploy_localmc);
 exports.clean = gulp.series(clean_build, clean_localmc);
 exports.watch = gulp.series(build, deploy_localmc, watch);
 exports.serve = gulp.series(build, deploy_localmc, startServer, serve);
-exports.package = gulp.series(build, gulp.parallel(create_bp_mcpack, create_rp_mcpack), create_mcaddon, create_source_pack);
+exports.package = gulp.series(
+  build,
+  gulp.parallel(create_bp_mcpack, create_rp_mcpack),
+  create_mcaddon,
+  create_source_pack
+);
 exports.updateworld = gulp.series(
   clean_localmc_world_backup,
   backup_localmc_world,

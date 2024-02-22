@@ -1,0 +1,15 @@
+{
+    "version": "0.3.0",
+    "configurations": [
+      {
+        "type": "minecraft-js",
+        "request": "attach",
+        "name": "Debug with Minecraft",
+        "mode": "listen",
+        "preLaunchTask": "build",
+        "sourceMapRoot": "${workspaceFolder}/build/behavior_packs/_mamm_cdsbpDebug/",
+        "generatedSourceRoot": "${workspaceFolder}/build/behavior_packs/mamm_cdsbp/scripts/",
+        "port": 19144
+      }
+    ]
+  }

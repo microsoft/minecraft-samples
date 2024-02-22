@@ -1,0 +1,27 @@
+{
+  "name": "chill-dreams",
+  "version": "0.1.2",
+  "productName": "Chill Dreams - a Minecraft screensaver",
+  "description": "Chill Dreams - a Minecraft screensaver",
+  "private": true,
+  "devDependencies": {
+    "del": "^6.0.0",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
+    "source-map": "^0.7.4",
+    "typescript": "^4.4.3"
+  },
+  "scripts": {
+    "enablemcloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436",
+    "enablemcpreviewloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-424268864-5579737-879501358-346833251-474568803-887069379-4040235476",
+    "all": "npm install && gulp package"
+  },
+  "dependencies": {
+    "@minecraft/server": "^1.8.0",
+    "@minecraft/server-ui": "^1.1.0",
+    "decode-uri-component": "^0.2.2",
+    "gulp-zip": "^5.1.0"
+  }
+}

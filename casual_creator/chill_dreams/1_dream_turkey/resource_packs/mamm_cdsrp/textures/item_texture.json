@@ -1,0 +1,21 @@
+{
+  "resource_pack_name": "custom_item_resource_pack",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "mamm_cds:journal": {
+      "textures": "textures/mamm/cds/journal_ico"
+    },
+    "mamm_cds:journal_pen": {
+      "textures": "textures/mamm/cds/journal_pen_ico"
+    },
+    "mamm_cds:dream_turkey": {
+      "textures": "textures/mamm/cds/dream_turkey_ico"
+    },
+    "mamm_cds:cooked_dream_turkey": {
+      "textures": "textures/mamm/cds/cooked_dream_turkey_ico"
+    },
+    "mamm_cds:dream_essence": {
+      "textures": "textures/mamm/cds/dream_essence"
+    }
+  }
+}
