@@ -1,0 +1,12 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.mamm_cds.memory_jar.ambient": {
+      "animation_length": 5,
+      "loop": true,
+      "timeline": {
+        "0.0": ["/particle mamm_cds:incense ~ ~ ~"]
+      }
+    }
+  }
+}

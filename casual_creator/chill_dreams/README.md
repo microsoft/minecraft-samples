@@ -1,23 +1,25 @@
 ---
 page_type: sample
 author: mammerla
-description: A progressive example starting from a basic add-on with nothing in it (useful as a starter) - through an add-on with some mobs and into advanced logic.
+description: A progressive example of an add-on for Minecraft that supports the concept of "dreams" in Minecraft.
 ms.author: mikeam@microsoft.com
-ms.date: 11/15/2023
+ms.date: 02/22/2024
 languages:
   - typescript
 products:
   - minecraft
 ---
 
-# Minecraft Add-on Start project
+# Minecraft Chill Dreams Add-on
 
-This sample demonstrates everything you need to have an add-on in Minecraft. There are three versions and progressions:
+This sample demonstrates a "chill-dreams" an add-on in Minecraft. See [the Minecraft Creator Learning Portal](https://learn.micrososft.com/minecraft/creator/casual) for the web
+series behind this article.
 
-* `start` is a foundational starter project. It comes with a gulp-based workflow tool 
-* `1_hello_world` is a basic entity that will show you that your add-on is working. It comes a mob that overrides the default cow in Minecraft
-* `2_entities` adds a set of entities (from the MCLive2022 add-on pack to the add-on)
-* `complete` adds more functionality and scripts to the add-on
+ There are three progressive versions:
+
+* `1_dream_turkey` - Content at the end of Part 1: The Dream Turkey.
+* (part 2 coming soon)
+* `complete` - The full, completed chill-dreams add-on you will see at the end of Part 3
 
 ## Prerequisites
 
@@ -37,7 +39,7 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 1. Using a copy of this starter project from GitHub - you can get a copy of this project by visiting [https://github.com/microsoft/minecraft-samples/](https://github.com/microsoft/minecraft-scripting-samples/) and, under the Code button, selecting `Download ZIP`.
 
-1. The `addon_starter/start` folder contains a starter add-on project for Minecraft.
+1. Choose the part you'd like to use (for example, `chill_dreams/complete`) folder contains the full Chill Dreams Add-on for Minecraft.
 
 1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **myaddon**.
 
@@ -71,8 +73,7 @@ It might also ask you to install the Minecraft Debugger and Blockception's Visua
 
 ### Summary
 
-With this starter, you've seen how to build a nice little add-on.
-
+Chill Dreams demonstrates several techniques for building a thematic Add-On in Minecraft. Please view the series on [the Minecraft Creator Learning Portal](https://learn.micrososft.com/minecraft/creator/casual) for more info.
 
 ## Manifest
 

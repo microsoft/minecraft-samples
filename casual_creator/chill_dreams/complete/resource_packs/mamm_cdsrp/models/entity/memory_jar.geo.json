@@ -1,0 +1,92 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.mamm_cds.memory_jar",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 3,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "body",
+					"pivot": [0, 24, 0],
+					"cubes": [
+						{"origin": [-3, 6.5, -2], "size": [6, 4, 4], "uv": [18, 22]},
+						{"origin": [-4, 2, -3], "size": [8, 4, 6], "inflate": 0.5, "uv": [0, 38]}
+					]
+				},
+				{
+					"name": "head",
+					"parent": "body",
+					"pivot": [0, 24, 0]
+				},
+				{
+					"name": "nose",
+					"parent": "head",
+					"pivot": [0, 26, 0]
+				},
+				{
+					"name": "arms",
+					"parent": "body",
+					"pivot": [0, 22, 0],
+					"cubes": [
+						{"origin": [3.1, 10, -2], "size": [1, 8, 1], "pivot": [0, 0, 0], "rotation": [0, 0, -32.5], "uv": [47, 25]},
+						{"origin": [0.5, 10.4, -2], "size": [1, 8, 1], "uv": [47, 25]},
+						{"origin": [-4, 7.5, -3], "size": [8, 2, 6], "uv": [38, 36]}
+					]
+				},
+				{
+					"name": "leg0",
+					"parent": "body",
+					"pivot": [-2, 12, 0],
+					"cubes": [
+						{"origin": [-4, 0, -3], "size": [1, 2, 1], "uv": [3, 25]},
+						{"origin": [3, 0, 2], "size": [1, 2, 1], "uv": [3, 25], "mirror": true}
+					]
+				},
+				{
+					"name": "leg1",
+					"parent": "body",
+					"pivot": [2, 12, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [3, 0, -3], "size": [1, 2, 1], "uv": [3, 25]},
+						{"origin": [-4, 0, 2], "size": [1, 2, 1], "uv": [3, 25]}
+					]
+				},
+				{
+					"name": "rightArm",
+					"parent": "body",
+					"pivot": [-5, 22, 0],
+					"cubes": [
+						{"origin": [-1.5, 10.5, -2], "size": [1, 8, 1], "uv": [43, 49]}
+					],
+					"locators": {
+						"right_hand": [-6, 17, -2]
+					}
+				},
+				{
+					"name": "rightItem",
+					"parent": "rightArm",
+					"pivot": [-5.5, 16, 0.5]
+				},
+				{
+					"name": "leftArm",
+					"parent": "body",
+					"pivot": [5, 22, 0],
+					"mirror": true,
+					"cubes": [
+						{"origin": [-5.2, 9.2, -1.9], "size": [1, 7, 1], "pivot": [0, 0, 0], "rotation": [0.33942, 0, 38.79083], "uv": [43, 49]}
+					],
+					"locators": {
+						"left_hand": [4, 16, 0]
+					}
+				}
+			]
+		}
+	]
+}

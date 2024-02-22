@@ -1,0 +1,22 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "mamm_cds:dream_turkey": {
+        "events": {
+          "ambient": "mob.chicken.say",
+          "death": "mob.chicken.hurt",
+          "eat": "",
+          "hurt": "mob.chicken.hurt",
+          "plop": "mob.chicken.plop",
+          "step": {
+            "pitch": 1.0,
+            "sound": "mob.chicken.step",
+            "volume": 0.25
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1.0
+      }
+    }
+  }
+}

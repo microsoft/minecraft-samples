@@ -1,0 +1,30 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "mamm_cds:journal_pen"
+    },
+
+    "tags": ["crafting_table"],
+    "pattern": [" # ", " # ", "C.C"],
+    "key": {
+      "C": {
+        "item": "minecraft:stained_hardened_clay:12"
+      },
+      ".": {
+        "item": "mamm_cds:dream_essence"
+      },
+      "#": {
+        "item": "minecraft:stick"
+      }
+    },
+    "unlock": [
+      {
+        "item": "mamm_cds:dream_essence"
+      }
+    ],
+    "result": {
+      "item": "mamm_cds:journal_pen"
+    }
+  }
+}

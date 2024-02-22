@@ -27,26 +27,29 @@ jobs:
         id: version
         uses: vemel/nextversion@0.1.1
         with:
-          path: ./addon_starter/3 - full/package.json
+          path: ./addon_starter/complete/package.json
           type: semver
           result: ${{ github.event.inputs.bump }}
           release: ${{ github.event.inputs.release }}
           update: |
-            ./addon_starter/3 - full/package.json
-            ./addon_starter/3 - full/README.md
+            ./addon_starter/complete/package.json
+            ./addon_starter/complete/README.md
 
       - name: Build
         env:
           CI: ""
         run: |
-          pushd "addon_starter/3 - full"
+          pushd "addon_starter/complete"
+          npm run all
+          popd
+          pushd "casual_creator/chill_dreams/complete"
           npm run all
           popd
 
       - name: Get Package Version
         id: get-package-version
         with:
-          path: addon_starter/3 - full/
+          path: addon_starter/complete/
         uses: stevenbenitez/get-package-version-action@v1
             
       - name: Create draft Minecraft Samples release
@@ -60,28 +63,50 @@ jobs:
           draft: true
           prerelease: true
           
-      - name: Upload aop_mobsbp_full-v.mcaddon to node_module release
-        id: upload_aop_mobsbp_full-v
+      - name: Upload aop_mobsbp_complete_v.mcaddon to node_module release
+        id: upload_aop_mobsbp_complete_v
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
-          asset_path: ./addon_starter/3 - full/build/packages/aop_mobsbp_full.mcaddon
-          asset_name: aop_mobsbp_full-${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_path: ./addon_starter/complete/build/packages/addon_starter_complete.mcaddon
+          asset_name: addon_starter_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
           asset_content_type: application/zip
 
-      - name: Upload addon_starter_full_source-v.zip to node_module release
-        id: upload_addon_starter_full_source-v
+      - name: Upload addon_starter_complete_source_v.zip to node_module release
+        id: upload_addon_starter_complete_source_v
         uses: actions/upload-release-asset@v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
-          asset_path: ./addon_starter/3 - full/build/packages/addon_starter_full_source.zip
-          asset_name: addon_starter_full_source-${{ steps.get-package-version.outputs.version }}.zip
+          asset_path: ./addon_starter/complete/build/packages/addon_starter_complete_source.zip
+          asset_name: addon_starter_complete_source_v${{ steps.get-package-version.outputs.version }}.zip
           asset_content_type: application/zip
-      
+          
+      - name: Upload chill_dreams_complete_v.mcaddon to node_module release
+        id: chill_dreams_complete_v
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
+          asset_path: ./casual_creator/chill_dreams/complete/build/packages/chill_dreams_complete.mcaddon
+          asset_name: chill_dreams_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_content_type: application/zip
+  
+      - name: Upload chill_dreams_complete_source_v.zip to node_module release
+        id: chill_dreams_complete_source_v
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
+          asset_path: ./casual_creator/chill_dreams/complete/build/packages/chill_dreams_complete_source.zip
+          asset_name: chill_dreams_complete_source_v${{ steps.get-package-version.outputs.version }}.zip
+          asset_content_type: application/zip
+        
       - name: Commit version changes
         run: |
           VERSION=${{ toJSON(steps.version.outputs.result) }}

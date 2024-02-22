@@ -1,0 +1,27 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "min_engine_version": "1.8.0",
+      "identifier": "mamm_cds:memory_jar",
+      "textures": {
+        "default": "textures/mamm/cds/memory_jar"
+      },
+      "geometry": {
+        "default": "geometry.mamm_cds.memory_jar"
+      },
+      "materials": {
+        "default": "ender_pearl"
+      },
+      "animations": {
+        "move": "animation.chicken.general",
+        "general": "animation.chicken.general"
+      },
+      "render_controllers": ["controller.render.mamm_cds.memory_jar"],
+      "spawn_egg": {
+        "base_color": "#ff0000d9",
+        "overlay_color": "#73670a"
+      }
+    }
+  }
+}
