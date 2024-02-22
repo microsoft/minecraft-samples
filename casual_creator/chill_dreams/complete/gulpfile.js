@@ -117,7 +117,7 @@ function create_rp_mcpack() {
 function create_mcaddon() {
   return gulp
     .src(["build/packages/" + bpfoldername + ".mcpack", "build/packages/" + rpfoldername + ".mcpack"])
-    .pipe(zip(projectname + ".mcaddon"))
+    .pipe(zip(projectname + "_complete.mcaddon"))
     .pipe(gulp.dest("build/packages/"));
 }
 
