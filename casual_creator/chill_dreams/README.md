@@ -12,7 +12,7 @@ products:
 
 # Minecraft Chill Dreams Add-on
 
-This sample demonstrates a "chill-dreams" an add-on in Minecraft. See [the Minecraft Creator Learning Portal](https://learn.micrososft.com/minecraft/creator/casual) for the web
+This sample demonstrates a "chill-dreams" an add-on in Minecraft. See [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for the web
 series behind this article.
 
  There are three progressive versions:
@@ -73,7 +73,7 @@ It might also ask you to install the Minecraft Debugger and Blockception's Visua
 
 ### Summary
 
-Chill Dreams demonstrates several techniques for building a thematic Add-On in Minecraft. Please view the series on [the Minecraft Creator Learning Portal](https://learn.micrososft.com/minecraft/creator/casual) for more info.
+Chill Dreams demonstrates several techniques for building a thematic Add-On in Minecraft. Please view the series on [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for more info.
 
 ## Manifest
 
