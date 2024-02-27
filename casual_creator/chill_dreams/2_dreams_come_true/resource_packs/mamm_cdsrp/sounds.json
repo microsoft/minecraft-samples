@@ -1,0 +1,57 @@
+{
+  "entity_sounds": {
+    "entities": {
+      "mamm_cds:memory_jar": {
+        "events": {
+          "break": {
+            "pitch": [0.8, 1.0],
+            "sound": "dig.ancient_debris",
+            "volume": 1.0
+          },
+          "default": "",
+          "hit": {
+            "pitch": 0.5,
+            "sound": "hit.ancient_debris",
+            "volume": 0.23
+          },
+          "hurt": {
+            "pitch": 0.5,
+            "sound": "hit.ancient_debris",
+            "volume": 0.23
+          },
+          "item.use.on": {
+            "pitch": 0.8,
+            "sound": "use.ancient_debris"
+          },
+          "place": {
+            "pitch": [0.8, 1.0],
+            "sound": "dig.ancient_debris",
+            "volume": 1.0
+          },
+          "ambient": {
+            "pitch": 0.6,
+            "sound": "block.click"
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      },
+      "mamm_cds:dream_turkey": {
+        "events": {
+          "ambient": "mob.chicken.say",
+          "death": "mob.chicken.hurt",
+          "eat": "",
+          "hurt": "mob.chicken.hurt",
+          "plop": "mob.chicken.plop",
+          "step": {
+            "pitch": 1.0,
+            "sound": "mob.chicken.step",
+            "volume": 0.25
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1.0
+      }
+    }
+  }
+}

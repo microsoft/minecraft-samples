@@ -1,0 +1,16 @@
+{
+  "format_version": "1.20.10",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "mamm_cds:furnace_dream_turkey"
+    },
+    "unlock": [
+      {
+        "item": "mamm_cds:dream_turkey"
+      }
+    ],
+    "tags": ["furnace", "smoker", "campfire", "soul_campfire"],
+    "input": "mamm_cds:dream_turkey",
+    "output": "mamm_cds:cooked_dream_turkey"
+  }
+}
