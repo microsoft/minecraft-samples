@@ -1,0 +1,26 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "mamm_cds:dream_turkey"
+    },
+    "components": {
+      "minecraft:use_modifiers": {
+        "use_duration": 4,
+        "movement_modifier": 0.35
+      },
+      "minecraft:tags": {
+        "tags": ["minecraft:is_food"]
+      },
+      "minecraft:food": {
+        "can_always_eat": true,
+        "nutrition": 2,
+        "saturation_modifier": 0.2
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:icon": {
+        "texture": "mamm_cds:dream_turkey"
+      }
+    }
+  }
+}

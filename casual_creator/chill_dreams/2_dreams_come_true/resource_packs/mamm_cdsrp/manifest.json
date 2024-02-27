@@ -1,0 +1,28 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Chill Dreams Add-On",
+    "description": "Chill Dreams - a Minecraft screensaver",
+    "uuid": "bc234388-0691-40a4-89bd-e783a5c90830",
+    "version": [1, 0, 0],
+    "pack_scope": "world",
+    "min_engine_version": [1, 20, 0]
+  },
+  "metadata": {
+    "product_type": "addon"
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "09899f17-ecdf-4fdd-b42f-e2742c64e8b0",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "4dff1106-b6f7-4f3b-aca3-79c45133285b",
+      "version": [1, 0, 0]
+    }
+  ]
+}
