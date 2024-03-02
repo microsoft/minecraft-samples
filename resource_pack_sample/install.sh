@@ -9,5 +9,5 @@ if [ ! -f "manifest.json" ];then
 fi
 
 echo "Installing mod to $devFolder/$packName"
-mkdir $devFolder/$packName
+mkdir -p $devFolder/$packName
 cp -r textures manifest.json pack_icon.png $devFolder/$packName
