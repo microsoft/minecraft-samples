@@ -1,0 +1,21 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "demo:tuna_roll"
+    },
+    "components": {
+      "minecraft:geometry": "geometry.sushi",
+      "minecraft:material_instances": {
+        "north": "sushi_side",
+        "south": "sushi_side",
+        "*": {
+          "texture": "sushi_wrap"
+        },
+        "sushi_side": {
+          "texture": "tuna_roll"
+        }
+      }
+    }
+  }
+}

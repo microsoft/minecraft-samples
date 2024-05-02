@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Custom Blocks",
+    "description": "My behavior pack description",
+    "uuid": "874f1a8c-2c74-4be1-8770-1bcb40e0cd74",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 80]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "7c7e693f-99f4-41a9-95e0-1f57b37e1e12",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    },
+    {
+      "description": "Demo Behavior Pack",
+      "type": "data",
+      "uuid": "7efe3af0-ea69-4e64-b646-742e89b201b3",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.10.0"
+    },
+    {
+      "uuid": "7ae29fa1-0853-448d-850c-87dbdd583c4f",
+      "version": [1, 0, 0]
+    }
+  ]
+}

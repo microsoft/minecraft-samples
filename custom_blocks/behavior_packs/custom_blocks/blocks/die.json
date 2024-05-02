@@ -1,0 +1,14 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "demo:die"
+    },
+    "components": {
+      "minecraft:geometry": 
+      {
+          "identifier": "minecraft:geometry.full_block"
+      }
+    }
+  }
+}

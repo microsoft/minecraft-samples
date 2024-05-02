@@ -1,0 +1,98 @@
+{
+  "format_version": "1.20.80",
+  "minecraft:block": {
+    "description": {
+      "identifier": "demo:blue_bubble_fish",
+      "states": {
+        "demo:direction": [0, 1, 2, 3],
+        "demo:jumbo": [false, true]
+      }
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('demo:direction') == 0 && query.block_state('demo:jumbo') == false",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 0, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 1 && query.block_state('demo:jumbo') == false",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 90, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 2 && query.block_state('demo:jumbo') == false",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 180, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 3 && query.block_state('demo:jumbo') == false",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 270, 0]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 0 && query.block_state('demo:jumbo') == true",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 0, 0],
+            "scale": [1.8, 1.8, 1.8]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 1 && query.block_state('demo:jumbo') == true",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 90, 0],
+            "scale": [1.8, 1.8, 1.8]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 2 && query.block_state('demo:jumbo') == true",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 180, 0],
+            "scale": [1.8, 1.8, 1.8]
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('demo:direction') == 3 && query.block_state('demo:jumbo') == true",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 270, 0],
+            "scale": [1.8, 1.8, 1.8]
+          }
+        }
+      }
+    ],
+    "components": {
+      "minecraft:geometry": {
+        "identifier": "geometry.bubble_fish",
+        "bone_visibility": {
+          "bb_main": true,
+          "fish": true
+        }
+      },
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "bubble_fish_blue",
+          "render_method": "blend",
+          "face_dimming": true
+        }
+      }
+    }
+  }
+}

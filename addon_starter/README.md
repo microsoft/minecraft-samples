@@ -55,12 +55,6 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
     npm i
     ```
 
-1. When that's done, enter:
-
-    ```powershell
-    npm i gulp-cli --global
-    ```
-
 1. Use this shortcut command to open the project in Visual Studio Code:
 
     ```powershell
@@ -69,10 +63,40 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 It might also ask you to install the Minecraft Debugger and Blockception's Visual Studio Code plugin, which are plugins to Visual Studio Code that can help with Minecraft development. Go ahead and do that, if you haven't already.
 
+1. In Visual Studio Code, open the file `.env`. This contains the environment variables to use to configure project:
+
+```
+PROJECT_NAME="starter"
+MINECRAFT_PRODUCT="BedrockUWP"
+CUSTOM_DEPLOYMENT_PATH=""
+```
+
+- **PROJECT_NAME** is used as the folder name under all the assets are going to be deployed inside the game directories (e.g., development_behavior_packs\\**PROJECT_NAME**, development_resource_packs\\**PROJECT_NAME**).
+
+- **MINECRAFT_PRODUCT**. You can choose to use either Minecraft or Minecraft Preview to debug and work with your scripts. These are the possible values: **BedrockUWP, PreviewUWP, Custom**.
+  Use **Custom** in case of deploy on any other path.
+
+- **CUSTOM_DEPLOYMENT_PATH**. In case of using **Custom** for **MINECRAFT_PRODUCT**, this is the path used to generate the assets.
+
+### Running the project
+
+To get started, go into PowerShell and navigate to your **C:\projects\myaddon** directory.
+
+Run this command:
+
+```powershell
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+
+Run this one, too.
+
+```powershell
+npm run local-deploy
+```
+
 ### Summary
 
 With this starter, you've seen how to build a nice little add-on.
-
 
 ## Manifest
 

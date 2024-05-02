@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "Custom Items Behavior Pack",
+    "name": "Custom Items Behavior Pack",
+    "uuid": "10a073b2-72dd-45d8-84a9-51e3f3a6c7f1",
+    "version": [1, 0, 1],
+    "min_engine_version": [1, 20, 30]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "7c7e693f-99f4-41a9-95e0-1f57b37e1e12",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    },
+    {
+      "description": "Custom Items Behavior Pack",
+      "type": "data",
+      "uuid": "26a566ef-a240-49a9-a9c5-fbee92feefc8",
+      "version": [1, 0, 1]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "1.10.0"
+    },
+    {
+      "uuid": "d37d7758-ab9c-4d49-8b07-e0d5686df23d",
+      "version": [1, 0, 1]
+    }
+  ]
+}
