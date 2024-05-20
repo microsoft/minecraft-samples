@@ -10,6 +10,7 @@ This project contains samples that further extend the [Minecraft: Bedrock Editio
  * [Custom Blocks](custom_blocks/README.md) - Behavior Pack and Resource pack that accompanies the custom block tutorials, starting with [Custom Blocks Part 1: The Simplest Block](https://docs.microsoft.com/minecraft/creator/documents/addcustomdieblock)
  * [Features Samples](https://github.com/microsoft/minecraft-samples/blob/main/FeaturesSamples.mcaddon) - A sample pack that can be used as a tutorial on how feature and feature rules work.
  * [Custom Items](custom_items/README.md)
+ * [Custom Sounds](custom_sounds/README.md)
  * [Minecraft Live 2022 Add-Ons](mclive2022_addon) - Behavior Pack and Resource Pack that accompany the [Minecraft Live 2022 Creator Recap](https://docs.microsoft.com/minecraft/creator/documents/minecraftlive2022creatorrecap)
  * [NPC Dialog Sample](npc_dialogue_sample/README.md) - See the [NPC Dialogue](https://docs.microsoft.com/minecraft/creator/documents/NPCDialogue) documentation for the full walkthrough adding custom dialogue for an NPC
  * [Parkour Sample World](parkour_sample_world/README.md) - This sample is the world that is walked through in the [Parkour documentation](https://docs.microsoft.com/minecraft/creator/documents/ParkourIntro) as examples of block mechanics, player mechanics, and Redstone mechanics that can be used to make a fun player experience
