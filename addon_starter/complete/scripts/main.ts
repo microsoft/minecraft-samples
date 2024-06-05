@@ -3,7 +3,7 @@ import Utilities from "./Utilities";
 
 let ticksSinceLoad = 0;
 
-const ZooMobList = ["aop_mobs:biceson", "aop_mobs:black_bear", "aop_mobs:boomfly", "aop_mobs:frost_moose", "aop_mobs:sheepomelon", "aop_mobs:wraith"];
+const ZooMobList = ["aop_mobs:biceson", "aop_mobs:frost_moose", "aop_mobs:sheepomelon"];
 
 function mainTick() {
   ticksSinceLoad++;
