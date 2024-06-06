@@ -7,8 +7,8 @@
         "name": "Debug with Minecraft",
         "mode": "listen",
         "preLaunchTask": "build",
-        "sourceMapRoot": "${workspaceFolder}/build/behavior_packs/_aop_mobsbpDebug/",
-        "generatedSourceRoot": "${workspaceFolder}/build/behavior_packs/aop_mobsbp/scripts/",
+        "sourceMapRoot": "${workspaceFolder}/dist/debug/",
+        "generatedSourceRoot": "${workspaceFolder}/dist/scripts/",
         "port": 19144
       }
     ]

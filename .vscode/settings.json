@@ -1,0 +1,14 @@
+{
+    "eslint.experimental.useFlatConfig": true,
+    "eslint.workingDirectories": [
+        {
+            "pattern": "./addon_starter/*/"
+        },
+        {
+            "pattern": "./custom_blocks/*/"
+        },
+        {
+            "pattern": "./custom_items/*/"
+        }
+    ]
+}
