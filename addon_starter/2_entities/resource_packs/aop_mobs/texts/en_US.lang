@@ -1,0 +1,10 @@
+entity.aop_mobs:sheepomelon.name=Sheepomelon
+item.spawn_egg.entity.aop_mobs:sheepomelon.name=Spawn Sheepomelon
+entity.aop_mobs:frost_moose.name=Frost Moose
+item.spawn_egg.entity.aop_mobs:frost_moose.name=Spawn Frost Moose
+action.hint.exit.aop_mobs:frost_moose=Tap sneak to dismount
+action.hint.exit.console.aop_mobs:frost_moose=Press :_input_key.sneak: to dismount
+entity.aop_mobs:biceson.name=Biceson
+item.spawn_egg.entity.aop_mobs:biceson.name=Spawn Biceson
+entity.aop_mobs:nardolphle.name=Nardolphle
+item.spawn_egg.entity.aop_mobs:nardolphle.name=Spawn Nardolphle

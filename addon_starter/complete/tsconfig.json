@@ -1,8 +1,8 @@
 { 
     "compilerOptions":{ 
        "target":"es6",
-       "moduleResolution":"node",
-       "module":"es2020",
+       "moduleResolution":"Node",
+       "module": "ES2020",
        "declaration":false,
        "noLib":false,
        "emitDecoratorMetadata":true,
@@ -16,17 +16,16 @@
        "noImplicitAny":true,
        "noImplicitReturns":false,
        "noImplicitUseStrict":false,
-       "outDir":"build/",
+       "outDir":"lib",
        "rootDir": ".",
        "baseUrl":"behavior_packs/",
        "listFiles":false,
-       "noEmitHelpers":true
+       "noEmitHelpers":true,
+       "skipLibCheck": true
     },
     "include":[ 
        "scripts/**/*"
     ],
-    "exclude":[ 
-       "node_modules"
-    ],
+    "exclude": ["lib", "dist", "node_modules"],
     "compileOnSave":false
  }

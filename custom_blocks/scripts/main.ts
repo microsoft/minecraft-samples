@@ -7,11 +7,7 @@ function mainTick() {
     tickIndex++;
 
     if (tickIndex === 200) {
-      world
-        .getDimension("overworld")
-        .runCommandAsync(
-          "say Welcome to this custom block test! Use the /give command to give yourself a custom block."
-        );
+      world.sendMessage("Welcome to this custom block test! Use the §h/give @s demo:...§r  command to give yourself a custom block.");
     }
   } catch (e) {
     console.warn("Script error: " + e);
