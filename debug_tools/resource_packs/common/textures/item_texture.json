@@ -1,0 +1,9 @@
+{
+  "resource_pack_name": "custom_item_resource_pack",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "demo:wrench": {
+      "textures": "textures/items/wrench_ico"
+    }
+  }
+}

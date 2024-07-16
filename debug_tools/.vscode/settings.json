@@ -1,0 +1,48 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.ignoreLimitWarning": true,
+  "editor.formatOnSave": true,
+  "search.exclude": {
+    "**/.git": true,
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/lib": true
+  },
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/node_modules": true
+  },
+  "cSpell.words": [
+    "Elytra",
+    "Equippable",
+    "gametest",
+    "gametests",
+    "Ingame",
+    "knockback",
+    "mcaddon",
+    "mcui",
+    "minecart",
+    "molang",
+    "onfire",
+    "outfile",
+    "samplelibrary",
+    "scriptevent",
+    "shulker",
+    "skelly",
+    "zoglin"
+  ],
+  "editor.tabSize": 2,
+  "eslint.experimental.useFlatConfig": true
+}
