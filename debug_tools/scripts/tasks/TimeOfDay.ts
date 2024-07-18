@@ -3,6 +3,8 @@ import IInfoTask from "../IInfoTask";
 
 export default class TimeOfDay implements IInfoTask {
   id: string = "timeOfDay";
+  typeId: string = "timeofday";
+  data: string = "";
   info: string = "";
 
   run() {

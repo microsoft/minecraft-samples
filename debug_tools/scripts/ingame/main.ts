@@ -1,5 +1,5 @@
 import { ItemUseAfterEvent, Player, world } from "@minecraft/server";
-import DebugTools, { AvailableDisplayTaskIds } from "../DebugTools";
+import DebugTools, { StaticDisplayTaskIds } from "../DebugTools";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 
 export const debugTools = new DebugTools();
@@ -12,47 +12,55 @@ function afterItemUse(event: ItemUseAfterEvent) {
     return;
   }
 
-  if (event.itemStack.typeId === "demo:wrench") {
+  if (event.itemStack.typeId === "debug_tools:magnifying_glass") {
     editSettings(event.source as Player);
   }
 }
 
 async function editSettings(player: Player) {
-  const mfd = new ModalFormData().title("Edit Debug Tools Settings");
+  const ad = new ActionFormData();
 
-  const previousDisplayInSubHeader = debugTools.displayInSubHeader;
-  mfd.toggle("Show in sub-header", debugTools.displayInSubHeader);
+  ad.button("Toggle debug text");
+  ad.button("Edit measures");
 
-  for (let i = 0; i < AvailableDisplayTaskIds.length; i++) {
-    const taskId: string = AvailableDisplayTaskIds[i];
+  const mainAction = await ad.show(player);
 
-    mfd.toggle(taskId, debugTools.data.displayTaskIds.includes(taskId));
+  if (mainAction.canceled || mainAction.selection === undefined) {
+    return;
   }
 
-  const result = await mfd.show(player);
+  if (mainAction.selection === 0) {
+    debugTools.displayInSubHeader = !debugTools.displayInSubHeader;
 
-  if (!result.canceled && result.formValues) {
-    if (typeof result.formValues[0] === "boolean") {
-      debugTools.displayInSubHeader = result.formValues[0];
+    if (debugTools.displayInSubHeader === false) {
+      clearHeader();
+    } else if (debugTools.displayInSubHeader === true) {
+      handleUpdate();
+    }
+  } else if (mainAction.selection === 1) {
+    const measureList = new ActionFormData().title("Edit Debug Tools Settings");
 
-      if (debugTools.displayInSubHeader === false && previousDisplayInSubHeader === true) {
-        clearHeader();
-      } else if (debugTools.displayInSubHeader === true && previousDisplayInSubHeader === false) {
-        handleUpdate();
-      }
+    for (let i = 0; i < StaticDisplayTaskIds.length; i++) {
+      const taskId: string = StaticDisplayTaskIds[i];
+
+      measureList.button(taskId);
     }
 
-    for (let i = 0; i < AvailableDisplayTaskIds.length; i++) {
-      const val = result.formValues[i + 1];
-      const strId = AvailableDisplayTaskIds[i];
+    const selectedMeasure = await measureList.show(player);
 
-      if (val === false && debugTools.data.displayTaskIds.includes(strId)) {
-        debugTools.removeDisplayTaskId(strId);
-      } else if (val === true && !debugTools.data.displayTaskIds.includes(strId)) {
-        debugTools.addDisplayTaskId(strId);
-      }
+    if (!selectedMeasure.canceled && selectedMeasure.selection !== undefined) {
+      showMeasureEditorDialog(player, selectedMeasure.selection);
     }
   }
+}
+
+async function showMeasureEditorDialog(player: Player, measureIndex: number) {
+  const measureProps = new ModalFormData().title("Edit Debug Tools Settings for " + StaticDisplayTaskIds[measureIndex]);
+
+  measureProps.textField("Name", StaticDisplayTaskIds[measureIndex]);
+  measureProps.toggle("Remove this measure");
+
+  await measureProps.show(player);
 }
 
 world.afterEvents.itemUse.subscribe(afterItemUse);

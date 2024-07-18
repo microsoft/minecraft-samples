@@ -4,8 +4,10 @@ import TimeOfDay from "./tasks/TimeOfDay";
 import IInfoTask from "./IInfoTask";
 import Tick from "./tasks/Tick";
 import ScoreboardMeasure from "./tasks/ScoreboardMeasure";
+import LocationMeasure from "./tasks/LocationMeasure";
+import ITaskData from "./ITaskData";
 
-export const AvailableDisplayTaskIds = ["timeOfDay", "tick"];
+export const StaticDisplayTaskIds = ["timeOfDay", "tick"];
 
 export default class DebugTools {
   _sessionTick: number = 0;
@@ -14,7 +16,7 @@ export default class DebugTools {
   notifyDisplayDataUpdatedList: (() => void)[] = [];
 
   data: IDebugToolsData = {
-    displayTaskIds: ["timeOfDay"],
+    tasks: [],
     displayInSubHeader: false,
   };
 
@@ -24,8 +26,8 @@ export default class DebugTools {
     return this._displayTasks;
   }
 
-  get displayTaskIds() {
-    return this.data.displayTaskIds;
+  get displayTaskData() {
+    return this.data.tasks;
   }
 
   get displayInSubHeader() {
@@ -42,28 +44,28 @@ export default class DebugTools {
   }
 
   removeDisplayTaskId(taskId: string) {
-    const newArr: string[] = [];
+    const newArr: ITaskData[] = [];
 
-    for (const str in this.displayTaskIds) {
-      if (str !== taskId) {
-        newArr.push(str);
+    for (const task of this.displayTaskData) {
+      if (task.id !== taskId) {
+        newArr.push(task);
       }
     }
 
-    this.data.displayTaskIds = newArr;
+    this.data.tasks = newArr;
 
     this.applyTaskSetChange();
     this.save();
   }
 
   addDisplayTaskId(taskId: string) {
-    if (!this.data.displayTaskIds.includes(taskId)) {
-      this.data.displayTaskIds.push(taskId);
+    /*    if (!this.data.tasks.includes(taskId)) {
+      this.data.tasks.push(taskId);
 
       this.applyTaskSetChange();
 
       this.save();
-    }
+    }*/
   }
 
   log(message: string) {
@@ -80,28 +82,32 @@ export default class DebugTools {
   }
 
   createTask(id: string) {
-    if (id.startsWith("s|") && id.length > 2) {
-      const sbd = new ScoreboardMeasure();
-      sbd.data = id.substring(2);
-      return sbd;
-    }
+    let task: IInfoTask | undefined = undefined;
 
     switch (id.toLowerCase()) {
       case "timeofday":
-        return new TimeOfDay();
+        task = new TimeOfDay();
       case "tick":
-        return new Tick();
-
-      default:
-        return undefined;
+        task = new Tick();
+      case "scoreboard":
+        task = new ScoreboardMeasure();
+      case "location":
+        task = new LocationMeasure();
     }
+
+    if (task) {
+      task.typeId = id.toLowerCase();
+      task.data = "";
+    }
+
+    return task;
   }
 
   applyTaskSetChange() {
     this._displayTasks = [];
 
-    for (const taskId of this.data.displayTaskIds) {
-      const newTask = this.createTask(taskId);
+    for (const taskData of this.data.tasks) {
+      const newTask = this.createTask(taskData.typeId);
 
       if (newTask) {
         this._displayTasks.push(newTask);

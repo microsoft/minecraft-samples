@@ -2,8 +2,8 @@
   "format_version": "1.20.30",
   "minecraft:attachable": {
     "description": {
-      "identifier": "demo:wrench",
-      "item": { "demo:wrench": "query.is_owner_identifier_any('minecraft:player')" },
+      "identifier": "debug_tools:wrench",
+      "item": { "debug_tools:wrench": "query.is_owner_identifier_any('minecraft:player')" },
       "materials": {
         "default": "entity",
         "enchanted": "entity_alphatest_glint"

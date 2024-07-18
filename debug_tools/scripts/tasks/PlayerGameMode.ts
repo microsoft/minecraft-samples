@@ -4,6 +4,8 @@ import IInfoTask from "../IInfoTask";
 export default class GlobalGameMode implements IInfoTask {
   id: string = "PlayerGameMode";
   info: string = "";
+  typeId: string = "playergamemode";
+  data: string = "";
 
   run() {
     let gameModes = "";

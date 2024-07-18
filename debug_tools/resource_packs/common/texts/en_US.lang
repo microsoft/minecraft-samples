@@ -1,2 +1,2 @@
-item.demo:crown=Fancy Crown
-item.demo:goo=Weird Goo
+item.debug_tools:wrench=Debug Wrench
+item.debug_tools:magnifying_glass=Debug Magnifying Glass

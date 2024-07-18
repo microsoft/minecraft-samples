@@ -1,4 +1,6 @@
+import ITaskData from "./ITaskData";
+
 export default interface IDebugToolsData {
-  displayTaskIds: string[];
+  tasks: ITaskData[];
   displayInSubHeader: boolean;
 }

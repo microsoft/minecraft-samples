@@ -56,6 +56,12 @@ Run this one to deploy in the game.
 npm run local-deploy
 ```
 
+If you'd like to run deployment in a watch mode, run the following:
+
+```powershell
+npm run local-deploy -- --watch
+```
+
 Create an addon file to share.
 
 ```powershell

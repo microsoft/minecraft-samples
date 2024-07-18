@@ -1,9 +1,9 @@
-import { GameMode, world } from "@minecraft/server";
+import { world } from "@minecraft/server";
 import IInfoTask from "../IInfoTask";
 
-export default class ScoreboardMeasure implements IInfoTask {
-  id: string = "Scoreboard";
-  typeId: string = "scoreboard";
+export default class LocationMeasure implements IInfoTask {
+  id: string = "Location";
+  typeId: string = "locaton";
   data: string = "";
   info: string = "";
 
