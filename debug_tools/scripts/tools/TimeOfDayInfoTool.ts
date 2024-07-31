@@ -1,7 +1,7 @@
 import { GameMode, world } from "@minecraft/server";
-import IInfoTask from "../IInfoTask";
+import IInfoTool from "../IInfoTool";
 
-export default class TimeOfDay implements IInfoTask {
+export default class TimeOfDayInfoTool implements IInfoTool {
   id: string = "timeOfDay";
   typeId: string = "timeofday";
   data: string = "";

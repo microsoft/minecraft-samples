@@ -1,5 +1,5 @@
 import { ItemUseAfterEvent, Player, world } from "@minecraft/server";
-import DebugTools, { StaticDisplayTaskIds } from "../DebugTools";
+import DebugTools, { StaticDisplayTaskIds as StaticInfoToolIds } from "../DebugTools";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 
 export const debugTools = new DebugTools();
@@ -40,8 +40,8 @@ async function editSettings(player: Player) {
   } else if (mainAction.selection === 1) {
     const measureList = new ActionFormData().title("Edit Debug Tools Settings");
 
-    for (let i = 0; i < StaticDisplayTaskIds.length; i++) {
-      const taskId: string = StaticDisplayTaskIds[i];
+    for (let i = 0; i < StaticInfoToolIds.length; i++) {
+      const taskId: string = StaticInfoToolIds[i];
 
       measureList.button(taskId);
     }
@@ -49,16 +49,16 @@ async function editSettings(player: Player) {
     const selectedMeasure = await measureList.show(player);
 
     if (!selectedMeasure.canceled && selectedMeasure.selection !== undefined) {
-      showMeasureEditorDialog(player, selectedMeasure.selection);
+      showToolEditorDialog(player, selectedMeasure.selection);
     }
   }
 }
 
-async function showMeasureEditorDialog(player: Player, measureIndex: number) {
-  const measureProps = new ModalFormData().title("Edit Debug Tools Settings for " + StaticDisplayTaskIds[measureIndex]);
+async function showToolEditorDialog(player: Player, measureIndex: number) {
+  const measureProps = new ModalFormData().title("Edit Debug Tools Settings for " + StaticInfoToolIds[measureIndex]);
 
-  measureProps.textField("Name", StaticDisplayTaskIds[measureIndex]);
-  measureProps.toggle("Remove this measure");
+  measureProps.textField("Name", StaticInfoToolIds[measureIndex]);
+  measureProps.toggle("Remove this tool");
 
   await measureProps.show(player);
 }

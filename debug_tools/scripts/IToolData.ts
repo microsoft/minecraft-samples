@@ -1,4 +1,4 @@
-export default interface ITaskData {
+export default interface IToolData {
   id: string;
   typeId: string;
   data: string;

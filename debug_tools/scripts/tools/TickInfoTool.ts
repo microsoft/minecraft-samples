@@ -1,7 +1,7 @@
 import { GameMode, system, world } from "@minecraft/server";
-import IInfoTask from "../IInfoTask";
+import IInfoTool from "../IInfoTool";
 
-export default class Tick implements IInfoTask {
+export default class TickInfoTool implements IInfoTool {
   id: string = "tick";
   info: string = "";
   data: string = "";
@@ -14,6 +14,7 @@ export default class Tick implements IInfoTask {
   getTitle() {
     return this.id;
   }
+
   getInfo(): string {
     return this.info;
   }

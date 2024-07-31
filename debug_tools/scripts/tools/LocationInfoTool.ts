@@ -1,9 +1,9 @@
 import { world } from "@minecraft/server";
-import IInfoTask from "../IInfoTask";
+import IInfoTool from "../IInfoTool";
 
-export default class LocationMeasure implements IInfoTask {
+export default class LocationInfoTool implements IInfoTool {
   id: string = "Location";
-  typeId: string = "locaton";
+  typeId: string = "location";
   data: string = "";
   info: string = "";
 

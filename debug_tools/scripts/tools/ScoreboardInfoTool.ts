@@ -1,7 +1,7 @@
 import { GameMode, world } from "@minecraft/server";
-import IInfoTask from "../IInfoTask";
+import IInfoTool from "../IInfoTool";
 
-export default class ScoreboardMeasure implements IInfoTask {
+export default class ScoreboardInfoTask implements IInfoTool {
   id: string = "Scoreboard";
   typeId: string = "scoreboard";
   data: string = "";

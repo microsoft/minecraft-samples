@@ -1,6 +1,6 @@
-import ITaskData from "./ITaskData";
+import ITaskData from "./IToolData";
 
 export default interface IDebugToolsData {
-  tasks: ITaskData[];
+  tools: ITaskData[];
   displayInSubHeader: boolean;
 }

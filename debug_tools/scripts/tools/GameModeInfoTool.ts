@@ -1,10 +1,10 @@
 import { GameMode, world } from "@minecraft/server";
-import IInfoTask from "../IInfoTask";
+import IInfoTool from "../IInfoTool";
 
-export default class GlobalGameMode implements IInfoTask {
-  id: string = "PlayerGameMode";
+export default class GameModeInfoTool implements IInfoTool {
+  id: string = "GameMode";
   info: string = "";
-  typeId: string = "playergamemode";
+  typeId: string = "gamemode";
   data: string = "";
 
   run() {

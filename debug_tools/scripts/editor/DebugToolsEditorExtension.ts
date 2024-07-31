@@ -14,7 +14,7 @@ import {
   registerEditorExtension,
 } from "@minecraft/server-editor";
 
-import TimeOfDay from "../tasks/TimeOfDay";
+import TimeOfDay from "../tools/TimeOfDay";
 import DebugTools, { AvailableDisplayTaskIds } from "../DebugTools";
 import { system } from "@minecraft/server";
 

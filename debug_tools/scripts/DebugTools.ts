@@ -1,11 +1,11 @@
-import { Scoreboard, system, world } from "@minecraft/server";
+import { system, world } from "@minecraft/server";
 import IDebugToolsData from "./IDebugToolsData";
-import TimeOfDay from "./tasks/TimeOfDay";
-import IInfoTask from "./IInfoTask";
-import Tick from "./tasks/Tick";
-import ScoreboardMeasure from "./tasks/ScoreboardMeasure";
-import LocationMeasure from "./tasks/LocationMeasure";
-import ITaskData from "./ITaskData";
+import TimeOfDayInfoTool from "./tools/TimeOfDayInfoTool";
+import IInfoTool from "./IInfoTool";
+import TickInfoTool from "./tools/TickInfoTool";
+import ScoreboardInfoTool from "./tools/ScoreboardInfoTool";
+import LocationInfoTool from "./tools/LocationInfoTool";
+import ITaskData from "./IToolData";
 
 export const StaticDisplayTaskIds = ["timeOfDay", "tick"];
 
@@ -16,18 +16,18 @@ export default class DebugTools {
   notifyDisplayDataUpdatedList: (() => void)[] = [];
 
   data: IDebugToolsData = {
-    tasks: [],
+    tools: [],
     displayInSubHeader: false,
   };
 
-  _displayTasks: IInfoTask[] = [];
+  _displayTasks: IInfoTool[] = [];
 
   get displayTasks() {
     return this._displayTasks;
   }
 
-  get displayTaskData() {
-    return this.data.tasks;
+  get displayToolData() {
+    return this.data.tools;
   }
 
   get displayInSubHeader() {
@@ -43,29 +43,19 @@ export default class DebugTools {
     this.tick = this.tick.bind(this);
   }
 
-  removeDisplayTaskId(taskId: string) {
+  removeToolById(taskId: string) {
     const newArr: ITaskData[] = [];
 
-    for (const task of this.displayTaskData) {
+    for (const task of this.displayToolData) {
       if (task.id !== taskId) {
         newArr.push(task);
       }
     }
 
-    this.data.tasks = newArr;
+    this.data.tools = newArr;
 
-    this.applyTaskSetChange();
+    this.applyToolSetChange();
     this.save();
-  }
-
-  addDisplayTaskId(taskId: string) {
-    /*    if (!this.data.tasks.includes(taskId)) {
-      this.data.tasks.push(taskId);
-
-      this.applyTaskSetChange();
-
-      this.save();
-    }*/
   }
 
   log(message: string) {
@@ -76,38 +66,38 @@ export default class DebugTools {
 
   init() {
     this.load();
-    this.applyTaskSetChange();
+    this.applyToolSetChange();
 
     system.run(this.tick);
   }
 
-  createTask(id: string) {
-    let task: IInfoTask | undefined = undefined;
+  createToolByTypeId(typeId: string) {
+    let task: IInfoTool | undefined = undefined;
 
-    switch (id.toLowerCase()) {
+    switch (typeId.toLowerCase()) {
       case "timeofday":
-        task = new TimeOfDay();
+        task = new TimeOfDayInfoTool();
       case "tick":
-        task = new Tick();
+        task = new TickInfoTool();
       case "scoreboard":
-        task = new ScoreboardMeasure();
+        task = new ScoreboardInfoTool();
       case "location":
-        task = new LocationMeasure();
+        task = new LocationInfoTool();
     }
 
     if (task) {
-      task.typeId = id.toLowerCase();
+      task.typeId = typeId.toLowerCase();
       task.data = "";
     }
 
     return task;
   }
 
-  applyTaskSetChange() {
+  applyToolSetChange() {
     this._displayTasks = [];
 
-    for (const taskData of this.data.tasks) {
-      const newTask = this.createTask(taskData.typeId);
+    for (const taskData of this.data.tools) {
+      const newTask = this.createToolByTypeId(taskData.typeId);
 
       if (newTask) {
         this._displayTasks.push(newTask);
@@ -116,7 +106,7 @@ export default class DebugTools {
   }
 
   load() {
-    const stateStr = world.getDynamicProperty("ma_debug:data");
+    const stateStr = world.getDynamicProperty("cc_debug:data");
 
     if (stateStr && typeof stateStr === "string") {
       try {
@@ -132,7 +122,7 @@ export default class DebugTools {
   save() {
     const stateStr = JSON.stringify(this.data);
 
-    world.setDynamicProperty("ma_debug:data", stateStr);
+    world.setDynamicProperty("cc_debug:data", stateStr);
   }
 
   tick() {
