@@ -143,8 +143,8 @@ export default class DebugToolsEditorExtension {
 
     this._measureToggleData = {};
 
-    for (const task of this._debugTools.displayTasks) {
-      this._measureToggleData[task.id] = this._debugTools.data.displayTaskIds.includes(task.id);
+    for (const task of this._debugTools.tools) {
+      this._measureToggleData[task.id] = this._debugTools.hasToolById(task.id);
     }
 
     this._measureToggleData["addType"] = 0;

@@ -25,7 +25,7 @@ export default class LocationInfoTool implements IInfoTool {
   }
 
   getTitle() {
-    return "s|" + this.data;
+    return "s|" + this.id;
   }
 
   getInfo(): string {

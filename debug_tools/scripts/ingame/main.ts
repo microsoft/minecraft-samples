@@ -20,8 +20,13 @@ function afterItemUse(event: ItemUseAfterEvent) {
 async function editSettings(player: Player) {
   const ad = new ActionFormData();
 
-  ad.button("Toggle debug text");
-  ad.button("Edit measures");
+  if (!debugTools.displayInSubHeader) {
+    ad.button("Turn on watch text");
+  } else {
+    ad.button("Turn off watch text");
+  }
+
+  ad.button("Edit watches");
 
   const mainAction = await ad.show(player);
 
@@ -38,7 +43,7 @@ async function editSettings(player: Player) {
       handleUpdate();
     }
   } else if (mainAction.selection === 1) {
-    const measureList = new ActionFormData().title("Edit Debug Tools Settings");
+    const measureList = new ActionFormData().title("Edit Tool Settings");
 
     for (let i = 0; i < StaticInfoToolIds.length; i++) {
       const taskId: string = StaticInfoToolIds[i];
@@ -54,13 +59,22 @@ async function editSettings(player: Player) {
   }
 }
 
-async function showToolEditorDialog(player: Player, measureIndex: number) {
-  const measureProps = new ModalFormData().title("Edit Debug Tools Settings for " + StaticInfoToolIds[measureIndex]);
+async function showToolEditorDialog(player: Player, displayToolIndex: number) {
+  const toolId = StaticInfoToolIds[displayToolIndex];
+  const measureProps = new ModalFormData().title("Edit Tool Settings for " + toolId);
 
-  measureProps.textField("Name", StaticInfoToolIds[measureIndex]);
-  measureProps.toggle("Remove this tool");
+  measureProps.textField("Name", StaticInfoToolIds[displayToolIndex]);
+  measureProps.toggle("Show this watch", debugTools.hasToolById(toolId));
 
-  await measureProps.show(player);
+  const data = await measureProps.show(player);
+
+  if (data && !data.canceled && data.formValues) {
+    if (data.formValues[1]) {
+      debugTools.ensureToolByTypeId(toolId);
+    } else {
+      debugTools.removeToolById(toolId);
+    }
+  }
 }
 
 world.afterEvents.itemUse.subscribe(afterItemUse);
@@ -77,11 +91,11 @@ function handleUpdate() {
   let str = "";
 
   if (debugTools.displayInSubHeader) {
-    for (const task of debugTools.displayTasks) {
+    for (const tool of debugTools.tools) {
       if (str.length > 0) {
         str += " ";
       }
-      str += task.getTitle() + ": " + task.getInfo();
+      str += tool.getTitle() + ": " + tool.getInfo();
     }
 
     if (str.length > 0) {

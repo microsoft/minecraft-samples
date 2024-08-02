@@ -5,7 +5,7 @@ import IInfoTool from "./IInfoTool";
 import TickInfoTool from "./tools/TickInfoTool";
 import ScoreboardInfoTool from "./tools/ScoreboardInfoTool";
 import LocationInfoTool from "./tools/LocationInfoTool";
-import ITaskData from "./IToolData";
+import IToolData from "./IToolData";
 
 export const StaticDisplayTaskIds = ["timeOfDay", "tick"];
 
@@ -20,13 +20,13 @@ export default class DebugTools {
     displayInSubHeader: false,
   };
 
-  _displayTasks: IInfoTool[] = [];
+  _tools: IInfoTool[] = [];
 
-  get displayTasks() {
-    return this._displayTasks;
+  get tools() {
+    return this._tools;
   }
 
-  get displayToolData() {
+  get toolsData() {
     return this.data.tools;
   }
 
@@ -43,12 +43,49 @@ export default class DebugTools {
     this.tick = this.tick.bind(this);
   }
 
-  removeToolById(taskId: string) {
-    const newArr: ITaskData[] = [];
+  getToolById(toolId: string) {
+    for (const toolData of this.toolsData) {
+      if (toolData.id === toolId) {
+        return toolData;
+      }
+    }
 
-    for (const task of this.displayToolData) {
-      if (task.id !== taskId) {
-        newArr.push(task);
+    return undefined;
+  }
+
+  hasToolById(toolId: string) {
+    for (const toolData of this.toolsData) {
+      if (toolData.id === toolId) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  ensureToolByTypeId(toolTypeId: string) {
+    if (this.hasToolById(toolTypeId)) {
+      return;
+    }
+
+    this.toolsData.push({
+      id: toolTypeId,
+      typeId: toolTypeId,
+      data: "",
+    });
+
+    this.applyToolSetChange();
+    this.save();
+
+    this.notifyDisplayDataUpdated();
+  }
+
+  removeToolById(toolId: string) {
+    const newArr: IToolData[] = [];
+
+    for (const tool of this.toolsData) {
+      if (tool.id !== toolId) {
+        newArr.push(tool);
       }
     }
 
@@ -56,6 +93,8 @@ export default class DebugTools {
 
     this.applyToolSetChange();
     this.save();
+
+    this.notifyDisplayDataUpdated();
   }
 
   log(message: string) {
@@ -71,38 +110,55 @@ export default class DebugTools {
     system.run(this.tick);
   }
 
-  createToolByTypeId(typeId: string) {
-    let task: IInfoTool | undefined = undefined;
+  createToolInstance(typeId: string, id?: string) {
+    let tool: IInfoTool | undefined = undefined;
 
     switch (typeId.toLowerCase()) {
       case "timeofday":
-        task = new TimeOfDayInfoTool();
+        tool = new TimeOfDayInfoTool();
+        break;
       case "tick":
-        task = new TickInfoTool();
+        tool = new TickInfoTool();
+        break;
       case "scoreboard":
-        task = new ScoreboardInfoTool();
+        tool = new ScoreboardInfoTool();
+        break;
       case "location":
-        task = new LocationInfoTool();
+        tool = new LocationInfoTool();
+        break;
     }
 
-    if (task) {
-      task.typeId = typeId.toLowerCase();
-      task.data = "";
+    if (tool) {
+      tool.id = id ? id : typeId;
+      tool.typeId = typeId.toLowerCase();
+      tool.data = "";
     }
 
-    return task;
+    return tool;
   }
 
   applyToolSetChange() {
-    this._displayTasks = [];
+    const newTools: IInfoTool[] = [];
 
     for (const taskData of this.data.tools) {
-      const newTask = this.createToolByTypeId(taskData.typeId);
+      let tool: IInfoTool | undefined = undefined;
 
-      if (newTask) {
-        this._displayTasks.push(newTask);
+      for (const existingTool of this._tools) {
+        if (existingTool.id === taskData.id) {
+          tool = existingTool;
+        }
+      }
+
+      if (tool === undefined) {
+        tool = this.createToolInstance(taskData.typeId, taskData.id);
+      }
+
+      if (tool) {
+        newTools.push(tool);
       }
     }
+
+    this._tools = newTools;
   }
 
   load() {
@@ -129,15 +185,19 @@ export default class DebugTools {
     this._sessionTick++;
 
     if (this._sessionTick % 100 === 0) {
-      for (const task of this._displayTasks) {
-        task.run();
+      for (const tool of this._tools) {
+        tool.run();
       }
 
-      for (const fn of this.notifyDisplayDataUpdatedList) {
-        fn();
-      }
+      this.notifyDisplayDataUpdated();
     }
 
     system.run(this.tick);
+  }
+
+  notifyDisplayDataUpdated() {
+    for (const fn of this.notifyDisplayDataUpdatedList) {
+      fn();
+    }
   }
 }
