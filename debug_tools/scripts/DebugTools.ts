@@ -6,8 +6,10 @@ import TickInfoTool from "./tools/TickInfoTool";
 import ScoreboardInfoTool from "./tools/ScoreboardInfoTool";
 import LocationInfoTool from "./tools/LocationInfoTool";
 import IToolData from "./IToolData";
+import CommandResultInfoTool from "./tools/CommandResultInfoTool";
+import DynamicPropertyInfoTool from "./tools/DynamicPropertyInfoTool";
 
-export const StaticDisplayTaskIds = ["timeOfDay", "tick"];
+export const StaticDisplayToolIds = ["timeOfDay", "tick"];
 
 export default class DebugTools {
   _sessionTick: number = 0;
@@ -80,6 +82,51 @@ export default class DebugTools {
     this.notifyDisplayDataUpdated();
   }
 
+  static createRandomId(length: number) {
+    let id = "";
+
+    for (let i = 0; i < length; i++) {
+      const main = Math.random() * 6;
+
+      if (main < 1) {
+        id += String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+      } else if (main < 4) {
+        id += String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+      } else {
+        id += String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+      }
+    }
+
+    return id;
+  }
+
+  getNewToolId(toolTypeId: string) {
+    if (!this.hasToolById(toolTypeId)) {
+      return toolTypeId;
+    }
+
+    let inc = 1;
+
+    while (this.hasToolById(toolTypeId + " " + inc)) {
+      inc++;
+    }
+
+    return toolTypeId + " " + inc;
+  }
+
+  addTool(toolTypeId: string) {
+    this.toolsData.push({
+      id: this.getNewToolId(toolTypeId),
+      typeId: toolTypeId,
+      data: "",
+    });
+
+    this.applyToolSetChange();
+    this.save();
+
+    this.notifyDisplayDataUpdated();
+  }
+
   removeToolById(toolId: string) {
     const newArr: IToolData[] = [];
 
@@ -125,6 +172,12 @@ export default class DebugTools {
         break;
       case "location":
         tool = new LocationInfoTool();
+        break;
+      case "commandresult":
+        tool = new CommandResultInfoTool();
+        break;
+      case "dynamicproperty":
+        tool = new DynamicPropertyInfoTool();
         break;
     }
 

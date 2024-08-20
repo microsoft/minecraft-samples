@@ -9,6 +9,7 @@ import {
   KeyboardKey,
   PropertyBag,
   bindDataSource,
+  makeObservable,
   registerEditorExtension,
 } from "@minecraft/server-editor";
 
@@ -24,9 +25,9 @@ export default class DebugToolsEditorExtension {
   private _configurePane: IPropertyPane | undefined;
 
   private _measureData: PropertyBag | undefined;
-  private _boundData: PropertyBag | undefined;
+  private _boundData: object = {};
   private _measureToggleData: PropertyBag | undefined;
-  private _boundToggleData: PropertyBag | undefined;
+  private _boundToggleData: object = {};
   private _session: IPlayerUISession;
 
   get session() {
@@ -177,7 +178,11 @@ export default class DebugToolsEditorExtension {
     for (let i = 0; i < StaticDisplayToolIds.length; i++) {
       const taskId: string = StaticDisplayToolIds[i];
 
-      this._configurePane.addBool(this._boundToggleData, {
+      if (!this._boundToggleData[taskId]) {
+        this._boundToggleData[taskId] = makeObservable(false);
+      }
+
+      this._configurePane.addBool(this._boundToggleData[taskId], {
         title: "debug_tools." + taskId,
       });
     }
@@ -189,15 +194,14 @@ export default class DebugToolsEditorExtension {
     this._measureData = {};
 
     for (const task of this._debugTools.tools) {
-      this._measureData[task.id] = task.getInfo();
     }
 
     this.updateDisplayData();
 
-    this._boundData = bindDataSource(this._dataPane, this._measureData);
-
     for (const task of this._debugTools.tools) {
-      this._dataPane.addString(this._boundData, task.id);
+      const observ = makeObservable(task.getInfo());
+      this._measureData[task.id] = observ;
+      this._dataPane.addString(observ, { title: task.id });
     }
 
     this._configurePane?.show();
@@ -228,10 +232,11 @@ export default class DebugToolsEditorExtension {
 
     this.updateDisplayData();
 
-    this._boundData = bindDataSource(this._dataPane, this._measureData);
+    this._boundData = {};
 
     for (const task of this._debugTools.tools) {
-      this._dataPane.addString(this._boundData, task.id);
+      this._boundData[task.id] = makeObservable(task.id);
+      this._dataPane.addString(this._boundData[task.id], { title: task.id });
     }
 
     this._dataPane?.show();
