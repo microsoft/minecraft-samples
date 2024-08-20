@@ -2,9 +2,7 @@
 
 import {
   ActionTypes,
-  CoreMenuType,
   EditorInputContext,
-  IMenu,
   IPlayerUISession,
   IPropertyPane,
   InputModifier,
@@ -14,9 +12,9 @@ import {
   registerEditorExtension,
 } from "@minecraft/server-editor";
 
-import TimeOfDay from "../tools/TimeOfDay";
-import DebugTools, { AvailableDisplayTaskIds } from "../DebugTools";
+import DebugTools, { StaticDisplayToolIds } from "../DebugTools";
 import { system } from "@minecraft/server";
+import TimeOfDayInfoTool from "../tools/TimeOfDayInfoTool";
 
 export default class DebugToolsEditorExtension {
   private _debugTools: DebugTools;
@@ -50,41 +48,33 @@ export default class DebugToolsEditorExtension {
     const toolToggleAction = this._session.actionManager.createAction({
       actionType: ActionTypes.NoArgsAction,
       onExecute: () => {
-        this._session.toolRail.setSelectedOptionId(tool.id, true);
+        this._session.toolRail.setSelectedToolId(tool.id);
       },
     });
 
-    const tool = this._session.toolRail.addTool(
-      {
-        displayStringId: "sample.debug_tools.tool.title",
-        displayAltText: "Debug Tools (CTRL + SHIFT + D)",
-        icon: "pack://textures/farm-generator.png",
-        tooltipStringId: "sample.debug_tools.tool.tooltip",
-        tooltipAltText: "Quickly create a custom farm",
-      },
-      toolToggleAction
-    );
+    const tool = this._session.toolRail.addTool({
+      title: "sample.debug_tools.tool.title",
+      icon: "pack://textures/farm-generator.png",
+      tooltip: "sample.debug_tools.tool.tooltip",
+    });
 
-    this._session.inputManager.registerKeyBinding(
-      EditorInputContext.GlobalToolMode,
-      toolToggleAction,
-      KeyboardKey.KEY_D,
-      InputModifier.Control | InputModifier.Shift
-    );
+    this._session.inputManager.registerKeyBinding(EditorInputContext.GlobalToolMode, toolToggleAction, {
+      key: KeyboardKey.KEY_D,
+      modifier: InputModifier.Control | InputModifier.Shift,
+    });
 
     return tool;
   }
 
   createOuterPane() {
     const extensionPane = this._session.createPropertyPane({
-      titleStringId: "sample.minimal.pane.title",
-      titleAltText: "Debug Tools",
+      title: "sample.minimal.pane.title",
     });
 
     const buttonAction = this._session.actionManager.createAction({
       actionType: ActionTypes.NoArgsAction,
       onExecute: () => {
-        const sh = new TimeOfDay();
+        const sh = new TimeOfDayInfoTool();
 
         sh.run();
       },
@@ -104,7 +94,7 @@ export default class DebugToolsEditorExtension {
 
   deactivatePane(): void {
     if (this._configurePane) {
-      this._outerPane?.removePropertyPane(this._configurePane);
+      this._outerPane?.removeSubPane(this._configurePane);
     }
 
     this._dataPane = undefined;
@@ -116,12 +106,11 @@ export default class DebugToolsEditorExtension {
       const addTypeVal = this._measureToggleData["addType"];
       const addIdVal = this._measureToggleData["addId"];
 
-      if (addTypeVal !== undefined && addIdVal !== undefined) {
-        if (addTypeVal === 0) {
-          this._debugTools.addDisplayTaskId("s|" + addIdVal);
-        } else if (addTypeVal === 1) {
-          this._debugTools.addDisplayTaskId("w|" + addIdVal);
+      if (addTypeVal && addIdVal !== undefined && typeof addTypeVal === "number") {
+        if (addTypeVal !== null && addTypeVal >= 0 && addTypeVal <= StaticDisplayToolIds.length - 1) {
+          this._debugTools.ensureToolByTypeId(StaticDisplayToolIds[addTypeVal]);
         }
+
         this.ensureDataPane();
         this._outerPane?.show();
       }
@@ -137,7 +126,7 @@ export default class DebugToolsEditorExtension {
     }
 
     if (this._configurePane) {
-      this._outerPane?.removePropertyPane(this._configurePane);
+      this._outerPane?.removeSubPane(this._configurePane);
       this._configurePane = undefined;
     }
 
@@ -149,34 +138,30 @@ export default class DebugToolsEditorExtension {
 
     this._measureToggleData["addType"] = 0;
 
-    this._configurePane = windowPane.createPropertyPane({
-      titleStringId: "debug_tools.toggle_measures",
-      titleAltText: "Configure",
+    this._configurePane = windowPane.createSubPane({
+      title: "debug_tools.toggle_measures",
     });
 
     this._boundToggleData = bindDataSource(this._configurePane, this._measureToggleData);
 
-    this._configurePane.addDropdown(this._boundToggleData as any, "addType", {
-      titleStringId: "sample.farmgenerator.pane.fence",
-      titleAltText: "Type",
+    this._configurePane.addDropdown(this._boundToggleData as any, {
+      title: "sample.farmgenerator.pane.fence",
       enable: true,
-      dropdownItems: [
+
+      entries: [
         {
-          displayAltText: "Scoreboard",
-          displayStringId: "Scoreboard",
+          label: "Scoreboard",
           value: 0,
         },
         {
-          displayAltText: "Dyn Prop",
-          displayStringId: "Dyn Prop",
+          label: "Dyn Prop",
           value: 1,
         },
       ],
     });
 
-    this._configurePane.addString(this._boundToggleData as any, "addId", {
-      titleStringId: "sample.farmgenerator.pane.fence",
-      titleAltText: "Name",
+    this._configurePane.addString(this._boundToggleData as any, {
+      title: "sample.farmgenerator.pane.fence",
     });
     this._configurePane.addButton(
       this._session.actionManager.createAction({
@@ -184,29 +169,26 @@ export default class DebugToolsEditorExtension {
         onExecute: this.addWatch,
       }),
       {
-        titleStringId: "sample.gotomark.pane.button.teleport",
-        titleAltText: "Add Watch",
+        title: "sample.gotomark.pane.button.teleport",
         visible: true,
       }
     );
 
-    for (let i = 0; i < AvailableDisplayTaskIds.length; i++) {
-      const taskId: string = AvailableDisplayTaskIds[i];
+    for (let i = 0; i < StaticDisplayToolIds.length; i++) {
+      const taskId: string = StaticDisplayToolIds[i];
 
-      this._configurePane.addBool(this._boundToggleData, taskId, {
-        titleStringId: "debug_tools." + taskId,
-        titleAltText: taskId,
+      this._configurePane.addBool(this._boundToggleData, {
+        title: "debug_tools." + taskId,
       });
     }
 
-    this._dataPane = windowPane.createPropertyPane({
-      titleStringId: "debug_tools.measurespane.title",
-      titleAltText: "Measures",
+    this._dataPane = windowPane.createSubPane({
+      title: "debug_tools.measurespane.title",
     });
 
     this._measureData = {};
 
-    for (const task of this._debugTools.displayTasks) {
+    for (const task of this._debugTools.tools) {
       this._measureData[task.id] = task.getInfo();
     }
 
@@ -214,8 +196,8 @@ export default class DebugToolsEditorExtension {
 
     this._boundData = bindDataSource(this._dataPane, this._measureData);
 
-    for (const task of this._debugTools.displayTasks) {
-      this._dataPane.addText(this._boundData, task.id, { border: false, valueStringId: "test" });
+    for (const task of this._debugTools.tools) {
+      this._dataPane.addString(this._boundData, task.id);
     }
 
     this._configurePane?.show();
@@ -230,18 +212,17 @@ export default class DebugToolsEditorExtension {
     }
 
     if (this._dataPane) {
-      this._outerPane?.removePropertyPane(this._dataPane);
+      this._outerPane?.removeSubPane(this._dataPane);
       this._dataPane = undefined;
     }
 
-    this._dataPane = windowPane.createPropertyPane({
-      titleStringId: "debug_tools.measurespane.title",
-      titleAltText: "Measures",
+    this._dataPane = windowPane.createSubPane({
+      title: "debug_tools.measurespane.title",
     });
 
     this._measureData = {};
 
-    for (const task of this._debugTools.displayTasks) {
+    for (const task of this._debugTools.tools) {
       this._measureData[task.id] = task.getInfo();
     }
 
@@ -249,8 +230,8 @@ export default class DebugToolsEditorExtension {
 
     this._boundData = bindDataSource(this._dataPane, this._measureData);
 
-    for (const task of this._debugTools.displayTasks) {
-      this._dataPane.addText(this._boundData, task.id, { border: false, valueStringId: "test" });
+    for (const task of this._debugTools.tools) {
+      this._dataPane.addString(this._boundData, task.id);
     }
 
     this._dataPane?.show();
@@ -264,7 +245,7 @@ export default class DebugToolsEditorExtension {
 
   public updateDisplayData() {
     if (this._boundData) {
-      for (const task of this._debugTools.displayTasks) {
+      for (const task of this._debugTools.tools) {
         this._boundData[task.id] = task.getTitle() + ": " + task.getInfo();
       }
     }
@@ -287,31 +268,22 @@ export default class DebugToolsEditorExtension {
     const tool = this.addTool();
     tool.bindPropertyPane(this._outerPane);
 
-    this._session.menuBar
-      .getMenu(CoreMenuType.Extensions)
-      .then((coreMenu: IMenu) => {
-        const extensionMenu = coreMenu.addItem({
-          displayStringId: "sample.minimal.menu.title",
-          name: "Debug Tools",
-        });
+    const coreMenu = this._session.menuBar.createMenu({
+      label: "sample.minimal.menu.title",
+    });
 
-        extensionMenu.addItem(
-          {
-            displayStringId: "sample.minimal.menu.showpane",
-            name: "Show Pane",
-          },
+    coreMenu.addItem(
+      {
+        label: "sample.minimal.menu.showpane",
+      },
 
-          this._session.actionManager.createAction({
-            actionType: ActionTypes.NoArgsAction,
-            onExecute: () => {
-              this._outerPane?.show();
-            },
-          })
-        );
+      this._session.actionManager.createAction({
+        actionType: ActionTypes.NoArgsAction,
+        onExecute: () => {
+          this._outerPane?.show();
+        },
       })
-      .catch((error: Error) => {
-        this._session.log.error(error.message);
-      });
+    );
 
     this.tick();
 
@@ -325,12 +297,12 @@ export default class DebugToolsEditorExtension {
       for (const strId in this._measureToggleData) {
         const val = this._measureToggleData[strId];
 
-        if (val === false && this._debugTools.data.displayTaskIds.includes(strId)) {
-          this._debugTools.removeDisplayTaskId(strId);
+        if (val === false && this._debugTools.hasToolById(strId)) {
+          this._debugTools.removeToolById(strId);
           this.ensureDataPane();
           this._outerPane?.show();
-        } else if (val === true && !this._debugTools.data.displayTaskIds.includes(strId)) {
-          this._debugTools.addDisplayTaskId(strId);
+        } else if (val === true && !this._debugTools.hasToolById(strId)) {
+          this._debugTools.createToolInstance(strId);
           this.ensureDataPane();
           this._outerPane?.show();
         }
