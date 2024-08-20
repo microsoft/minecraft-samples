@@ -1,6 +1,7 @@
 import { ItemUseAfterEvent, Player, world } from "@minecraft/server";
-import DebugTools, { StaticDisplayToolIds } from "../DebugTools";
+import DebugTools, { DynamicToolIds, DynamicToolTitles, StaticToolIds } from "../DebugTools";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
+import ITool from "../ITool";
 
 export const debugTools = new DebugTools();
 
@@ -43,41 +44,48 @@ async function editSettings(player: Player) {
       handleUpdate();
     }
   } else if (mainAction.selection === 1) {
-    const measureList = new ActionFormData().title("Edit Tool Settings");
+    const toolList = new ActionFormData().title("Edit Tool Settings");
 
-    for (let i = 0; i < StaticDisplayToolIds.length; i++) {
-      const taskId: string = StaticDisplayToolIds[i];
+    for (let i = 0; i < StaticToolIds.length; i++) {
+      const taskId: string = StaticToolIds[i];
 
-      measureList.button(taskId);
+      toolList.button(taskId);
     }
 
-    measureList.button("Add Watch");
+    for (let i = 0; i < debugTools.tools.length; i++) {
+      const tool = debugTools.tools[i];
 
-    const selectedMeasure = await measureList.show(player);
+      if (!StaticToolIds.includes(tool.id)) {
+        toolList.button(tool.getTitle());
+      }
+    }
+
+    toolList.button("Add watch");
+
+    const selectedTool = await toolList.show(player);
 
     if (
-      !selectedMeasure.canceled &&
-      selectedMeasure.selection !== undefined &&
-      selectedMeasure.selection < StaticDisplayToolIds.length
+      !selectedTool.canceled &&
+      selectedTool.selection !== undefined &&
+      selectedTool.selection < StaticToolIds.length
     ) {
-      showToolEditorDialog(player, selectedMeasure.selection);
-    } else if (!selectedMeasure.canceled && selectedMeasure.selection === StaticDisplayToolIds.length) {
-      showAddToolDialog(player, selectedMeasure.selection);
+      showToolEditorDialog(player, selectedTool.selection);
+    } else if (!selectedTool.canceled && selectedTool.selection === StaticToolIds.length) {
+      showAddToolDialog(player);
     }
   }
 }
 
 async function showToolEditorDialog(player: Player, displayToolIndex: number) {
-  const toolId = StaticDisplayToolIds[displayToolIndex];
-  const measureProps = new ModalFormData().title("Edit Tool Settings for " + toolId);
+  const toolId = StaticToolIds[displayToolIndex];
+  const toolProps = new ModalFormData().title("Edit Tool Settings for " + toolId);
 
-  measureProps.textField("Name", StaticDisplayToolIds[displayToolIndex]);
-  measureProps.toggle("Show this watch", debugTools.hasToolById(toolId));
+  toolProps.toggle("Show this watch", debugTools.hasToolById(toolId));
 
-  const data = await measureProps.show(player);
+  const data = await toolProps.show(player);
 
   if (data && !data.canceled && data.formValues) {
-    if (data.formValues[1]) {
+    if (data.formValues[0]) {
       debugTools.ensureToolByTypeId(toolId);
     } else {
       debugTools.removeToolById(toolId);
@@ -85,44 +93,74 @@ async function showToolEditorDialog(player: Player, displayToolIndex: number) {
   }
 }
 
-async function showAddToolDialog(player: Player, displayToolIndex: number) {
-  const toolId = StaticDisplayToolIds[displayToolIndex];
+async function showAddToolDialog(player: Player) {
   const measureProps = new ActionFormData().title("Add Tool");
 
-  measureProps.button("New Dynamic Property Watch");
-  measureProps.button("New Command Result Watch");
-  measureProps.button("New Scoreboard Watch");
-  measureProps.button("New Location Watch");
+  for (const toolId of DynamicToolTitles) {
+    measureProps.button("New " + toolId + " watch");
+  }
 
   const data = await measureProps.show(player);
 
-  if (data && !data.canceled && data.selection) {
-    let newToolId = "";
+  if (data && !data.canceled && data.selection !== undefined) {
+    let newToolId = DynamicToolIds[data.selection];
 
-    switch (data.selection) {
-      case 0:
-        newToolId = "dynamicProperty";
-        break;
-      case 1:
-        newToolId = "commandResult";
-        break;
-      case 2:
-        newToolId = "scoreboard";
-        break;
-      case 3:
-        newToolId = "location";
-        break;
+    const tool = debugTools.addTool(newToolId);
+
+    if (tool) {
+      showToolEditor(player, tool);
+    }
+  }
+}
+
+function showToolEditor(player: Player, tool: ITool) {
+  switch (tool.typeId.toLowerCase()) {
+    case "dynamicproperty":
+      showDynamicPropertyDialog(player, tool);
+      break;
+    case "scoreboard":
+      showScoreboardDialog(player, tool);
+      break;
+  }
+}
+
+async function showDynamicPropertyDialog(player: Player, tool: ITool) {
+  const toolProps = new ModalFormData().title("Edit " + tool.id + " Settings");
+
+  toolProps.toggle("Remove this watch", false);
+
+  const data = await toolProps.show(player);
+
+  if (data && !data.canceled && data.formValues) {
+    if (data.formValues[0]) {
+      debugTools.removeToolById(tool.id);
+    }
+  }
+}
+
+async function showScoreboardDialog(player: Player, tool: ITool) {
+  const toolProps = new ModalFormData().title("Edit " + tool.id + " Settings");
+
+  toolProps.toggle("Remove this watch", false);
+  toolProps.textField("Scoreboard value", tool.data);
+
+  const data = await toolProps.show(player);
+
+  if (data && !data.canceled && data.formValues) {
+    if (data.formValues[0]) {
+      debugTools.removeToolById(tool.id);
     }
 
-    if (newToolId.length > 0) {
-      debugTools.addTool(newToolId);
-    }
+    tool.data = data.formValues[1] as string;
+
+    debugTools.save();
   }
 }
 
 world.afterEvents.itemUse.subscribe(afterItemUse);
 
 var hasSetTitle = false;
+
 function clearHeader() {
   for (const player of world.getAllPlayers()) {
     player.onScreenDisplay.setTitle("");

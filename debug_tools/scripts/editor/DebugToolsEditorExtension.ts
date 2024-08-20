@@ -13,7 +13,7 @@ import {
   registerEditorExtension,
 } from "@minecraft/server-editor";
 
-import DebugTools, { StaticDisplayToolIds } from "../DebugTools";
+import DebugTools, { StaticToolIds } from "../DebugTools";
 import { system } from "@minecraft/server";
 import TimeOfDayInfoTool from "../tools/TimeOfDayInfoTool";
 
@@ -108,8 +108,8 @@ export default class DebugToolsEditorExtension {
       const addIdVal = this._measureToggleData["addId"];
 
       if (addTypeVal && addIdVal !== undefined && typeof addTypeVal === "number") {
-        if (addTypeVal !== null && addTypeVal >= 0 && addTypeVal <= StaticDisplayToolIds.length - 1) {
-          this._debugTools.ensureToolByTypeId(StaticDisplayToolIds[addTypeVal]);
+        if (addTypeVal !== null && addTypeVal >= 0 && addTypeVal <= StaticToolIds.length - 1) {
+          this._debugTools.ensureToolByTypeId(StaticToolIds[addTypeVal]);
         }
 
         this.ensureDataPane();
@@ -175,8 +175,8 @@ export default class DebugToolsEditorExtension {
       }
     );
 
-    for (let i = 0; i < StaticDisplayToolIds.length; i++) {
-      const taskId: string = StaticDisplayToolIds[i];
+    for (let i = 0; i < StaticToolIds.length; i++) {
+      const taskId: string = StaticToolIds[i];
 
       if (!this._boundToggleData[taskId]) {
         this._boundToggleData[taskId] = makeObservable(false);

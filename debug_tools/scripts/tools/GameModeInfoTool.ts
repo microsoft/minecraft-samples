@@ -2,7 +2,7 @@ import { GameMode, world } from "@minecraft/server";
 import IInfoTool from "../IInfoTool";
 
 export default class GameModeInfoTool implements IInfoTool {
-  id: string = "GameMode";
+  id: string = "gamemode";
   info: string = "";
   typeId: string = "gamemode";
   data: string = "";

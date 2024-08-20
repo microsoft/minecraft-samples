@@ -8,8 +8,12 @@ import LocationInfoTool from "./tools/LocationInfoTool";
 import IToolData from "./IToolData";
 import CommandResultInfoTool from "./tools/CommandResultInfoTool";
 import DynamicPropertyInfoTool from "./tools/DynamicPropertyInfoTool";
+import GameModeInfoTool from "./tools/GameModeInfoTool";
 
-export const StaticDisplayToolIds = ["timeOfDay", "tick"];
+export const StaticToolTitles = ["Time of Day", "Tick", "Gamemode"];
+export const StaticToolIds = ["timeOfDay", "tick", "gamemode"];
+export const DynamicToolTitles = ["Dynamic Properties", "Command Results", "Scoreboard", "Location"];
+export const DynamicToolIds = ["dynamicProperty", "commandResult", "scoreboard", "location"];
 
 export default class DebugTools {
   _sessionTick: number = 0;
@@ -46,6 +50,16 @@ export default class DebugTools {
   }
 
   getToolById(toolId: string) {
+    for (const toolData of this.tools) {
+      if (toolData.id === toolId) {
+        return toolData;
+      }
+    }
+
+    return undefined;
+  }
+
+  getToolDataById(toolId: string) {
     for (const toolData of this.toolsData) {
       if (toolData.id === toolId) {
         return toolData;
@@ -125,6 +139,8 @@ export default class DebugTools {
     this.save();
 
     this.notifyDisplayDataUpdated();
+
+    return this.getToolById(toolTypeId);
   }
 
   removeToolById(toolId: string) {
@@ -166,6 +182,9 @@ export default class DebugTools {
         break;
       case "tick":
         tool = new TickInfoTool();
+        break;
+      case "gamemode":
+        tool = new GameModeInfoTool();
         break;
       case "scoreboard":
         tool = new ScoreboardInfoTool();
@@ -230,6 +249,14 @@ export default class DebugTools {
 
   save() {
     const stateStr = JSON.stringify(this.data);
+
+    for (const tool of this._tools) {
+      const toolData = this.getToolDataById(tool.id);
+
+      if (toolData) {
+        toolData.data = tool.data;
+      }
+    }
 
     world.setDynamicProperty("cc_debug:data", stateStr);
   }
