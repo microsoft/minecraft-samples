@@ -1,14 +1,14 @@
 import { system, world } from "@minecraft/server";
 import IDebugToolsData from "./IDebugToolsData";
-import TimeOfDayInfoTool from "./tools/TimeOfDayInfoTool";
-import IInfoTool from "./IInfoTool";
-import TickInfoTool from "./tools/TickInfoTool";
-import ScoreboardInfoTool from "./tools/ScoreboardInfoTool";
-import LocationInfoTool from "./tools/LocationInfoTool";
+import TimeOfDayWatchTool from "./tools/TimeOfDayWatchTool";
+import IWatchTool from "./IWatchTool";
+import TickWatchTool from "./tools/TickWatchTool";
+import ScoreboardInfoTool from "./tools/ScoreboardWatchTool";
+import LocationWatchTool from "./tools/LocationWatchTool";
 import IToolData from "./IToolData";
-import CommandResultInfoTool from "./tools/CommandResultInfoTool";
-import DynamicPropertyInfoTool from "./tools/DynamicPropertyInfoTool";
-import GameModeInfoTool from "./tools/GameModeInfoTool";
+import CommandResultWatchTool from "./tools/CommandResultWatchTool";
+import DynamicPropertyWatchTool from "./tools/DynamicPropertyWatchTool";
+import GameModeWatchTool from "./tools/GameModeWatchTool";
 
 export const StaticToolTitles = ["Time of Day", "Tick", "Gamemode"];
 export const StaticToolIds = ["timeOfDay", "tick", "gamemode"];
@@ -24,9 +24,12 @@ export default class DebugTools {
   data: IDebugToolsData = {
     tools: [],
     displayInSubHeader: false,
+    displayConsoleWarning: false,
+    displayIngameMessage: false,
+    displayScoreboard: false,
   };
 
-  _tools: IInfoTool[] = [];
+  _tools: IWatchTool[] = [];
 
   get tools() {
     return this._tools;
@@ -42,6 +45,33 @@ export default class DebugTools {
 
   set displayInSubHeader(newVal: boolean) {
     this.data.displayInSubHeader = newVal;
+    this.save();
+  }
+
+  get displayConsoleWarning() {
+    return this.data.displayConsoleWarning;
+  }
+
+  set displayConsoleWarning(newVal: boolean) {
+    this.data.displayConsoleWarning = newVal;
+    this.save();
+  }
+
+  get displayScoreboard() {
+    return this.data.displayScoreboard;
+  }
+
+  set displayScoreboard(newVal: boolean) {
+    this.data.displayScoreboard = newVal;
+    this.save();
+  }
+
+  get displayIngameMessage() {
+    return this.data.displayIngameMessage;
+  }
+
+  set displayIngameMessage(newVal: boolean) {
+    this.data.displayIngameMessage = newVal;
     this.save();
   }
 
@@ -174,29 +204,29 @@ export default class DebugTools {
   }
 
   createToolInstance(typeId: string, id?: string) {
-    let tool: IInfoTool | undefined = undefined;
+    let tool: IWatchTool | undefined = undefined;
 
     switch (typeId.toLowerCase()) {
       case "timeofday":
-        tool = new TimeOfDayInfoTool();
+        tool = new TimeOfDayWatchTool();
         break;
       case "tick":
-        tool = new TickInfoTool();
+        tool = new TickWatchTool();
         break;
       case "gamemode":
-        tool = new GameModeInfoTool();
+        tool = new GameModeWatchTool();
         break;
       case "scoreboard":
         tool = new ScoreboardInfoTool();
         break;
       case "location":
-        tool = new LocationInfoTool();
+        tool = new LocationWatchTool();
         break;
       case "commandresult":
-        tool = new CommandResultInfoTool();
+        tool = new CommandResultWatchTool();
         break;
       case "dynamicproperty":
-        tool = new DynamicPropertyInfoTool();
+        tool = new DynamicPropertyWatchTool();
         break;
     }
 
@@ -210,10 +240,10 @@ export default class DebugTools {
   }
 
   applyToolSetChange() {
-    const newTools: IInfoTool[] = [];
+    const newTools: IWatchTool[] = [];
 
     for (const taskData of this.data.tools) {
-      let tool: IInfoTool | undefined = undefined;
+      let tool: IWatchTool | undefined = undefined;
 
       for (const existingTool of this._tools) {
         if (existingTool.id === taskData.id) {
@@ -264,7 +294,7 @@ export default class DebugTools {
   tick() {
     this._sessionTick++;
 
-    if (this._sessionTick % 100 === 0) {
+    if (this._sessionTick % 5 === 0) {
       for (const tool of this._tools) {
         tool.run();
       }

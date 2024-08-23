@@ -1,11 +1,14 @@
 import { world } from "@minecraft/server";
-import IInfoTool from "../IInfoTool";
+import IWatchTool from "../IWatchTool";
+import { IToolConfigurationExperience } from "../ITool";
 
-export default class LocationInfoTool implements IInfoTool {
+export default class LocationWatchTool implements IWatchTool {
   id: string = "Location";
   typeId: string = "location";
   data: string = "";
   info: string = "";
+
+  configurationExperience = IToolConfigurationExperience.dataAsLocation;
 
   run() {
     let scoreBoard = "";
@@ -22,6 +25,10 @@ export default class LocationInfoTool implements IInfoTool {
     }
 
     this.info = scoreBoard;
+  }
+
+  getConfigurationDataPropertyTitle() {
+    return "Location";
   }
 
   getTitle() {

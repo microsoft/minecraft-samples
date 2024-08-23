@@ -1,11 +1,13 @@
-import { GameMode, world } from "@minecraft/server";
-import IInfoTool from "../IInfoTool";
+import { world } from "@minecraft/server";
+import IWatchTool from "../IWatchTool";
+import { IToolConfigurationExperience } from "../ITool";
 
-export default class ScoreboardInfoTask implements IInfoTool {
+export default class ScoreboardWatchTool implements IWatchTool {
   id: string = "Scoreboard";
   typeId: string = "scoreboard";
   data: string = "";
   info: string = "";
+  configurationExperience = IToolConfigurationExperience.dataAsString;
 
   run() {
     let scoreBoard = "";
@@ -22,6 +24,10 @@ export default class ScoreboardInfoTask implements IInfoTool {
     }
 
     this.info = scoreBoard;
+  }
+
+  getConfigurationDataPropertyTitle() {
+    return "Scoreboard objective name";
   }
 
   getTitle() {

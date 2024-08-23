@@ -1,11 +1,13 @@
-import { GameMode, world } from "@minecraft/server";
-import IInfoTool from "../IInfoTool";
+import { world } from "@minecraft/server";
+import IWatchTool from "../IWatchTool";
+import { IToolConfigurationExperience } from "../ITool";
 
-export default class TimeOfDayInfoTool implements IInfoTool {
+export default class TimeOfDayWatchTool implements IWatchTool {
   id: string = "timeOfDay";
   typeId: string = "timeofday";
   data: string = "";
   info: string = "";
+  configurationExperience = IToolConfigurationExperience.noData;
 
   run() {
     this.info = world.getTimeOfDay().toString();
@@ -14,6 +16,7 @@ export default class TimeOfDayInfoTool implements IInfoTool {
   getTitle() {
     return this.id;
   }
+
   getInfo(): string {
     return this.info;
   }

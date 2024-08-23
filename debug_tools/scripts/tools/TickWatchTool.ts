@@ -1,11 +1,13 @@
 import { GameMode, system, world } from "@minecraft/server";
-import IInfoTool from "../IInfoTool";
+import IWatchTool from "../IWatchTool";
+import { IToolConfigurationExperience } from "../ITool";
 
-export default class TickInfoTool implements IInfoTool {
+export default class TickWatchTool implements IWatchTool {
   id: string = "tick";
   info: string = "";
   data: string = "";
   typeId: string = "tick";
+  configurationExperience = IToolConfigurationExperience.noData;
 
   run() {
     this.info = system.currentTick.toString();

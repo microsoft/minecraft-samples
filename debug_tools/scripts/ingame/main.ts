@@ -1,9 +1,14 @@
-import { ItemUseAfterEvent, Player, world } from "@minecraft/server";
+import { ItemUseAfterEvent, Player, system, world } from "@minecraft/server";
 import DebugTools, { DynamicToolIds, DynamicToolTitles, StaticToolIds } from "../DebugTools";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
-import ITool from "../ITool";
+import ITool, { IToolConfigurationExperience } from "../ITool";
 
 export const debugTools = new DebugTools();
+
+let lastConsoleWarningTick = -1;
+let lastMessageWarningTick = -1;
+
+const MESSAGE_INTERVAL = 100;
 
 debugTools.init();
 debugTools.notifyDisplayDataUpdatedList.push(handleUpdate);
@@ -22,9 +27,27 @@ async function editSettings(player: Player) {
   const ad = new ActionFormData();
 
   if (!debugTools.displayInSubHeader) {
-    ad.button("Turn on watch text");
+    ad.button("Turn on watch subheader text");
   } else {
-    ad.button("Turn off watch text");
+    ad.button("Turn off watch subheader text");
+  }
+
+  if (!debugTools.displayScoreboard) {
+    ad.button("Turn on watch scoreboard text");
+  } else {
+    ad.button("Turn off watch scoreboard text");
+  }
+
+  if (!debugTools.displayIngameMessage) {
+    ad.button("Turn on watch ingame message");
+  } else {
+    ad.button("Turn off watch ingame message");
+  }
+
+  if (!debugTools.displayConsoleWarning) {
+    ad.button("Turn on console warning message");
+  } else {
+    ad.button("Turn off console warning message");
   }
 
   ad.button("Edit watches");
@@ -44,7 +67,27 @@ async function editSettings(player: Player) {
       handleUpdate();
     }
   } else if (mainAction.selection === 1) {
+    debugTools.displayScoreboard = !debugTools.displayScoreboard;
+
+    if (debugTools.displayScoreboard === false) {
+      clearHeader();
+    } else if (debugTools.displayScoreboard === true) {
+      handleUpdate();
+    }
+  } else if (mainAction.selection === 2) {
+    debugTools.displayIngameMessage = !debugTools.displayIngameMessage;
+    if (debugTools.displayIngameMessage === true) {
+      handleUpdate();
+    }
+  } else if (mainAction.selection === 3) {
+    debugTools.displayConsoleWarning = !debugTools.displayConsoleWarning;
+
+    if (debugTools.displayConsoleWarning === true) {
+      handleUpdate();
+    }
+  } else if (mainAction.selection === 4) {
     const toolList = new ActionFormData().title("Edit Tool Settings");
+    const dynTools: ITool[] = [];
 
     for (let i = 0; i < StaticToolIds.length; i++) {
       const taskId: string = StaticToolIds[i];
@@ -56,6 +99,7 @@ async function editSettings(player: Player) {
       const tool = debugTools.tools[i];
 
       if (!StaticToolIds.includes(tool.id)) {
+        dynTools.push(tool);
         toolList.button(tool.getTitle());
       }
     }
@@ -69,15 +113,26 @@ async function editSettings(player: Player) {
       selectedTool.selection !== undefined &&
       selectedTool.selection < StaticToolIds.length
     ) {
-      showToolEditorDialog(player, selectedTool.selection);
-    } else if (!selectedTool.canceled && selectedTool.selection === StaticToolIds.length) {
+      showStaticToolEditorDialog(player, selectedTool.selection);
+    } else if (
+      !selectedTool.canceled &&
+      selectedTool.selection !== undefined &&
+      selectedTool.selection >= StaticToolIds.length &&
+      selectedTool.selection < StaticToolIds.length + dynTools.length
+    ) {
+      showToolEditor(player, dynTools[selectedTool.selection - StaticToolIds.length]);
+    } else if (
+      !selectedTool.canceled &&
+      selectedTool.selection !== undefined &&
+      selectedTool.selection >= StaticToolIds.length + dynTools.length
+    ) {
       showAddToolDialog(player);
     }
   }
 }
 
-async function showToolEditorDialog(player: Player, displayToolIndex: number) {
-  const toolId = StaticToolIds[displayToolIndex];
+async function showStaticToolEditorDialog(player: Player, toolIndex: number) {
+  const toolId = StaticToolIds[toolIndex];
   const toolProps = new ModalFormData().title("Edit Tool Settings for " + toolId);
 
   toolProps.toggle("Show this watch", debugTools.hasToolById(toolId));
@@ -114,17 +169,14 @@ async function showAddToolDialog(player: Player) {
 }
 
 function showToolEditor(player: Player, tool: ITool) {
-  switch (tool.typeId.toLowerCase()) {
-    case "dynamicproperty":
-      showDynamicPropertyDialog(player, tool);
-      break;
-    case "scoreboard":
-      showScoreboardDialog(player, tool);
-      break;
+  if (tool.configurationExperience === IToolConfigurationExperience.noData) {
+    showNoDataPropertyDialog(player, tool);
+  } else if (tool.configurationExperience === IToolConfigurationExperience.dataAsString) {
+    showDataStringDialog(player, tool);
   }
 }
 
-async function showDynamicPropertyDialog(player: Player, tool: ITool) {
+async function showNoDataPropertyDialog(player: Player, tool: ITool) {
   const toolProps = new ModalFormData().title("Edit " + tool.id + " Settings");
 
   toolProps.toggle("Remove this watch", false);
@@ -138,11 +190,18 @@ async function showDynamicPropertyDialog(player: Player, tool: ITool) {
   }
 }
 
-async function showScoreboardDialog(player: Player, tool: ITool) {
+async function showDataStringDialog(player: Player, tool: ITool) {
   const toolProps = new ModalFormData().title("Edit " + tool.id + " Settings");
 
   toolProps.toggle("Remove this watch", false);
-  toolProps.textField("Scoreboard value", tool.data);
+
+  let description = "Value";
+
+  if (tool.getConfigurationDataPropertyTitle) {
+    description = tool.getConfigurationDataPropertyTitle();
+  }
+
+  toolProps.textField(description, tool.data);
 
   const data = await toolProps.show(player);
 
@@ -169,28 +228,41 @@ function clearHeader() {
 }
 
 function handleUpdate() {
-  let str = "";
+  let singleLineUpdate = "";
+  let curTick = system.currentTick;
+
+  for (const tool of debugTools.tools) {
+    if (singleLineUpdate.length > 0) {
+      singleLineUpdate += " ";
+    }
+    singleLineUpdate += tool.getTitle() + ": " + tool.getInfo();
+  }
+
+  if (debugTools.displayConsoleWarning && curTick > lastConsoleWarningTick + MESSAGE_INTERVAL) {
+    console.warn(singleLineUpdate);
+
+    lastConsoleWarningTick = curTick;
+  }
+
+  if (debugTools.displayIngameMessage && curTick > lastMessageWarningTick + MESSAGE_INTERVAL) {
+    world.sendMessage(singleLineUpdate);
+
+    lastMessageWarningTick = curTick;
+  }
 
   if (debugTools.displayInSubHeader) {
-    for (const tool of debugTools.tools) {
-      if (str.length > 0) {
-        str += " ";
-      }
-      str += tool.getTitle() + ": " + tool.getInfo();
-    }
-
-    if (str.length > 0) {
+    if (singleLineUpdate.length > 0) {
       for (const player of world.getAllPlayers()) {
         if (!hasSetTitle) {
           player.onScreenDisplay.setTitle(" ", {
-            subtitle: str,
+            subtitle: singleLineUpdate,
             fadeInDuration: 0,
             fadeOutDuration: 0,
             stayDuration: 999,
           });
           hasSetTitle = true;
         } else {
-          player.onScreenDisplay.updateSubtitle(str);
+          player.onScreenDisplay.updateSubtitle(singleLineUpdate);
         }
       }
     }

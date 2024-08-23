@@ -1,11 +1,14 @@
-import { GameMode, world } from "@minecraft/server";
-import IInfoTool from "../IInfoTool";
+import { world } from "@minecraft/server";
+import IWatchTool from "../IWatchTool";
+import { IToolConfigurationExperience } from "../ITool";
 
-export default class GameModeInfoTool implements IInfoTool {
+export default class GameModeWatchTool implements IWatchTool {
   id: string = "gamemode";
   info: string = "";
   typeId: string = "gamemode";
   data: string = "";
+
+  configurationExperience = IToolConfigurationExperience.noData;
 
   run() {
     let gameModes = "";
@@ -19,6 +22,10 @@ export default class GameModeInfoTool implements IInfoTool {
     }
 
     this.info = gameModes;
+  }
+
+  getConfigurationDataPropertyTitle() {
+    return "Game mode";
   }
 
   getTitle() {
