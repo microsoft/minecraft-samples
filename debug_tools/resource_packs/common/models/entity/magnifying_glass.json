@@ -1,35 +1,34 @@
 {
-  "format_version": "1.16.0",
-  "minecraft:geometry": [
-    {
-      "description": {
-        "identifier": "geometry.magnifying_glass",
-        "texture_width": 32,
-        "texture_height": 32,
-        "visible_bounds_width": 3,
-        "visible_bounds_height": 4,
-        "visible_bounds_offset": [0, 1, 0]
-      },
-      "bones": [
-        {
-          "name": "bb_main",
-          "pivot": [0.1, 19, -6],
-          "rotation": [125, 0, 0],
-          "binding": "q.item_slot_to_bone_name(context.item_slot)",
-          "cubes": [
-            { "origin": [-0.9, 9, -8], "size": [2, 16, 3], "uv": [0, 13] },
-            { "origin": [-0.9, 25, -11], "size": [2, 1, 9], "uv": [0, 0] },
-            { "origin": [-0.9, 26, -3], "size": [2, 5, 1], "uv": [1, 20] },
-            { "origin": [-0.9, 26, -11], "size": [2, 5, 1], "uv": [1, 19] },
-            { "origin": [-0.9, 31, -11], "size": [2, 1, 9], "uv": [0, 0] },
-            { "origin": [-0.9, 24, -5], "size": [2, 1, 2], "uv": [0, 3] },
-            { "origin": [-0.9, 24, -10], "size": [2, 1, 2], "uv": [0, 0] },
-            { "origin": [-0.9, 23, -5], "size": [2, 1, 1], "uv": [17, 13] },
-            { "origin": [-0.9, 23, -9], "size": [2, 1, 1], "uv": [7, 13] },
-            { "origin": [1.1, 27, -8], "size": [0, 5, 2], "uv": [10, 19] }
-          ]
-        }
-      ]
-    }
-  ]
+	"format_version": "1.16.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.magnifying_glass",
+				"texture_width": 32,
+				"texture_height": 32,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 5,
+				"visible_bounds_offset": [0, 1.5, 0]
+			},
+			"bones": [
+				{
+					"name": "bb_main",
+					"pivot": [0.1, 19, -6],
+					"rotation": [125, 0, 0],
+					"binding": "q.item_slot_to_bone_name(context.item_slot)",
+					"cubes": [
+						{"origin": [-0.9, 9, -8], "size": [2, 10, 3], "uv": [0, 13]},
+						{"origin": [-0.9, 19, -11], "size": [2, 1, 9], "uv": [0, 0]},
+						{"origin": [-0.9, 20, -2], "size": [2, 9, 1], "uv": [1, 20]},
+						{"origin": [-0.9, 20, -12], "size": [2, 9, 1], "uv": [1, 19]},
+						{"origin": [-0.9, 29, -11], "size": [2, 1, 9], "uv": [0, 0]},
+						{"origin": [-0.9, 18, -5], "size": [2, 1, 2], "uv": [0, 3]},
+						{"origin": [-0.9, 18, -10], "size": [2, 1, 2], "uv": [0, 0]},
+						{"origin": [-0.9, 17, -5], "size": [2, 1, 1], "uv": [17, 13]},
+						{"origin": [-0.9, 17, -9], "size": [2, 1, 1], "uv": [7, 13]}
+					]
+				}
+			]
+		}
+	]
 }

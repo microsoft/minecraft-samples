@@ -31,7 +31,7 @@ export default class ScoreboardWatchTool implements IWatchTool {
   }
 
   getTitle() {
-    return "s|" + this.data;
+    return "sbd|" + this.data;
   }
 
   getInfo(): string {

@@ -5,7 +5,6 @@
       "identifier": "debug_tools:wrench",
       "category": "Items"
     },
-
     "components": {
       "minecraft:max_stack_size": 16,
       "minecraft:icon": {

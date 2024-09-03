@@ -278,8 +278,6 @@ export default class DebugTools {
   }
 
   save() {
-    const stateStr = JSON.stringify(this.data);
-
     for (const tool of this._tools) {
       const toolData = this.getToolDataById(tool.id);
 
@@ -287,6 +285,8 @@ export default class DebugTools {
         toolData.data = tool.data;
       }
     }
+
+    const stateStr = JSON.stringify(this.data);
 
     world.setDynamicProperty("cc_debug:data", stateStr);
   }

@@ -1,7 +1,8 @@
-import { ItemUseAfterEvent, Player, system, world } from "@minecraft/server";
+import { DisplaySlotId, ItemUseAfterEvent, Player, system, world } from "@minecraft/server";
 import DebugTools, { DynamicToolIds, DynamicToolTitles, StaticToolIds } from "../DebugTools";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 import ITool, { IToolConfigurationExperience } from "../ITool";
+import Utilities from "../Utilities";
 
 export const debugTools = new DebugTools();
 
@@ -173,6 +174,8 @@ function showToolEditor(player: Player, tool: ITool) {
     showNoDataPropertyDialog(player, tool);
   } else if (tool.configurationExperience === IToolConfigurationExperience.dataAsString) {
     showDataStringDialog(player, tool);
+  } else if (tool.configurationExperience === IToolConfigurationExperience.dataAsLocation) {
+    showDataLocationDialog(player, tool);
   }
 }
 
@@ -216,6 +219,33 @@ async function showDataStringDialog(player: Player, tool: ITool) {
   }
 }
 
+async function showDataLocationDialog(player: Player, tool: ITool) {
+  const toolProps = new ModalFormData().title("Edit " + tool.id + " Settings");
+
+  toolProps.toggle("Remove this watch", false);
+
+  const loc = Utilities.getLocationFromString(tool.data, player.location);
+
+  toolProps.textField("X", loc.x.toString());
+  toolProps.textField("Y", loc.y.toString());
+  toolProps.textField("Z", loc.z.toString());
+
+  const data = await toolProps.show(player);
+
+  if (data && !data.canceled && data.formValues) {
+    const loc2 = Utilities.getLocationFromCoordStrings(
+      data.formValues[1] as string,
+      data.formValues[2] as string,
+      data.formValues[3] as string,
+      loc
+    );
+
+    tool.data = loc2.x + "," + loc2.y + "," + loc2.z;
+
+    debugTools.save();
+  }
+}
+
 world.afterEvents.itemUse.subscribe(afterItemUse);
 
 var hasSetTitle = false;
@@ -248,6 +278,24 @@ function handleUpdate() {
     world.sendMessage(singleLineUpdate);
 
     lastMessageWarningTick = curTick;
+  }
+
+  if (debugTools.displayScoreboard) {
+    for (const obj of world.scoreboard.getObjectives()) {
+      world.scoreboard.removeObjective(obj.id);
+    }
+
+    for (const tool of debugTools.tools) {
+      if (tool.id) {
+        let obj = world.scoreboard.getObjective("sbd_" + tool.id);
+        if (!obj) {
+          obj = world.scoreboard.addObjective("sbd_" + tool.id, tool.getTitle() + ": " + tool.getInfo());
+        }
+        world.scoreboard.setObjectiveAtDisplaySlot(DisplaySlotId.Sidebar, {
+          objective: obj,
+        });
+      }
+    }
   }
 
   if (debugTools.displayInSubHeader) {

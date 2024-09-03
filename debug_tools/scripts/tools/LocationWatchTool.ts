@@ -1,6 +1,7 @@
 import { world } from "@minecraft/server";
 import IWatchTool from "../IWatchTool";
 import { IToolConfigurationExperience } from "../ITool";
+import Utilities from "../Utilities";
 
 export default class LocationWatchTool implements IWatchTool {
   id: string = "Location";
@@ -11,20 +12,36 @@ export default class LocationWatchTool implements IWatchTool {
   configurationExperience = IToolConfigurationExperience.dataAsLocation;
 
   run() {
-    let scoreBoard = "";
+    let pos = Utilities.getLocationFromString(this.data);
+    const dim = world.getDimension("overworld");
 
-    const obj = world.scoreboard.getObjective(this.data);
+    const block = dim.getBlock(pos);
 
-    if (obj) {
-      for (const sci of obj.getScores()) {
-        if (scoreBoard.length > 2) {
-          scoreBoard += ",";
-        }
-        scoreBoard += sci.participant.displayName + "=" + sci.score;
+    let loc = "";
+
+    if (block) {
+      loc = block.typeId;
+
+      const es = dim.getEntities({
+        location: block.location,
+        maxDistance: 4,
+        minDistance: 0,
+      });
+
+      loc += " " + es.length;
+
+      if (es.length > 0) {
+        loc += ": " + es[0].typeId;
       }
+
+      if (es.length > 1) {
+        loc += ", " + es[1].typeId;
+      }
+    } else {
+      loc = "unloaded";
     }
 
-    this.info = scoreBoard;
+    this.info = loc;
   }
 
   getConfigurationDataPropertyTitle() {
@@ -32,7 +49,7 @@ export default class LocationWatchTool implements IWatchTool {
   }
 
   getTitle() {
-    return "s|" + this.id;
+    return "@" + this.data;
   }
 
   getInfo(): string {
