@@ -12,7 +12,7 @@ products:
 
 # Minecraft Debug Tools
 
-This sample contains many code snippets that show how you can manipulate basic Minecraft behaviors.
+This sample contains a set of simple debug tools for adding in-game and editor watches.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
    code .
    ```
 
-### Chapter 2. Let's test the parts of our project
+### Running the parts of our project
 
 Within the root folder (debug_tools) of this sample, run this command:
 
@@ -62,10 +62,10 @@ If you'd like to run deployment in a watch mode, run the following:
 npm run local-deploy -- --watch
 ```
 
-Create an addon file to share.
+Run this one to deploy in the editor mode.
 
 ```powershell
-npm run mcaddon
+npm run local-deploy-editor
 ```
 
 ## Manifest

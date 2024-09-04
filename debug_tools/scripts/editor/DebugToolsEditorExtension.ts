@@ -13,7 +13,8 @@ import {
   registerEditorExtension,
 } from "@minecraft/server-editor";
 
-import DebugTools, { StaticToolIds } from "../DebugTools";
+import DebugTools from "../DebugTools";
+import DebugToolRegistry, { StaticToolIds } from "../DebugToolRegistry";
 import { system } from "@minecraft/server";
 import TimeOfDayWatchTool from "../tools/TimeOfDayWatchTool";
 
@@ -307,7 +308,7 @@ export default class DebugToolsEditorExtension {
           this.ensureDataPane();
           this._watchOuterPane?.show();
         } else if (val === true && !this._debugTools.hasToolById(strId)) {
-          this._debugTools.createToolInstance(strId);
+          DebugToolRegistry.createToolInstance(strId);
           this.ensureDataPane();
           this._watchOuterPane?.show();
         }

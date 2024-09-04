@@ -1,5 +1,6 @@
 import { DisplaySlotId, ItemUseAfterEvent, Player, system, world } from "@minecraft/server";
-import DebugTools, { DynamicToolIds, DynamicToolTitles, StaticToolIds } from "../DebugTools";
+import DebugTools from "../DebugTools";
+import { DynamicToolIds, DynamicToolTitles, StaticToolIds } from "../DebugToolRegistry";
 import { ActionFormData, ModalFormData } from "@minecraft/server-ui";
 import ITool, { IToolConfigurationExperience } from "../ITool";
 import Utilities from "../Utilities";
