@@ -281,20 +281,38 @@ function handleUpdate() {
   }
 
   if (debugTools.displayScoreboard) {
-    for (const obj of world.scoreboard.getObjectives()) {
-      world.scoreboard.removeObjective(obj.id);
+    let obj = world.scoreboard.getObjective("_sbd");
+
+    if (obj) {
+      world.scoreboard.removeObjective(obj);
     }
 
+    obj = world.scoreboard.addObjective("_sbd", "Watches");
+
+    world.scoreboard.setObjectiveAtDisplaySlot(DisplaySlotId.Sidebar, {
+      objective: obj,
+    });
+
+    let iter = 0;
     for (const tool of debugTools.tools) {
-      if (tool.id) {
-        let obj = world.scoreboard.getObjective("sbd_" + tool.id);
-        if (!obj) {
-          obj = world.scoreboard.addObjective("sbd_" + tool.id, tool.getTitle() + ": " + tool.getInfo());
+      const val = tool.getInfo();
+
+      let setVal = false;
+      try {
+        const iVal = parseInt(val);
+
+        if (!isNaN(iVal)) {
+          setVal = true;
+
+          obj.addScore(tool.getTitle(), iVal);
         }
-        world.scoreboard.setObjectiveAtDisplaySlot(DisplaySlotId.Sidebar, {
-          objective: obj,
-        });
+      } catch (e) {}
+
+      if (!setVal) {
+        obj.addScore(tool.getInfo(), iter);
       }
+
+      iter++;
     }
   }
 

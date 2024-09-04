@@ -15,19 +15,23 @@ import {
 
 import DebugTools, { StaticToolIds } from "../DebugTools";
 import { system } from "@minecraft/server";
-import TimeOfDayInfoTool from "../tools/TimeOfDayInfoTool";
+import TimeOfDayWatchTool from "../tools/TimeOfDayWatchTool";
 
 export default class DebugToolsEditorExtension {
   private _debugTools: DebugTools;
   private _sessionTick = 0;
-  private _outerPane: IPropertyPane | undefined;
+  private _watchOuterPane: IPropertyPane | undefined;
   private _dataPane: IPropertyPane | undefined;
   private _configurePane: IPropertyPane | undefined;
 
   private _measureData: PropertyBag | undefined;
-  private _boundData: object = {};
-  private _measureToggleData: PropertyBag | undefined;
-  private _boundToggleData: object = {};
+  private _boundData: any = {};
+  private _watchToggleData: { [name: string]: boolean } = {};
+  private _boundWatchToggleData: any = {};
+
+  private _addWatchData: { type: string; data: string } = { type: "scoreboard", data: "" };
+  private _boundAddWatchData: any = {};
+
   private _session: IPlayerUISession;
 
   get session() {
@@ -54,9 +58,9 @@ export default class DebugToolsEditorExtension {
     });
 
     const tool = this._session.toolRail.addTool({
-      title: "sample.debug_tools.tool.title",
+      title: "Debug Tools",
       icon: "pack://textures/farm-generator.png",
-      tooltip: "sample.debug_tools.tool.tooltip",
+      tooltip: "Debug Tools",
     });
 
     this._session.inputManager.registerKeyBinding(EditorInputContext.GlobalToolMode, toolToggleAction, {
@@ -68,20 +72,20 @@ export default class DebugToolsEditorExtension {
   }
 
   createOuterPane() {
-    const extensionPane = this._session.createPropertyPane({
-      title: "sample.minimal.pane.title",
+    const watchPane = this._session.createPropertyPane({
+      title: "Watches",
     });
 
     const buttonAction = this._session.actionManager.createAction({
       actionType: ActionTypes.NoArgsAction,
       onExecute: () => {
-        const sh = new TimeOfDayInfoTool();
+        const sh = new TimeOfDayWatchTool();
 
         sh.run();
       },
     });
 
-    this._outerPane = extensionPane;
+    this._watchOuterPane = watchPane;
 
     this.ensurePanes();
   }
@@ -90,12 +94,12 @@ export default class DebugToolsEditorExtension {
     this.ensureConfigurePane();
     this.ensureDataPane();
 
-    this._outerPane?.show();
+    this._watchOuterPane?.show();
   }
 
   deactivatePane(): void {
     if (this._configurePane) {
-      this._outerPane?.removeSubPane(this._configurePane);
+      this._watchOuterPane?.removeSubPane(this._configurePane);
     }
 
     this._dataPane = undefined;
@@ -103,23 +107,39 @@ export default class DebugToolsEditorExtension {
   }
 
   addWatch() {
-    if (this._measureToggleData) {
-      const addTypeVal = this._measureToggleData["addType"];
-      const addIdVal = this._measureToggleData["addId"];
+    if (this._boundAddWatchData) {
+      const addTypeVal = this._boundAddWatchData["type"].value;
+      const addDataVal = this._boundAddWatchData["data"].value;
 
-      if (addTypeVal && addIdVal !== undefined && typeof addTypeVal === "number") {
-        if (addTypeVal !== null && addTypeVal >= 0 && addTypeVal <= StaticToolIds.length - 1) {
-          this._debugTools.ensureToolByTypeId(StaticToolIds[addTypeVal]);
-        }
+      if (addTypeVal && addDataVal !== undefined && typeof addTypeVal === "string") {
+        this._debugTools.addTool(addTypeVal);
 
         this.ensureDataPane();
-        this._outerPane?.show();
+        this._watchOuterPane?.show();
       }
     }
   }
 
+  updateStatics() {
+    if (this._boundWatchToggleData) {
+      for (let i = 0; i < StaticToolIds.length; i++) {
+        const toolId: string = StaticToolIds[i];
+
+        if (this._boundWatchToggleData[toolId]) {
+          if (this._boundWatchToggleData[toolId].value) {
+            this._debugTools.ensureToolByTypeId(toolId);
+          } else if (!this._boundWatchToggleData[toolId].value) {
+            this._debugTools.removeToolById(toolId);
+          }
+        }
+      }
+
+      this.ensureDataPane();
+    }
+  }
+
   ensureConfigurePane() {
-    const windowPane = this._outerPane;
+    const windowPane = this._watchOuterPane;
 
     if (!windowPane) {
       this._session.log.error("Failed to find window binding");
@@ -127,28 +147,29 @@ export default class DebugToolsEditorExtension {
     }
 
     if (this._configurePane) {
-      this._outerPane?.removeSubPane(this._configurePane);
+      this._watchOuterPane?.removeSubPane(this._configurePane);
       this._configurePane = undefined;
     }
 
-    this._measureToggleData = {};
+    this._watchToggleData = {};
 
-    for (const task of this._debugTools.tools) {
-      this._measureToggleData[task.id] = this._debugTools.hasToolById(task.id);
+    for (const tool of this._debugTools.tools) {
+      this._watchToggleData[tool.id] = this._debugTools.hasToolById(tool.id);
     }
 
-    this._measureToggleData["addType"] = 0;
+    this._addWatchData.type = "scoreboard";
+    this._addWatchData.data = "";
 
     this._configurePane = windowPane.createSubPane({
-      title: "debug_tools.toggle_measures",
+      title: "Configure Watches",
     });
 
-    this._boundToggleData = bindDataSource(this._configurePane, this._measureToggleData);
+    this._boundAddWatchData["type"] = makeObservable(this._addWatchData.type);
+    this._boundAddWatchData["data"] = makeObservable(this._addWatchData.data);
 
-    this._configurePane.addDropdown(this._boundToggleData as any, {
-      title: "sample.farmgenerator.pane.fence",
+    this._configurePane.addDropdown(this._boundAddWatchData["type"], {
+      title: "Type",
       enable: true,
-
       entries: [
         {
           label: "Scoreboard",
@@ -161,82 +182,76 @@ export default class DebugToolsEditorExtension {
       ],
     });
 
-    this._configurePane.addString(this._boundToggleData as any, {
-      title: "sample.farmgenerator.pane.fence",
+    this._configurePane.addString(this._boundAddWatchData["data"], {
+      title: "Data",
     });
+
     this._configurePane.addButton(
       this._session.actionManager.createAction({
         actionType: ActionTypes.NoArgsAction,
         onExecute: this.addWatch,
       }),
       {
-        title: "sample.gotomark.pane.button.teleport",
+        title: "Add Watch",
         visible: true,
       }
     );
 
     for (let i = 0; i < StaticToolIds.length; i++) {
-      const taskId: string = StaticToolIds[i];
+      const toolId: string = StaticToolIds[i];
 
-      if (!this._boundToggleData[taskId]) {
-        this._boundToggleData[taskId] = makeObservable(false);
+      if (!this._boundWatchToggleData[toolId]) {
+        this._boundWatchToggleData[toolId] = makeObservable(this._watchToggleData[toolId]);
       }
 
-      this._configurePane.addBool(this._boundToggleData[taskId], {
-        title: "debug_tools." + taskId,
+      this._configurePane.addBool(this._boundWatchToggleData[toolId], {
+        title: toolId,
       });
     }
 
-    this._dataPane = windowPane.createSubPane({
-      title: "debug_tools.measurespane.title",
-    });
-
-    this._measureData = {};
-
-    for (const task of this._debugTools.tools) {
-    }
+    this._configurePane.addButton(
+      this._session.actionManager.createAction({
+        actionType: ActionTypes.NoArgsAction,
+        onExecute: this.updateStatics,
+      }),
+      {
+        title: "Update",
+        visible: true,
+      }
+    );
 
     this.updateDisplayData();
-
-    for (const task of this._debugTools.tools) {
-      const observ = makeObservable(task.getInfo());
-      this._measureData[task.id] = observ;
-      this._dataPane.addString(observ, { title: task.id });
-    }
 
     this._configurePane?.show();
   }
 
   ensureDataPane() {
-    const windowPane = this._outerPane;
-
-    if (!windowPane) {
+    if (!this._watchOuterPane) {
       this._session.log.error("Failed to find window binding");
       return undefined;
     }
 
     if (this._dataPane) {
-      this._outerPane?.removeSubPane(this._dataPane);
+      this._watchOuterPane.removeSubPane(this._dataPane);
       this._dataPane = undefined;
     }
 
-    this._dataPane = windowPane.createSubPane({
-      title: "debug_tools.measurespane.title",
+    this._dataPane = this._watchOuterPane.createSubPane({
+      title: "Watch values",
     });
 
     this._measureData = {};
 
     for (const task of this._debugTools.tools) {
-      this._measureData[task.id] = task.getInfo();
+      this._measureData[task.id] = task.getTitle() + ": " + task.getInfo();
     }
-
-    this.updateDisplayData();
 
     this._boundData = {};
 
-    for (const task of this._debugTools.tools) {
-      this._boundData[task.id] = makeObservable(task.id);
-      this._dataPane.addString(this._boundData[task.id], { title: task.id });
+    for (const toolData of this._debugTools.tools) {
+      this._boundData[toolData.id] = makeObservable(this._measureData[toolData.id]);
+
+      this._dataPane.addText(this._boundData[toolData.id], { title: toolData.id });
     }
 
     this._dataPane?.show();
@@ -251,7 +266,9 @@ export default class DebugToolsEditorExtension {
   public updateDisplayData() {
     if (this._boundData) {
       for (const task of this._debugTools.tools) {
-        this._boundData[task.id] = task.getTitle() + ": " + task.getInfo();
+        if (this._boundData[task.id]) {
+          this._boundData[task.id].set(task.getTitle() + ": " + task.getInfo());
+        }
       }
     }
   }
@@ -265,30 +282,13 @@ export default class DebugToolsEditorExtension {
 
     this.createOuterPane();
 
-    if (!this._outerPane) {
+    if (!this._watchOuterPane) {
       this.log("Unexpectedly could not create a pane.");
       return [];
     }
 
     const tool = this.addTool();
-    tool.bindPropertyPane(this._outerPane);
-
-    const coreMenu = this._session.menuBar.createMenu({
-      label: "sample.minimal.menu.title",
-    });
-
-    coreMenu.addItem(
-      {
-        label: "sample.minimal.menu.showpane",
-      },
-
-      this._session.actionManager.createAction({
-        actionType: ActionTypes.NoArgsAction,
-        onExecute: () => {
-          this._outerPane?.show();
-        },
-      })
-    );
+    tool.bindPropertyPane(this._watchOuterPane);
 
     this.tick();
 
@@ -298,18 +298,18 @@ export default class DebugToolsEditorExtension {
   tick() {
     this._sessionTick++;
 
-    if (this._measureToggleData) {
-      for (const strId in this._measureToggleData) {
-        const val = this._measureToggleData[strId];
+    if (this._watchToggleData) {
+      for (const strId in this._watchToggleData) {
+        const val = this._watchToggleData[strId];
 
         if (val === false && this._debugTools.hasToolById(strId)) {
           this._debugTools.removeToolById(strId);
           this.ensureDataPane();
-          this._outerPane?.show();
+          this._watchOuterPane?.show();
         } else if (val === true && !this._debugTools.hasToolById(strId)) {
           this._debugTools.createToolInstance(strId);
           this.ensureDataPane();
-          this._outerPane?.show();
+          this._watchOuterPane?.show();
         }
       }
     }
