@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: build",
+      "type": "npm",
+      "script": "local-deploy"
+    },
+    {
+      "type": "npm",
+      "script": "mcaddon",
+      "problemMatcher": [],
+      "label": "npm: mcaddon",
+      "detail": "just-scripts mcaddon"
+    }
+  ]
+}

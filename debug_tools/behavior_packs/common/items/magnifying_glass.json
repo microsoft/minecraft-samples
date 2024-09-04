@@ -1,0 +1,20 @@
+{
+  "format_version": "1.20.30",
+  "minecraft:item": {
+    "description": {
+      "identifier": "debug_tools:magnifying_glass",
+      "category": "Items"
+    },
+
+    "components": {
+      "minecraft:max_stack_size": 16,
+      "minecraft:icon": {
+        "texture": "debug_tools:magnifying_glass"
+      },
+      "minecraft:wearable": {
+        "dispensable": true,
+        "slot": "slot.weapon.offhand"
+      }
+    }
+  }
+}

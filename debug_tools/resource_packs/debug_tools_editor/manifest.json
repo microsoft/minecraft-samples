@@ -1,0 +1,25 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Debug Tools for Editor",
+    "description": "A gallery of editor code snippets",
+    "uuid": "81a06565-8345-42eb-8839-4d288bfb6a55",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 0]
+  },
+  "capabilities": ["editorExtension"],
+  "modules": [
+    {
+      "description": "Editor How-to Gallery Resource",
+      "type": "resources",
+      "uuid": "911edf18-0f6d-4265-9df7-2cfd3d8ecb64",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "6b6c7b7e-5851-48ef-ae1a-316692c7e737",
+      "version": [1, 0, 0]
+    }
+  ]
+}
