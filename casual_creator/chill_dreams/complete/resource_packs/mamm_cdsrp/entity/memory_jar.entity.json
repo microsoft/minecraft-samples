@@ -13,7 +13,6 @@
       "materials": {
         "default": "ender_pearl"
       },
-      "animations": {},
       "render_controllers": ["controller.render.mamm_cds.memory_jar"],
       "spawn_egg": {
         "base_color": "#b0aea4",
