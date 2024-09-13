@@ -13,14 +13,11 @@
       "materials": {
         "default": "ender_pearl"
       },
-      "animations": {
-        "move": "animation.chicken.general",
-        "general": "animation.chicken.general"
-      },
+      "animations": {},
       "render_controllers": ["controller.render.mamm_cds.memory_jar"],
       "spawn_egg": {
-        "base_color": "#ff0000d9",
-        "overlay_color": "#73670a"
+        "base_color": "#b0aea4",
+        "overlay_color": "#b700ff"
       }
     }
   }

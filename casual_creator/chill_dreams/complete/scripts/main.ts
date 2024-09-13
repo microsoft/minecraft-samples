@@ -170,9 +170,6 @@ async function startDream(player: Player) {
     spawnDimensionId = "overworld";
   }
 
-  dream.addPoint(player.location, player.dimension.id, "Napping Point");
-  dream.addPoint(spawnLoc, spawnDimensionId, "Bed");
-
   dream.setupDreamFromMemories(memorySet);
 
   dream.activate();
@@ -182,6 +179,7 @@ async function startDream(player: Player) {
   const modalForm = new ModalFormData()
     .title("Dream Preferences")
     .title("Dream")
+    .toggle("...at your nap spot and bed", true)
     .toggle("...around your memories")
     .toggle("...about random places")
     .toggle("...nightmares");
@@ -192,14 +190,18 @@ async function startDream(player: Player) {
   } catch (e) {}
 
   if (response && response.formValues && response.formValues.length > 1) {
-    if (response.formValues[0]) {
+    if (response.formValues[0] === true || memorySet.getMemories().length) {
+      dream.addPoint(player.location, player.dimension.id, "Napping Point");
+      dream.addPoint(spawnLoc, spawnDimensionId, "Bed");
+    }
+    if (response.formValues[1] === true) {
       dream.generateAdditionalNearReferencePoints();
     }
-    if (response.formValues[2]) {
-      dream.generateAdditionalNetherPoints();
-    }
-    if (response.formValues[1]) {
+    if (response.formValues[2] === true) {
       dream.generateAdditionalRandomPoints();
+    }
+    if (response.formValues[3] === true) {
+      dream.generateAdditionalNetherPoints();
     }
   }
 }
