@@ -2,7 +2,7 @@
   "format_version": "1.20.50",
   "minecraft:item": {
     "description": {
-      "identifier": "mamm_cds:journal_pen",
+      "identifier": "mamm_cds:journal_pencil",
       "menu_category": {
         "category": "Items"
       }
@@ -11,7 +11,7 @@
     "components": {
       "minecraft:max_stack_size": 16,
       "minecraft:icon": {
-        "texture": "mamm_cds:journal_pen"
+        "texture": "mamm_cds:journal_pencil"
       },
       "minecraft:wearable": {
         "dispensable": true,

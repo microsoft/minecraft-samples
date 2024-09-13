@@ -11,7 +11,7 @@ import {
   EntityDieAfterEvent,
 } from "@minecraft/server";
 import MemorySet from "./MemorySet";
-import { ActionFormData, ModalFormData, ModalFormResponse } from "@minecraft/server-ui";
+import { ActionFormData, MessageFormData, ModalFormData, ModalFormResponse } from "@minecraft/server-ui";
 import Utilities from "./Utilities";
 import IPlayerSettings from "./IPlayerSettings";
 import Dream from "./Dream";
@@ -211,7 +211,7 @@ function afterItemUse(event: ItemUseAfterEvent) {
 
   if (event.itemStack.typeId === "mamm_cds:journal") {
     useJournalBook(event.source as Player);
-  } else if (event.itemStack.typeId === "mamm_cds:journal_pen") {
+  } else if (event.itemStack.typeId === "mamm_cds:journal_pencil") {
     useJournalPen(event.source as Player);
   }
 }
@@ -233,13 +233,17 @@ function entityDie(event: EntityDieAfterEvent) {
 }
 
 async function useJournalBook(player: Player) {
-  const afd = new ActionFormData().title("Re-visit your memories");
+  const afd = new ActionFormData().title("Memories");
+
+  let bodyStr = "Dream Journal Pen Recipe: Brown Concrete, Dream Essence (from Dream Turkeys), Stick";
 
   const memoryList = memorySet.getMemories();
+
   if (memoryList.length === 0) {
-    world.sendMessage("No memories are available.");
-    return;
+    afd.button("No memories are available.");
   }
+
+  afd.body(bodyStr);
 
   for (let i = 0; i < memoryList.length; i++) {
     afd.button(memoryList[i].getEffectiveTitle());
@@ -251,6 +255,18 @@ async function useJournalBook(player: Player) {
   } catch (e) {}
 
   if (response && !response.canceled && response.selection !== undefined) {
+    if (memoryList.length === 0 && response.selection === 0) {
+      const instructionD = new MessageFormData().body(
+        "Memories influence your dreams. You can also use your dream journal to revisit your memories.\r\n\r\nCapture memories with a dream journal pen (brown hardened clay, dream essence, and sticks). Get dream essence from dream turkeys."
+      );
+
+      instructionD.button1("Cancel");
+      instructionD.button2("Got it!");
+
+      await instructionD.show(player);
+      return;
+    }
+
     const memory = memoryList[response.selection];
 
     if (memory && memory.location && memory.dimensionId) {
@@ -266,6 +282,13 @@ async function useJournalBook(player: Player) {
       const playerId = player.id;
       const memLoc = memory.location;
       const memDim = memory.dimensionId;
+
+      player.onScreenDisplay.setTitle(" ", {
+        subtitle: "§oI remember " + memory.getEffectiveTitle() + "...§r",
+        fadeInDuration: 8,
+        fadeOutDuration: 8,
+        stayDuration: 40,
+      });
 
       system.runTimeout(async () => {
         const uiPlayer = Utilities.getPlayerById(playerId);
