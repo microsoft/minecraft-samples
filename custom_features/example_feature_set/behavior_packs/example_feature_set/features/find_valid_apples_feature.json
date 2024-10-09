@@ -1,0 +1,15 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:search_feature": {
+      "description": {
+        "identifier": "example:find_valid_apples_feature"
+      },
+      "places_feature": "example:apple_feature",
+      "search_volume": {
+        "min": [ -3, -3, -3 ],
+        "max": [ 3, 3, 3 ]
+      },
+      "search_axis": "-y",
+      "required_successes": 3
+  }
+}

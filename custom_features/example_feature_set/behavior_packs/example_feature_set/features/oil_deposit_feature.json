@@ -1,0 +1,17 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:ore_feature": {
+      "description": {
+        "identifier": "example:oil_deposit_feature"
+      },
+    "count": 12,
+    "replace_rules": [
+      {
+        "places_block": "example:oil_block",
+        "may_replace": [
+          "minecraft:sand"
+        ]
+      }
+    ]
+    }
+  }

@@ -1,0 +1,26 @@
+{ 
+  "resource_pack_name": "FeatureSameples_rp", 
+  "texture_name": "atlas.terrain", 
+  "padding": 8, 
+  "num_mip_levels": 4, 
+  "texture_data": { 
+    "andesite_malachite_ore": { 
+      "textures": "textures/blocks/andesite_malachite_ore" 
+    }, 
+    "blue_vine": { 
+      "textures": "textures/blocks/blue_vines" 
+    }, 
+    "granite_malachite_ore": { 
+      "textures": "textures/blocks/granite_malachite_ore" 
+    }, 
+    "malachite_ore": { 
+      "textures": "textures/blocks/malachite_ore" 
+    }, 
+    "oil_block": { 
+      "textures": "textures/blocks/oil_block" 
+    },
+    "apple_block": {
+			"textures": "textures/blocks/apple_block.png"
+		}
+  } 
+} 
