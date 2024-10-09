@@ -1,0 +1,25 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+      "description": {
+        "identifier": "example:cave_vine_feature_rules",
+        "places_feature": "example:cave_vine_feature"
+      },
+      "conditions": {
+        "placement_pass": "underground_pass",
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "nether"
+          }
+        ]
+      },
+      "distribution": {
+        "iterations": 5,
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  }

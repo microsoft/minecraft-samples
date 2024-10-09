@@ -1,0 +1,11 @@
+{
+    "format_version": "1.13.0",
+      "minecraft:underwater_cave_carver_feature": {
+        "description": {
+          "identifier": "example:underwater_cave_carver_feature"
+        },
+        "fill_with": "minecraft:water",
+        "width_modifier": 0.0,
+        "replace_air_with": "minecraft:flowing_water"
+      }
+    }

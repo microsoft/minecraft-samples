@@ -1,0 +1,12 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:partially_exposed_blob_feature": {
+      "description": {
+        "identifier": "example:underwater_magma_feature"
+      },
+      "places_block": "minecraft:magma",
+      "placement_radius_around_floor": 1,
+      "placement_probability_per_valid_position": 0.5,
+      "exposed_face": "up"
+    }
+  }

@@ -1,0 +1,25 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+      "description": {
+        "identifier": "example:underwater_magma_feature_rules",
+        "places_feature": "example:underwater_magma_feature"
+      },
+      "conditions": {
+        "placement_pass": "surface_pass",
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "ocean"
+          }
+        ]
+      },
+      "distribution": {
+        "iterations": 10,
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  }

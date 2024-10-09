@@ -1,0 +1,84 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:tree_feature": {
+      "description": {
+        "identifier": "example:oak_tree_feature"
+      },
+      "acacia_trunk": {
+        "trunk_width": 1,
+        "trunk_height": {
+          "base": 4,
+          "intervals": [ 2 ],
+          "min_height_for_canopy": 3
+        },
+        "trunk_block": {
+          "name": "minecraft:log",
+          "states": {
+            "old_log_type": "oak"
+          }
+        },
+        "trunk_lean": {
+          "allow_diagonal_growth": true,
+          "lean_height": {
+            "range_min": 2,
+            "range_max": 3
+          },
+          "lean_steps": {
+            "range_min": 3,
+            "range_max": 4
+          },
+          "lean_length": {
+            "range_min": 1,
+            "range_max": 2
+          }
+        }
+      },
+      "random_spread_canopy": {
+        "canopy_height": 2,
+        "canopy_radius": 3,
+        "leaf_placement_attempts": 50,
+        "leaf_blocks": [
+          ["minecraft:leaves", 3]
+        ]
+      },
+      "base_block": [
+        "minecraft:dirt_with_roots"
+      ],
+      "may_grow_on": [
+        "minecraft:dirt",
+        "minecraft:grass",
+        "minecraft:podzol",
+        "minecraft:dirt",
+        "minecraft:farmland",
+        "minecraft:dirt_with_roots",
+        "minecraft:moss_block",
+        "minecraft:clay",
+        "minecraft:mycelium",
+        "minecraft:mud",
+        "minecraft:muddy_mangrove_roots"
+      ],
+      "may_replace": [
+        "minecraft:leaves",
+        "minecraft:leaves2",
+        "minecraft:azalea",
+        "minecraft:flowering_azalea",
+        "minecraft:azalea_leaves",
+        "minecraft:azalea_leaves_flowered",
+        "minecraft:mangrove_leaves",
+        "minecraft:water",
+        "minecraft:flowing_water",
+        "minecraft:moss_carpet",
+        "minecraft:tallgrass",
+        "minecraft:grass",
+        "minecraft:air",
+        "minecraft:double_plant"
+      ],
+      "may_grow_through": [
+        "minecraft:dirt",
+        "minecraft:grass",
+        "minecraft:moss_carpet",
+        "minecraft:tallgrass",
+        "minecraft:double_plant"
+      ]
+    }
+  }

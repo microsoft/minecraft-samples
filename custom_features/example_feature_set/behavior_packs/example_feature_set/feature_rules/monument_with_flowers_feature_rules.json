@@ -1,0 +1,27 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+      "description": {
+        "identifier": "example:monument_with_flowers_feature_rules",
+        "places_feature": "example:monument_with_flowers_feature"
+      },
+      "conditions": {
+        "placement_pass": "surface_pass",
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "plains"
+          }
+        ]
+      },
+      "distribution": {
+        "iterations": 1,
+        "coordinate_eval_order": "zxy",
+        "x": 0,
+        "y": "query.heightmap(variable.worldx, variable.worldz)",
+        "z": 0
+      }
+    }
+  }
+  

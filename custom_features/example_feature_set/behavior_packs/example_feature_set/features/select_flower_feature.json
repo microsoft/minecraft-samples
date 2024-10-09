@@ -1,0 +1,14 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:weighted_random_feature": {
+      "description": {
+        "identifier": "example:select_flower_feature"
+      },
+      "features": [
+        [ "example:white_flower_feature", 1 ],
+        [ "example:red_flower_feature", 2 ],
+        [ "example:blue_flower_feature", 1 ],
+        [ "example:yellow_flower_feature", 4 ]
+      ]
+    }
+  }

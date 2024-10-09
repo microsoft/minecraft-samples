@@ -1,0 +1,21 @@
+{
+  "format_version": "1.19.30",
+  "example:blue_vines": {
+    "textures": "blue_vines"
+  },
+  "example:granite_malachite_ore": {
+    "textures": "granite_malachite_ore"
+  },
+  "example:andesite_malachite_ore": {
+    "textures": "andesite_malachite_ore"
+  },
+  "example:malachite_ore": {
+    "textures": "malachite_ore"
+  },
+  "example:oil_block": {
+    "textures": "oil_block"
+  },
+  "example:apple_block": {
+    "sound": "stem"
+  }
+}
