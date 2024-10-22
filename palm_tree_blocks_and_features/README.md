@@ -8,9 +8,9 @@ products:
   - minecraft
 ---
 
-# Minecraft Sample Block Project
+# Minecraft Sample Block + Custom Features Project
 
-This sample demonstrates a simple build process and TypeScript compilation for Minecraft. This readme shows how you can use Betas APIs experiment to build out simple gameplay styles. You can use this project as a starter for your own scripting projects.
+This sample demonstrates how to create a new tree type that is distributed throughout the overworld. First, a sample feature shows how to use 6 different blocks to assemble a palm tree. For a video on this, see https://www.youtube.com/watch?v=bCU8UxIZ-U4. Then, we're going to create a set of structures that package together different variants of a palm tree, and use Features to distribute them within a particular feature.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 1. Open a Windows Terminal or PowerShell window and change the working directory to your **custom_blocks** folder:
 
    ```powershell
-   cd c:\projects\culled blocks\
+   cd c:\projects\palm_tree_blocks_and_features\
    ```
 
 1. Use npm to install our tools:
@@ -47,7 +47,7 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 1. When that's done, enter:
 
    ```powershell
-   npm i gulp-cli --global
+   npm run local-deploy
    ```
 
 1. Use this shortcut command to open the project in Visual Studio Code:
@@ -60,10 +60,9 @@ It might also ask you to install the Minecraft Debugger and Blockception's Visua
 
 ### Summary
 
-This sample demonstrates how you can build incrementally more sophisticated blocks, and how you can leverage custom block features and components.
+This sample demonstrates how you can build broader , and how you can leverage custom block features and components.
 
 ## Manifest
 
-- [behavior_packs/custom_blocks](https://github.com/microsoft/minecraft-samples/blob/main/custom_blocks/behavior_packs/custom_blocks): This contains behavior implementations for a set of custom blocks.
-- [resource_packs/custom_blocks](https://github.com/microsoft/minecraft-samples/blob/main/custom_blocks/resource_packs/custom_blocks): This contains resources for a set of custom blocks.
-
+- [palm_tree_blocks](https://github.com/microsoft/minecraft-samples/blob/main/palm_tree_blocks_and_features/palm_tree_blocks): This contains just a set of blocks that implement a palm tree.
+- [palm_tree_blocks_and_features](https://github.com/microsoft/minecraft-samples/blob/main/palm_tree_blocks_and_features/palm_tree_blocks_and_features): This contains both the set of blocks  a set of blocks that implement a palm tree.

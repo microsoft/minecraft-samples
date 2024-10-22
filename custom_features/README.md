@@ -37,6 +37,5 @@ Use `npm run local-deploy` to deploy these features over into Minecraft.
 
 ## Manifest
 
-- [gulpfile.js](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/gulpfile.js): This file contains build instructions for Gulp, for building out TypeScript code.
-- [scripts](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/scripts): This contains all of your TypeScript files, that will be compiled and built into your projects.
-- [behavior_packs](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/behavior_packs): This contains resources and JSON files that define your behavior pack.
+- [basic_orange_ore](https://github.com/microsoft/minecraft-samples/blob/main/custom_features/custom_orange_ore): This contains a simple end to end example of a feature.
+- [example_feature_set](https://github.com/microsoft/minecraft-samples/blob/main/custom_features/example_feature_set): A mega pack of many examples of different features and feature rules.
