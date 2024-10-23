@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Palm Tree",
+    "description": "Palm Tree Resource Pack",
+    "uuid": "e3a39e90-ffc3-4043-dfc4-8c5e9e6015ba",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 0]
+  },
+  "metadata": {
+    "authors": ["Mike"],
+    "generated_with": {
+      "blockbench_block_wizard": ["1.2.2"]
+    }
+  },
+  "modules": [
+    {
+      "description": "Palm Tree",
+      "type": "resources",
+      "uuid": "50d59faa-edc6-99e9-9060-9064879c920a",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "8f65a568-1afc-3c8d-4ef2-0f2682742319",
+      "version": [1, 0, 0]
+    }
+  ]
+}

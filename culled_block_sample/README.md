@@ -8,9 +8,9 @@ products:
   - minecraft
 ---
 
-# Minecraft Add-On Starter Project
+# Minecraft Block Culling Sample Starter Project
 
-This sample demonstrates a simple build process and TypeScript compilation for Minecraft. This readme shows how you can use Betas APIs experiment to build out simple gameplay styles. You can use this project as a starter for your own scripting projects.
+This sample demonstrates new block culling and rendering options for custom blocks.
 
 ## Prerequisites
 
@@ -44,12 +44,6 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
    npm i
    ```
 
-1. When that's done, enter:
-
-   ```powershell
-   npm i gulp-cli --global
-   ```
-
 1. Use this shortcut command to open the project in Visual Studio Code:
 
    ```powershell
@@ -78,5 +72,5 @@ This sample demonstrates how to use block culling on the **tuna_roll** custom bl
 
 ## Manifest
 
-- [gulpfile.js](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/gulpfile.js): This file contains build instructions for Gulp, for building out TypeScript code.
-- [behavior_packs](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/behavior_packs): This contains resources and JSON files that define your behavior pack.
+- [culled_block_behavior_pack](https://github.com/microsoft/minecraft-samples/blob/main/culled_block_sample/culled_block_behavior_pack): This contains behaviors for the custom blocks used in this sample.
+- [culled_block_resource_pack](https://github.com/microsoft/minecraft-samples/blob/main/culled_block_sample/culled_resource_pack): This contains resources and JSON files -- including block culling - that define a resource pack.

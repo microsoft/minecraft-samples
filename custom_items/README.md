@@ -30,10 +30,9 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 ### Summary
 
-
+This a complete example of building multiple different types of items with various different visual representations, in Minecraft.
 
 ## Manifest
 
-- [gulpfile.js](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/gulpfile.js): This file contains build instructions for Gulp, for building out TypeScript code.
-- [scripts](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/scripts): This contains all of your TypeScript files, that will be compiled and built into your projects.
-- [behavior_packs](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/behavior_packs): This contains resources and JSON files that define your behavior pack.
+- [behavior_packs/custom_item](https://github.com/microsoft/minecraft-samples/blob/main/custom_items/behavior_packs/custom_item): This contains behavior implementations for a set of custom items.
+- [resource_packs/custom_item](https://github.com/microsoft/minecraft-samples/blob/main/custom_items/resource_packs/custom_item): This contains resources for a set of custom items.

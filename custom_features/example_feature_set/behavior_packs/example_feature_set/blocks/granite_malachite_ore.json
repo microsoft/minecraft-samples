@@ -1,0 +1,9 @@
+{ 
+  "format_version": "1.19.80", 
+  "minecraft:block": { 
+    "description": { 
+      "identifier": "example:granite_malachite_ore" 
+    }, 
+    "components": {} 
+  } 
+} 

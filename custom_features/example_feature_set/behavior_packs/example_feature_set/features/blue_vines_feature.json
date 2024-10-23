@@ -1,0 +1,17 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:multiface_feature": {
+      "description": {
+        "identifier": "example:blue_vines_feature"
+      },
+      "places_block": "example:blue_vine",
+      "search_range": 64,
+      "can_place_on_floor": true,
+      "can_place_on_ceiling": true,
+      "can_place_on_wall": true,
+      "chance_of_spreading": 0.5,
+      "can_place_on": [
+        "minecraft:stone"
+      ]
+    }
+  }

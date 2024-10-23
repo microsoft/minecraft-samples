@@ -1,0 +1,25 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+      "description": {
+        "identifier": "example:underwater_cave_carver_feature_rules",
+        "places_feature": "example:underwater_cave_carver_feature"
+      },
+      "conditions": {
+        "placement_pass": "pregeneration_pass",
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "overworld"
+          }
+        ]
+      },
+      "distribution": {
+        "iterations": 1,
+        "x": 0,
+        "y": 0,
+        "z": 0
+      }
+    }
+  }

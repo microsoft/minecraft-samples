@@ -1,0 +1,35 @@
+{
+	"format_version": "1.19.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.palm_leave",
+				"texture_width": 64,
+				"texture_height": 64,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 2.5,
+				"visible_bounds_offset": [0, 0.75, 0]
+			},
+			"bones": [
+				{
+					"name": "root",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{
+							"origin": [-8, 4, -8],
+							"size": [16, 1, 16],
+							"uv": {
+								"north": {"uv": [0, 32], "uv_size": [16, 1]},
+								"east": {"uv": [0, 38], "uv_size": [16, 1]},
+								"south": {"uv": [0, 34], "uv_size": [16, 1]},
+								"west": {"uv": [0, 36], "uv_size": [16, 1]},
+								"up": {"uv": [64, 32], "uv_size": [-32, -32]},
+								"down": {"uv": [32, 64], "uv_size": [32, -32]}
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
