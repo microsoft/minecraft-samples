@@ -1,0 +1,20 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "mike:palm_tree_scatter"
+    },
+    "places_feature": "mike:palm_tree_distro",
+    "iterations": 1,
+    "scatter_chance": 10.0,
+    "x": {
+      "distribution": "uniform",
+      "extent": [0, 15]
+    },
+    "y": 0,
+    "z": {
+      "distribution": "uniform",
+      "extent": [0, 15]
+    }
+  }
+}

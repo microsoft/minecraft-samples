@@ -8,8 +8,7 @@
       ["mike:palm_tree_large", 1],
       ["mike:palm_tree_med", 1],
       ["mike:palm_tree_meds", 2],
-      ["mike:palm_tree_small", 2],
-      ["mike:simple_placeholder", 10]
+      ["mike:palm_tree_small", 2]
     ]
   }
 }

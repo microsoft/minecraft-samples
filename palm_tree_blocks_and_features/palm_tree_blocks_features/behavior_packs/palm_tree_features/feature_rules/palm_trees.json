@@ -3,7 +3,7 @@
   "minecraft:feature_rules": {
     "description": {
       "identifier": "mike:palm_trees",
-      "places_feature": "mike:palm_tree_distro"
+      "places_feature": "mike:palm_tree_scatter"
     },
     "conditions": {
       "placement_pass": "surface_pass",
