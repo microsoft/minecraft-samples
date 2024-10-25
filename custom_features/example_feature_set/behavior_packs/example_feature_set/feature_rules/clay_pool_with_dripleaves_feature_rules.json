@@ -1,0 +1,46 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:feature_rules": {
+      "description": {
+        "identifier": "example:clay_pool_with_dripleaves_feature_rules",
+        "places_feature": "example:clay_pool_with_dripleaves_feature"
+      },
+      "conditions": {
+        "placement_pass": "surface_pass",
+        "minecraft:biome_filter": [
+          {
+            "test": "has_biome_tag",
+            "operator": "==",
+            "value": "forest"
+          },
+          {
+            "all_of": [
+              {
+                "test": "has_biome_tag",
+                "operator": "!=",
+                "value": "mutated"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "!=",
+                "value": "jungle"
+              },
+              {
+                "test": "has_biome_tag",
+                "operator": "!=",
+                "value": "rare"
+              }
+            ]
+          }
+        ]
+      },
+      "distribution": {
+        "iterations": 5,
+        "coordinate_eval_order": "zxy",
+        "x": 0,
+        "y": "query.heightmap(variable.worldx, variable.worldz)",
+        "z": 0
+      }
+    }
+  }
+  

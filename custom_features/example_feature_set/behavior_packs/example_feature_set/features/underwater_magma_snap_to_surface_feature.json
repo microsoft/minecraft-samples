@@ -1,0 +1,11 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:snap_to_surface_feature": {
+      "description": {
+        "identifier": "example:underwater_magma_snap_to_surface_feature"
+      },
+      "feature_to_snap":  "example:underwater_magma_feature",
+      "vertical_search_range":  12,
+      "surface": "ceiling"
+    }
+  }

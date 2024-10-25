@@ -1,0 +1,19 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:structure_template_feature": {
+      "description": {
+        "identifier": "example:monument_feature"
+      },
+      "structure_name": "example:monument",
+      "adjustment_radius": 1,
+      "facing_direction": "random",
+      "constraints": {
+        "unburied": {},
+        "block_intersection": {
+          "block_allowlist": [
+            "minecraft:air"
+          ]
+        }
+      }
+    }
+  }

@@ -1,0 +1,29 @@
+{
+    "format_version": "1.16.100",
+    "minecraft:ore_feature": {
+      "description": {
+        "identifier": "example:malachite_ore_feature"
+      },
+    "count": 12,
+    "replace_rules": [
+      {
+        "places_block": "example:malachite_ore",
+        "may_replace": [
+          "minecraft:stone"
+        ]
+      },
+      {
+        "places_block": "example:granite_malachite_ore",
+        "may_replace": [
+          "minecraft:granite"
+        ]
+      },
+      {
+        "places_block": "example:andesite_malachite_ore",
+        "may_replace": [
+          "minecraft:andesite"
+        ]
+      }
+    ]
+    }
+  }

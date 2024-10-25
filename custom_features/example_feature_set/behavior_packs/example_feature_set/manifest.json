@@ -1,0 +1,25 @@
+{
+    "format_version": 2,
+    "header": {
+      "description": "Sample pack of Features & Feature Rules (BP)",
+      "name": "Features Samples",
+      "uuid":"1ceadbc5-c309-4599-8c30-bc1a9f9a41cc",
+      "version": [1, 0, 0],
+      "min_engine_version": [1, 20, 20]
+    },
+    "modules":
+      [
+        {
+          "description": "Features Samples",
+            "type": "data",
+            "uuid": "acfabb80-5f7b-45e3-851a-0d219087730a",
+            "version": [1, 0, 0]
+        }
+      ],
+      "dependencies": [ 
+        { 
+          "uuid": "2a512d59-32a1-4f7c-937d-6dac81b80b90", 
+          "version": [ 1, 0, 0 ] 
+        } 
+      ] 
+  }

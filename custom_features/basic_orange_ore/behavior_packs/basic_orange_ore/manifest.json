@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Orange Ore feature",
+    "description": "Orange Ore feature behavior pack",
+    "uuid": "fd14e97c-4d16-4972-98fb-406b3f92e959",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 30]
+  },
+  "modules": [
+    {
+      "description": "Behavior",
+      "version": [1, 0, 0],
+      "uuid": "fea87117-c456-4c58-97aa-782caf13f2f3",
+      "type": "data"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "f5d98bbc-6934-4ef5-a707-a49c49ba0d89",
+      "version": [1, 0, 0]
+    }
+  ]
+}
