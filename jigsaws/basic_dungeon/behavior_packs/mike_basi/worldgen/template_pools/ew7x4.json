@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:template_pool": {
+    "description": {
+      "identifier": "mike:ew7x4"
+    },
+    "elements": [
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "mike/ewhall",
+          "processors": "mike:stone_brick_replacement"
+        },
+        "weight": 4
+      },
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "mike/21room",
+          "processors": "mike:stone_brick_replacement"
+        },
+        "weight": 1
+      }
+    ],
+    "fallback": "mike:ewcap"
+  }
+}

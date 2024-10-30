@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Basic Jigsaw Dungeon",
+    "description": "Add-On Starter",
+    "uuid": "7fcce301-f48b-4bb8-8fc0-3720d88f4961",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 40]
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "fdf5efd5-aa2a-43c3-8018-1c8dd8e2a59c",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "bf089d3e-4ff6-40a5-aca8-820abd267c62",
+      "version": [1, 0, 0]
+    }
+  ]
+}

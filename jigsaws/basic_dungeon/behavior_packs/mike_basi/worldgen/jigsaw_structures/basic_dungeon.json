@@ -1,0 +1,14 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:jigsaw": {
+    "description": {
+      "identifier": "mike:basic_dungeon"
+    },
+    "step": "surface_structures",
+    "terrain_adaptation": "none",
+    "start_pool": "mike:ns7x4",
+    "max_depth": 12,
+    "start_height": 0,
+    "heightmap_projection": "world_surface"
+  }
+}

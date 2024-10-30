@@ -1,0 +1,45 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:processor_list": {
+    "description": {
+      "identifier": "mike:stone_brick_replacement"
+    },
+    "processors": [
+      {
+        "processor_type": "minecraft:rule",
+        "rules": [
+          {
+            "input_predicate": {
+              "predicate_type": "minecraft:random_block_match",
+              "block": "minecraft:stone_bricks",
+              "probability": 0.2
+            },
+            "output_state": {
+              "name": "minecraft:mossy_stone_bricks"
+            }
+          },
+          {
+            "input_predicate": {
+              "predicate_type": "minecraft:random_block_match",
+              "block": "minecraft:stone_bricks",
+              "probability": 0.2
+            },
+            "output_state": {
+              "name": "minecraft:cracked_stone_bricks"
+            }
+          },
+          {
+            "input_predicate": {
+              "predicate_type": "minecraft:random_block_match",
+              "block": "minecraft:stone_bricks",
+              "probability": 0.1
+            },
+            "output_state": {
+              "name": "minecraft:cobblestone"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
