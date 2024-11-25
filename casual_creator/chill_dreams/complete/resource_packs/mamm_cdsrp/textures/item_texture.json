@@ -5,8 +5,8 @@
     "mamm_cds:journal": {
       "textures": "textures/mamm/cds/journal_ico"
     },
-    "mamm_cds:journal_pen": {
-      "textures": "textures/mamm/cds/journal_pen_ico"
+    "mamm_cds:journal_pencil": {
+      "textures": "textures/mamm/cds/journal_pencil_ico"
     },
     "mamm_cds:dream_turkey": {
       "textures": "textures/mamm/cds/dream_turkey_ico"

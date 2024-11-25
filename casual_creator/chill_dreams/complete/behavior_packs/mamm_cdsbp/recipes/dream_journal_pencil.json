@@ -1,15 +1,14 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.21.20",
   "minecraft:recipe_shaped": {
     "description": {
-      "identifier": "mamm_cds:journal_pen"
+      "identifier": "mamm_cds:journal_pencil"
     },
-
     "tags": ["crafting_table"],
     "pattern": [" # ", " # ", "C.C"],
     "key": {
       "C": {
-        "item": "minecraft:stained_hardened_clay:12"
+        "item": "minecraft:brown_concrete"
       },
       ".": {
         "item": "mamm_cds:dream_essence"
@@ -24,7 +23,7 @@
       }
     ],
     "result": {
-      "item": "mamm_cds:journal_pen"
+      "item": "mamm_cds:journal_pencil"
     }
   }
 }

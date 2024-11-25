@@ -3,6 +3,7 @@
   "minecraft:entity": {
     "description": {
       "identifier": "mamm_cds:dream_turkey",
+      "runtime_identifier": "minecraft:chicken",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false

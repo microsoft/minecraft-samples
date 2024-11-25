@@ -2,18 +2,18 @@
   "format_version": "1.20.30",
   "minecraft:attachable": {
     "description": {
-      "identifier": "mamm_cds:journal",
-      "item": { "mamm_cds:journal": "query.is_owner_identifier_any('minecraft:player')" },
+      "identifier": "mamm_cds:journal_pencil",
+      "item": { "mamm_cds:journal_pencil": "query.is_owner_identifier_any('minecraft:player')" },
       "materials": {
         "default": "entity",
         "enchanted": "entity_alphatest_glint"
       },
       "textures": {
-        "default": "textures/mamm/cds/journal_minecraft",
+        "default": "textures/mamm/cds/journal_pencil",
         "enchanted": "textures/misc/enchanted_item_glint"
       },
       "geometry": {
-        "default": "geometry.mamm_cds.journal"
+        "default": "geometry.mamm_cds.journal_pencil"
       },
       "render_controllers": ["controller.render.item_default"]
     }

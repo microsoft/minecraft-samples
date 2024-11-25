@@ -148,9 +148,9 @@ export default class Dream {
               "Around" +
               (refPoint.title ? " " + refPoint.title : "") +
               " at " +
-              refPoint.location.x +
+              Math.round(refPoint.location.x) +
               ", " +
-              refPoint.location.z,
+              Math.round(refPoint.location.z),
           });
         }
       }

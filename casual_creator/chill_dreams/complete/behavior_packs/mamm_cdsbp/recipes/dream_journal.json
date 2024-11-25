@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.10",
+  "format_version": "1.21.20",
   "minecraft:recipe_shapeless": {
     "description": {
       "identifier": "mamm_cds:journal"

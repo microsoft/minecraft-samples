@@ -350,7 +350,12 @@ exports.default = gulp.series(build, deploy_localmc);
 exports.clean = gulp.series(clean_build, clean_localmc);
 exports.watch = gulp.series(build, deploy_localmc, watch);
 exports.serve = gulp.series(build, deploy_localmc, startServer, serve);
-exports.package = gulp.series(build, gulp.parallel(create_bp_mcpack, create_rp_mcpack), create_mcaddon, create_source_pack);
+exports.package = gulp.series(
+  build,
+  gulp.parallel(create_bp_mcpack, create_rp_mcpack),
+  create_mcaddon,
+  create_source_pack
+);
 exports.updateworld = gulp.series(
   clean_localmc_world_backup,
   backup_localmc_world,
