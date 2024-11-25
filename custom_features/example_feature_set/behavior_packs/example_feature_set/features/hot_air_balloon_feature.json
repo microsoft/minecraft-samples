@@ -1,0 +1,19 @@
+{
+    "format_version": "1.13.0",
+    "minecraft:structure_template_feature": {
+      "description": {
+        "identifier": "example:hot_air_balloon_feature"
+      },
+      "structure_name": "example:hot_air_balloon",
+      "adjustment_radius": 8,
+      "facing_direction": "random",
+      "constraints": {
+        "unburied": {},
+        "block_intersection": {
+          "block_allowlist": [
+            "minecraft:air"
+          ]
+        }
+      }
+    }
+  }

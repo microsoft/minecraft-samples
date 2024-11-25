@@ -64,6 +64,6 @@ This sample demonstrates how you can build incrementally more sophisticated bloc
 
 ## Manifest
 
-- [gulpfile.js](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/gulpfile.js): This file contains build instructions for Gulp, for building out TypeScript code.
-- [scripts](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/scripts): This contains all of your TypeScript files, that will be compiled and built into your projects.
-- [behavior_packs](https://github.com/microsoft/minecraft-scripting-samples/blob/main/ts-starter/behavior_packs): This contains resources and JSON files that define your behavior pack.
+- [behavior_packs/custom_blocks](https://github.com/microsoft/minecraft-samples/blob/main/custom_blocks/behavior_packs/custom_blocks): This contains behavior implementations for a set of custom blocks.
+- [resource_packs/custom_blocks](https://github.com/microsoft/minecraft-samples/blob/main/custom_blocks/resource_packs/custom_blocks): This contains resources for a set of custom blocks.
+

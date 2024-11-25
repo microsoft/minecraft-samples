@@ -1,0 +1,11 @@
+{
+    "format_version": "1.13.0",
+      "minecraft:cave_carver_feature": {
+        "description": {
+          "identifier": "example:underground_cave_carver_feature"
+        },
+        "fill_with": "minecraft:air",
+        "width_modifier": 0.0,
+            "skip_carve_chance": 15
+      }
+    }

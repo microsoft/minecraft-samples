@@ -1,0 +1,14 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:weighted_random_feature": {
+    "description": {
+      "identifier": "mike:palm_tree_distro"
+    },
+    "features": [
+      ["mike:palm_tree_large", 1],
+      ["mike:palm_tree_med", 1],
+      ["mike:palm_tree_meds", 2],
+      ["mike:palm_tree_small", 2]
+    ]
+  }
+}
