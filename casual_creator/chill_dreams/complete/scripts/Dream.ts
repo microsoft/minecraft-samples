@@ -77,15 +77,15 @@ export default class Dream {
   }
 
   tick() {
-    if (this.#activeTrack === undefined) {
+    if (this.#activeTrack === undefined && this.#referencePoints && this.#referencePoints.length > 0) {
       this.generateNextDreamPart();
     }
 
     if (this.#activeTrack) {
       this.#activeTrack.tick();
+      this.#trackCount++;
     }
 
-    this.#trackCount++;
     const player = Utilities.getPlayerById(this.#playerId);
 
     if (player) {
@@ -107,8 +107,10 @@ export default class Dream {
       }
     }
 
-    if (this.#trackCount > (this.#activeTrack ? this.#activeTrack.tickLength : 400)) {
-      this.#activeTrack = undefined;
+    if (this.#activeTrack) {
+      if (this.#trackCount > (this.#activeTrack ? this.#activeTrack.tickLength : 400)) {
+        this.#activeTrack = undefined;
+      }
     }
   }
 
@@ -207,13 +209,15 @@ export default class Dream {
     const nextIndex = Math.floor(Math.random() * this.#referencePoints.length);
     const nextRef = this.#referencePoints[nextIndex];
 
-    const dreamPart = new DreamTrack(this, nextRef);
+    if (nextRef) {
+      const dreamPart = new DreamTrack(this, nextRef);
 
-    this.#trackCount = 0;
-    dreamPart.tickLength = Math.floor(Math.random() * 2000) + 400;
+      this.#trackCount = 0;
+      dreamPart.tickLength = Math.floor(Math.random() * 2000) + 400;
 
-    this.tracks.push(dreamPart);
+      this.tracks.push(dreamPart);
 
-    this.#activeTrack = dreamPart;
+      this.#activeTrack = dreamPart;
+    }
   }
 }
