@@ -1,0 +1,39 @@
+{
+  "format_version": "1.8.0",
+  "animations": {
+    "animation.dream_turkey.baby_transform": {
+      "loop": true,
+      "bones": {
+        "head": {
+          "scale": 2.0
+        }
+      }
+    },
+    "animation.dream_turkey.general": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": ["-this", 0.0, 0.0]
+        },
+        "wing0": {
+          "rotation": [0.0, 0.0, "variable.wing_flap - this"]
+        },
+        "wing1": {
+          "rotation": [0.0, 0.0, "-variable.wing_flap - this"]
+        }
+      }
+    },
+    "animation.dream_turkey.move": {
+      "anim_time_update": "query.modified_distance_moved",
+      "loop": true,
+      "bones": {
+        "leg0": {
+          "rotation": ["math.cos(query.anim_time * 38.17) *  80.0", 0.0, 0.0]
+        },
+        "leg1": {
+          "rotation": ["math.cos(query.anim_time * 38.17) * -80.0", 0.0, 0.0]
+        }
+      }
+    }
+  }
+}

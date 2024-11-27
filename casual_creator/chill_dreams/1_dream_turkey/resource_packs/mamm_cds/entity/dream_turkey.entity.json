@@ -15,10 +15,10 @@
         "default": "geometry.mamm_cds.dream_turkey"
       },
       "animations": {
-        "move": "animation.chicken.move",
-        "general": "animation.chicken.general",
+        "move": "animation.dream_turkey.move",
+        "general": "animation.dream_turkey.general",
         "look_at_target": "animation.common.look_at_target",
-        "baby_transform": "animation.chicken.baby_transform"
+        "baby_transform": "animation.dream_turkey.baby_transform"
       },
       "scripts": {
         "animate": [
