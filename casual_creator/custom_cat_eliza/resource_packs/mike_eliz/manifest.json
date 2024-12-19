@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "eliza",
+    "description": "Cat",
+    "uuid": "5a264e74-1568-4888-8ced-5f2fd3e73f65",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      50
+    ]
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "2eaf754f-8325-4a08-918e-0517bc9e04d3",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "2064b7de-dacc-4e60-b0fd-5c651266f04d",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

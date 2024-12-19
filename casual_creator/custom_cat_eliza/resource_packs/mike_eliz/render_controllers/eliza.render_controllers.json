@@ -1,0 +1,23 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.eliza": {
+      "arrays": {
+        "textures": {
+          "Array.skins": [
+            "Texture.siamese"
+          ]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [
+        {
+          "*": "Material.default"
+        }
+      ],
+      "textures": [
+        "Texture.siamese"
+      ]
+    }
+  }
+}

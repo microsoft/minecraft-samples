@@ -1,0 +1,68 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "eliza",
+    "description": "Cat",
+    "uuid": "2064b7de-dacc-4e60-b0fd-5c651266f04d",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      50
+    ]
+  },
+  "modules": [
+    {
+      "description": "Behavior",
+      "version": [
+        1,
+        0,
+        0
+      ],
+      "uuid": "b8a0bff6-a68a-497d-92c2-ee2e6fac06c3",
+      "type": "data"
+    },
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "21195fb1-43cc-4ff5-a997-eaf15e9dbe8a",
+      "version": [
+        0,
+        0,
+        1
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "5a264e74-1568-4888-8ced-5f2fd3e73f65",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": [
+        1,
+        16,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": [
+        1,
+        3,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "mike_eliz:eliza",
+      "materials": {
+        "default": "cat"
+      },
+      "textures": {
+        "siamese": "textures/entity/eliza/siamesecat"
+      },
+      "geometry": {
+        "default": "geometry.eliza"
+      },
+      "animations": {
+        "sneak": "animation.eliza.sneak",
+        "walk": "animation.eliza.walk",
+        "sprint": "animation.eliza.sprint",
+        "sit": "animation.eliza.sit",
+        "look_at_target": "animation.common.look_at_target",
+        "baby_transform": "animation.eliza.baby_transform",
+        "lie_down": "animation.eliza.lie_down"
+      },
+      "animation_controllers": [
+        {
+          "look_at_target": "controller.animation.eliza.look_at_target"
+        },
+        {
+          "move": "controller.animation.eliza.move"
+        },
+        {
+          "baby": "controller.animation.eliza.baby"
+        }
+      ],
+      "render_controllers": [
+        "controller.render.eliza"
+      ],
+      "spawn_egg": {
+        "texture": "spawn_egg",
+        "texture_index": 53
+      }
+    }
+  }
+}
