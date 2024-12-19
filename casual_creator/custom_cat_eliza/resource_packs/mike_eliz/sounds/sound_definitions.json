@@ -1,0 +1,16 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "meow": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "is3D": false,
+          "name": "sounds/meow",
+          "volume": 1,
+          "weight": 10
+        }
+      ]
+    }
+  }
+}

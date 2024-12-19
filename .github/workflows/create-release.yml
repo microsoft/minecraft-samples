@@ -40,10 +40,10 @@ jobs:
           CI: ""
         run: |
           pushd "addon_starter/complete"
-          npm run all
+          npm run mcaddon
           popd
           pushd "casual_creator/chill_dreams/complete"
-          npm run all
+          npm run mcaddon
           popd
 
       - name: Get Package Version
@@ -70,19 +70,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
-          asset_path: ./addon_starter/complete/build/packages/addon_starter_complete.mcaddon
+          asset_path: ./addon_starter/complete/dist/packages/aop_mobs.mcaddon
           asset_name: addon_starter_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
-          asset_content_type: application/zip
-
-      - name: Upload addon_starter_complete_source_v.zip to node_module release
-        id: upload_addon_starter_complete_source_v
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
-          asset_path: ./addon_starter/complete/build/packages/addon_starter_complete_source.zip
-          asset_name: addon_starter_complete_source_v${{ steps.get-package-version.outputs.version }}.zip
           asset_content_type: application/zip
           
       - name: Upload chill_dreams_complete_v.mcaddon to node_module release
@@ -92,21 +81,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
-          asset_path: ./casual_creator/chill_dreams/complete/build/packages/chill_dreams_complete.mcaddon
+          asset_path: ./casual_creator/chill_dreams/complete/dist/packages/mamm_cds.mcaddon
           asset_name: chill_dreams_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
           asset_content_type: application/zip
-  
-      - name: Upload chill_dreams_complete_source_v.zip to node_module release
-        id: chill_dreams_complete_source_v
-        uses: actions/upload-release-asset@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
-          asset_path: ./casual_creator/chill_dreams/complete/build/packages/chill_dreams_complete_source.zip
-          asset_name: chill_dreams_complete_source_v${{ steps.get-package-version.outputs.version }}.zip
-          asset_content_type: application/zip
-        
+          
       - name: Commit version changes
         run: |
           VERSION=${{ toJSON(steps.version.outputs.result) }}
