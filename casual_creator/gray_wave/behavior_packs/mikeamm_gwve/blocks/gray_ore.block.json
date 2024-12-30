@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:block": {
+    "description": {
+      "identifier": "mikeamm_gwve:gray_ore",
+      "menu_category": {
+        "category": "nature"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.4
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 96
+      },
+      "minecraft:geometry": "geometry.gray_ore",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "gray_ore",
+          "render_method": "alpha_test",
+          "face_dimming": false
+        }
+      },
+      "minecraft:light_emission": 15,
+      "minecraft:map_color": "#ffcd17"
+    }
+  }
+}

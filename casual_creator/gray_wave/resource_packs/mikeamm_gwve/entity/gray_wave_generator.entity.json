@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "mikeamm_gwve:gray_wave_generator",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "shulker"
+      },
+      "textures": {
+        "black": "textures/entity/gray_wave_generator/black"
+      },
+      "geometry": {
+        "default": "geometry.gray_wave_generator"
+      },
+      "spawn_egg": {
+        "base_color": "#ed604f",
+        "overlay_color": "#6b271b"
+      },
+      "animations": {
+        "look_at_target": "animation.common.look_at_target",
+        "active": "animation.gray_wave_generator.active",
+        "inactive": "animation.gray_wave_generator.inactive",
+        "activestate": "controller.animation.gray_wave_generator.activestate"
+      },
+      "scripts": {
+        "animate": ["activestate", "look_at_target"]
+      },
+      "render_controllers": ["controller.render.gray_wave_generator"]
+    }
+  }
+}

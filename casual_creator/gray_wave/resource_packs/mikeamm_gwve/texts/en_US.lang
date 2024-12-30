@@ -1,0 +1,4 @@
+entity.mikeamm_gwve:crossbow_turret.name=Crossbow Turret
+item.spawn_egg.entity.mikeamm_gwve:crossbow_turret.name=Spawn Crossbow Turret
+tile.mikeamm_gwve:gray_ore.name=Gray Ore
+item.mikeamm_gwve:crossbow_turret_kit=Crossbow Turret Kit

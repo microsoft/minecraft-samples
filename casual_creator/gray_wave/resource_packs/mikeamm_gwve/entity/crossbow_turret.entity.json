@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "mikeamm_gwve:crossbow_turret",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "shulker"
+      },
+      "textures": {
+        "black": "textures/entity/crossbow_turret/black"
+      },
+      "geometry": {
+        "default": "geometry.crossbow_turret"
+      },
+      "spawn_egg": {
+        "base_color": "#ed604f",
+        "overlay_color": "#6b271b"
+      },
+      "animations": {
+        "look_at_target": "animation.common.look_at_target",
+        "active": "animation.crossbow_turret.active",
+        "inactive": "animation.crossbow_turret.inactive",
+        "activestate": "controller.animation.crossbow_turret.activestate"
+      },
+      "scripts": {
+        "animate": ["activestate", "look_at_target"]
+      },
+      "render_controllers": ["controller.render.crossbow_turret"]
+    }
+  }
+}
