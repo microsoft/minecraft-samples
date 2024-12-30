@@ -19,9 +19,9 @@
       },
       "animations": {
         "look_at_target": "animation.common.look_at_target",
-        "active": "animation.gray_wave_generator.active",
-        "inactive": "animation.gray_wave_generator.inactive",
-        "activestate": "controller.animation.gray_wave_generator.activestate"
+        "active": "animation.mikeamm_gwve_gray_wave_generator.active",
+        "inactive": "animation.mikeamm_gwve_gray_wave_generator.inactive",
+        "activestate": "controller.animation.mikeamm_gwve_gray_wave_generator.activestate"
       },
       "scripts": {
         "animate": ["activestate", "look_at_target"]

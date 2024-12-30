@@ -9,9 +9,7 @@
     },
     "components": {
       "minecraft:max_stack_size": 1,
-      "minecraft:icon": {
-        "texture": "crossbow_turret_kit"
-      },
+      "minecraft:icon": "crossbow_turret_kit",
       "minecraft:entity_placer": {
         "entity": "mikeamm_gwve:crossbow_turret"
       },

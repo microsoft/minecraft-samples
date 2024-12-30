@@ -29,6 +29,5 @@
     "gametests",
     "mcaddon"
   ],
-  "editor.tabSize": 2,
-  "eslint.experimental.useFlatConfig": true
+  "editor.tabSize": 2
 }

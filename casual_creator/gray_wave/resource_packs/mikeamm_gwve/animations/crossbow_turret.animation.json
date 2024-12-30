@@ -1,21 +1,21 @@
 {
   "format_version": "1.8.0",
   "animations": {
-    "animation.crossbow_turret.active": {
+    "animation.mikeamm_gwve_crossbow_turret.active": {
       "bones": {
         "indicator": {
           "scale": 1.0
         }
       }
     },
-    "animation.crossbow_turret.inactive": {
+    "animation.mikeamm_gwve_crossbow_turret.inactive": {
       "bones": {
         "indicator": {
           "scale": 0.0
         }
       }
     },
-    "animation.crossbow_turret.facing": {
+    "animation.mikeamm_gwve_crossbow_turret.facing": {
       "anim_time_update": "query.modified_distance_moved",
       "loop": true,
       "bones": {
@@ -26,7 +26,7 @@
         }
       }
     },
-    "animation.crossbow_turret.move": {
+    "animation.mikeamm_gwve_crossbow_turret.move": {
       "anim_time_update": "query.modified_distance_moved",
       "loop": true,
       "bones": {

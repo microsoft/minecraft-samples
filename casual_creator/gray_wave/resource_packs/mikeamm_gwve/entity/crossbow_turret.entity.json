@@ -19,9 +19,9 @@
       },
       "animations": {
         "look_at_target": "animation.common.look_at_target",
-        "active": "animation.crossbow_turret.active",
-        "inactive": "animation.crossbow_turret.inactive",
-        "activestate": "controller.animation.crossbow_turret.activestate"
+        "active": "animation.mikeamm_gwve_crossbow_turret.active",
+        "inactive": "animation.mikeamm_gwve_crossbow_turret.inactive",
+        "activestate": "controller.animation.mikeamm_gwve_crossbow_turret.activestate"
       },
       "scripts": {
         "animate": ["activestate", "look_at_target"]

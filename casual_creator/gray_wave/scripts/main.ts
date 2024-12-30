@@ -9,7 +9,7 @@ function mainTick() {
 
   if (tickIndex === 100) {
     g_gwmn.init();
-    world.sendMessage("Initialized graywave.");
+    world.sendMessage("Initialized gray wave machines.");
   } else if (tickIndex > 100) {
     g_gwmn.tick(tickIndex);
   }

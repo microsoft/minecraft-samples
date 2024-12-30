@@ -1,8 +1,8 @@
 {
   "format_version": 2,
   "header": {
-    "name": "gray_wave",
-    "description": "Gray wave add-on",
+    "name": "Gray Wave Machines",
+    "description": "Machines for base defense. But be wary of the gray wave seeking hordes!",
     "uuid": "ceeaa134-b4b8-43fc-8f2a-5de40f7da6cb",
     "version": [1, 0, 0],
     "min_engine_version": [1, 21, 50]

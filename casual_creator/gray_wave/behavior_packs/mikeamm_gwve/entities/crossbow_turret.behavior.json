@@ -48,7 +48,7 @@
         "on_death": "query.last_hit_by_player ? 5 : 0"
       },
       "minecraft:type_family": {
-        "family": ["graywave", "player", "graywave_consumer"]
+        "family": ["gray_wave", "player", "gray_wave_consumer"]
       },
       "minecraft:breathable": {
         "total_supply": 15,

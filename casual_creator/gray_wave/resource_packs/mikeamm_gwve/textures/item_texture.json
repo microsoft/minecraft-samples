@@ -1,7 +1,7 @@
 {
-	"texture_data": {
-		"crossbow_turret_kit": {
-			"textures": "textures/items/crossbow_turret_kit.png"
-		}
-	}
+  "texture_data": {
+    "crossbow_turret_kit": {
+      "textures": "textures/items/crossbow_turret_kit.png"
+    }
+  }
 }

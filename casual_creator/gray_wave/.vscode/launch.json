@@ -6,7 +6,7 @@
       "port": 19144,
       "mode": "listen",
       "name": "Debug with Minecraft",
-      "preLaunchTask": "build",
+      "preLaunchTask": "buildandeploy",
       "sourceMapRoot": "${workspaceFolder}/dist/debug/",
       "generatedSourceRoot": "${workspaceFolder}/dist/scripts/"
     }

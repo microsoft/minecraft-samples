@@ -26,10 +26,10 @@ export default class GrayWaveManager {
     if (playerIndexToProcess < 20) {
       const players = world.getAllPlayers();
 
-      if (players.length - 1 <= playerIndexToProcess) {
+      if (playerIndexToProcess < players.length) {
         const player = players[playerIndexToProcess];
 
-        this.processGraywaveItemsAroundPlayer(player);
+        this.processGrayWaveItemsAroundPlayer(player);
       }
     }
   }
@@ -40,17 +40,19 @@ export default class GrayWaveManager {
     }
   }
 
-  processGraywaveItemsAroundPlayer(player: Player) {
+  processGrayWaveItemsAroundPlayer(player: Player) {
     const graywaveItems = player.dimension.getEntities({
       location: player.location,
-      families: ["graywave"],
+      families: ["gray_wave"],
       maxDistance: 50,
     });
 
     for (const entity of graywaveItems) {
       const typeId = entity.typeId;
 
-      if (typeId === "mikeamm_gwve:crossbow_turret") {
+      const isConsumer = GrayWaveManager.isGrayWaveConsumer(entity);
+
+      if (isConsumer) {
         const generators = player.dimension.getEntities({
           location: player.location,
           type: "mikeamm_gwve:gray_wave_generator",
@@ -60,21 +62,33 @@ export default class GrayWaveManager {
         let foundGen = false;
 
         for (const gen of generators) {
-          foundGen = true;
+          foundGen = true; // add a more sophisticated line of sight calculator, but for now, if we find a generator in range, let's support it
           break;
+        }
+
+        const grayWaveState = entity.getProperty("mikeamm_gwve:state");
+
+        if (grayWaveState === "inactive" && foundGen) {
+          this.log("Gray wave generator is close. Activating " + entity.id);
+
+          entity.triggerEvent("mikeamm_gwve:activate");
+        } else if (grayWaveState === "active" && !foundGen) {
+          this.log("No nearby gray wave generator. Deactivating " + entity.id);
+
+          entity.triggerEvent("mikeamm_gwve:deactivate");
         }
       }
     }
   }
 
-  static isGraywaveConsumer(entity: Entity) {
+  static isGrayWaveConsumer(entity: Entity) {
     const typeFamilies = entity.getComponent("minecraft:type_family") as EntityTypeFamilyComponent;
 
     if (!typeFamilies) {
       return false;
     }
 
-    return typeFamilies.hasTypeFamily("graywave_consumer");
+    return typeFamilies.hasTypeFamily("gray_wave_consumer");
   }
 
   handleItemUse(evt: ItemUseAfterEvent) {

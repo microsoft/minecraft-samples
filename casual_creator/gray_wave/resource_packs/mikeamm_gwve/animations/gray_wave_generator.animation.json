@@ -1,14 +1,14 @@
 {
   "format_version": "1.8.0",
   "animations": {
-    "animation.gray_wave_generator.active": {
+    "animation.mikeamm_gwve_gray_wave_generator.active": {
       "bones": {
         "indicator": {
           "scale": 1.0
         }
       }
     },
-    "animation.gray_wave_generator.inactive": {
+    "animation.mikeamm_gwve_gray_wave_generator.inactive": {
       "bones": {
         "indicator": {
           "scale": 0.0

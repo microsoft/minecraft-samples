@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animation_controllers": {
-    "controller.animation.crossbow_turret.activestate": {
+    "controller.animation.mikeamm_gwve_crossbow_turret.activestate": {
       "initial_state": "default",
       "states": {
         "default": {
