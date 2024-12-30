@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "mikeamm_gwve:fabricator"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["I.I", "#.#", "I.I"],
+    "key": {
+      "#": {
+        "item": "minecraft:stone"
+      },
+      ".": {
+        "item": "mikeamm_gwve:gray_ore"
+      },
+      "I": {
+        "item": "minecraft:stick"
+      }
+    },
+    "unlock": [
+      {
+        "item": "mikeamm_gwve:gray_ore"
+      }
+    ],
+    "result": {
+      "item": "mikeamm_gwve:fabricator"
+    }
+  }
+}

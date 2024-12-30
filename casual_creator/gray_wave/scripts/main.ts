@@ -11,7 +11,11 @@ function mainTick() {
     g_gwmn.init();
     world.sendMessage("Initialized gray wave machines.");
   } else if (tickIndex > 100) {
-    g_gwmn.tick(tickIndex);
+    try {
+      g_gwmn.tick(tickIndex);
+    } catch (e) {
+      console.warn(e);
+    }
   }
 
   system.run(mainTick);

@@ -2,16 +2,16 @@
   "format_version": "1.10.0",
   "minecraft:client_entity": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret",
+      "identifier": "mikeamm_gwve:gray_wave",
       "min_engine_version": "1.8.0",
       "materials": {
         "default": "shulker"
       },
       "textures": {
-        "black": "textures/mikeamm/gray_wave/entity/crossbow_turret/black"
+        "black": "textures/mikeamm/gray_wave/entity/gray_wave/black"
       },
       "geometry": {
-        "default": "geometry.mikeamm_gwve_crossbow_turret"
+        "default": "geometry.mikeamm_gwve_gray_wave"
       },
       "spawn_egg": {
         "base_color": "#ed604f",
@@ -19,14 +19,14 @@
       },
       "animations": {
         "look_at_target": "animation.common.look_at_target",
-        "active": "animation.mikeamm_gwve_crossbow_turret.active",
-        "inactive": "animation.mikeamm_gwve_crossbow_turret.inactive",
-        "activestate": "controller.animation.mikeamm_gwve_crossbow_turret.activestate"
+        "active": "animation.mikeamm_gwve_gray_wave.active",
+        "inactive": "animation.mikeamm_gwve_gray_wave.inactive",
+        "activestate": "controller.animation.mikeamm_gwve_gray_wave.activestate"
       },
       "scripts": {
         "animate": ["activestate", "look_at_target"]
       },
-      "render_controllers": ["controller.render.mikeamm_gwve_crossbow_turret"]
+      "render_controllers": ["controller.render.mikeamm_gwve_gray_wave_generator"]
     }
   }
 }

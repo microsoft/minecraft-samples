@@ -1,7 +1,10 @@
 {
   "texture_data": {
     "crossbow_turret_kit": {
-      "textures": "textures/items/crossbow_turret_kit.png"
+      "textures": "textures/mikeamm/gray_wave/items/crossbow_turret_kit.png"
+    },
+    "gray_wave_generator_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/gray_wave_generator_kit.png"
     }
   }
 }

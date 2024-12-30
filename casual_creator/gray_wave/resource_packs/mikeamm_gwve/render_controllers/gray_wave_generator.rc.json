@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "render_controllers": {
-    "controller.render.gray_wave_generator": {
+    "controller.render.mikeamm_gwve_gray_wave_generator": {
       "arrays": {
         "textures": {
           "Array.variants": ["Texture.black"]

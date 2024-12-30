@@ -3,7 +3,7 @@
   "minecraft:geometry": [
     {
       "description": {
-        "identifier": "geometry.gray_wave_generator",
+        "identifier": "geometry.mikeamm_gwve_gray_wave_generator",
         "texture_width": 128,
         "texture_height": 128,
         "visible_bounds_width": 4,

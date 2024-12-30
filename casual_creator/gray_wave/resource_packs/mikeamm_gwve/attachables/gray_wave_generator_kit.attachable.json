@@ -2,22 +2,22 @@
   "format_version": "1.10.0",
   "minecraft:attachable": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret_kit",
+      "identifier": "mikeamm_gwve:gray_wave_generator_kit",
       "render_controllers": ["controller.render.item_default"],
       "materials": {
         "default": "entity_alphatest",
         "enchanted": "entity_alphatest_glint"
       },
       "textures": {
-        "default": "textures/mikeamm/gray_wave/attachable/crossbow_turret_kit",
+        "default": "textures/mikeamm/gray_wave/attachable/gray_wave_generator_kit",
         "enchanted": "textures/misc/enchanted_item_glint"
       },
       "geometry": {
-        "default": "geometry.mikeamm_gwve_crossbow_turret_kit"
+        "default": "geometry.mikeamm_gwve_gray_wave_generator_kit"
       },
       "animations": {
-        "first_person_hold": "animation.mikeamm_gwve_crossbow_turret_kit.first_person_hold",
-        "third_person_hold": "animation.mikeamm_gwve_crossbow_turret_kit.third_person_hold"
+        "first_person_hold": "animation.mikeamm_gwve_gray_wave_generator_kit.first_person_hold",
+        "third_person_hold": "animation.mikeamm_gwve_gray_wave_generator_kit.third_person_hold"
       },
       "scripts": {
         "animate": [

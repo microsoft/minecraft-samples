@@ -8,10 +8,10 @@
         "default": "shulker"
       },
       "textures": {
-        "black": "textures/entity/gray_wave_generator/black"
+        "black": "textures/mikeamm/gray_wave/entity/gray_wave_generator/black"
       },
       "geometry": {
-        "default": "geometry.gray_wave_generator"
+        "default": "geometry.mikeamm_gwve_gray_wave_generator"
       },
       "spawn_egg": {
         "base_color": "#ed604f",
@@ -26,7 +26,7 @@
       "scripts": {
         "animate": ["activestate", "look_at_target"]
       },
-      "render_controllers": ["controller.render.gray_wave_generator"]
+      "render_controllers": ["controller.render.mikeamm_gwve_gray_wave_generator"]
     }
   }
 }

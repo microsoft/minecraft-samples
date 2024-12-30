@@ -16,11 +16,11 @@
       "minecraft:destructible_by_explosion": {
         "explosion_resistance": 96
       },
-      "minecraft:loot": "loot_tables/mikeamm_gwve/gray_ore.loot.json",
-      "minecraft:geometry": "geometry.gray_ore",
+      "minecraft:loot": "loot_tables/mikeamm/gray_wave/gray_ore.loot.json",
+      "minecraft:geometry": "geometry.mikeamm_gwve_gray_ore",
       "minecraft:material_instances": {
         "*": {
-          "texture": "gray_ore",
+          "texture": "mikeamm_gwve_gray_ore",
           "render_method": "alpha_test",
           "face_dimming": false
         }

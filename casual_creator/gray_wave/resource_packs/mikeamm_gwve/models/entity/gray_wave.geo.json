@@ -1,0 +1,30 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.mikeamm_gwve_gray_wave",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 4,
+				"visible_bounds_height": 4,
+				"visible_bounds_offset": [0, 1, 0]
+			},
+			"bones": [
+				{
+					"name": "base",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "foundation",
+					"parent": "base",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-3, 14, -5.5], "size": [0.5, 0.5, 12], "uv": [8, 81]},
+						{"origin": [4, 14, -5.5], "size": [0.5, 0.5, 12], "uv": [8, 81]}
+					]
+				}
+			]
+		}
+	]
+}

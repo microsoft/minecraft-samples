@@ -2,7 +2,7 @@
   "format_version": "1.16.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret",
+      "identifier": "mikeamm_gwve:gray_wave",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false,
@@ -48,7 +48,7 @@
         "on_death": "query.last_hit_by_player ? 5 : 0"
       },
       "minecraft:type_family": {
-        "family": ["gray_wave", "player", "gray_wave_consumer"]
+        "family": ["gray_wave", "player"]
       },
       "minecraft:breathable": {
         "total_supply": 15,
@@ -63,8 +63,8 @@
         }
       },
       "minecraft:health": {
-        "value": 30,
-        "max": 30
+        "value": 1,
+        "max": 1
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -85,7 +85,7 @@
         "max": 0
       },
       "minecraft:loot": {
-        "table": "loot_tables/mikeamm/gray_wave/crossbow_turret.loot.json"
+        "table": "loot_tables/entities/shulker.json"
       },
       "minecraft:shooter": {
         "def": "minecraft:arrow"

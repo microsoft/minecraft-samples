@@ -3,7 +3,7 @@
   "minecraft:geometry": [
     {
       "description": {
-        "identifier": "geometry.mikeamm_gwve_crossbow_turret_kit",
+        "identifier": "geometry.mikeamm_gwve_gray_wave_generator_kit",
         "texture_width": 32,
         "texture_height": 32,
         "visible_bounds_width": 2,

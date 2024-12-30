@@ -85,7 +85,7 @@
         "max": 0
       },
       "minecraft:loot": {
-        "table": "loot_tables/entities/shulker.json"
+        "table": "loot_tables/mikeamm/gray_wave/gray_wave_generator.loot.json"
       },
       "minecraft:shooter": {
         "def": "minecraft:arrow"

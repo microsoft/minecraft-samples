@@ -1,65 +1,87 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.crossbow_turret",
-				"texture_width": 96,
-				"texture_height": 96,
-				"visible_bounds_width": 3,
-				"visible_bounds_height": 4,
-				"visible_bounds_offset": [0, 1, 0]
-			},
-			"bones": [
-				{
-					"name": "head",
-					"pivot": [0, 0, 0],
-					"cubes": [
-						{"origin": [-0.6, 21, -7.9], "size": [1, 1, 14], "uv": [1, 66]},
-						{"origin": [-1.5, 20.95, -7.9], "size": [1, 1, 0.5], "uv": [2, 8]},
-						{"origin": [0.4, 20.95, -7.9], "size": [1, 1, 0.5], "uv": [0, 8]},
-						{"origin": [-4.3, 20.95, -7.74], "size": [3, 1, 0.5], "pivot": [-1.7, 21.7, -7.4], "rotation": [0, 30, 0], "uv": [2, 75]},
-						{"origin": [-6.65, 20.95, -6.35], "size": [3, 1, 0.5], "pivot": [-4.05, 21.7, -5.95], "rotation": [0, 60, 0], "uv": [0, 9]},
-						{"origin": [0.9, 20.95, -6.64], "size": [3, 1, 0.5], "pivot": [3.5, 21.7, -6.3], "rotation": [0, -30, 0], "uv": [0, 11]},
-						{"origin": [2.4, 20.95, -4.35], "size": [3, 1, 0.5], "pivot": [5, 21.7, -3.95], "rotation": [0, -60, 0], "uv": [0, 13]},
-						{"origin": [0, 22, -7.9], "size": [0.1, 0.1, 14], "uv": [-6, -11]},
-						{"origin": [-0.2, 22, -7.9], "size": [0.1, 0.1, 14], "uv": [-8, -2]}
-					]
-				},
-				{
-					"name": "base",
-					"pivot": [0, 0, 0]
-				},
-				{
-					"name": "foundation",
-					"parent": "base",
-					"pivot": [0, 0, 0],
-					"cubes": [
-						{"origin": [-8, -5, -8], "size": [16, 19, 16], "uv": [0, 0]},
-						{"origin": [-7, 14, -7], "size": [14, 2, 14], "uv": [0, 35]},
-						{"origin": [-6, 16, -6], "size": [12, 2, 12], "uv": [0, 52]}
-					]
-				},
-				{
-					"name": "joint",
-					"parent": "base",
-					"pivot": [0, 9, 0],
-					"cubes": [
-						{"origin": [-2, 18, -0.9], "size": [4, 2, 2], "uv": [42, 35]},
-						{"origin": [-1, 18, -1.9], "size": [2, 2, 1], "uv": [0, 42]},
-						{"origin": [-1, 18, 1.1], "size": [2, 2, 1], "uv": [0, 39]},
-						{"origin": [-1, 20, -0.9], "size": [2, 1, 2], "uv": [0, 35]}
-					]
-				},
-				{
-					"name": "indicator",
-					"parent": "base",
-					"pivot": [0, 0, 0],
-					"cubes": [
-						{"origin": [6, 14, -7.9], "size": [2, 6, 2], "uv": [0, 0]}
-					]
-				}
-			]
-		}
-	]
+  "format_version": "1.12.0",
+  "minecraft:geometry": [
+    {
+      "description": {
+        "identifier": "geometry.mikeamm_gwve_crossbow_turret",
+        "texture_width": 96,
+        "texture_height": 96,
+        "visible_bounds_width": 3,
+        "visible_bounds_height": 4,
+        "visible_bounds_offset": [0, 1, 0]
+      },
+      "bones": [
+        {
+          "name": "head",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            { "origin": [-0.6, 21, -7.9], "size": [1, 1, 14], "uv": [1, 66] },
+            { "origin": [-1.5, 20.95, -7.9], "size": [1, 1, 0.5], "uv": [2, 8] },
+            { "origin": [0.4, 20.95, -7.9], "size": [1, 1, 0.5], "uv": [0, 8] },
+            {
+              "origin": [-4.3, 20.95, -7.74],
+              "size": [3, 1, 0.5],
+              "pivot": [-1.7, 21.7, -7.4],
+              "rotation": [0, 30, 0],
+              "uv": [2, 75]
+            },
+            {
+              "origin": [-6.65, 20.95, -6.35],
+              "size": [3, 1, 0.5],
+              "pivot": [-4.05, 21.7, -5.95],
+              "rotation": [0, 60, 0],
+              "uv": [0, 9]
+            },
+            {
+              "origin": [0.9, 20.95, -6.64],
+              "size": [3, 1, 0.5],
+              "pivot": [3.5, 21.7, -6.3],
+              "rotation": [0, -30, 0],
+              "uv": [0, 11]
+            },
+            {
+              "origin": [2.4, 20.95, -4.35],
+              "size": [3, 1, 0.5],
+              "pivot": [5, 21.7, -3.95],
+              "rotation": [0, -60, 0],
+              "uv": [0, 13]
+            },
+            { "origin": [0, 22, -7.9], "size": [0.1, 0.1, 14], "uv": [-6, -11] },
+            { "origin": [-0.2, 22, -7.9], "size": [0.1, 0.1, 14], "uv": [-8, -2] }
+          ]
+        },
+        {
+          "name": "base",
+          "pivot": [0, 0, 0]
+        },
+        {
+          "name": "foundation",
+          "parent": "base",
+          "pivot": [0, 0, 0],
+          "cubes": [
+            { "origin": [-8, -5, -8], "size": [16, 19, 16], "uv": [0, 0] },
+            { "origin": [-7, 14, -7], "size": [14, 2, 14], "uv": [0, 35] },
+            { "origin": [-6, 16, -6], "size": [12, 2, 12], "uv": [0, 52] }
+          ]
+        },
+        {
+          "name": "joint",
+          "parent": "base",
+          "pivot": [0, 9, 0],
+          "cubes": [
+            { "origin": [-2, 18, -0.9], "size": [4, 2, 2], "uv": [42, 35] },
+            { "origin": [-1, 18, -1.9], "size": [2, 2, 1], "uv": [0, 42] },
+            { "origin": [-1, 18, 1.1], "size": [2, 2, 1], "uv": [0, 39] },
+            { "origin": [-1, 20, -0.9], "size": [2, 1, 2], "uv": [0, 35] }
+          ]
+        },
+        {
+          "name": "indicator",
+          "parent": "base",
+          "pivot": [0, 0, 0],
+          "cubes": [{ "origin": [6, 14, -7.9], "size": [2, 6, 2], "uv": [0, 0] }]
+        }
+      ]
+    }
+  ]
 }

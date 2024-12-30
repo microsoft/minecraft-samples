@@ -1,4 +1,8 @@
 entity.mikeamm_gwve:crossbow_turret.name=Crossbow Turret
 item.spawn_egg.entity.mikeamm_gwve:crossbow_turret.name=Spawn Crossbow Turret
+entity.mikeamm_gwve:gray_wave_generator.name=Gray Wave Generator
+item.spawn_egg.entity.mikeamm_gwve:gray_wave_generator.name=Spawn Gray Wave Generator
 tile.mikeamm_gwve:gray_ore.name=Gray Ore
 item.mikeamm_gwve:crossbow_turret_kit=Crossbow Turret Kit
+item.mikeamm_gwve:gray_wave_generator_kit=Gray Wave Generator Kit
+tile.mikeamm_gwve:fabricator.name=Gray Wave Fabricator
