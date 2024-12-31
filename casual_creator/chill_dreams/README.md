@@ -12,14 +12,60 @@ products:
 
 # Minecraft Chill Dreams Add-on
 
-This sample demonstrates a "chill-dreams" an add-on in Minecraft. See [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for the web
+This sample demonstrates a "chill-dreams" an add-on in Minecraft. See [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for the web.
 series behind this article.
 
- There are three progressive versions:
+There are three progressive versions:
 
 *[Part 1: Dream Turkey](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/chill_dreams/1_dream_turkey/): This contains project files that correspond to [part 1 of the blog series](https://learn.microsoft.com/minecraft/creator/casual/chilldreamspart1thedreamturkey)
 *[Part 2: Dreams Come True](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/chill_dreams/2_dreams_come_true/): This contains project files that correspond to [part 2 of the blog series](https://learn.microsoft.com/minecraft/creator/casual/chilldreamspart2makingdreamscometrue)
 *[Complete](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/chill_dreams/complete/): This contains project files that correspond to [part 3 of the blog series](https://learn.microsoft.com/minecraft/creator/casual/chilldreamspart3smellslikememories)
+
+A YouTube equivalent to part 1 is here:
+https://www.youtube.com/watch?v=24l6iKTB-HQ
+
+The main purpose of the Chill Dreams Add-On is to support a hands free" mode where Minecraft will fly over your terrain and show you amazing sites within your Minecraft world. The focal point is this "dream mode". But it's also a gameplay element inside of Minecraft.
+
+## Dream Turkey Mob
+
+The Dream Turkey is a new mob that will spawn throughout the world:
+
+If you cause a dream turkey to no longer be alive, it should randomly output two ingerdients:
+* Raw Dream Turkey and Dream Essence.
+
+Raw dream turkey can be placed into a furnace. This will create cooked dream turkey.
+
+## Dream Mode
+
+When a player eats cooked dream turkey, this will cause the player to fall asleep and enter dream mode. Dream mode will cause the player to fly over random parts of the landscape. At the start of a dream, the player can also select different types of dreams:
+ 
+* Around your memories means that dream mode will fly around your memory jars
+* Around random places means that dream mode will fly around completely random places in the world.
+* Nightmares means that dream mode will fly around random places in the nether.
+
+If no option is selected, the player will just fly around locations close to where they fell asleep.
+
+A player can Sprint to exit out of dream mode.
+
+
+## Dream Essence
+ 
+Dream essence is used as an ingredient in several craftable items:
+* Dream Pencil
+* Dream essence, combined with two brown concrete and two sticks in the following formation:
+
+Create the dream pencil.  The Dream Pencil is used to edit nearby "memories", which have a name.
+ 
+When you create a memory using the pencil, this places a "memory jar" as a visual guide to where memories are placed:
+
+These memories are used to act as waypoints for the dream mode. For example, if you wanted dream mode to fly by your awesome creations, like a castle, you would put a nearby memory jar, called "Castle", and then in the dream mode – if you have select "around your memories", it would fly near the castle.
+
+## Dream Journal
+
+The Dream Journal can be built using paper, leather, and dream essence.
+ 
+The Dream Journal lets you revisit your memories, fairly quickly, to allow for quick navigation.
+ 
 
 ## Prerequisites
 

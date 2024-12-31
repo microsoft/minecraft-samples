@@ -2,14 +2,14 @@
   "format_version": "1.10.0",
   "minecraft:attachable": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret_kit",
+      "identifier": "mikeamm_gwve:bow_turret_kit",
       "render_controllers": ["controller.render.item_default"],
       "materials": {
         "default": "entity_alphatest",
         "enchanted": "entity_alphatest_glint"
       },
       "textures": {
-        "default": "textures/mikeamm/gray_wave/attachable/crossbow_turret_kit",
+        "default": "textures/mikeamm/gray_wave/attachable/bow_turret_kit",
         "enchanted": "textures/misc/enchanted_item_glint"
       },
       "geometry": {

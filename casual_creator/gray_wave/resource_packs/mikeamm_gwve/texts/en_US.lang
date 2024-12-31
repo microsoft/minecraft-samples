@@ -1,9 +1,26 @@
 entity.mikeamm_gwve:crossbow_turret.name=Crossbow Turret
 item.spawn_egg.entity.mikeamm_gwve:crossbow_turret.name=Spawn Crossbow Turret
+
+entity.mikeamm_gwve:bow_turret.name=Bow Turret
+item.spawn_egg.entity.mikeamm_gwve:bow_turret.name=Spawn Bow Turret
+
+entity.mikeamm_gwve:shbullet_turret.name=Shulker Cannon
+item.spawn_egg.entity.mikeamm_gwve:shbullet_turret.name=Spawn Shulker Cannon
+
+entity.mikeamm_gwve:smfireball_turret.name=Small Fireball Cannon
+item.spawn_egg.entity.mikeamm_gwve:smfireball_turret.name=Small Fireball Cannon
+
+entity.mikeamm_gwve:axe_turret.name=Axe Turret
+item.spawn_egg.entity.mikeamm_gwve:axe_turret.name=Axe Turret
+
 entity.mikeamm_gwve:gray_wave_generator.name=Gray Wave Generator
 item.spawn_egg.entity.mikeamm_gwve:gray_wave_generator.name=Spawn Gray Wave Generator
 tile.mikeamm_gwve:gray_ore.name=Gray Ore
 item.mikeamm_gwve:crossbow_turret_kit=Crossbow Turret Kit
+item.mikeamm_gwve:bow_turret_kit=Bow Turret Kit
+item.mikeamm_gwve:axe_turret_kit=Axe Turret Kit
+item.mikeamm_gwve:shbullet_turret_kit=Shulker Cannon Kit
+item.mikeamm_gwve:smfireball_turret_kit=Small Fireball Cannon Kit
 item.mikeamm_gwve:gray_wave_generator_kit=Gray Wave Generator Kit
 tile.mikeamm_gwve:fabricator.name=Gray Wave Fabricator
 entity.mikeamm_gwve:gray_zombie_leader.name=Gray Zombie Leader

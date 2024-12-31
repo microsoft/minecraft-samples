@@ -2,7 +2,7 @@
   "format_version": "1.10.0",
   "minecraft:client_entity": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret",
+      "identifier": "mikeamm_gwve:smfireball_turret",
       "min_engine_version": "1.8.0",
       "materials": {
         "default": "entity_alphablend"
@@ -15,7 +15,7 @@
         "one": "textures/mikeamm/gray_wave/entity/turret/one"
       },
       "geometry": {
-        "default": "geometry.mikeamm_gwve_crossbow_turret"
+        "default": "geometry.mikeamm_gwve_smfireball_turret"
       },
       "spawn_egg": {
         "base_color": "#ed604f",

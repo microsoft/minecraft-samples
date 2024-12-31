@@ -1,7 +1,7 @@
 {
   "format_version": "1.10.0",
   "animations": {
-    "animation.mikeamm_gwve_crossbow_turret.active": {
+    "animation.mikeamm_gwve_turret.active": {
       "loop": true,
       "bones": {
         "indicator": {
@@ -9,7 +9,7 @@
         }
       }
     },
-    "animation.mikeamm_gwve_crossbow_turret.inactive": {
+    "animation.mikeamm_gwve_turret.inactive": {
       "loop": true,
       "bones": {
         "indicator": {

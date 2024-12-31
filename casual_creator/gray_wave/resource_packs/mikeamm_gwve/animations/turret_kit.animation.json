@@ -1,7 +1,7 @@
 {
   "format_version": "1.8.0",
   "animations": {
-    "animation.mikeamm_gwve_crossbow_turret_kit.first_person_hold": {
+    "animation.mikeamm_gwve_turret_kit.first_person_hold": {
       "loop": true,
       "bones": {
         "root_item": {
@@ -10,7 +10,7 @@
         }
       }
     },
-    "animation.mikeamm_gwve_crossbow_turret_kit.third_person_hold": {
+    "animation.mikeamm_gwve_turret_kit.third_person_hold": {
       "loop": true,
       "bones": {
         "root_item": {

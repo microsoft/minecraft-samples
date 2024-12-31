@@ -2,7 +2,7 @@
   "format_version": "1.16.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret",
+      "identifier": "mikeamm_gwve:axe_turret",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false,
@@ -18,22 +18,24 @@
     "component_groups": {
       "mikeamm_gwve:inactive": {},
       "mikeamm_gwve:active": {
-        "minecraft:behavior.ranged_attack": {
-          "attack_interval_min": 0.4,
-          "attack_interval_max": 0.8,
-          "attack_radius": 15,
-          "ranged_fov": 360,
+        "minecraft:behavior.melee_attack": {
+          "priority": 1,
+          "melee_fov": 360,
+          "speed_multiplier": 5,
+          "cooldown_time": 0.1,
+          "track_target": true,
           "y_max_head_rotation": 360,
-          "x_max_rotation": 360
+          "x_max_rotation": 360,
+          "attack_once": false
         },
         "minecraft:behavior.look_at_target": {
-          "priority": 1,
-          "look_distance": 15,
+          "priority": 2,
+          "look_distance": 12,
           "probability": 1.0,
           "look_time": [1, 5]
         },
         "minecraft:behavior.nearest_attackable_target": {
-          "priority": 3,
+          "priority": 4,
           "entity_types": {
             "filters": {
               "test": "is_family",
@@ -45,7 +47,7 @@
           "must_see": true
         },
         "minecraft:behavior.hurt_by_target": {
-          "priority": 2,
+          "priority": 3,
           "entity_types": {
             "filters": {
               "test": "is_family",
@@ -83,6 +85,12 @@
         "value": 250,
         "max": 250
       },
+      "minecraft:attack_damage": {
+        "value": 400
+      },
+      "minecraft:attack": {
+        "damage": 400
+      },
       "minecraft:persistent": {},
       "minecraft:hurt_on_condition": {
         "damage_conditions": [
@@ -103,10 +111,10 @@
         "max": 0
       },
       "minecraft:loot": {
-        "table": "loot_tables/mikeamm/gray_wave/crossbow_turret.loot.json"
+        "table": "loot_tables/mikeamm/gray_wave/smfireball_turret.loot.json"
       },
       "minecraft:shooter": {
-        "def": "minecraft:arrow",
+        "def": "minecraft:shulker_bullet",
         "power": 10
       },
       "minecraft:body_rotation_blocked": {},

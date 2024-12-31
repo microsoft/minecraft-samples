@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.13.0",
   "minecraft:ore_feature": {
     "description": {
       "identifier": "mikeamm_gwve:gray_ore_feature"

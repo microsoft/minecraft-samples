@@ -12,7 +12,7 @@ import {
 } from "@minecraft/server";
 
 export default class GrayWaveManager {
-  isDebug = true;
+  isDebug = false;
 
   get lastHordeTick() {
     const result = world.getDynamicProperty("mikeamm_gwve:lastHordeTick");
@@ -71,7 +71,7 @@ export default class GrayWaveManager {
 
   log(message: string) {
     if (this.isDebug) {
-      world.sendMessage(message);
+      console.warn(message);
     }
   }
 
@@ -107,7 +107,6 @@ export default class GrayWaveManager {
 
     let spawnCenterPointStart = {
       x: consumer.location.x + targetDist.x + (Math.random() * 20 - 10),
-      y: consumer.location.y + targetDist.y + (Math.random() * 20 - 10),
       z: consumer.location.z + targetDist.z + (Math.random() * 20 - 10),
     };
 
@@ -118,16 +117,14 @@ export default class GrayWaveManager {
         "Could not find a top most block at candidate spawn point" +
           spawnCenterPointStart.x +
           ", " +
-          spawnCenterPointStart.y +
-          ", " +
           spawnCenterPointStart.z
       );
       return;
     }
 
-    spawnCenterPointStart = topMost.location;
-
     let numbersToSpawn = Math.floor(Math.random() * 3 + Math.random() * intensity * 2) + 2;
+
+    consumer.dimension.playSound("raid.horn", topMost.location);
 
     this.log(
       "Spawning horde of " +
@@ -137,18 +134,15 @@ export default class GrayWaveManager {
         " (" +
         spawnCenterPointStart.x +
         ", " +
-        spawnCenterPointStart.y +
-        ", " +
         spawnCenterPointStart.z +
         ")"
     );
 
-    this.generateGrayWaveBetweenLocations(consumer.dimension, consumer.location, spawnCenterPointStart);
+    this.generateGrayWaveBetweenLocations(consumer.dimension, consumer.location, topMost.location);
 
     for (let i = 0; i < numbersToSpawn; i++) {
       const spawnLoc = {
         x: spawnCenterPointStart.x + (Math.random() * 20 - 10),
-        y: spawnCenterPointStart.y + (Math.random() * 20 - 10),
         z: spawnCenterPointStart.z + (Math.random() * 20 - 10),
       };
 
@@ -193,6 +187,33 @@ export default class GrayWaveManager {
     this.generateNextHordeInterval();
   }
 
+  lineOfSightBetween(dimension: Dimension, startLoc: Vector3, endLoc: Vector3) {
+    const dist = Vector3Utils.distance(startLoc, endLoc);
+
+    const numbersToProvision = Math.floor(dist);
+
+    for (let i = 0; i < numbersToProvision; i++) {
+      let curLoc = {
+        x: startLoc.x + ((endLoc.x - startLoc.x) * i) / numbersToProvision,
+        y: startLoc.y + ((endLoc.y - startLoc.y) * i) / numbersToProvision,
+        z: startLoc.z + ((endLoc.z - startLoc.z) * i) / numbersToProvision,
+      };
+
+      let interimBlock = dimension.getBlock(curLoc);
+
+      if (interimBlock) {
+        const targetBlock = interimBlock.above(1);
+
+        if (targetBlock) {
+          if (targetBlock.typeId !== "minecraft:air") {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
   generateGrayWaveBetweenLocations(dimension: Dimension, startLoc: Vector3, endLoc: Vector3) {
     const dist = Vector3Utils.distance(startLoc, endLoc);
 
@@ -201,7 +222,6 @@ export default class GrayWaveManager {
     for (let i = 0; i < numbersToProvision; i++) {
       let curLoc = {
         x: startLoc.x + ((endLoc.x - startLoc.x) * i) / numbersToProvision,
-        y: startLoc.y + ((endLoc.y - startLoc.y) * i) / numbersToProvision,
         z: startLoc.z + ((endLoc.z - startLoc.z) * i) / numbersToProvision,
       };
 
@@ -229,7 +249,7 @@ export default class GrayWaveManager {
 
   generateNextHordeInterval() {
     // every 100-200 seconds
-    this.nextHordeInterval = Math.floor(Math.random() * 200 + 200);
+    this.nextHordeInterval = Math.floor(Math.random() * 2000 + 2000);
   }
 
   getAllActiveGrayWaveConsumers() {
@@ -263,11 +283,15 @@ export default class GrayWaveManager {
     const generators = entity.dimension.getEntities({
       location: entity.location,
       type: "mikeamm_gwve:gray_wave_generator",
-      maxDistance: 50,
+      maxDistance: 30,
     });
 
     for (const gen of generators) {
-      return gen; // add a more sophisticated line of sight calculator, but for now, if we find a generator in range, let's go with it
+      if (gen.dimension.id === entity.dimension.id) {
+        if (this.lineOfSightBetween(entity.dimension, entity.location, gen.location)) {
+          return gen;
+        }
+      }
     }
 
     return undefined;
@@ -290,10 +314,12 @@ export default class GrayWaveManager {
         if (grayWaveState === "inactive" && connectedGen) {
           this.log("Gray wave generator is close. Activating " + entity.id);
 
+          entity.dimension.playSound("beacon.activate", entity.location);
+
           entity.triggerEvent("mikeamm_gwve:activate");
         } else if (grayWaveState === "active" && !connectedGen) {
           this.log("No nearby gray wave generator. Deactivating " + entity.id);
-
+          entity.dimension.playSound("beacon.deactivate", entity.location);
           entity.triggerEvent("mikeamm_gwve:deactivate");
         }
       }

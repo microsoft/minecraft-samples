@@ -2,7 +2,7 @@
   "format_version": "1.16.0",
   "minecraft:entity": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret",
+      "identifier": "mikeamm_gwve:bow_turret",
       "is_spawnable": true,
       "is_summonable": true,
       "is_experimental": false,
@@ -19,16 +19,16 @@
       "mikeamm_gwve:inactive": {},
       "mikeamm_gwve:active": {
         "minecraft:behavior.ranged_attack": {
-          "attack_interval_min": 0.4,
-          "attack_interval_max": 0.8,
-          "attack_radius": 15,
+          "attack_interval_min": 2.4,
+          "attack_interval_max": 3.8,
+          "attack_radius": 19,
           "ranged_fov": 360,
           "y_max_head_rotation": 360,
           "x_max_rotation": 360
         },
         "minecraft:behavior.look_at_target": {
           "priority": 1,
-          "look_distance": 15,
+          "look_distance": 19,
           "probability": 1.0,
           "look_time": [1, 5]
         },
@@ -103,11 +103,11 @@
         "max": 0
       },
       "minecraft:loot": {
-        "table": "loot_tables/mikeamm/gray_wave/crossbow_turret.loot.json"
+        "table": "loot_tables/mikeamm/gray_wave/bow_turret.loot.json"
       },
       "minecraft:shooter": {
         "def": "minecraft:arrow",
-        "power": 10
+        "power": 7
       },
       "minecraft:body_rotation_blocked": {},
       "minecraft:knockback_resistance": {
