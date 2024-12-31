@@ -30,7 +30,7 @@ The main purpose of the Chill Dreams Add-On is to support a hands free" mode whe
 
 The Dream Turkey is a new mob that will spawn throughout the world:
 
-If you cause a dream turkey to no longer be alive, it should randomly output two ingerdients:
+If you cause a dream turkey to no longer be alive, it should randomly output two ingredients:
 * Raw Dream Turkey and Dream Essence.
 
 Raw dream turkey can be placed into a furnace. This will create cooked dream turkey.

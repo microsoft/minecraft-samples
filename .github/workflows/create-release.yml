@@ -40,12 +40,15 @@ jobs:
           CI: ""
         run: |
           pushd "addon_starter/complete"
+          npm ci
           npm run mcaddon
           popd
           pushd "casual_creator/chill_dreams/complete"
+          npm ci
           npm run mcaddon
           popd
           pushd "casual_creator/gray_wave"
+          npm ci
           npm run mcaddon
           popd
 
@@ -86,6 +89,17 @@ jobs:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
           asset_path: ./casual_creator/chill_dreams/complete/dist/packages/mamm_cds.mcaddon
           asset_name: chill_dreams_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_content_type: application/zip
+                  
+      - name: Upload gray_wave_v.mcaddon to node_module release
+        id: gray_wave_v
+        uses: actions/upload-release-asset@v1.0.1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
+          asset_path: ./casual_creator/gray_wave/dist/packages/mikeamm_gwve.mcaddon
+          asset_name: gray_wave_v${{ steps.get-package-version.outputs.version }}.mcaddon
           asset_content_type: application/zip
           
       - name: Commit version changes
