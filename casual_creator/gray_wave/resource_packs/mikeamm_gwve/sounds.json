@@ -1,18 +1,32 @@
 {
-  "entity_sounds": {
-    "entities": {
-      "mikeamm_gwve:crossbow_turret": {
-        "events": {
-          "ambient": "mob.shulker.ambient",
-          "death": "mob.shulker.death",
-          "hurt": "mob.shulker.hurt",
-          "shoot": "mob.shulker.shoot",
-          "shulker.close": "mob.shulker.close",
-          "shulker.open": "mob.shulker.open"
-        },
-        "pitch": [0.8, 1.2],
-        "volume": 1
-      }
-    }
-  }
+	"entity_sounds": {
+		"entities": {
+			"mikeamm_gwve:gray_zombie_leader": {
+				"events": {
+					"ambient": "mob.zombie.say",
+					"death": "mob.zombie.death",
+					"hurt": "mob.zombie.hurt",
+					"step": {
+						"pitch": 1,
+						"sound": "mob.zombie.step",
+						"volume": 0.45
+					}
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			},
+			"mikeamm_gwve:crossbow_turret": {
+				"events": {
+					"ambient": "mob.shulker.ambient",
+					"death": "mob.shulker.death",
+					"hurt": "mob.shulker.hurt",
+					"shoot": "mob.shulker.shoot",
+					"shulker.close": "mob.shulker.close",
+					"shulker.open": "mob.shulker.open"
+				},
+				"pitch": [0.8, 1.2],
+				"volume": 1
+			}
+		}
+	}
 }

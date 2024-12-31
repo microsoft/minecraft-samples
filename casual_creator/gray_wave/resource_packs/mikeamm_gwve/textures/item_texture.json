@@ -1,5 +1,8 @@
 {
   "texture_data": {
+    "depleted_gray_shard": {
+      "textures": "textures/mikeamm/gray_wave/items/depleted_gray_shard.png"
+    },
     "crossbow_turret_kit": {
       "textures": "textures/mikeamm/gray_wave/items/crossbow_turret_kit.png"
     },

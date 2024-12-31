@@ -6,3 +6,6 @@ tile.mikeamm_gwve:gray_ore.name=Gray Ore
 item.mikeamm_gwve:crossbow_turret_kit=Crossbow Turret Kit
 item.mikeamm_gwve:gray_wave_generator_kit=Gray Wave Generator Kit
 tile.mikeamm_gwve:fabricator.name=Gray Wave Fabricator
+entity.mikeamm_gwve:gray_zombie_leader.name=Gray Zombie Leader
+item.spawn_egg.entity.mikeamm_gwve:gray_zombie_leader.name=Spawn Gray Zombie Leader
+item.mikeamm_gwve:depleted_gray_shard=Depleted Gray Shard

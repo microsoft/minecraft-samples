@@ -157,8 +157,18 @@ export default class GrayWaveManager {
       if (spawnTopMost) {
         // this.log("Spawning skell (" + spawnLoc.x + ", " + spawnLoc.y + ", " + spawnLoc.z + ")");
 
+        let mobToSpawn = "minecraft:skeleton";
+
+        if (i === 0) {
+          mobToSpawn = "mikeamm_gwve:gray_wave_leader";
+        }
+
         try {
-          consumer.dimension.spawnEntity("minecraft:skeleton", spawnTopMost.location);
+          consumer.dimension.spawnEntity(mobToSpawn, {
+            x: spawnTopMost.location.x,
+            y: spawnTopMost.location.y + 2,
+            z: spawnTopMost.location.z,
+          });
         } catch (e) {}
       }
     }
