@@ -1,0 +1,23 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "mikeamm_gwve:gray_ore_feature"
+    },
+    "count": 12,
+    "replace_rules": [
+      {
+        "places_block": "mikeamm_gwve:gray_ore",
+        "may_replace": ["minecraft:stone"]
+      },
+      {
+        "places_block": "mikeamm_gwve:gray_ore",
+        "may_replace": ["minecraft:granite"]
+      },
+      {
+        "places_block": "mikeamm_gwve:gray_ore",
+        "may_replace": ["minecraft:andesite"]
+      }
+    ]
+  }
+}

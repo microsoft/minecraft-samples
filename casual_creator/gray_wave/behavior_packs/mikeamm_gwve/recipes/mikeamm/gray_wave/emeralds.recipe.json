@@ -1,0 +1,26 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "mikeamm_gwve:emerald"
+    },
+    "tags": ["graywave_fabricator"],
+    "pattern": ["...", ".X.", "..."],
+    "key": {
+      ".": {
+        "item": "mikeamm_gwve:depleted_gray_shard"
+      },
+      "X": {
+        "item": "minecraft:wheat_seeds"
+      }
+    },
+    "unlock": [
+      {
+        "item": "mikeamm_gwve:fabricator"
+      }
+    ],
+    "result": {
+      "item": "minecraft:emerald"
+    }
+  }
+}

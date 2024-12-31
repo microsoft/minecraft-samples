@@ -1,0 +1,15 @@
+{
+  "format_version": "1.8.0",
+  "render_controllers": {
+    "controller.render.mikeamm_gwve_turret": {
+      "arrays": {
+        "textures": {
+          "Array.damageLevels": ["Texture.one", "Texture.two", "Texture.three", "Texture.four", "Texture.main"]
+        }
+      },
+      "geometry": "Geometry.default",
+      "materials": [{ "*": "Material.default" }],
+      "textures": ["Array.damageLevels[math.clamp(query.health / 50, 0, 4)]"]
+    }
+  }
+}

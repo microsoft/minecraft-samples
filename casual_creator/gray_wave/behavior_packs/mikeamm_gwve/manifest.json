@@ -1,0 +1,47 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Gray Wave Machines",
+		"description": "Machines for base defense. But be wary of the gray wave seeking hordes!",
+		"uuid": "ceeaa134-b4b8-43fc-8f2a-5de40f7da6cb",
+		"version": [1, 0, 0],
+		"min_engine_version": [1, 21, 50]
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"version": [1, 0, 0],
+			"uuid": "3e856b3d-2fda-479c-850d-b13af827fd8f",
+			"type": "data"
+		},
+		{
+			"description": "Script resources",
+			"language": "javascript",
+			"type": "script",
+			"uuid": "3ea82efd-2f7f-41c2-ac51-e17861a43fac",
+			"version": [0, 0, 1],
+			"entry": "scripts/main.js"
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "61a921e3-089b-4c92-b48d-2f907af32942",
+			"version": [1, 0, 0]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "1.16.0"
+		},
+		{
+			"module_name": "@minecraft/server-ui",
+			"version": "1.3.0"
+		}
+	],
+	"metadata": {
+		"generated_with": {
+			"blockbench_entity_wizard": ["1.5.1"],
+			"blockbench_block_wizard": ["1.2.2"],
+			"blockbench_item_wizard": ["1.1.0"]
+		}
+	}
+}

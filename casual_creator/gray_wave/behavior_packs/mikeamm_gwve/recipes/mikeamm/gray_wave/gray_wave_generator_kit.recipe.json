@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "mikeamm_gwve:gray_wave_generator_kit"
+    },
+    "tags": ["graywave_fabricator"],
+    "pattern": ["#.#", "#X#", "#.#"],
+    "key": {
+      "#": {
+        "item": "minecraft:stone"
+      },
+      ".": {
+        "item": "mikeamm_gwve:gray_ore"
+      },
+      "X": {
+        "item": "minecraft:sand"
+      }
+    },
+    "unlock": [
+      {
+        "item": "mikeamm_gwve:fabricator"
+      }
+    ],
+    "result": {
+      "item": "mikeamm_gwve:gray_wave_generator_kit"
+    }
+  }
+}

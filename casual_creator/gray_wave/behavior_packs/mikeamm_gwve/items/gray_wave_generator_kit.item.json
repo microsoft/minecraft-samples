@@ -1,0 +1,35 @@
+{
+  "format_version": "1.20.50",
+  "minecraft:item": {
+    "description": {
+      "identifier": "mikeamm_gwve:gray_wave_generator_kit",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": {
+        "value": 64
+      },
+      "minecraft:icon": "gray_wave_generator_kit",
+      "minecraft:entity_placer": {
+        "entity": "mikeamm_gwve:gray_wave_generator"
+      },
+      "minecraft:enchantable": {
+        "slot": "pickaxe",
+        "value": 14
+      },
+      "minecraft:durability": {
+        "max_durability": 251
+      },
+      "minecraft:repairable": {
+        "repair_items": [
+          {
+            "items": ["iron_ingot"],
+            "repair_amount": 62
+          }
+        ]
+      }
+    }
+  }
+}

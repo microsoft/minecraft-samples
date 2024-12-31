@@ -1,0 +1,36 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "mikeamm_gwve:axe_turret",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "entity_alphablend"
+      },
+      "textures": {
+        "main": "textures/mikeamm/gray_wave/entity/turret/main",
+        "four": "textures/mikeamm/gray_wave/entity/turret/four",
+        "three": "textures/mikeamm/gray_wave/entity/turret/three",
+        "two": "textures/mikeamm/gray_wave/entity/turret/two",
+        "one": "textures/mikeamm/gray_wave/entity/turret/one"
+      },
+      "geometry": {
+        "default": "geometry.mikeamm_gwve_axe_turret"
+      },
+      "spawn_egg": {
+        "base_color": "#ed604f",
+        "overlay_color": "#6b271b"
+      },
+      "animations": {
+        "look_at_target": "animation.common.look_at_target",
+        "active": "animation.mikeamm_gwve_turret.active",
+        "inactive": "animation.mikeamm_gwve_turret.inactive",
+        "activestate": "controller.animation.mikeamm_gwve_turret.activestate"
+      },
+      "scripts": {
+        "animate": ["activestate", "look_at_target"]
+      },
+      "render_controllers": ["controller.render.mikeamm_gwve_turret"]
+    }
+  }
+}

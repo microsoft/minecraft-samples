@@ -45,6 +45,9 @@ jobs:
           pushd "casual_creator/chill_dreams/complete"
           npm run mcaddon
           popd
+          pushd "casual_creator/gray_wave"
+          npm run mcaddon
+          popd
 
       - name: Get Package Version
         id: get-package-version

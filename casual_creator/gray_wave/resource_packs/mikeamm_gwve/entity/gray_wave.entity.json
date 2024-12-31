@@ -1,0 +1,29 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "mikeamm_gwve:gray_wave",
+      "min_engine_version": "1.8.0",
+      "materials": {
+        "default": "entity_alphablend"
+      },
+      "textures": {
+        "black": "textures/mikeamm/gray_wave/entity/gray_wave/black"
+      },
+      "geometry": {
+        "default": "geometry.mikeamm_gwve_gray_wave"
+      },
+      "spawn_egg": {
+        "base_color": "#ed604f",
+        "overlay_color": "#6b271b"
+      },
+      "animations": {
+        "look_at_target": "animation.common.look_at_target"
+      },
+      "scripts": {
+        "animate": ["look_at_target"]
+      },
+      "render_controllers": ["controller.render.mikeamm_gwve_gray_wave_generator"]
+    }
+  }
+}

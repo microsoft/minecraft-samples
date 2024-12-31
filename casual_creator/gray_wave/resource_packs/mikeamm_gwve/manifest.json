@@ -1,0 +1,32 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Gray Wave Machines",
+		"description": "Machines for base defense. But be wary of the gray wave seeking hordes!",
+		"uuid": "61a921e3-089b-4c92-b48d-2f907af32942",
+		"version": [1, 0, 0],
+		"pack_scope": "world",
+		"min_engine_version": [1, 21, 50]
+	},
+	"modules": [
+		{
+			"description": "Add-on Pack Resources",
+			"type": "resources",
+			"uuid": "ff99704a-76a9-45bb-9d75-5724e3ed4180",
+			"version": [1, 0, 0]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "ceeaa134-b4b8-43fc-8f2a-5de40f7da6cb",
+			"version": [1, 0, 0]
+		}
+	],
+	"metadata": {
+		"generated_with": {
+			"blockbench_entity_wizard": ["1.5.1"],
+			"blockbench_block_wizard": ["1.2.2"],
+			"blockbench_item_wizard": ["1.1.0"]
+		}
+	}
+}

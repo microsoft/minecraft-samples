@@ -1,0 +1,25 @@
+{
+  "texture_data": {
+    "depleted_gray_shard": {
+      "textures": "textures/mikeamm/gray_wave/items/depleted_gray_shard.png"
+    },
+    "crossbow_turret_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/crossbow_turret_kit.png"
+    },
+    "bow_turret_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/bow_turret_kit.png"
+    },
+    "axe_turret_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/axe_turret_kit.png"
+    },
+    "shbullet_turret_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/shbullet_turret_kit.png"
+    },
+    "smfireball_turret_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/smfireball_turret_kit.png"
+    },
+    "gray_wave_generator_kit": {
+      "textures": "textures/mikeamm/gray_wave/items/gray_wave_generator_kit.png"
+    }
+  }
+}

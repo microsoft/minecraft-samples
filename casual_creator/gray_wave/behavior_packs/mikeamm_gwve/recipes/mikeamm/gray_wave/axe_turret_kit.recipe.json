@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "mikeamm_gwve:axe_turret_kit"
+    },
+    "tags": ["graywave_fabricator"],
+    "pattern": [" . ", "#X#", "#.#"],
+    "key": {
+      "#": {
+        "item": "minecraft:stone"
+      },
+      ".": {
+        "item": "mikeamm_gwve:gray_ore"
+      },
+      "X": {
+        "item": "minecraft:iron_ingot"
+      }
+    },
+    "unlock": [
+      {
+        "item": "mikeamm_gwve:fabricator"
+      }
+    ],
+    "result": {
+      "item": "mikeamm_gwve:axe_turret_kit"
+    }
+  }
+}
