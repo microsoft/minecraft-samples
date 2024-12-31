@@ -100,9 +100,9 @@ export default class GrayWaveManager {
     const dist = Vector3Utils.normalize(Vector3Utils.subtract(consumer.location, generator.location));
 
     const targetDist = Vector3Utils.multiply(dist, {
-      x: Math.random() * 20 + 5,
-      y: Math.random() * 20 + 5,
-      z: Math.random() * 20 + 5,
+      x: Math.random() * 10 + 25,
+      y: Math.random() * 10 + 25,
+      z: Math.random() * 10 + 25,
     });
 
     let spawnCenterPointStart = {
@@ -155,12 +155,28 @@ export default class GrayWaveManager {
       let spawnTopMost = consumer.dimension.getTopmostBlock(spawnLoc);
 
       if (spawnTopMost) {
-        // this.log("Spawning skell (" + spawnLoc.x + ", " + spawnLoc.y + ", " + spawnLoc.z + ")");
-
         let mobToSpawn = "minecraft:skeleton";
 
         if (i === 0) {
-          mobToSpawn = "mikeamm_gwve:gray_wave_leader";
+          mobToSpawn = "mikeamm_gwve:gray_zombie_leader";
+        } else {
+          switch (Math.floor(Math.random() * 3)) {
+            case 0:
+              mobToSpawn = "minecraft:zombie";
+              break;
+            case 1:
+              mobToSpawn = "minecraft:witch";
+              break;
+            case 2:
+              mobToSpawn = "minecraft:skeleton";
+              break;
+            case 2:
+              mobToSpawn = "minecraft:evocation_illager";
+              break;
+            case 2:
+              mobToSpawn = "minecraft:pillager";
+              break;
+          }
         }
 
         try {
@@ -180,7 +196,7 @@ export default class GrayWaveManager {
   generateGrayWaveBetweenLocations(dimension: Dimension, startLoc: Vector3, endLoc: Vector3) {
     const dist = Vector3Utils.distance(startLoc, endLoc);
 
-    const numbersToProvision = Math.floor(dist / 3);
+    const numbersToProvision = Math.floor(dist / 6);
 
     for (let i = 0; i < numbersToProvision; i++) {
       let curLoc = {

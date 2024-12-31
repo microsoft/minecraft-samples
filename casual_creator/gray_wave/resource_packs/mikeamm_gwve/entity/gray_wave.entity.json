@@ -5,7 +5,7 @@
       "identifier": "mikeamm_gwve:gray_wave",
       "min_engine_version": "1.8.0",
       "materials": {
-        "default": "shulker"
+        "default": "entity_alphablend"
       },
       "textures": {
         "black": "textures/mikeamm/gray_wave/entity/gray_wave/black"
@@ -18,13 +18,10 @@
         "overlay_color": "#6b271b"
       },
       "animations": {
-        "look_at_target": "animation.common.look_at_target",
-        "active": "animation.mikeamm_gwve_gray_wave.active",
-        "inactive": "animation.mikeamm_gwve_gray_wave.inactive",
-        "activestate": "controller.animation.mikeamm_gwve_gray_wave.activestate"
+        "look_at_target": "animation.common.look_at_target"
       },
       "scripts": {
-        "animate": ["activestate", "look_at_target"]
+        "animate": ["look_at_target"]
       },
       "render_controllers": ["controller.render.mikeamm_gwve_gray_wave_generator"]
     }

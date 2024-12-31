@@ -4,12 +4,12 @@
     "controller.render.mikeamm_gwve_crossbow_turret": {
       "arrays": {
         "textures": {
-          "Array.variants": ["Texture.black"]
+          "Array.damageLevels": ["Texture.one", "Texture.two", "Texture.three", "Texture.four", "Texture.main"]
         }
       },
       "geometry": "Geometry.default",
       "materials": [{ "*": "Material.default" }],
-      "textures": ["Texture.black"]
+      "textures": ["Array.damageLevels[math.clamp(query.health / 50, 0, 4)]"]
     }
   }
 }

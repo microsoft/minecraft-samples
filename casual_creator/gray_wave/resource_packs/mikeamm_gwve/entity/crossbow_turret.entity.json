@@ -5,10 +5,14 @@
       "identifier": "mikeamm_gwve:crossbow_turret",
       "min_engine_version": "1.8.0",
       "materials": {
-        "default": "shulker"
+        "default": "entity_alphablend"
       },
       "textures": {
-        "black": "textures/mikeamm/gray_wave/entity/crossbow_turret/black"
+        "main": "textures/mikeamm/gray_wave/entity/crossbow_turret/main",
+        "four": "textures/mikeamm/gray_wave/entity/crossbow_turret/four",
+        "three": "textures/mikeamm/gray_wave/entity/crossbow_turret/three",
+        "two": "textures/mikeamm/gray_wave/entity/crossbow_turret/two",
+        "one": "textures/mikeamm/gray_wave/entity/crossbow_turret/one"
       },
       "geometry": {
         "default": "geometry.mikeamm_gwve_crossbow_turret"

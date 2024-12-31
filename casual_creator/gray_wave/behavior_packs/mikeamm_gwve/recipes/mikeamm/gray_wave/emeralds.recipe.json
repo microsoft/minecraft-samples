@@ -2,19 +2,16 @@
   "format_version": "1.21.20",
   "minecraft:recipe_shaped": {
     "description": {
-      "identifier": "mikeamm_gwve:crossbow_turret_kit"
+      "identifier": "mikeamm_gwve:emerald"
     },
     "tags": ["graywave_fabricator"],
-    "pattern": [" . ", "#X#", "#.#"],
+    "pattern": ["...", ".X.", "..."],
     "key": {
-      "#": {
-        "item": "minecraft:stone"
-      },
       ".": {
-        "item": "mikeamm_gwve:gray_ore"
+        "item": "mikeamm_gwve:depleted_gray_shard"
       },
       "X": {
-        "item": "minecraft:crossbow"
+        "item": "minecraft:wheat_seeds"
       }
     },
     "unlock": [
@@ -23,7 +20,7 @@
       }
     ],
     "result": {
-      "item": "mikeamm_gwve:crossbow_turret_kit"
+      "item": "minecraft:emerald"
     }
   }
 }

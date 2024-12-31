@@ -62,9 +62,10 @@
           "use_motion_prediction_hints": true
         }
       },
+      "minecraft:persistent": {},
       "minecraft:health": {
-        "value": 30,
-        "max": 30
+        "value": 15,
+        "max": 15
       },
       "minecraft:hurt_on_condition": {
         "damage_conditions": [

@@ -1,0 +1,26 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.mikeamm_gwve_bow_turret.activestate": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "transitions": [
+            {
+              "active": "query.property('mikeamm_gwve:state') == 'active'"
+            }
+          ],
+          "animations": ["inactive"]
+        },
+        "active": {
+          "transitions": [
+            {
+              "default": "query.property('mikeamm_gwve:state') != 'active'"
+            }
+          ],
+          "animations": ["active"]
+        }
+      }
+    }
+  }
+}
