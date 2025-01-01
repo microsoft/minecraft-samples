@@ -12,47 +12,127 @@ products:
 
 # Minecraft Gray Wave Machines Add-on
 
-This sample demonstrates a "chill-dreams" an add-on in Minecraft. See [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for the web series behind this article.
+This sample demonstrates the Gray Wave Machines tower-defense style add-on for Minecraft.
 
-The Gray Wave add-on supports a basic concept of automated defense systems and turrets and Minecraft, mostly.
+![Gray wave image](./docs/gwm.png)
 
-First, there is gray ore spread throughout the world.
+The Gray Wave add-on supports a basic concept of automated defense systems and turrets and Minecraft.
 
-If you mine gray ore, then with the following recipe you can create a gray wave fabricator.
+## New Mineral
 
-[stick] [gray ore] [stick]
-[stone] [gray ore] [stone]
-[stick] [gray ore] [stick]
+First, there is gray ore spread throughout the world. It should largely be as prevalent as coal. Gray ore, due to its gray energy, is slightly luminescent.
 
-## Gray Wave Generators
+![Gray ore texture](./docs/grayore.png)
 
-The fabricator works like a crafting table. Inside of the fabricator, you can craft gray wave generators. These generators create the mostly-invisible gray waves that are used to power gray wave machines
+## Gray Wave Machines
 
-### Gray Wave Machines
+![Gray wave items list](./docs/items.png)
 
-Gray wave machines mostly help you with base defense.
+### Fabricator Block
+
+If you mine gray ore, then with the following recipe you can create a gray wave fabricator. With the gray wave fabricator, you can then build some machines!
+
+|       |          |       |
+| ----- | -------- | ----- |
+| stick | gray ore | stick |
+| stone | gray ore | stone |
+| stick | gray ore | stick |
+
+![Fabricator recipe](./docs/fabricator_recipe.png)
+
+The fabricator works like a crafting table. Inside of the fabricator, you can craft gray wave generators and other machines.
+
+Keep in mind all gray wave generators must have line of sight visibility (i.e., only air blocks between the item and a generator), within a range of 30 blocks. Gray wave generators are also fairly fragile, so ensure they are secured from monsters!
+
+Gray wave turrets and cannons have subtle, slightly transparent indicators at their corners that indicate if they are powered by a nearby gray wave generator. They will turn pink to red if the turret gets damaged.
+
+![Slightly damaged bow turret](./docs/damaged_bow.png)
+
+### Gray Wave Generators
+
+These generators create the mostly-invisible gray waves that are used to power gray wave machines.
+
+|       |          |       |
+| ----- | -------- | ----- |
+| stone | gray ore | stone |
+| stone | sand     | stone |
+| stone | gray ore | stone |
+
+![Gray wave generator recipe](./docs/generator_recipe.png)
 
 ### Bow Turret
 
 This is the simplest turret. It has a slow and weak (but long range) arrow shot. It can be built in the fabricator using:
 
-[empty] [gray ore] [empty]
-[stone] [bow] [stone]
-[stone] [gray ore] [stone]
+|       |          |       |
+| ----- | -------- | ----- |
+|       | gray ore |       |
+| stone | bow      | stone |
+| stone | gray ore | stone |
+
+![Bow turret recipe](./docs/bow_recipe.png)
 
 ### Crossbow Turret
 
 This is an evolution of the bow turret. Compared to the bow turret, it has a much faster and more powerful shot - with slightly less range. It can be built in the fabricator using:
 
-[empty] [gray ore] [empty]
-[stone] [bow] [stone]
-[stone] [gray ore] [stone]
+|       |          |       |
+| ----- | -------- | ----- |
+|       | gray ore |       |
+| stone | crossbow | stone |
+| stone | gray ore | stone |
+
+![Bow turret recipe](./docs/crossbow_recipe.png)
+
+### Axe Turret
+
+The axe turret is a melee turret, for close-in defense.
+
+|       |            |       |
+| ----- | ---------- | ----- |
+|       | gray ore   |       |
+| stone | iron ingot | stone |
+| stone | gray ore   | stone |
+
+![Axe turret recipe](./docs/axe_recipe.png)
+
+### Shulker Cannon
+
+The shulker cannon shoots out shulker bullets, which can harm and cause a target to levitate.
+
+|       |          |       |
+| ----- | -------- | ----- |
+|       | gray ore |       |
+| stone | bamboo   | stone |
+| stone | gray ore | stone |
+
+![Shulker cannon recipe](./docs/shbullet_recipe.png)
+
+### Small Fireball Cannon
+
+The small fireball cannon shoots out small fireballs, at a bit of a closer range.
+
+|       |          |       |
+| ----- | -------- | ----- |
+|       | gray ore |       |
+| stone | charcoal | stone |
+| stone | gray ore | stone |
+
+![Small fireball cannon recipe](./docs/smfireball_recipe.png)
 
 ## Gray Hordes
 
 Graywave generators attract hordes of evil mobs, so be prepared! These hordes of mobs are led by the "gray leader", an evolution of zombies with receptors for detecting gray waves.
 
-On the positive side, gray zombie leaders will drop depleted gray shards, which can be placed in the fabricator along with wheat seeds to create emeralds.
+On the positive side, gray zombie leaders will drop depleted gray shards, which can be placed in the fabricator along with wheat seeds to create emeralds. So, you can earn a lot by building awesome defense that can handle hordes.
+
+![Depleted gray shard](./docs/depletedgrayshard.png)
+
+|                     |                     |                     |
+| ------------------- | ------------------- | ------------------- |
+| depleted gray shard | depleted gray shard | depleted gray shard |
+| depleted gray shard | wheat seeds         | depleted gray shard |
+| depleted gray shard | depleted gray shard | depleted gray shard |
 
 ## Prerequisites
 
