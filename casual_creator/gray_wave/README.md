@@ -134,7 +134,7 @@ On the positive side, gray zombie leaders will drop depleted gray shards, which 
 | depleted gray shard | wheat seeds         | depleted gray shard |
 | depleted gray shard | depleted gray shard | depleted gray shard |
 
-## Prerequisites
+## Working with the sample project
 
 ### Install Node.js tools, if you haven't already
 
@@ -152,11 +152,11 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 1. Using a copy of this starter project from GitHub - you can get a copy of this project by visiting [https://github.com/microsoft/minecraft-samples/](https://github.com/microsoft/minecraft-samples/) and, under the Code button, selecting `Download ZIP`.
 
-1. The `casual_creator/chill_dreams` folder contains different stages of the chill dreams project for Minecraft. Use the subfolder of the phase you want to start with.
+1. The `casual_creator/gray_wave` folder contains the gray wwave project - you'll want to use that.
 
 1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **myaddon**.
 
-1. Put the extracted contents of the Add-on Starter Project folder into **myaddon**.
+1. Put the extracted contents of the Gray Wave Project folder into **myaddon**.
 
 1. Open a Windows Terminal or PowerShell window and change the working directory to your **myaddon** folder:
 
@@ -180,8 +180,8 @@ It might also ask you to install the Minecraft Debugger and Blockception's Visua
 
 ### Summary
 
-Chill Dreams demonstrates several techniques for building a thematic Add-On in Minecraft. Please view the series on [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for more info.
+The gray wave add-ons demonstrates several techniques for building a thematic that customizes mob behavior in Minecraft. Please view the series on [the Minecraft Creator Learning Portal](https://learn.microsoft.com/minecraft/creator/casual) for more info (coming soon).
 
 ## Manifest
 
--[1_dream_turkey](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/chill_dreams/1_dream_turkey/): This contains project files that correspond to [part 1 of the blog series](https://learn.microsoft.com/minecraft/creator/casual/chilldreamspart1thedreamturkey) -[2_dreams_come_true](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/chill_dreams/2_dreams_come_true/): This contains project files that correspond to [part 2 of the blog series](https://learn.microsoft.com/minecraft/creator/casual/chilldreamspart2makingdreamscometrue) -[complete](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/chill_dreams/complete/): This contains project files that correspond to [part 3 of the blog series](https://learn.microsoft.com/en-us/minecraft/creator/casual/chilldreamspart3smellslikememories)
+-[gray_wave](https://github.com/microsoft/minecraft-samples/blob/main/casual_creator/gray_wave/): This contains project files that correspond to the Gray Wave add-on.
