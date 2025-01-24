@@ -179,7 +179,6 @@ async function startDream(player: Player) {
 
   const modalForm = new ModalFormData()
     .title("Dream Preferences")
-    .title("Dream")
     .toggle("...at your nap spot and bed", true)
     .toggle("...around your memories")
     .toggle("...about random places")
