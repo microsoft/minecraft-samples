@@ -154,7 +154,7 @@ export default class GrayWaveManager {
         if (i === 0) {
           mobToSpawn = "mikeamm_gwve:gray_zombie_leader";
         } else {
-          switch (Math.floor(Math.random() * 3)) {
+          switch (Math.floor(Math.random() * 5)) {
             case 0:
               mobToSpawn = "minecraft:zombie";
               break;
@@ -164,10 +164,10 @@ export default class GrayWaveManager {
             case 2:
               mobToSpawn = "minecraft:skeleton";
               break;
-            case 2:
+            case 3:
               mobToSpawn = "minecraft:evocation_illager";
               break;
-            case 2:
+            default:
               mobToSpawn = "minecraft:pillager";
               break;
           }
@@ -249,7 +249,7 @@ export default class GrayWaveManager {
 
   generateNextHordeInterval() {
     // every 100-200 seconds
-    this.nextHordeInterval = Math.floor(Math.random() * 2000 + 2000);
+    this.nextHordeInterval = Math.floor(Math.random() * 900 + 900);
   }
 
   getAllActiveGrayWaveConsumers() {
