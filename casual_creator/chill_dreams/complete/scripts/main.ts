@@ -42,7 +42,7 @@ function mainLoop() {
 
 function initializeWorld() {
   // turn off command feedback
-  world.getDimension("overworld").runCommand("gamerule sendcommandfeedback false");
+  world.gameRules.sendCommandFeedback = false;
 
   const allPlayers = world.getAllPlayers();
 
@@ -76,8 +76,9 @@ function clearDream(player: Player) {
           dimension: world.getDimension(predreamObj.dimensionId),
         });
 
-        player.runCommand("gamemode default @s");
-        player.runCommand("inputpermission set @s camera enabled");
+        player.setGameMode(undefined);
+
+        player.inputPermissions.cameraEnabled = true;
       }
     } catch (e) {}
 

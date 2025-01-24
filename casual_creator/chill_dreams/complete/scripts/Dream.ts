@@ -1,4 +1,4 @@
-import { Player, Vector3, world } from "@minecraft/server";
+import { GameMode, Player, Vector3, world } from "@minecraft/server";
 import MemorySet from "./MemorySet";
 import IDreamReference from "./IDreamReference";
 import DreamTrack from "./DreamTrack";
@@ -123,9 +123,9 @@ export default class Dream {
 
     this.preserveSettings();
 
-    player.runCommand("gamemode spectator @s");
+    player.setGameMode(GameMode.spectator);
 
-    player.runCommand("inputpermission set @s camera disabled");
+    player.inputPermissions.cameraEnabled = false;
   }
 
   generateAdditionalNearReferencePoints() {
