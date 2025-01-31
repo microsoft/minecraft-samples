@@ -1,31 +1,31 @@
 {
-	"format_version": "1.20.20",
-	"minecraft:block": {
-		"description": {
-			"identifier": "myname:orange_ore",
-			"menu_category": {
-				"category": "nature",
-				"group": "itemGroup.name.ore"
-			}
-		},
-		"components": {
-			"minecraft:collision_box": true,
-			"minecraft:selection_box": true,
-			"minecraft:destructible_by_mining": {
-				"seconds_to_destroy": 1
-			},
-			"minecraft:destructible_by_explosion": {
-				"explosion_resistance": 30
-			},
-			"minecraft:geometry": "geometry.orange_ore",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "orange_ore",
-					"render_method": "opaque"
-				}
-			},
-			"minecraft:map_color": "#a69787",
-			"minecraft:loot": "loot_tables/blocks/orange_ore.json"
-		}
-	}
+  "format_version": "1.20.20",
+  "minecraft:block": {
+    "description": {
+      "identifier": "myname:orange_ore",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.ore"
+      }
+    },
+    "components": {
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 30
+      },
+      "minecraft:geometry": "geometry.orange_ore",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "orange_ore",
+          "render_method": "opaque"
+        }
+      },
+      "minecraft:map_color": "#a69787",
+      "minecraft:loot": "loot_tables/blocks/orange_ore.json"
+    }
+  }
 }

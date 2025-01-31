@@ -1,26 +1,26 @@
 {
-	"resource_pack_name": "vanilla",
-	"texture_name": "atlas.terrain",
-	"padding": 8,
-	"num_mip_levels": 4,
-	"texture_data": {
-		"palm_leave_corner": {
-			"textures": "textures/blocks/palm_leave_corner.png"
-		},
-		"palm_leave_tip": {
-			"textures": "textures/blocks/palm_leave_tip.png"
-		},
-		"palm_leave": {
-			"textures": "textures/blocks/palm_leave.png"
-		},
-		"palm_tree_top": {
-			"textures": "textures/blocks/palm_tree_top.png"
-		},
-		"frond_top": {
-			"textures": "textures/blocks/frond_top.png"
-		},
-		"palm_trunk": {
-			"textures": "textures/blocks/palm_trunk.png"
-		}
-	}
+  "resource_pack_name": "vanilla",
+  "texture_name": "atlas.terrain",
+  "padding": 8,
+  "num_mip_levels": 4,
+  "texture_data": {
+    "palm_leave_corner": {
+      "textures": "textures/blocks/palm_leave_corner.png"
+    },
+    "palm_leave_tip": {
+      "textures": "textures/blocks/palm_leave_tip.png"
+    },
+    "palm_leave": {
+      "textures": "textures/blocks/palm_leave.png"
+    },
+    "palm_tree_top": {
+      "textures": "textures/blocks/palm_tree_top.png"
+    },
+    "frond_top": {
+      "textures": "textures/blocks/frond_top.png"
+    },
+    "palm_trunk": {
+      "textures": "textures/blocks/palm_trunk.png"
+    }
+  }
 }

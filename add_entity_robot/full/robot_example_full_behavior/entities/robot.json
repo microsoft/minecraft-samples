@@ -17,25 +17,25 @@
         },
         "components": {
             "minecraft:physics": {},
-			"minecraft:nameable": {},
+      "minecraft:nameable": {},
             "minecraft:movement": {
                 "value": 0.25
             },
             "minecraft:movement.basic": {},
             "minecraft:jump.static": {},
             "minecraft:navigation.walk": {
-				"avoid_water": true
+        "avoid_water": true
             },
-			"minecraft:behavior.tempt": {
-				"priority": 1,
+      "minecraft:behavior.tempt": {
+        "priority": 1,
                 "speed_multiplier": 1.4,
-				"items": ["diamond"],
-				"within_radius": 7.0
-			},
+        "items": ["diamond"],
+        "within_radius": 7.0
+      },
             "minecraft:behavior.random_stroll": {
-				"priority": 3,
+        "priority": 3,
                 "speed_multiplier": 0.8
-			},
+      },
             "minecraft:experience_reward": {
                 "on_death": 8
             }

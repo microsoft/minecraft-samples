@@ -1,73 +1,73 @@
 {
-	"format_version": "1.20.20",
-	"minecraft:block": {
-		"description": {
-			"identifier": "mike:palm_leave_tip",
-			"menu_category": {
-				"category": "nature",
-				"group": "itemGroup.name.leaves"
-			},
-			"traits": {
-				"minecraft:placement_direction": {
-					"enabled_states": ["minecraft:cardinal_direction"]
-				}
-			}
-		},
-		"components": {
-			"minecraft:collision_box": true,
-			"minecraft:selection_box": true,
-			"minecraft:destructible_by_mining": {
-				"seconds_to_destroy": 0.4
-			},
-			"minecraft:destructible_by_explosion": {
-				"explosion_resistance": 15
-			},
-			"minecraft:flammable": {
-				"destroy_chance_modifier": 20,
-				"catch_chance_modifier": 5
-			},
-			"minecraft:geometry": "geometry.palm_leave_tip",
-			"minecraft:material_instances": {
-				"*": {
-					"texture": "palm_leave_tip",
-					"render_method": "alpha_test"
-				}
-			},
-			"minecraft:map_color": "#5f4a2b"
-		},
-		"permutations": [
-			{
-				"condition": "q.block_state('minecraft:cardinal_direction') == 'north' ",
-				"components": {
-					"minecraft:transformation": {
-						"rotation": [0, 180, 0]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:cardinal_direction') == 'south' ",
-				"components": {
-					"minecraft:transformation": {
-						"rotation": [0, 0, 0]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:cardinal_direction') == 'east' ",
-				"components": {
-					"minecraft:transformation": {
-						"rotation": [0, 90, 0]
-					}
-				}
-			},
-			{
-				"condition": "q.block_state('minecraft:cardinal_direction') == 'west' ",
-				"components": {
-					"minecraft:transformation": {
-						"rotation": [0, 270, 0]
-					}
-				}
-			}
-		]
-	}
+  "format_version": "1.20.20",
+  "minecraft:block": {
+    "description": {
+      "identifier": "mike:palm_leave_tip",
+      "menu_category": {
+        "category": "nature",
+        "group": "itemGroup.name.leaves"
+      },
+      "traits": {
+        "minecraft:placement_direction": {
+          "enabled_states": ["minecraft:cardinal_direction"]
+        }
+      }
+    },
+    "components": {
+      "minecraft:collision_box": true,
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 0.4
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 15
+      },
+      "minecraft:flammable": {
+        "destroy_chance_modifier": 20,
+        "catch_chance_modifier": 5
+      },
+      "minecraft:geometry": "geometry.palm_leave_tip",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "palm_leave_tip",
+          "render_method": "alpha_test"
+        }
+      },
+      "minecraft:map_color": "#5f4a2b"
+    },
+    "permutations": [
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'north' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 180, 0]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'south' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 0, 0]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'east' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 90, 0]
+          }
+        }
+      },
+      {
+        "condition": "q.block_state('minecraft:cardinal_direction') == 'west' ",
+        "components": {
+          "minecraft:transformation": {
+            "rotation": [0, 270, 0]
+          }
+        }
+      }
+    ]
+  }
 }
