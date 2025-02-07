@@ -20,7 +20,7 @@
       "textures": "textures/blocks/oil_block" 
     },
     "apple_block": {
-			"textures": "textures/blocks/apple_block.png"
-		}
+      "textures": "textures/blocks/apple_block.png"
+    }
   } 
 } 

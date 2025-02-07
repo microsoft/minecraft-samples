@@ -1,30 +1,30 @@
 {
-	"format_version": 2,
-	"header": {
-		"name": "Palm Tree",
-		"description": "Palm Tree Behavior Pack",
-		"uuid": "8f65a568-1afc-3c8d-4ef2-0f2682742319",
-		"version": [1, 0, 0],
-		"min_engine_version": [1, 16, 0]
-	},
-	"metadata": {
-		"authors": ["Mike"],
-		"generated_with": {
-			"blockbench_block_wizard": ["1.2.2"]
-		}
-	},
-	"modules": [
-		{
-			"description": "Behavior",
-			"version": [1, 0, 0],
-			"uuid": "af9562b6-a4a6-fdcf-1e58-2b2165876d3b",
-			"type": "data"
-		}
-	],
-	"dependencies": [
-		{
-			"uuid": "e3a39e90-ffc3-4043-dfc4-8c5e9e6015ba",
-			"version": [1, 0, 0]
-		}
-	]
+  "format_version": 2,
+  "header": {
+    "name": "Palm Tree",
+    "description": "Palm Tree Behavior Pack",
+    "uuid": "8f65a568-1afc-3c8d-4ef2-0f2682742319",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 0]
+  },
+  "metadata": {
+    "authors": ["Mike"],
+    "generated_with": {
+      "blockbench_block_wizard": ["1.2.2"]
+    }
+  },
+  "modules": [
+    {
+      "description": "Behavior",
+      "version": [1, 0, 0],
+      "uuid": "af9562b6-a4a6-fdcf-1e58-2b2165876d3b",
+      "type": "data"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "e3a39e90-ffc3-4043-dfc4-8c5e9e6015ba",
+      "version": [1, 0, 0]
+    }
+  ]
 }

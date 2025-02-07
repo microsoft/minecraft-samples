@@ -12,7 +12,7 @@
           "min_height_for_canopy": 3
         },
         "trunk_block": {
-          "name": "minecraft:log",
+          "name": "minecraft:oak_log",
           "states": {
             "old_log_type": "oak"
           }
@@ -38,7 +38,7 @@
         "canopy_radius": 3,
         "leaf_placement_attempts": 50,
         "leaf_blocks": [
-          ["minecraft:leaves", 3]
+          ["minecraft:oak_leaves", 3]
         ]
       },
       "base_block": [
@@ -58,8 +58,7 @@
         "minecraft:muddy_mangrove_roots"
       ],
       "may_replace": [
-        "minecraft:leaves",
-        "minecraft:leaves2",
+        "minecraft:oak_leaves",
         "minecraft:azalea",
         "minecraft:flowering_azalea",
         "minecraft:azalea_leaves",

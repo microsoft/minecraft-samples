@@ -26,9 +26,9 @@
       "uuid": "3394f6f5-1f45-40c5-a53d-9079a52233d1",
       "version": [1, 0, 0]
     }, 
-		{ 
-			"uuid": "e3a39e90-ffc3-4043-dfc4-8c5e9e6015ba", 
-			"version": [1, 0, 0]
-		}
+    { 
+      "uuid": "e3a39e90-ffc3-4043-dfc4-8c5e9e6015ba", 
+      "version": [1, 0, 0]
+    }
   ]
 }

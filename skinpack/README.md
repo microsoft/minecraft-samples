@@ -2,7 +2,7 @@
 page_type: sample
 author: iconicNurdle
 description: A basic skin pack.
-ms.author: v-headenjill@microsoft.com
+ms.author: mikeam
 ms.date: 04/15/2024
 languages:
   - json
@@ -12,7 +12,7 @@ products:
 
 # Minecraft Tutorial Sample Skinpack
 
-This sample demonstrates a simple build process and TypeScript compilation for Minecraft. This readme shows how you can use Betas APIs experiment to build out simple gameplay styles. You can use this project as a starter for your own scripting projects.
+This is a sample skin pack. To find the skin, import the pack (as explained below), launch Minecraft, and go to the Classic Skins area of the dressing room. The Tutorial Skin Pack should be listed.
 
 ## What Do I Do with This?
 
