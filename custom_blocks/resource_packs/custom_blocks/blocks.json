@@ -11,7 +11,7 @@
     },
     "carried_textures": "die_red",
     "isotropic": true,
-    "brightness_gamma": 1,
+    "ambient_occlusion_exponent": 1,
     "sound": "stone"
   },
   "demo:tuna_roll": {

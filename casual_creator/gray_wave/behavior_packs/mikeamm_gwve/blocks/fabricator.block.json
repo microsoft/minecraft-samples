@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.50",
+  "format_version": "1.21.60",
   "minecraft:block": {
     "description": {
       "identifier": "mikeamm_gwve:fabricator",
@@ -31,10 +31,28 @@
         "catch_chance_modifier": 5
       },
       "minecraft:geometry": "geometry.mikeamm_gwve_fabricator",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "on_liquid_touches": "broken"
+          }
+        ]
+      },
+      "minecraft:item_visual": {
+        "geometry": "geometry.mikeamm_gwve_fabricator_in_hand",
+        "material_instances": {
+          "*": {
+            "texture": "mikeamm_gwve_fabricator_in_hand",
+            "render_method": "alpha_test"
+          }
+        }
+      },
       "minecraft:material_instances": {
         "*": {
           "texture": "mikeamm_gwve_fabricator",
-          "render_method": "alpha_test"
+          "render_method": "alpha_test",
+          "ambient_occlusion": 1
         }
       },
       "minecraft:light_emission": 7,

@@ -7,6 +7,9 @@
     "mikeamm_gwve_fabricator": {
       "textures": "textures/mikeamm/gray_wave/blocks/fabricator.png"
     },
+    "mikeamm_gwve_fabricator_in_hand": {
+      "textures": "textures/mikeamm/gray_wave/blocks/fabricator_in_hand.png"
+    },
     "mikeamm_gwve_gray_ore": {
       "textures": "textures/mikeamm/gray_wave/blocks/gray_ore.png"
     }
