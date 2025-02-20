@@ -14,6 +14,6 @@ products:
 
 This sample is the behavior pack used in the Jigsaw Block Tutorial.
 
-See the [Jigsaw Block Tutorial](https://docs.microsoft.com/minecraft/creator/documents/structures/jigsawtutorial) documentation for the full walkthrough of using jigsaw blocks.
+See the [Jigsaw Block Tutorial](https://learn.microsoft.com/minecraft/creator/documents/structures/jigsawtutorial) documentation for the full walkthrough of using jigsaw blocks.
 
 
