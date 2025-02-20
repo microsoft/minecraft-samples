@@ -90,7 +90,8 @@
         "*": {
           "texture": "bubble_fish_blue",
           "render_method": "blend",
-          "face_dimming": true
+          "face_dimming": true,
+          "ambient_occlusion": 1
         }
       }
     }

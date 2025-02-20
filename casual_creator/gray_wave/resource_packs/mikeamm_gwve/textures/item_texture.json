@@ -20,6 +20,9 @@
     },
     "gray_wave_generator_kit": {
       "textures": "textures/mikeamm/gray_wave/items/gray_wave_generator_kit.png"
+    },
+    "mikeamm_gwve:gray_wave_machines_group": {
+      "textures": "textures/mikeamm/gray_wave/items/gray_wave_machines_group.png"
     }
   }
 }
