@@ -14,7 +14,7 @@ products:
 
 This sample is the behavior pack used in the Behavior Pack Tutorial.
 
-See the [Intro to Behavior Packs](https://docs.microsoft.com/minecraft/creator/documents/behaviorpack) documentation for a full tutorial on creating an aggressive cow using a behavior pack.
+See the [Intro to Behavior Packs](https://learn.microsoft.com/minecraft/creator/documents/behaviorpack) documentation for a full tutorial on creating an aggressive cow using a behavior pack.
 
 ## Using the Behavior Pack Sample
 

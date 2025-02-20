@@ -14,7 +14,7 @@ products:
 
 This sample is the behavior pack used in the NPC Dialogue Tutorial.
 
-See the [NPC Dialogue](https://docs.microsoft.com/minecraft/creator/documents/NPCDialogue) documentation for the full walkthrough adding custom dialogue for an NPC.
+See the [NPC Dialogue](https://learn.microsoft.com/minecraft/creator/documents/NPCDialogue) documentation for the full walkthrough adding custom dialogue for an NPC.
 
 ## Using the NPC Dialogue Behavior Pack Sample
 

@@ -14,7 +14,7 @@ products:
 
 This sample is the world that is walked through in the Parkour documentation as examples of block mechanics, player mechanics, and Redstone mechanics that can be used to make a fun player experience.
 
-See the [Parkour Introduction](https://docs.microsoft.com/minecraft/creator/documents/ParkourIntro) documentation to learn more about how parkour mechanics can lead to fun gameplay for players.
+See the [Parkour Introduction](https://learn.microsoft.com/minecraft/creator/documents/ParkourIntro) documentation to learn more about how parkour mechanics can lead to fun gameplay for players.
 
 ## Using the Parkour Sample World
 
