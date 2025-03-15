@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.80",
+  "format_version": "1.21.60",
   "minecraft:block": {
     "description": {
       "identifier": "demo:blue_bubble_fish",

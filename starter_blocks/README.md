@@ -1,16 +1,17 @@
 ---
 page_type: sample
 author: mammerla
-description: A basic progressive example of using custom block features within Minecraft.
+description: A basic example of a set of starter blocks for use within Minecraft.
 ms.author: mikeam@microsoft.com
 ms.date: 01/31/2024
 products:
   - minecraft
 ---
 
-# Minecraft Sample Block Project
+# Minecraft Starter Block Project
 
-This sample demonstrates some custom block types in Minecraft, including a simple build process and TypeScript compilation for Minecraft. You can use this project as a starter for your own scripting projects.
+This sample demonstrates some starter custom block types you can use within Minecraft,
+and start your own builds and customizations from.
 
 ## Prerequisites
 
@@ -28,14 +29,14 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 ## Getting Started
 
-1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **custom_blocks**.
+1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **starter_blocks**.
 
-1. Put the extracted contents of the custom_blocks folder into **custom_blocks**.
+1. Put the extracted contents of the starter_blocks folder into **starter_blocks**.
 
-1. Open a Windows Terminal or PowerShell window and change the working directory to your **custom_blocks** folder:
+1. Open a Windows Terminal or PowerShell window and change the working directory to your **starter_blocks** folder:
 
    ```powershell
-   cd c:\projects\custom_blocks\
+   cd c:\projects\starter_blocks\
    ```
 
 1. Use npm to install our tools:
@@ -64,5 +65,5 @@ This sample demonstrates how you can build incrementally more sophisticated bloc
 
 ## Manifest
 
-- [behavior_packs/custom_blocks](https://github.com/microsoft/minecraft-samples/blob/main/custom_blocks/behavior_packs/custom_blocks): This contains behavior implementations for a set of custom blocks.
-- [resource_packs/custom_blocks](https://github.com/microsoft/minecraft-samples/blob/main/custom_blocks/resource_packs/custom_blocks): This contains resources for a set of custom blocks.
+- [behavior_packs/starter_blocks](https://github.com/microsoft/minecraft-samples/blob/main/starter_blocks/behavior_packs/starter_blocks): This contains behavior implementations for a set of custom blocks.
+- [resource_packs/starter_blocks](https://github.com/microsoft/minecraft-samples/blob/main/starter_blocks/resource_packs/starter_blocks): This contains resources for a set of custom blocks.

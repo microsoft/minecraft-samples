@@ -2,7 +2,7 @@
   "format_version": "1.21.60",
   "minecraft:block": {
     "description": {
-      "identifier": "demo:die"
+      "identifier": "starter:simple_cube"
     },
     "components": {
       "minecraft:geometry": {

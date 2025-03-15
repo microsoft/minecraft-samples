@@ -1,8 +1,8 @@
 {
-  "name": "custom_blocks",
+  "name": "starter_blocks",
   "version": "0.1.0",
-  "productName": "Custom Blocks Demo Project",
-  "description": "Custom Blocks Demo Project",
+  "productName": "Starter Blocks Project",
+  "description": "Starter Blocks Project",
   "private": true,
   "devDependencies": {
     "@minecraft/core-build-tasks": "^4.0.0",

@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "A set of starter blocks for Minecraft.",
+    "name": "Starter Blocks Resource Pack",
+    "uuid": "9c1b8877-1a87-4a09-86c6-baf0b316fd1b",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "description": "Resource Pack",
+      "type": "resources",
+      "uuid": "8abdf2f0-dc23-462d-8647-06d389a19bb6",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "87e4e25f-b7be-4f16-a74b-da877f94dd48",
+      "version": [1, 0, 0]
+    }
+  ]
+}

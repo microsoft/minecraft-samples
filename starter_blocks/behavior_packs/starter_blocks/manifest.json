@@ -1,9 +1,9 @@
 {
   "format_version": 2,
   "header": {
-    "name": "Custom Blocks",
-    "description": "My behavior pack description",
-    "uuid": "874f1a8c-2c74-4be1-8770-1bcb40e0cd74",
+    "name": "Starter Blocks",
+    "description": "A set of starter blocks for Minecraft.",
+    "uuid": "87e4e25f-b7be-4f16-a74b-da877f94dd48",
     "version": [1, 0, 0],
     "min_engine_version": [1, 20, 80]
   },
@@ -12,14 +12,14 @@
       "description": "Script resources",
       "language": "javascript",
       "type": "script",
-      "uuid": "7c7e693f-99f4-41a9-95e0-1f57b37e1e12",
+      "uuid": "00787b96-b12b-47f6-a759-f88e7a179c9b",
       "version": [1, 0, 0],
       "entry": "scripts/main.js"
     },
     {
-      "description": "Demo Behavior Pack",
+      "description": "Behavior Pack",
       "type": "data",
-      "uuid": "7efe3af0-ea69-4e64-b646-742e89b201b3",
+      "uuid": "b1875280-4d8a-4bb3-9720-01c692a6cf6c",
       "version": [1, 0, 0]
     }
   ],
@@ -29,7 +29,7 @@
       "version": "1.17.0"
     },
     {
-      "uuid": "7ae29fa1-0853-448d-850c-87dbdd583c4f",
+      "uuid": "9c1b8877-1a87-4a09-86c6-baf0b316fd1b",
       "version": [1, 0, 0]
     }
   ]

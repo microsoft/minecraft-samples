@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.40",
+  "starter:simple_cube": {
+    "textures": {
+      "up": "simple_cube",
+      "down": "simple_cube",
+      "north": "simple_cube",
+      "south": "simple_cube",
+      "east": "simple_cube",
+      "west": "simple_cube"
+    },
+    "carried_textures": "simple_cube",
+    "isotropic": true,
+    "ambient_occlusion_exponent": 1,
+    "sound": "stone"
+  },
+  "starter:crate": {
+    "sound": "wood"
+  }
+}

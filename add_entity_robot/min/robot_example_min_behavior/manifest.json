@@ -5,14 +5,20 @@
         "description": "",
         "uuid": "6eaedf14-74c0-49e1-907d-3a8974cb006b",
         "min_engine_version": [1, 12, 0],
-        "version": [0, 0, 1]
+        "version": [1, 0, 0]
     },
     "modules": [
         {
             "description": "",
             "type": "data",
             "uuid": "ac0dbc5d-6267-4bcc-ac65-521e5054c31b",
-            "version": [0, 0, 1]
+            "version": [1, 0, 0]
+        }
+    ],
+    "dependencies": [
+     {
+          "uuid": "bb405256-d96b-44c4-aca5-5044b660a0b2",
+          "version": [1, 0, 0]
         }
     ]
 }
