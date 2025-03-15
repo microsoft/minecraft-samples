@@ -32,6 +32,40 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 This a complete example of building multiple different types of items with various different visual representations, in Minecraft.
 
+You can get started with this sample on MCTools! Visit [mctools.dev](https://mctools.dev) to create a new project based on this sample.
+
+## Getting Started
+
+1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **custom_items**.
+
+1. Put the extracted contents of the custom_blocks folder into **custom_items**.
+
+1. Open a Windows Terminal or PowerShell window and change the working directory to your **custom_items** folder:
+
+   ```powershell
+   cd c:\projects\custom_items\
+   ```
+
+1. Use npm to install our tools:
+
+   ```powershell
+   npm i
+   ```
+
+1. When that's done, enter:
+
+   ```powershell
+   npm run local-deploy
+   ```
+
+1. Use this shortcut command to open the project in Visual Studio Code:
+
+   ```powershell
+   code .
+   ```
+
+It might also ask you to install the Minecraft Debugger and Blockception's Visual Studio Code plugin, which are plugins to Visual Studio Code that can help with Minecraft development. Go ahead and do that, if you haven't already.
+
 ## Manifest
 
 - [behavior_packs/custom_item](https://github.com/microsoft/minecraft-samples/blob/main/custom_items/behavior_packs/custom_item): This contains behavior implementations for a set of custom items.

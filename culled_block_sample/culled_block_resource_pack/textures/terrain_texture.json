@@ -1,5 +1,5 @@
 {
-  "resource_pack_name": "custom_block_resource_pack",
+  "resource_pack_name": "culled_block_resource_pack",
   "texture_name": "atlas.terrain",
   "padding": 8,
   "num_mip_levels": 4,

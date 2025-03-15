@@ -12,20 +12,6 @@ products:
 
 This sample demonstrates new block culling and rendering options for custom blocks.
 
-## Prerequisites
-
-**Install Node.js tools, if you haven't already**
-
-We're going to use the package manager [npm](https://www.npmjs.com/package/npm) to get more tools to make the process of building our project easier.
-
-Visit [https://nodejs.org/](https://nodejs.org).
-
-Download the version with "LTS" next to the number and install it. (LTS stands for Long Term Support, if you're curious.) In the Node.js Windows installer, accept the installation defaults. You do not need to install any additional tools for Native compilation.
-
-**Install Visual Studio Code, if you haven't already**
-
-Visit the [Visual Studio Code website](https://code.visualstudio.com) and install Visual Studio Code.
-
 ## Getting Started
 
 1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **culled_blocks**.
@@ -38,28 +24,25 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
    cd c:\projects\culled blocks\
    ```
 
-1. Use npm to install our tools:
+1. You can use the install_uwp command to copy over the culled_block_sampes:
 
    ```powershell
-   npm i
+   install_uwp.cmd
    ```
 
-1. Use this shortcut command to open the project in Visual Studio Code:
-
-   ```powershell
-   code .
-   ```
+Or copy the files to %localappdata%\packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_behavior_packs
+and %localappdata%\packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs respectively.
 
 It might also ask you to install the Minecraft Debugger and Blockception's Visual Studio Code plugin, which are plugins to Visual Studio Code that can help with Minecraft development. Go ahead and do that, if you haven't already.
 
-# Minecraft Block Culling Usage
+# Minecraft Block Culling Usage In Game
 
 This sample demonstrates how to use block culling on the **tuna_roll** custom block. 
 
 After downloading these add-on packs:
 
 1. Insert UUIDs in the manifests.
-1. Put them in their respective folders in your com.Mojang folder.
+1. Put them in their respective folders in your com.mojang folder.
 1. Make a creative Minecraft world.
 1. `/give @s demo:tuna_roll`
 1. Place 3 tuna roll blocks.

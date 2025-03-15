@@ -12,6 +12,8 @@ products:
 
 This sample demonstrates some custom block types in Minecraft, including a simple build process and TypeScript compilation for Minecraft. You can use this project as a starter for your own scripting projects.
 
+You can get started with this sample on MCTools! Visit [mctools.dev](https://mctools.dev) to create a new project based on this sample.
+
 ## Prerequisites
 
 **Install Node.js tools, if you haven't already**
