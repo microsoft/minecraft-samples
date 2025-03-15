@@ -14,7 +14,7 @@ products:
 
 This sample is the resource pack used in the Intro to Resource Packs Tutorial.
 
-See the [Intro to Resource Packs](https://docs.microsoft.com/minecraft/creator/documents/resourcepack) documentation for the full walkthrough turning your dirt blocks bright green.
+See the [Intro to Resource Packs](https://learn.microsoft.com/minecraft/creator/documents/resourcepack) documentation for the full walkthrough turning your dirt blocks bright green.
 
 ## Using the Resource Pack Sample
 
