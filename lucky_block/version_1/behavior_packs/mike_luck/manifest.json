@@ -1,0 +1,68 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "luckyblock",
+    "description": "Crate Starter Block",
+    "uuid": "c412302f-969d-4600-8df9-7dcf5dc25ef6",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      60
+    ]
+  },
+  "modules": [
+    {
+      "description": "Behavior",
+      "version": [
+        1,
+        0,
+        0
+      ],
+      "uuid": "f86d5120-98f6-492c-b599-4f63b8ca9399",
+      "type": "data"
+    },
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "d8b836bf-6408-4222-aa77-e67986d20dbd",
+      "version": [
+        0,
+        0,
+        1
+      ],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "3b9a4412-76ec-46b5-8236-c1dd9eba3348",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": [
+        1,
+        17,
+        0
+      ]
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": [
+        1,
+        3,
+        0
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "luckyblock",
+    "description": "Crate Starter Block",
+    "uuid": "3b9a4412-76ec-46b5-8236-c1dd9eba3348",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      21,
+      60
+    ]
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "c5a8b1eb-522d-4738-bfe2-c85a04621981",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "c412302f-969d-4600-8df9-7dcf5dc25ef6",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

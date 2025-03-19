@@ -1,0 +1,30 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:block": {
+    "description": {
+      "identifier": "mike_luck:luckyblock",
+      "states": {
+        "mike_luck:unlucky": [
+          false,
+          true
+        ]
+      }
+    },
+    "components": {
+      "minecraft:geometry": "geometry.luckyblock",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "luckyblock"
+        }
+      },
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 5,
+        "item_specific_speeds": []
+      },
+      "minecraft:display_name": "Lucky Block",
+      "minecraft:custom_components": [
+        "mike_luck:luckyblock_actions"
+      ]
+    }
+  }
+}

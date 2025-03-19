@@ -1,0 +1,16 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "wood_sprung": {
+      "category": "neutral",
+      "sounds": [
+        {
+          "is3D": false,
+          "name": "sounds/wood_sprung",
+          "volume": 1,
+          "weight": 10
+        }
+      ]
+    }
+  }
+}
