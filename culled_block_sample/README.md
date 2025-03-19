@@ -21,7 +21,7 @@ This sample demonstrates new block culling and rendering options for custom bloc
 1. Open a Windows Terminal or PowerShell window and change the working directory to your **culled_blocks** folder:
 
    ```powershell
-   cd c:\projects\culled blocks\
+   cd c:\projects\culled_blocks\
    ```
 
 1. You can use the install_uwp command to copy over the culled_block_sampes:

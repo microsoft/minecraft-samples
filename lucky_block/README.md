@@ -14,6 +14,8 @@ This sample demonstrates a lucky block types in Minecraft, including a simple bu
 
 See this [YouTube video on the Minecraft Creator Channel](https://www.youtube.com/watch?v=b4isyG5t9NQ) for a quick look on how this was created.
 
+Wood_sprung OGG sound based on Cartoon_8'' Boing.mp3 by CGEffex -- https://freesound.org/s/89544/ -- License: Attribution 4.0
+
 ## Prerequisites
 
 **Install Node.js tools, if you haven't already**

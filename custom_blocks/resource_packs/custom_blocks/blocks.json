@@ -19,5 +19,8 @@
   },
   "demo:california_roll": {
     "sound": "mud"
+  },
+  "demo:salmon_roll": {
+    "sound": "mud"
   }
 }
