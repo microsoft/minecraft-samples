@@ -1,0 +1,19 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Deferred Lighting Starter Configuration",
+    "description": "Deferred Lighting Starter",
+    "uuid": "bd86bc16-15a1-4e4d-8908-8b0270141d27",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 70]
+  },
+  "modules": [
+    {
+      "description": "Deferred Lighting Resources",
+      "type": "resources",
+      "uuid": "3ed2d7f5-1d07-4006-ae8d-73e455f76ef4",
+      "version": [1, 0, 0]
+    }
+  ],
+  "capabilities": ["pbr"]
+}
