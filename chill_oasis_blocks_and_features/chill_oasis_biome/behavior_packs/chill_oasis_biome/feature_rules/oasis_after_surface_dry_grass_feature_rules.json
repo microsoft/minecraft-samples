@@ -1,0 +1,35 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "mike:oasis_after_surface_dry_grass_feature_rules",
+      "places_feature": "mike:oasis_scatter_dry_grass_feature"
+    },
+    "conditions": {
+      "placement_pass": "after_surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "chill_oasis"
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 6,
+      "scatter_chance": {
+        "numerator": 1,
+        "denominator": 3
+      },
+      "x": {
+        "distribution": "uniform",
+        "extent": [ 0, 16 ]
+      },
+      "y": "query.heightmap(variable.worldx, variable.worldz)",
+      "z": {
+        "distribution": "uniform",
+        "extent": [ 0, 16 ]
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.20.20",
+  "sound_definitions": {
+    "ambient.waves": {
+      "category": "ambient",
+      "max_distance": null,
+      "min_distance": null,
+      "sounds": [
+        {
+          "is3D": false,
+          "name": "sounds/ambient/waves",
+          "volume": 0.25,
+          "weight": 10
+        }
+      ]
+    }
+  }
+}

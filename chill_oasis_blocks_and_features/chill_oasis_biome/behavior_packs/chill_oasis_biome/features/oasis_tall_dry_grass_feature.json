@@ -1,0 +1,28 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "mike:oasis_tall_dry_grass_feature"
+    },
+    "places_block": [
+      {
+        "block": "minecraft:tall_dry_grass",
+        "weight": 3
+      }
+    ],
+    "may_attach_to": {
+      "auto_rotate": false,
+      "min_sides_must_attach": 1,
+      "south": [
+        "minecraft:grass",
+        "mike:white_sand",
+        "minecraft:dirt"
+      ]
+    },
+    "enforce_survivability_rules": true,
+    "enforce_placement_rules": true,
+    "may_replace": [
+      "minecraft:air"
+    ]
+  }
+}

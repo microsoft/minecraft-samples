@@ -1,0 +1,11 @@
+{
+  "individual_named_sounds": {
+    "sounds": {
+      "ambient.waves": {
+        "pitch": [1, 1.1],
+        "sound": "ambient.waves",
+        "volume": 0.3
+      }
+    }
+  }
+}

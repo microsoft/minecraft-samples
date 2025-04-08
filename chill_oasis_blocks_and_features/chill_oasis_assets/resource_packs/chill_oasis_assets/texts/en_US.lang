@@ -1,0 +1,9 @@
+tile.mike:palm_trunk.name=Palm Trunk
+tile.mike:frond_top.name=Frond Top
+tile.mike:chill_oasis_top.name=chill_oasis_top
+tile.mike:palm_leave.name=palm_leave
+tile.mike:palm_leave_tip.name=palm_leave_tip
+tile.mike:palm_leave_corner.name=Palm Leave Corner
+tile.mike:white_sand.name=White Sand
+entity.mike:beachager.name=beachager
+item.spawn_egg.entity.mike:beachager.name=Spawn beachager
