@@ -5,7 +5,7 @@
   "description": "Palm Tree Project with Blocks Demo",
   "private": true,
   "devDependencies": {
-    "@minecraft/core-build-tasks": "^1.1.3",
+    "@minecraft/core-build-tasks": "^4.0.0",
     "eslint-plugin-minecraft-linting": "^1.2.1",
     "source-map": "^0.7.4",
     "ts-node": "^10.9.1",
