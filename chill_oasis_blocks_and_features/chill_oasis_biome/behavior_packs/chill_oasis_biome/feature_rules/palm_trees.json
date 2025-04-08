@@ -1,0 +1,35 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "mike:palm_trees",
+      "places_feature": "mike:palm_tree_scatter"
+    },
+    "conditions": {
+      "placement_pass": "surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "overworld"
+        },
+        {
+          "any_of": [
+            {
+              "test": "has_biome_tag",
+              "operator": "==",
+              "value": "chill_oasis"
+            }
+          ]
+        }
+      ]
+    },
+    "distribution": {
+      "iterations": 6,
+      "coordinate_eval_order": "zxy",
+      "x": 0,
+      "y": "query.heightmap(variable.worldx, variable.worldz)",
+      "z": 0
+    }
+  }
+}

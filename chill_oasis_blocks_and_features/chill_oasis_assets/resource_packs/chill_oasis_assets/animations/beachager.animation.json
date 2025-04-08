@@ -1,0 +1,52 @@
+{
+	"format_version": "1.8.0",
+	"animations": {
+		"animation.beachager.baby_transform": {
+			"loop": true,
+			"bones": {
+				"head": {
+					"scale": 1.5
+				}
+			}
+		},
+		"animation.beachager.general": {
+			"loop": true,
+			"bones": {
+				"arms": {
+					"position": [0, -1, -1],
+					"rotation": ["-42.97 - this", 0, 0]
+				}
+			}
+		},
+		"animation.beachager.general.v1.0": {
+			"loop": true,
+			"bones": {
+				"arms": {
+					"position": [0, "-3.0 - this", "-1.0 - this"],
+					"rotation": ["-42.97 - this", 0, 0]
+				}
+			}
+		},
+		"animation.beachager.get_in_bed": {
+			"loop": true,
+			"bones": {
+				"body": {
+					"position": [0, 1, -15],
+					"rotation": [-90, 0, 0]
+				}
+			}
+		},
+		"animation.beachager.move": {
+			"anim_time_update": "query.modified_distance_moved",
+			"loop": true,
+			"bones": {
+				"leg0": {
+					"rotation": ["(math.cos(query.anim_time * 38.17) * 40.0) - this", "-this", 0]
+				},
+				"leg1": {
+					"rotation": ["(math.cos(query.anim_time * 38.17 + 180) * 40.0) - this", "-this", 0]
+				}
+			}
+		}
+	}
+}

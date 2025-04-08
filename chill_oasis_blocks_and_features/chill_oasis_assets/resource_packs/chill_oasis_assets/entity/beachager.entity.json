@@ -1,0 +1,84 @@
+{
+	"format_version": "1.8.0",
+	"minecraft:client_entity": {
+		"description": {
+			"identifier": "mike:beachager",
+			"materials": {
+				"default": "villager_v2",
+				"masked": "villager_v2_masked"
+			},
+			"textures": {
+				"base": "textures/entity/beachager/base",
+				"base2": "textures/entity/beachager/base2",
+				"base3": "textures/entity/beachager/base3",
+				"base4": "textures/entity/beachager/base4",
+				"base5": "textures/entity/beachager/base5",
+				"base6": "textures/entity/beachager/base6",
+				"desert": "textures/entity/beachager/desert",
+				"jungle": "textures/entity/beachager/jungle",
+				"plains": "textures/entity/beachager/plains",
+				"savanna": "textures/entity/beachager/savanna",
+				"snow": "textures/entity/beachager/snow",
+				"swamp": "textures/entity/beachager/swamp",
+				"taiga": "textures/entity/beachager/taiga",
+				"armorer": "textures/entity/beachager/armorer",
+				"butcher": "textures/entity/beachager/butcher",
+				"cartographer": "textures/entity/beachager/cartographer",
+				"cleric": "textures/entity/beachager/cleric",
+				"farmer": "textures/entity/beachager/farmer",
+				"fisherman": "textures/entity/beachager/fisherman",
+				"fletcher": "textures/entity/beachager/fletcher",
+				"leatherworker": "textures/entity/beachager/leatherworker",
+				"librarian": "textures/entity/beachager/librarian",
+				"shepherd": "textures/entity/beachager/shepherd",
+				"tool_smith": "textures/entity/villager2/professions/toolsmith",
+				"weapon_smith": "textures/entity/villager2/professions/weaponsmith",
+				"stonemason": "textures/entity/beachager/stonemason",
+				"nitwit": "textures/entity/beachager/nitwit",
+				"unskilled": "textures/entity/beachager/unskilled",
+				"level_stone": "textures/entity/beachager/level_stone",
+				"level_iron": "textures/entity/beachager/level_iron",
+				"level_gold": "textures/entity/beachager/level_gold",
+				"level_emerald": "textures/entity/beachager/level_emerald",
+				"level_diamond": "textures/entity/beachager/level_diamond",
+				"toolsmith": "textures/entity/beachager/toolsmith",
+				"weaponsmith": "textures/entity/beachager/weaponsmith"
+			},
+			"geometry": {
+				"default": "geometry.beachager"
+			},
+			"scripts": {
+				"scale": "0.9375",
+				"pre_animation": [
+					"variable.num_professions = 15;",
+					"variable.num_tiers = 3;",
+					"variable.profession_index = (query.variant < variable.num_professions ? query.variant : 0);",
+					"variable.level_index = query.trade_tier;"
+				]
+			},
+			"animations": {
+				"general": "animation.villager.general",
+				"look_at_target": "animation.common.look_at_target",
+				"move": "animation.villager.move",
+				"baby_transform": "animation.villager.baby_transform",
+				"get_in_bed": "animation.villager.get_in_bed"
+			},
+			"animation_controllers": [
+				{
+					"general": "controller.animation.villager_v2.general"
+				},
+				{
+					"move": "controller.animation.villager_v2.move"
+				},
+				{
+					"baby": "controller.animation.villager_v2.baby"
+				}
+			],
+			"render_controllers": ["controller.render.villager_v2_base", "controller.render.villager_v2_masked", "controller.render.villager_v2_level"],
+			"spawn_egg": {
+				"base_color": "#22dd9d",
+				"overlay_color": "#623b54"
+			}
+		}
+	}
+}

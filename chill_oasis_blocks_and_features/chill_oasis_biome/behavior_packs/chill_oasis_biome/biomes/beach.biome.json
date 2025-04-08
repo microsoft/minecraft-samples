@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.70",
+  "minecraft:biome": {
+    "description": {
+      "identifier": "minecraft:beach"
+    },
+    "components": {
+      "minecraft:climate": {
+        "downfall": 0.4,
+        "snow_accumulation": [0.0, 0.125],
+        "temperature": 0.8
+      },
+      "minecraft:overworld_height": {
+        "noise_type": "beach"
+      },
+      "minecraft:surface_parameters": {
+        "sea_floor_depth": 7,
+        "sea_floor_material": "minecraft:gravel",
+        "foundation_material": "minecraft:stone",
+        "mid_material": "mike:white_sand",
+        "top_material": "mike:white_sand",
+        "sea_material": "minecraft:water"
+      },
+      "minecraft:tags": {
+        "tags": ["beach", "monster", "chill_oasis", "meadow", "overworld", "warm"]
+      }
+    }
+  }
+}

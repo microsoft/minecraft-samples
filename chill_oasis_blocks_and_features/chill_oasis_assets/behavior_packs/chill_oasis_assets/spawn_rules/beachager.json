@@ -1,0 +1,28 @@
+{
+  "format_version": "1.8.0",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "mike:beachager",
+      "population_control": "animal"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:weight": {
+          "default": 90
+        },
+        "minecraft:herd": {
+          "min_size": 2,
+          "max_size": 8
+        },
+        "minecraft:biome_filter": {
+          "any_of": [
+            {
+              "all_of": [{ "test": "has_biome_tag", "value": "chill_oasis" }]
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

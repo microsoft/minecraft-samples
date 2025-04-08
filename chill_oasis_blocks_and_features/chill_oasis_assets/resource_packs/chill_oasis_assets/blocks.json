@@ -1,0 +1,24 @@
+{
+	"format_version": "1.21.40",
+	"white_sand": {
+		"sound": "sand"
+	},
+	"palm_leave_corner": {
+		"sound": "wood"
+	},
+	"palm_leave_tip": {
+		"sound": "wood"
+	},
+	"palm_leave": {
+		"sound": "wood"
+	},
+	"chill_oasis_top": {
+		"sound": "wood"
+	},
+	"frond_top": {
+		"sound": "wood"
+	},
+	"palm_trunk": {
+		"sound": "wood"
+	}
+}

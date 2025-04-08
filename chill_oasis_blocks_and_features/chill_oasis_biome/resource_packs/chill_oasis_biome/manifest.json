@@ -1,0 +1,34 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Chill Oasis Biome",
+    "description": "Chill Oasis Biome Pack",
+    "uuid": "ad3dfc7e-02aa-44a6-bb51-cf515071737c",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 16, 0]
+  },
+  "metadata": {
+    "authors": ["Mike"],
+    "generated_with": {
+      "blockbench_block_wizard": ["1.2.2"]
+    }
+  },
+  "modules": [
+    {
+      "description": "Chill Oasis Biome",
+      "type": "resources",
+      "uuid": "6efc10de-8cc4-4bb3-9bb5-ff55784a4a9a",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "3394f6f5-1f45-40c5-a53d-9079a52233d2",
+      "version": [1, 0, 0]
+    }, 
+		{ 
+			"uuid": "e3a39e90-ffc3-4043-dfc4-8c5e9e6015bb", 
+			"version": [1, 0, 0]
+		}
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "beach"
+    },
+    "components": {
+      "minecraft:sky_color": {
+        "sky_color": "#00ff00"
+      },
+      "minecraft:ambient_sounds": {
+        "loop": "ambient.waves"
+      },
+      "minecraft:fog_appearance": {
+        "fog_identifier": "minecraft:fog_beach"
+      },
+      "minecraft:water_appearance": {
+        "surface_color": "#2d3784"
+      },
+      "minecraft:biome_music": {
+        "volume_multiplier": 0
+      },
+      "minecraft:foliage_appearance": {
+        "color": "#878d76"
+      },
+      "minecraft:grass_appearance": {
+        "color": "#778272"
+      }
+    }
+  }
+}
