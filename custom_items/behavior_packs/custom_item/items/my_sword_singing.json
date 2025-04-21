@@ -1,16 +1,16 @@
 {
-  "format_version": "1.20.30",
+  "format_version": "1.21.70",
   "minecraft:item": {
     "description": {
       "identifier": "demo:my_sword_singing",
-      "category": "equipment"
+      "menu_category": {
+        "category": "equipment"
+      }
     },
     "components": {
-      "minecraft:icon": {
-        "texture": "demo:my_sword"
-      },
+      "minecraft:icon": "demo:my_sword",
       "minecraft:display_name": {
-        "value": "Sword Singer"
+        "value": "Sword Singer (as a Record)"
       },
       "minecraft:durability": {
         "damage_chance": {
@@ -24,7 +24,7 @@
       },
       "minecraft:block_placer": {
         "block": "minecraft:dirt",
-        "use_on": ["dirt", "grass", "anvil"]
+        "use_on": [{ "name": "minecraft:dirt" }, { "name": "minecraft:grass_block" }, { "name": "minecraft:anvil" }]
       },
       "minecraft:record": {
         "comparator_signal": 1,

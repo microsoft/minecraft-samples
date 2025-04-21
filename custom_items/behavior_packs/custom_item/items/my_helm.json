@@ -1,18 +1,18 @@
 {
-  "format_version": "1.20.30",
+  "format_version": "1.21.70",
   "minecraft:item": {
     "description": {
       "identifier": "demo:my_helm",
-      "category": "equipment"
+      "menu_category": {
+        "category": "equipment"
+      }
     },
     "components": {
       "minecraft:menu_category": {
         "category": "none",
         "group": "itemGroup.name.helmet"
       },
-      "minecraft:icon": {
-        "texture": "demo:my_helm"
-      },
+      "minecraft:icon": "demo:my_helm",
       "minecraft:display_name": {
         "value": "My Custom Helmet"
       },
@@ -30,7 +30,6 @@
         ]
       },
       "minecraft:wearable": {
-        "dispensable": true,
         "slot": "slot.armor.head"
       },
       "minecraft:durability": {

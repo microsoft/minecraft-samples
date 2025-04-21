@@ -1,5 +1,5 @@
 {
-  "format_version": "1.20.30",
+  "format_version": "1.21.70",
   "minecraft:attachable": {
     "description": {
       "identifier": "demo:my_chest",
