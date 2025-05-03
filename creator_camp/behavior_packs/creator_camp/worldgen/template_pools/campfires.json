@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:template_pool": {
+    "description": {
+      "identifier": "campsite:campfires"
+    },
+    "elements": [
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "campsite/campfires/campfire",
+          "processors": "campsite:grass_path_replacement"
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

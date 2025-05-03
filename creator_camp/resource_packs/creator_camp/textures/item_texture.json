@@ -1,0 +1,8 @@
+{
+  "resource_pack_name": "Creator Camp 2025 - Item Demo",
+  "texture_data": {
+    "ccid:leaf_bag": {
+      "textures": "textures/items/leaf_bag"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:template_pool": {
+    "description": {
+      "identifier": "campsite:tents"
+    },
+    "elements": [
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "campsite/tents/blue_tent",
+          "processors": "campsite:grass_path_replacement"
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:block": {
+    "description": {
+      "identifier": "creatorcamp:leaf_pile",
+      "menu_category": {
+        "category": "nature",
+        "group": "minecraft:itemGroup.name.grass"
+      },
+      "states": {
+        "creatorcamp:height": { "values": { "min": 0, "max": 2 } }
+      }
+    },
+
+    "components": {
+      "minecraft:collision_box": {
+        "origin": [-8, 2, -8],
+        "size": [16, 4, 16]
+      },
+      "minecraft:selection_box": true,
+      "minecraft:destructible_by_mining": {
+        "seconds_to_destroy": 1
+      },
+      "minecraft:destructible_by_explosion": {
+        "explosion_resistance": 0.5
+      },
+      "minecraft:flammable": {
+        "destroy_chance_modifier": 100,
+        "catch_chance_modifier": 100
+      },
+      "minecraft:geometry": "geometry.leaf_pile",
+      "minecraft:material_instances": {
+        "*": {
+          "texture": "leaf_pile",
+          "render_method": "alpha_test",
+          "tint_method": "default_foliage"
+        }
+      },
+      "minecraft:map_color": "#ffffff",
+      "minecraft:liquid_detection": {
+        "detection_rules": [
+          {
+            "liquid_type": "water",
+            "on_liquid_touches": "popped"
+          }
+        ]
+      },
+      "creatorcamp:stomped": {},
+      "creatorcamp:grow": {}
+    },
+    "permutations": [
+      {
+        "condition": "query.block_state('creatorcamp:height') == 0",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.leaf_pile",
+            "bone_visibility": {
+              "top": false,
+              "middle": false
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('creatorcamp:height') == 1",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.leaf_pile",
+            "bone_visibility": {
+              "top": false,
+              "middle": true
+            }
+          }
+        }
+      },
+      {
+        "condition": "query.block_state('creatorcamp:height') == 2",
+        "components": {
+          "minecraft:geometry": {
+            "identifier": "geometry.leaf_pile",
+            "bone_visibility": {
+              "top": true,
+              "middle": true
+            }
+          }
+        }
+      }
+    ]
+  }
+}

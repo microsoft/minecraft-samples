@@ -1,0 +1,32 @@
+{
+  "format_version": "1.13.0",
+  "minecraft:feature_rules": {
+    "description": {
+      "identifier": "kat:scatter_camp_tree_feature_rule",
+      "places_feature": "kat:scatter_camp_tree_feature"
+    },
+    "conditions": {
+      "placement_pass": "surface_pass",
+      "minecraft:biome_filter": [
+        {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "forest"
+        }
+ 
+      ]
+    },
+    "distribution": {
+        "iterations": 30,
+        "x": {
+          "distribution": "uniform",
+          "extent": [ 0, 16 ]
+        },
+        "y": "query.heightmap(variable.worldx, variable.worldz)",
+        "z": {
+          "distribution": "uniform",
+          "extent": [ 0, 16 ]
+}
+  }
+}
+}

@@ -1,0 +1,17 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:jigsaw": {
+    "description": {
+      "identifier": "campsite:basic_camp"
+    },
+    "step": "surface_structures",
+    "terrain_adaptation": "beard_thin",
+    "max_depth": 17,
+    "start_pool": "campsite:campfires",
+    "start_height": {
+      "type": "constant",
+      "value": { "absolute": -15 }
+    },
+    "heightmap_projection": "world_surface"
+  }
+}
