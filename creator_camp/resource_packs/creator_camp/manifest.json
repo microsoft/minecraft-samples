@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "CreatorCamp",
+    "description": "TypeScript Starter",
+    "uuid": "7510cf8b-6df1-4c3d-911e-68b522c199aa",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 90]
+  },
+  "modules": [
+    {
+      "description": "My Resource Pack",
+      "type": "resources",
+      "uuid": "86e3147e-e0eb-4025-ac65-0848e1752637",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "20a33263-335f-4156-b8ec-fa3f16a23cf1",
+      "version": [1, 0, 0]
+    }
+  ],
+  "metadata": {
+    "generated_with": {
+      "mctoolsweb": ["0.10.0"],
+      "blockbench_block_wizard": ["1.4.1"]
+    }
+  }
+}

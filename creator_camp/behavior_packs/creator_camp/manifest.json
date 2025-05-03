@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "CreatorCamp",
+    "description": "TypeScript Starter",
+    "uuid": "20a33263-335f-4156-b8ec-fa3f16a23cf1",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 90]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "00048c23-0848-40c1-9f39-b7713d267961",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": [2, 0, 0]
+    },
+    {
+      "uuid": "7510cf8b-6df1-4c3d-911e-68b522c199aa",
+      "version": [1, 0, 0]
+    }
+  ],
+  "metadata": {
+    "generated_with": {
+      "mctoolsweb": ["0.10.0"],
+      "blockbench_block_wizard": ["1.4.1"]
+    }
+  }
+}

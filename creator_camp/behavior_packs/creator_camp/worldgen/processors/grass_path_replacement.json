@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:processor_list": {
+    "description": {
+      "identifier": "campsite:grass_path_replacement"
+    },
+    "processors": [
+      {
+        "processor_type": "minecraft:rule",
+        "rules": [
+          {
+            "input_predicate": {
+              "predicate_type": "minecraft:random_block_match",
+              "block": "minecraft:grass_path",
+              "probability": 0.2
+            },
+            "output_state": {
+              "name": "minecraft:coarse_dirt"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

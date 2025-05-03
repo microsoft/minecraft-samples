@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.20",
+  "minecraft:structure_set": {
+    "description": {
+      "identifier": "campsite:basic_camp"
+    },
+    "placement": {
+      "type": "minecraft:random_spread",
+      "salt": 39281139,
+      "separation": 4,
+      "spacing": 10,
+      "spread_type": "linear" 
+    },
+    "structures": [
+      {
+        "structure": "campsite:basic_camp",
+        "weight": 1
+      }
+    ]
+  }
+}

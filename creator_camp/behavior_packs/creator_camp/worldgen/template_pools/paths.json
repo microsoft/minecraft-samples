@@ -1,0 +1,42 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:template_pool": {
+    "description": {
+      "identifier": "campsite:paths"
+    },
+    "elements": [
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "campsite/paths/path",
+          "processors": "campsite:grass_path_replacement"
+        },
+        "weight": 1
+      },
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "campsite/paths/path_end_1",
+          "processors": "campsite:grass_path_replacement"
+        },
+        "weight": 1
+      },
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "campsite/paths/path_end_2",
+          "processors": "campsite:grass_path_replacement"
+        },
+        "weight": 1
+      },
+      {
+        "element": {
+          "element_type": "minecraft:single_pool_element",
+          "location": "campsite/paths/tent_corridor",
+          "processors": "campsite:grass_path_replacement"
+        },
+        "weight": 1
+      }
+    ]
+  }
+}

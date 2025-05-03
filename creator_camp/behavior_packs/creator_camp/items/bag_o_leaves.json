@@ -1,0 +1,25 @@
+{
+  "format_version": "1.21.90",
+  "minecraft:item": {
+    "description": {
+      "identifier": "ccid:bag_o_leaves",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 1,
+      "minecraft:icon": "ccid:leaf_bag",
+      "minecraft:display_name": {
+        "value": "Bag o' Leaves"
+      },
+      "minecraft:compostable": {
+        "composting_chance": 100
+      },
+      "ccid:shoot_leaves": {
+        "leaf_particle": "ccid:cloud_biome_tinted_leaves_particle"
+      },
+      "ccid:leaf_pile_interaction": {}
+    }
+  }
+}
