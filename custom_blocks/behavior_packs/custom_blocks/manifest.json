@@ -26,7 +26,7 @@
   "dependencies": [
     {
       "module_name": "@minecraft/server",
-      "version": "1.17.0"
+      "version": "2.0.0"
     },
     {
       "uuid": "7ae29fa1-0853-448d-850c-87dbdd583c4f",
