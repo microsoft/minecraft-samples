@@ -5,7 +5,7 @@
   "description": "Custom Blocks Demo Project",
   "private": true,
   "devDependencies": {
-    "@minecraft/core-build-tasks": "^4.0.0",
+    "@minecraft/core-build-tasks": "^5.2.0",
     "eslint-plugin-minecraft-linting": "^2.0.2",
     "source-map": "^0.7.4",
     "ts-node": "^10.9.1",
@@ -21,9 +21,9 @@
     "enablemcpreviewloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-424268864-5579737-879501358-346833251-474568803-887069379-4040235476"
   },
   "dependencies": {
-    "@minecraft/math": "^2.2.1",
-    "@minecraft/server": "^1.17.0",
-    "@minecraft/server-ui": "^1.3.0",
-    "@minecraft/vanilla-data": "^1.21.62"
+    "@minecraft/math": "^2.2.7",
+    "@minecraft/server": "^2.0.0",
+    "@minecraft/server-ui": "^2.0.0",
+    "@minecraft/vanilla-data": "^1.21.90"
   }
 }
