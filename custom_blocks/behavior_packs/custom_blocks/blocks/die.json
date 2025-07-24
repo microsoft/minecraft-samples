@@ -1,12 +1,39 @@
-{
-  "format_version": "1.21.60",
+{ 
+  "format_version": "1.21.80", 
   "minecraft:block": {
     "description": {
       "identifier": "demo:die"
     },
     "components": {
-      "minecraft:geometry": {
-        "identifier": "minecraft:geometry.full_block"
+      "minecraft:geometry": "minecraft:geometry.full_block",
+      "minecraft:material_instances": {
+        "north": {
+          "texture": "die_3"
+        },
+        "south": {
+          "texture": "die_4"
+        },
+        "east": {
+          "texture": "die_2"
+        },
+        "west": {
+          "texture": "die_5"
+        },
+        "up": {
+          "texture": "die_1"
+        },
+        "down": {
+          "texture": "die_6"
+        }
+      },
+      "minecraft:item_visual": {
+      "geometry": "minecraft:geometry.full_block",
+      "material_instances": {
+        "*": {
+          "texture": "die_red",
+          "render_method": "opaque"
+          }
+        }
       }
     }
   }
