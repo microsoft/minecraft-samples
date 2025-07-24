@@ -1,8 +1,8 @@
 { 
   "format_version": "1.19.30", 
   "demo:die": {
-    "sound": "stone" 
-     },
+    "sound": "stone"
+  },
   "demo:tuna_roll": {
     "sound": "mud"
   },
