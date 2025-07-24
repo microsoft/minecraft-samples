@@ -2,5 +2,14 @@
   "format_version": "1.19.30", 
   "demo:die": {
     "sound": "stone" 
-     } 
+     },
+  "demo:tuna_roll": {
+    "sound": "mud"
+  },
+  "demo:california_roll": {
+    "sound": "mud"
+  },
+  "demo:salmon_roll": {
+    "sound": "mud"
+  }
 }
