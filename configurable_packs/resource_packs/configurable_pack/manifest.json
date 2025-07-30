@@ -22,6 +22,7 @@
     }
   ],
   "metadata": {
+    "authors": ["pack_author"],
     "generated_with": {
       "mctoolsweb": ["0.12.0"]
     }

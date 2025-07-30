@@ -1,15 +1,22 @@
-import { world, system } from "@minecraft/server";
+import { world, system, WorldLoadAfterEvent } from "@minecraft/server";
+world.afterEvents.worldLoad.subscribe((event: WorldLoadAfterEvent) => {
+  world.afterEvents.playerInteractWithBlock.subscribe((event) => {
+    const packSettings = world.getPackSettings();
 
-let curTick = 0;
+    const explosionSize = packSettings["mypack:explosion_power"];
 
-function mainTick() {
-  if (curTick % 20 === 0) {
-    world.sendMessage("Hello, world! Current tick: " + curTick);
-  }
+    if (packSettings["mypack:explosion_hands"] === true && explosionSize && typeof explosionSize === "number") {
+      const player = event.player;
+      const block = event.block;
 
-  curTick++;
-
-  system.run(mainTick);
-}
-
-system.run(mainTick);
+      if (block && player && !block.isAir) {
+        world.sendMessage("Explosion hands go boom! " + explosionSize);
+        block.dimension.createExplosion(block.location, explosionSize, {
+          source: player,
+          causesFire: false,
+          breaksBlocks: true,
+        });
+      }
+    }
+  });
+});
