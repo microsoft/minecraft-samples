@@ -1,0 +1,29 @@
+{
+  "name": "ConfigurablePack",
+  "version": "1.0.0",
+  "productName": "Minecraft Add-On Starter Project",
+  "description": "Configurable Pack Starter",
+  "private": true,
+  "devDependencies": {
+    "@minecraft/core-build-tasks": "^5.2.0",
+    "eslint-plugin-minecraft-linting": "^2.0.2",
+    "source-map": "^0.7.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.2"
+  },
+  "scripts": {
+    "lint": "just-scripts lint",
+    "build": "just-scripts build",
+    "clean": "just-scripts clean",
+    "local-deploy": "just-scripts local-deploy",
+    "mcaddon": "just-scripts mcaddon",
+    "enablemcloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-1958404141-86561845-1752920682-3514627264-368642714-62675701-733520436",
+    "enablemcpreviewloopback": "CheckNetIsolation.exe LoopbackExempt -a -p=S-1-15-2-424268864-5579737-879501358-346833251-474568803-887069379-4040235476"
+  },
+  "dependencies": {
+    "@minecraft/math": "^2.2.8",
+    "@minecraft/server": "^2.3.0-beta.1.21.110-preview.20",
+    "@minecraft/server-ui": "^2.0.0",
+    "@minecraft/vanilla-data": "^1.21.90"
+  }
+}
