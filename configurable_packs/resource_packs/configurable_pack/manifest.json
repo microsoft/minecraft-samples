@@ -1,0 +1,30 @@
+{
+  "format_version": 3,
+  "header": {
+    "name": "ConfigurablePack",
+    "description": "Add-On Starter",
+    "uuid": "b1bd7840-def4-4bb2-abfa-81c4b513eef1",
+    "version": "1.0.0",
+    "min_engine_version": "1.21.110"
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "b993e05a-4d3e-49e3-96e9-84407283b5ec",
+      "version": "1.0.0"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "67789bf7-a2ec-471a-973a-8bcdee7a507c",
+      "version": "1.0.0"
+    }
+  ],
+  "metadata": {
+    "authors": ["pack_author"],
+    "generated_with": {
+      "mctoolsweb": ["0.12.0"]
+    }
+  }
+}
