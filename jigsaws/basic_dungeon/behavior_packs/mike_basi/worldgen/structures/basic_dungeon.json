@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.20",
+  "format_version": "1.21.100",
   "minecraft:jigsaw": {
     "description": {
       "identifier": "mike:basic_dungeon"
@@ -8,7 +8,12 @@
     "terrain_adaptation": "none",
     "start_pool": "mike:ns7x4",
     "max_depth": 12,
-    "start_height": 0,
+    "start_height": {
+      "type": "constant",
+      "value": {
+        "absolute": 10
+      }
+    },
     "heightmap_projection": "world_surface"
   }
 }

@@ -5,7 +5,7 @@
     "description": "Basic",
     "uuid": "bf089d3e-4ff6-40a5-aca8-820abd267c62",
     "version": [1, 0, 0],
-    "min_engine_version": [1, 21, 40]
+    "min_engine_version": [1, 21, 100]
   },
   "modules": [
     {
