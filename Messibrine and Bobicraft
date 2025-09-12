@@ -1,0 +1,17 @@
+{
+  "format_version": 2,
+  "header": {com.mojang/resourse_pack
+    "name": "Messibrine and Bobicraft",
+    "description":Las aventuras de dos Youtubers",
+    "uuid": "12345678-abcd-1234-abcd-1234567890ab",
+    "version": [1, 2, 1],
+    "min_engine_version": [1, 21, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "87654321-dcba-4321-dcba-0987654321ba",
+      "version": [1, 0, 0]
+    }
+  ]
+}
