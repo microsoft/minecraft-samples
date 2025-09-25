@@ -1,0 +1,36 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Starter Items",
+    "description": "A set of starter items for Minecraft.",
+    "uuid": "4580ff3f-cf14-412c-9712-814577326860",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 100]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "13e73835-3740-49c5-992a-e2d0e869b4fa",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    },
+    {
+      "description": "Behavior Pack",
+      "type": "data",
+      "uuid": "09bbf673-7b3e-4861-ad9a-8be15b8c0058",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "2.0.0"
+    },
+    {
+      "uuid": "52d086c9-0626-48b0-87d8-90f0231bc01d",
+      "version": [1, 0, 0]
+    }
+  ]
+}

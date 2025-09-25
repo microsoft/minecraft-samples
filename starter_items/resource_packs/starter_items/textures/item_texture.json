@@ -1,0 +1,21 @@
+{
+  "resource_pack_name": "vanilla",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "pear": {
+      "textures": "textures/items/pear"
+    },
+    "rod": {
+      "textures": "textures/items/rod"
+    },
+    "key": {
+      "textures": "textures/items/key"
+    },
+    "hard_biscuit": {
+      "textures": "textures/items/hard_biscuit"
+    },
+    "elixir": {
+      "textures": "textures/items/elixir"
+    }
+  }
+}
