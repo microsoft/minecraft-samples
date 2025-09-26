@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "description": "A set of starter items for Minecraft.",
+    "name": "Starter Items Resource Pack",
+    "uuid": "52d086c9-0626-48b0-87d8-90f0231bc01d",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 100]
+  },
+  "modules": [
+    {
+      "description": "Resource Pack",
+      "type": "resources",
+      "uuid": "297d6079-2aa3-415e-86b8-150b6df2057e",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "4580ff3f-cf14-412c-9712-814577326860",
+      "version": [1, 0, 0]
+    }
+  ]
+}

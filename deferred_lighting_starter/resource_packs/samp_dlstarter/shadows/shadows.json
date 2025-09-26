@@ -1,4 +1,7 @@
 {
   "format_version": "1.21.80",
-  "minecraft:shadow_settings": { "shadow_style": "blocky_shadows", "texel_size": 16 }
+  "minecraft:shadow_settings": {
+    "shadow_style": "blocky_shadows",
+    "texel_size": 16
+  }
 }

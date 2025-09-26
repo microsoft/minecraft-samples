@@ -1,0 +1,29 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "starter:elixir",
+      "menu_category": {
+        "category": "items",
+        "group": "minecraft:itemGroup.name.potion"
+      }
+    },
+    "components": {
+      "minecraft:max_stack_size": 16,
+      "minecraft:icon": "elixir",
+      "minecraft:food": {
+        "nutrition": 6,
+        "saturation_modifier": 3,
+        "can_always_eat": true,
+        "using_converts_to": "glass_bottle"
+      },
+      "minecraft:display_name": {
+        "value": "item.elixir.name"
+      },
+      "minecraft:use_animation": "drink",
+      "minecraft:use_modifiers": {
+        "use_duration": 4
+      }
+    }
+  }
+}

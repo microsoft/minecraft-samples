@@ -1,0 +1,19 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "starter:rod",
+      "menu_category": {
+        "category": "items",
+        "group": "minecraft:itemGroup.name.potion"
+      }
+    },
+    "components": {
+      "minecraft:icon": "rod",
+      "minecraft:display_name": {
+        "value": "item.rod.name"
+      },
+      "minecraft:hand_equipped": true
+    }
+  }
+}

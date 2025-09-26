@@ -1,0 +1,30 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "starter:pear",
+      "menu_category": {
+        "category": "items",
+        "group": "minecraft:itemGroup.name.potion"
+      }
+    },
+    "components": {
+      "minecraft:icon": "pear",
+      "minecraft:display_name": {
+        "value": "item.pear.name"
+      },
+      "minecraft:tags": {
+        "tags": ["minecraft:is_food"]
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 1.6,
+        "movement_modifier": 0.35
+      },
+      "minecraft:food": {
+        "nutrition": 4,
+        "saturation_modifier": 0.3
+      }
+    }
+  }
+}

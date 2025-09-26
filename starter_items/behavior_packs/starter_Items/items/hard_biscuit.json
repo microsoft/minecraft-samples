@@ -1,0 +1,30 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "starter:hard_biscuit",
+      "menu_category": {
+        "category": "items",
+        "group": "minecraft:itemGroup.name.potion"
+      }
+    },
+    "components": {
+      "minecraft:icon": "hard_biscuit",
+      "minecraft:food": {
+        "nutrition": 6,
+        "saturation_modifier": 3
+      },
+      "minecraft:tags": {
+        "tags": ["minecraft:is_food"]
+      },
+      "minecraft:display_name": {
+        "value": "item.hard_biscuit.name"
+      },
+      "minecraft:use_animation": "eat",
+      "minecraft:use_modifiers": {
+        "use_duration": 3,
+        "movement_modifier": 0.35
+      }
+    }
+  }
+}
