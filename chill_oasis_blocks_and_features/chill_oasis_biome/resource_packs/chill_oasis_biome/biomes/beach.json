@@ -2,7 +2,7 @@
   "format_version": "1.21.40",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "beach"
+      "identifier": "minecraft:beach"
     },
     "components": {
       "minecraft:sky_color": {

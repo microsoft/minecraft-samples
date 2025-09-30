@@ -2,7 +2,7 @@
   "format_version": "1.21.40",
   "minecraft:client_biome": {
     "description": {
-      "identifier": "chill_oasis"
+      "identifier": "mike:chill_oasis"
     },
     "components": {
       "minecraft:sky_color": {

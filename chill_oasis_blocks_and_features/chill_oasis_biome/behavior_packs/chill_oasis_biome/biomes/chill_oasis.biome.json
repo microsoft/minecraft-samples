@@ -1,5 +1,5 @@
 {
-  "format_version": "1.21.80",
+  "format_version": "1.21.110",
   "minecraft:biome": {
     "description": {
       "identifier": "mike:chill_oasis"
@@ -17,19 +17,22 @@
         "replacements": [
           {
             "dimension": "minecraft:overworld",
-            "targets": ["desert"],
+            "targets": ["minecraft:desert"],
             "amount": 0.5,
             "noise_frequency_scale": 25
           }
         ]
       },
-      "minecraft:surface_parameters": {
-        "sea_floor_depth": 7,
-        "sea_floor_material": "minecraft:gravel",
-        "foundation_material": "minecraft:stone",
-        "mid_material": "mike:white_sand",
-        "top_material": "mike:white_sand",
-        "sea_material": "minecraft:water"
+      "minecraft:surface_builder": {
+        "builder": {
+          "type": "minecraft:overworld",
+          "sea_floor_depth": 7,
+          "sea_floor_material": "minecraft:gravel",
+          "foundation_material": "minecraft:stone",
+          "mid_material": "mike:white_sand",
+          "top_material": "mike:white_sand",
+          "sea_material": "minecraft:water"
+        }
       },
       "minecraft:tags": {
         "tags": ["beach", "monster", "chill_oasis", "meadow", "overworld", "warm"]
