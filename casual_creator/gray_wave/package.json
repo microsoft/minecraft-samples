@@ -5,7 +5,7 @@
   "description": "Gray wave add-on",
   "private": true,
   "devDependencies": {
-    "@minecraft/core-build-tasks": "^4.0.0",
+    "@minecraft/core-build-tasks": "^5.5.0",
     "eslint-plugin-minecraft-linting": "^2.0.2",
     "source-map": "^0.7.4",
     "ts-node": "^10.9.1",
