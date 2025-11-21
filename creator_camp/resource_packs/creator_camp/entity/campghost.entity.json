@@ -10,7 +10,7 @@
       },
       "textures": {
         "default": "textures/entity/campghost/campghost",
-        "charged": "textures/entity/campghost/campghost_armor"
+        "charged": "textures/entity/campghost/creeper_armor"
       },
       "geometry": {
         "default": "geometry.campghost.v1.8",
