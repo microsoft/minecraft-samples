@@ -2,7 +2,7 @@
   "format_version": "1.10.0",
   "particle_effect": {
     "description": {
-      "identifier": "minecraft:witchspell_emitter",
+      "identifier": "sample:witchspell_emitter",
       "basic_render_parameters": {
         "material": "particles_alpha",
         "texture": "textures/particle/particles"
