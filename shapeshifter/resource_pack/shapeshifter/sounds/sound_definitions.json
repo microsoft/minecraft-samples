@@ -1,12 +1,12 @@
 {
   "format_version": "1.20.20",
   "sound_definitions": {
-    "shapeshifter.change": {
-      "__use_legacy_max_distance": "true",
+    "shapeshifter.phase_change": {
+      "__use_legacy_max_distance": true,
       "category": "block",
       "max_distance": null,
       "min_distance": null,
-      "sounds": ["sounds/shapeshifter/change"]
+      "sounds": ["sounds/shapeshifter/phase_change"]
     }
   }
 }

@@ -209,7 +209,7 @@
           },
           {
             "play_sound": {
-              "sound": "shapeshifter.change"
+              "sound": "shapeshifter.phase_change"
             }
           },
           {
