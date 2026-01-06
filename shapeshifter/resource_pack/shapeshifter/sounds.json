@@ -12,9 +12,9 @@
             "sound": "mob.endermen.stare",
             "volume": 1
           },
-          "change": {
+          "phase_change": {
             "pitch": 1,
-            "sound": "shapeshifter.change",
+            "sound": "shapeshifter.phase_change",
             "volume": 1
           }
         },
