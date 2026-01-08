@@ -1,5 +1,5 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "animation_controllers": {
     "controller.animation.shapeshifter.phase_change": {
       "initial_state": "default",
@@ -8,7 +8,7 @@
           "animations": ["phase_change"],
           "transitions": [
             {
-              "phase_changing": "query.sample:shapeshifter_angry==true"
+              "phase_changing": "q.property('minecraft:shape') != 'shapeshifter'"
             }
           ]
         },
@@ -21,7 +21,7 @@
           ],
           "transitions": [
             {
-              "default": "query.sample:shapeshifter_angry==false"
+              "default": "q.property('minecraft:shape') == 'shapeshifter'"
             }
           ],
           "blend_transition": 0.2
