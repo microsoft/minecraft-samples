@@ -27,6 +27,9 @@
           "variable.tcos0 = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 28.65;"
         ]
       },
+      "play_sound": {
+        "sound": "shapeshifter.phase_change"
+      },
       "particle_effects": {
         "shapeshift": "minecraft:witchspell_emitter"
       },
