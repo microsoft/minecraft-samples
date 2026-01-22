@@ -1,21 +1,26 @@
 {
-	"entity_sounds": {
-		"entities": {
-			"sample:shapeshifter": {
-				"events": {
-					"ambient": "mob.endermen.idle",
-					"death": "mob.endermen.death",
-					"hurt": "mob.endermen.hit",
-					"mad": "mob.endermen.scream",
-					"stare": {
-						"pitch": 1,
-						"sound": "mob.endermen.stare",
-						"volume": 1
-					}
-				},
-				"pitch": [0.8, 1.2],
-				"volume": 1
-			}
-		}
-	}
+  "entity_sounds": {
+    "entities": {
+      "sample:shapeshifter": {
+        "events": {
+          "ambient": "mob.endermen.idle",
+          "death": "mob.endermen.death",
+          "hurt": "mob.endermen.hit",
+          "mad": "mob.endermen.scream",
+          "stare": {
+            "pitch": 1,
+            "sound": "mob.endermen.stare",
+            "volume": 1
+          },
+          "phase_change": {
+            "pitch": 1,
+            "sound": "shapeshifter.phase_change",
+            "volume": 1
+          }
+        },
+        "pitch": [0.8, 1.2],
+        "volume": 1
+      }
+    }
+  }
 }

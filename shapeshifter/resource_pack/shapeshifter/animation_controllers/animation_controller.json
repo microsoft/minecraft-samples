@@ -1,0 +1,32 @@
+{
+  "format_version": "1.10.0",
+  "animation_controllers": {
+    "controller.animation.shapeshifter.phase_change": {
+      "initial_state": "default",
+      "states": {
+        "default": {
+          "animations": ["phase_change"],
+          "transitions": [
+            {
+              "phase_changing": "q.property('minecraft:shape') != 'shapeshifter'"
+            }
+          ]
+        },
+        "phase_changing": {
+          "animations": ["phase_change"],
+          "sound_effects": [
+            {
+              "effect": "phase_change"
+            }
+          ],
+          "transitions": [
+            {
+              "default": "q.property('minecraft:shape') == 'shapeshifter'"
+            }
+          ],
+          "blend_transition": 0.2
+        }
+      }
+    }
+  }
+}
