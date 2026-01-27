@@ -1,0 +1,46 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:fog_settings": {
+    "description": {
+      "identifier": "custom:crystal_caverns_fog"
+    },
+    "distance": {
+      "air": {
+        "fog_start": 0.2,
+        "fog_end": 1.0,
+        "fog_color": "#3a1f5c",
+        "render_distance_type": "render"
+      },
+      "water": {
+        "fog_start": 0.0,
+        "fog_end": 0.5,
+        "fog_color": "#4a2882",
+        "render_distance_type": "render"
+      }
+    },
+    "volumetric": {
+      "density": {
+        "water": {
+          "max_density": 0.8,
+          "max_density_height": 0,
+          "zero_density_height": 64
+        },
+        "air": {
+          "max_density": 0.15,
+          "max_density_height": 32,
+          "zero_density_height": 70
+        }
+      },
+      "media_coefficients": {
+        "water": {
+          "scattering": [0.02, 0.02, 0.08],
+          "absorption": [0.35, 0.35, 0.35]
+        },
+        "air": {
+          "scattering": [0.05, 0.02, 0.08],
+          "absorption": [0.0, 0.0, 0.0]
+        }
+      }
+    }
+  }
+}

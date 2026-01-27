@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.60",
+  "minecraft:scatter_feature": {
+    "description": {
+      "identifier": "custom:glowing_mushroom"
+    },
+    "distribution": {      
+      "iterations": 64,
+      "scatter_chance": 50,
+      "x": {
+        "distribution": "uniform",
+        "extent": [0, 15]
+      },
+      "z": {
+        "distribution": "uniform",
+        "extent": [0, 15]
+      },
+      "y": "query.heightmap(variable.worldx, variable.worldz)"
+    },
+    "places_feature": "custom:single_glowing_mushroom"
+  }
+}  

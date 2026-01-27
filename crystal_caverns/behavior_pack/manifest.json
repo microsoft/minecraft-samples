@@ -1,0 +1,23 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Crystal Caverns Biome",
+    "description": "Adds the Crystal Caverns biome to your world",
+    "uuid": "9a16c747-6d53-408a-96f2-663db7c55138",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 21, 40]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "c0510f02-7ad0-4f6b-bb31-0c812a5c1b74",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "3235710f-de4e-4b60-b926-bbfe91eeba4c",
+      "version": [1, 0, 0]
+    }
+  ]
+}

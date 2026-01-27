@@ -1,0 +1,39 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:spawn_rules": {
+    "description": {
+      "identifier": "custom:crystal_golem",
+      "population_control": "monster"
+    },
+    "conditions": [
+      {
+        "minecraft:spawns_on_surface": {},
+        "minecraft:spawns_on_block_filter": "minecraft:stone",
+        "minecraft:brightness_filter": {
+          "min": 0,
+          "max": 7,
+          "adjust_for_weather": false
+        },
+        "minecraft:difficulty_filter": {
+          "min": "normal",
+          "max": "hard"
+        },
+        "minecraft:biome_filter": {
+          "test": "has_biome_tag",
+          "operator": "==",
+          "value": "crystal_caverns"
+        },
+        "minecraft:weight": {
+          "default": 50
+        },
+        "minecraft:herd": {
+          "min_size": 1,
+          "max_size": 2
+        },
+        "minecraft:density_limit": {
+          "surface": 3
+        }
+      }
+    ]
+  } 
+}
