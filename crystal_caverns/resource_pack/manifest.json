@@ -1,0 +1,17 @@
+{ 
+  "format_version": 2, 
+  "header": { 
+    "name": "Crystal Caverns Resources", 
+    "description": "Resources for the Crystal Caverns biome", 
+    "uuid": "3235710f-de4e-4b60-b926-bbfe91eeba4c", 
+    "version": [1, 0, 0], 
+    "min_engine_version": [1, 21, 40] 
+  }, 
+  "modules": [ 
+    { 
+      "type": "resources", 
+      "uuid": "f4c8821c-a74e-450e-9971-bf61593bbe73", 
+      "version": [1, 0, 0] 
+    } 
+  ] 
+}

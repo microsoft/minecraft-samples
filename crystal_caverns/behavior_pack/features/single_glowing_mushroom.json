@@ -1,0 +1,12 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:single_block_feature": {
+    "description": {
+      "identifier": "custom:single_glowing_mushroom"
+    },
+    "places_block": "minecraft:brown_mushroom",
+    "enforce_survivability_rules": true,
+    "enforce_placement_rules": true,
+    "may_replace": ["minecraft:air"]
+  }
+}

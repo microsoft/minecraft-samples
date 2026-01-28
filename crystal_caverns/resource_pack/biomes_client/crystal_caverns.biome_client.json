@@ -1,0 +1,21 @@
+{
+  "format_version": "1.21.40",
+  "minecraft:client_biome": {
+    "description": {
+      "identifier": "custom:crystal_caverns"
+    },
+    "components": {
+      "minecraft:water_appearance": {
+        "surface_color": "#4a2882",
+        "surface_transparency": 0.8
+      },
+      "minecraft:ambient_sounds": {
+        "ambient_loop": "ambient.cave"
+      },
+      "minecraft:music": {
+        "volume": 0.5,
+        "music": "music.game.creative"
+      }
+    }
+  }
+}
