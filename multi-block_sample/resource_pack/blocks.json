@@ -1,0 +1,10 @@
+{
+	"format_version": [
+		1,
+		1,
+		0
+	],
+	"multiblock:light": {
+		"sound": "metal"
+	}
+}

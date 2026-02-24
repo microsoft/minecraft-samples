@@ -1,0 +1,56 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Light post BP",
+		"description": "Light post behaviour pack",
+		"min_engine_version": [
+			1,
+			26,
+			10
+		],
+		"uuid": "9cb9e514-aa31-44bf-aaaa-2e2f0a893ce6",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"description": "Behavior",
+			"type": "data",
+			"uuid": "fba5b344-195e-4fff-bec4-fcafddc1913e",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"description": "Script resources",
+			"language": "javascript",
+			"type": "script",
+			"uuid": "e4ac5b65-3e55-4c37-a851-a274096c79d7",
+			"version": [
+				1,
+				0,
+				0
+			],
+			"entry": "scripts/main.js"
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "f7de05e6-ef3f-4ed2-83b7-e7b08426e67a",
+			"version": [
+				1,
+				0,
+				0
+			]
+		},
+		{
+			"module_name": "@minecraft/server",
+			"version": "beta"
+		}
+	]
+}

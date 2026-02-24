@@ -1,0 +1,23 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "multiblock:light"
+    },
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "light_post_item"
+        }
+      },
+      "minecraft:block_placer": {
+        "block": "multiblock:light",
+        "replace_block_item": true
+      },
+      "minecraft:display_name": {
+        "value": "light_post"
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}

@@ -1,0 +1,138 @@
+{
+	"format_version": "1.26.1",
+	"minecraft:block": {
+		"description": {
+			"identifier": "multiblock:light",
+			"traits": {
+				"minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					]
+				},
+				"minecraft:multi_block": {
+					"enabled_states": [
+						"minecraft:multi_block_part"
+					],
+					"parts": 4,
+					"direction": "up"
+				}
+			},
+			"states": {
+				"multi_block:light_on": [ false, true ]
+			}
+		},
+		"components": {
+			"minecraft:selection_box": {
+				"origin": [-2, 0, -8],
+				"size": [5, 12, 5]
+			},
+			"minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 3
+			},
+			"minecraft:destructible_by_explosion": {
+				"explosion_resistance": 3
+			},
+			"minecraft:movable": {
+				"movement_type": "popped"
+			},
+			"minecraft:geometry": "geometry.light_post_base",
+			"minecraft:material_instances": {
+				"*": {
+					"texture": "light_post_off",
+					"render_method": "opaque"
+				}
+			},
+			"multi_block:light_post_component": {},
+			"minecraft:redstone_consumer": {}
+		},
+		"permutations": [
+		{
+			"condition": "q.block_state('minecraft:multi_block_part') == 0",
+			"components": {
+				"minecraft:collision_box": {
+					"origin": [-2, 0, -8],
+					"size": [5, 12, 5]
+				},
+				"minecraft:geometry": "geometry.light_post_base"
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:multi_block_part') == 1 || q.block_state('minecraft:multi_block_part') == 2",
+			"components": {
+				"minecraft:collision_box": {
+					"origin": [-2, 0, -7],
+					"size": [5, 16, 3]
+				},
+				"minecraft:geometry": "geometry.light_post_pole"
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:multi_block_part') == 3 && q.block_state('multi_block:light_on') == false",
+			"components": {
+				"minecraft:collision_box": {
+					"origin": [-2, 14, -7],
+					"size": [5, 4, 15]
+				},
+				"minecraft:geometry": "geometry.light_post_light",
+				"minecraft:material_instances": {
+					"*": {
+						"texture": "light_post_off",
+						"render_method": "opaque"
+					}
+				},
+				"minecraft:light_emission": 0
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:multi_block_part') == 3 && q.block_state('multi_block:light_on') == true",
+			"components": {
+				"minecraft:collision_box": {
+					"origin": [-2, 14, -7],
+					"size": [5, 4, 15]
+				},
+				"minecraft:geometry": "geometry.light_post_light",
+				"minecraft:material_instances": {
+					"*": {
+						"texture": "light_post_on",
+						"render_method": "opaque"
+					}
+				},
+				"minecraft:light_emission": 15
+			}
+		},
+
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,0,0]
+				}
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,180,0]
+				}
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,90,0]
+				}
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,270,0]
+				}
+			}
+		}
+		]
+	}
+}
