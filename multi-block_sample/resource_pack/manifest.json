@@ -1,0 +1,39 @@
+{
+	"format_version": 2,
+	"header": {
+		"name": "Light post RP",
+		"description": "Light post resource pack",
+		"min_engine_version": [
+			1,
+			26,
+			10
+		],
+		"uuid": "f7de05e6-ef3f-4ed2-83b7-e7b08426e67a",
+		"version": [
+			1,
+			0,
+			0
+		]
+	},
+	"modules": [
+		{
+			"type": "resources",
+			"uuid": "03e37f36-1744-4332-85b8-47fe46bd8cbc",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	],
+	"dependencies": [
+		{
+			"uuid": "9cb9e514-aa31-44bf-aaaa-2e2f0a893ce6",
+			"version": [
+				1,
+				0,
+				0
+			]
+		}
+	]
+}

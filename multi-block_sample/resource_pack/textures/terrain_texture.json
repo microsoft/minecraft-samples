@@ -1,0 +1,14 @@
+{
+	"num_mip_levels": 4,
+	"padding": 8,
+	"resource_pack_name": "MultiBlock RP",
+	"texture_name": "atlas.terrain",
+	"texture_data": {
+		"light_post_on": {
+			"textures": "textures/blocks/light_post_on"
+		},
+		"light_post_off": {
+			"textures": "textures/blocks/light_post_off"
+		}
+	}
+}
