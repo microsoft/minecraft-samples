@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.26.10",
   "minecraft:entity": {
     "description": {
       "identifier": "aop_mobs:frost_moose",
@@ -54,7 +54,6 @@
         },
         "minecraft:breedable": {
           "require_tame": true,
-          "inherit_tamed": false,
           "love_filters": {
             "test": "is_mark_variant",
             "subject": "self",
@@ -62,9 +61,7 @@
             "value": 1
           },
           "breeds_with": {
-            "mate_type": "aop_mobs:frost_moose",
-            "baby_type": "aop_mobs:frost_moose",
-            "breed_event": {
+            "aop_mobs:frost_moose": {
               "event": "minecraft:entity_born",
               "target": "baby"
             }
@@ -177,18 +174,6 @@
             }
           ],
           "auto_reject_items": [
-            {
-              "item": "horsearmorleather"
-            },
-            {
-              "item": "horsearmoriron"
-            },
-            {
-              "item": "horsearmorgold"
-            },
-            {
-              "item": "horsearmordiamond"
-            },
             {
               "item": "saddle"
             }
@@ -309,7 +294,7 @@
         "minecraft:damage_sensor": {
           "triggers": {
             "cause": "all",
-            "deals_damage": true
+            "deals_damage": "yes"
           }
         }
       }
@@ -360,9 +345,6 @@
         "max": 40
       },
       "minecraft:leashable": {
-        "soft_distance": 4,
-        "hard_distance": 6,
-        "max_distance": 10,
         "can_be_stolen": true
       },
       "minecraft:balloonable": {},
@@ -433,7 +415,7 @@
       "minecraft:damage_sensor": {
         "triggers": {
           "cause": "all",
-          "deals_damage": true,
+          "deals_damage": "yes",
           "on_damage": {
             "filters": {
               "test": "in_caravan",
@@ -445,7 +427,6 @@
       },
       "minecraft:behavior.nearest_attackable_target": {
         "priority": 2,
-        "attack_interval": 16,
         "entity_types": [
           {
             "filters": {
@@ -507,26 +488,18 @@
         "event": "minecraft:on_calm",
         "target": "self"
       },
-      "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      }
+      "minecraft:physics": {}
     },
     "events": {
       "minecraft:entity_spawned": {
-        "sequence": [
+        "randomize": [
           {
-            "randomize": [
-              {
-                "weight": 100,
-                "trigger": "minecraft:spawn_adult"
-              },
-              {
-                "weight": 0,
-                "trigger": "minecraft:spawn_baby"
-              }
-            ]
+            "weight": 90,
+            "trigger": "minecraft:spawn_adult"
+          },
+          {
+            "weight": 10,
+            "trigger": "minecraft:spawn_baby"
           }
         ]
       },
@@ -640,25 +613,25 @@
           {
             "randomize": [
               {
-                "weight": 100,
+                "weight": 70,
                 "add": {
                   "component_groups": ["minecraft:llama_creamy"]
                 }
               },
               {
-                "weight": 0,
+                "weight": 10,
                 "add": {
                   "component_groups": ["minecraft:llama_white"]
                 }
               },
               {
-                "weight": 0,
+                "weight": 10,
                 "add": {
                   "component_groups": ["minecraft:llama_brown"]
                 }
               },
               {
-                "weight": 0,
+                "weight": 10,
                 "add": {
                   "component_groups": ["minecraft:llama_gray"]
                 }

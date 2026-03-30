@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.26.10",
   "minecraft:entity": {
     "description": {
       "identifier": "aop_mobs:sheepomelon",
@@ -74,10 +74,9 @@
         "minecraft:breedable": {
           "require_tame": false,
           "breeds_with": {
-            "mate_type": "aop_mobs:sheepomelon",
-            "baby_type": "aop_mobs:sheepomelon"
+            "aop_mobs:sheepomelon": {}
           },
-          "breed_items": "melon_slice"
+          "breed_items": ["melon_slice"]
         }
       },
       "minecraft:sheep_sheared": {
@@ -185,11 +184,7 @@
           }
         ]
       },
-      "minecraft:leashable": {
-        "soft_distance": 4,
-        "hard_distance": 6,
-        "max_distance": 10
-      },
+      "minecraft:leashable": {},
       "minecraft:balloonable": {
         "mass": 0.75
       },
@@ -246,10 +241,6 @@
         "priority": 9
       },
       "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      },
       "minecraft:conditional_bandwidth_optimization": {}
     },
     "events": {
