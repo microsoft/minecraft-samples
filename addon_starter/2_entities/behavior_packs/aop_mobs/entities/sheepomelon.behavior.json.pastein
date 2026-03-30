@@ -1,4 +1,3 @@
-
         "minecraft:behavior.nearest_attackable_target": {
           "priority": 1,
           "must_see": true,

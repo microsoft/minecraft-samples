@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.26.10",
   "minecraft:entity": {
     "description": {
       "identifier": "aop_mobs:nardolphle",
@@ -32,7 +32,7 @@
         "minecraft:ageable": {
           "duration": 1200,
           "feed_items": ["seagrass"],
-          "drop_items": ["turtle_shell_piece"],
+          "drop_items": ["turtle_scute"],
           "grow_up": {
             "event": "minecraft:ageable_grow_up",
             "target": "self"
@@ -61,9 +61,7 @@
           "require_tame": false,
           "causes_pregnancy": true,
           "breeds_with": {
-            "mate_type": "anjelika:nardolphle",
-            "baby_type": "anjelika:nardolphle",
-            "breed_event": {
+            "aop_mobs:nardolphle": {
               "event": "minecraft:become_pregnant",
               "target": "self"
             }
@@ -91,10 +89,12 @@
           "speed_multiplier": 1,
           "interval": 700,
           "goal_radius": 4,
-          "on_home": {
-            "event": "minecraft:go_lay_egg",
-            "target": "self"
-          }
+          "on_home": [
+            {
+              "event": "minecraft:go_lay_egg",
+              "target": "self"
+            }
+          ]
         }
       },
       "minecraft:wants_to_lay_egg": {
@@ -126,7 +126,7 @@
       "minecraft:damage_sensor": {
         "triggers": {
           "cause": "lightning",
-          "deals_damage": true,
+          "deals_damage": "yes",
           "damage_multiplier": 2000
         }
       },
@@ -163,10 +163,6 @@
       },
       "minecraft:jump.static": {},
       "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      },
       "minecraft:home": {},
       "minecraft:follow_range": {
         "value": 1024
@@ -201,7 +197,7 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 8,
-        "target_distance": 6,
+        "look_distance": 6,
         "probability": 0.02
       },
       "minecraft:conditional_bandwidth_optimization": {}

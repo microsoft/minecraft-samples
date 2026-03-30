@@ -1,5 +1,5 @@
 {
-  "format_version": "1.16.0",
+  "format_version": "1.26.10",
   "minecraft:entity": {
     "description": {
       "identifier": "aop_mobs:biceson",
@@ -169,26 +169,18 @@
       },
       "minecraft:behavior.look_at_player": {
         "priority": 6,
-        "target_distance": 6,
+        "look_distance": 6,
         "probability": 0.02
       },
       "minecraft:behavior.random_look_around": {
         "priority": 7
       },
       "minecraft:physics": {},
-      "minecraft:pushable": {
-        "is_pushable": true,
-        "is_pushable_by_piston": true
-      },
       "minecraft:behavior.panic": {
         "priority": 2,
         "speed_multiplier": 2
       },
-      "minecraft:leashable": {
-        "soft_distance": 4,
-        "hard_distance": 6,
-        "max_distance": 10
-      },
+      "minecraft:leashable": {},
       "minecraft:conditional_bandwidth_optimization": {}
     },
     "events": {
