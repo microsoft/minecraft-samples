@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Custom Projectile RP",
+    "description": "Custom projectile resource pack",
+    "uuid": "d5d44d4c-bd24-4ead-9871-267ecb72cacb",
+    "version": [
+      1,
+      0,
+      0
+    ],
+    "min_engine_version": [
+      1,
+      26,
+      0
+    ]
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "6cdf3d9e-cd06-4bd2-aa62-3fbf953a3b49",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "9ed6661f-d62e-44ff-bd25-b8791348b85f",
+      "version": [
+        1,
+        0,
+        0
+      ]
+    }
+  ]
+}

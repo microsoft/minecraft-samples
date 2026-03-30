@@ -1,0 +1,17 @@
+{
+  "format_version": "1.21.3",
+  "minecraft:item": {
+    "description": {
+      "identifier": "my:custom_arrow"
+    },
+    "components": {
+      "minecraft:icon": "my:custom_arrow",
+      "minecraft:projectile": {
+        "projectile_entity": "my:custom_arrow"
+      },
+      "minecraft:display_name": {
+        "value": "Custom Arrow"
+      }
+    }
+  }
+}

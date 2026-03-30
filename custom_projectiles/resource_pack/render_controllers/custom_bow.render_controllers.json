@@ -1,0 +1,28 @@
+{
+  "format_version": "1.10",
+  "render_controllers": {
+    "controller.render.custom_bow": {
+      "arrays": {
+        "textures": {
+          "array.bow_texture_frames": [
+            "texture.default",
+            "texture.custom_bow_pulling_0",
+            "texture.custom_bow_pulling_1",
+            "texture.custom_bow_pulling_2"
+          ]
+        },
+        "geometries": {
+          "array.bow_geo_frames": [
+            "geometry.default",
+            "geometry.custom_bow_pulling_0",
+            "geometry.custom_bow_pulling_1",
+            "geometry.custom_bow_pulling_2"
+          ]
+        }
+      },
+      "geometry": "array.bow_geo_frames[variable.bow_tex_idx]",
+      "materials": [ { "*": "variable.is_enchanted ? material.enchanted : material.default" } ],
+      "textures": [ "array.bow_texture_frames[variable.bow_tex_idx]", "texture.enchanted" ]
+    }
+  }
+}

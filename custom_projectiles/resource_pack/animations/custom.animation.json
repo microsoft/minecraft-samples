@@ -1,0 +1,22 @@
+{
+	"format_version" : "1.10.0",
+	"animations" : {
+		"animation.custom.billboard" : {
+			"loop" : true,
+			"bones": {
+				"body": {
+					"rotation": [ "query.camera_rotation(0)", "query.camera_rotation(1) - query.body_y_rotation", 0.0 ]
+				}
+			}
+		},
+		"animation.custom_arrow.move" : {
+			"loop" : true,
+			"bones" : {
+				"body" : {
+					"rotation" : [ "variable.shake_power - query.target_x_rotation", "-query.head_y_rotation(0) - query.body_y_rotation", 0.0 ],
+					"scale" : [ 0.7, 0.7, 0.9 ]
+				}
+			}
+		}
+	}
+}

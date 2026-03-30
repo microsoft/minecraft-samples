@@ -1,0 +1,20 @@
+{
+  "format_version": "1.21.3",
+  "minecraft:item": {
+    "description": {
+      "identifier": "my:custom_snowball"
+    },
+    "components": {
+      "minecraft:icon": "my:custom_snowball",
+      "minecraft:projectile": {
+        "projectile_entity": "my:custom_snowball"
+      },
+      "minecraft:throwable": {
+        "do_swing_animation": true
+      },
+      "minecraft:display_name": {
+        "value": "Custom Snowball"
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "resource_pack_name": "MCTools Custom Projectile Template",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "my:custom_snowball": {
+      "textures": "textures/items/custom_snowball"
+    },
+    "my:custom_arrow": {
+      "textures": "textures/items/custom_arrow"
+    },
+    "my:custom_bow_standby": {
+      "textures": "textures/items/custom_bow_standby"
+    }
+  }
+}

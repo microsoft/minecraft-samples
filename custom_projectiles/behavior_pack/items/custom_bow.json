@@ -1,0 +1,28 @@
+{
+  "format_version": "1.21.3",
+  "minecraft:item": {
+    "description": {
+      "identifier": "my:custom_bow"
+    },
+    "components": {
+      "minecraft:icon": "my:custom_bow_standby",
+      "minecraft:use_modifiers": {
+        "use_duration": 72000
+      },
+      "minecraft:shooter": {
+         "ammunition": [
+          {
+            "item": "my:custom_arrow",
+            "search_inventory": true,
+             "use_in_creative": true
+          }
+        ],
+        "max_draw_duration": 1.5,
+        "scale_power_by_draw_duration": true
+      },
+      "minecraft:display_name": {
+        "value": "Custom Bow"
+      }
+    }
+  }
+}

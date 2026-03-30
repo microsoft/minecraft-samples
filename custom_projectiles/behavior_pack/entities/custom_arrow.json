@@ -1,0 +1,75 @@
+{
+  "format_version": "1.26.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "my:custom_arrow",
+      "is_experimental": false,
+      "is_summonable": true,
+      "is_spawnable": false,
+      "spawn_category": "misc"
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "height": 0.25,
+        "width": 0.25
+      },
+      "minecraft:dimension_bound": {},
+      "minecraft:hurt_on_condition": {
+        "damage_conditions": [
+          {
+            "cause": "lava",
+            "damage_per_tick": 4,
+            "filters": {
+              "operator": "==",
+              "test": "in_lava",
+              "subject": "self",
+              "value": true
+            }
+          }
+        ]
+      },
+      "minecraft:physics": {},
+      "minecraft:projectile": {
+        "anchor": 1,
+        "gravity": 0.05,
+        "power": 5.0,
+        "hit_sound": "bow.hit",
+        "on_hit": {
+          "arrow_effect": {},
+          "impact_damage": {
+            "apply_knockback_to_blocking_targets": true,
+            "damage": 1,
+            "knockback": true,
+            "power_multiplier": 0.97,
+            "destroy_on_hit": true,
+            "semi_random_diff_damage": true,
+            "max_critical_damage": 10,
+            "min_critical_damage": 9
+          },
+          "stick_in_ground": {
+            "shake_time": 0.35
+          }
+        },
+        "offset": [
+          0,
+          -0.1,
+          0
+        ],
+        "should_bounce": true,
+        "uncertainty_base": 1,
+        "uncertainty_multiplier": 0,
+        "isolated_physics": true
+      },
+      "minecraft:pushable": {
+        "is_pushable": false,
+        "is_pushable_by_piston": true
+      },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      }
+    }
+  }
+}
