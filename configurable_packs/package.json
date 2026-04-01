@@ -5,7 +5,7 @@
   "description": "Configurable Pack Starter",
   "private": true,
   "devDependencies": {
-    "@minecraft/core-build-tasks": "^5.2.0",
+    "@minecraft/core-build-tasks": "^5.5.0",
     "eslint-plugin-minecraft-linting": "^2.0.2",
     "source-map": "^0.7.4",
     "ts-node": "^10.9.1",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@minecraft/math": "^2.2.8",
-    "@minecraft/server": "^2.3.0-beta.1.21.110-preview.20",
+    "@minecraft/server": "^2.6.0-beta.1.26.0-preview.25",
     "@minecraft/server-ui": "^2.0.0",
     "@minecraft/vanilla-data": "^1.21.90"
   }

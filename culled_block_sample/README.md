@@ -24,20 +24,14 @@ This sample demonstrates new block culling and rendering options for custom bloc
    cd c:\projects\culled_blocks\
    ```
 
-1. You can use the install_uwp command to copy over the culled_block_sampes:
-
-   ```powershell
-   install_uwp.cmd
-   ```
-
-Or copy the files to %localappdata%\packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_behavior_packs
-and %localappdata%\packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\development_resource_packs respectively.
+1. You can copy the files to `%appdata%\Minecraft Bedrock\users\shared\games\com.mojang\development_behavior_packs`
+   and `%appdata%\Minecraft Bedrock\users\shared\games\com.mojang\development_resource_packs` respectively.
 
 It might also ask you to install the Minecraft Debugger and Blockception's Visual Studio Code plugin, which are plugins to Visual Studio Code that can help with Minecraft development. Go ahead and do that, if you haven't already.
 
 # Minecraft Block Culling Usage In Game
 
-This sample demonstrates how to use block culling on the **tuna_roll** custom block. 
+This sample demonstrates how to use block culling on the **tuna_roll** custom block.
 
 After downloading these add-on packs:
 
