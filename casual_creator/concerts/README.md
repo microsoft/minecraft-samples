@@ -34,9 +34,9 @@ Visit the [Visual Studio Code website](https://code.visualstudio.com) and instal
 
 There are three subfolders with various facets of this project.
 
-* `audio_winforms` is a Visual Studio 2022 project that uses Winforms and more classic .net APIs to capture inbound audio, and push messages in via the /scriptevent command.
-* `concert_packs` is a behavior/resource pack in Minecraft that can process the inbound events and provide in-game effects from the audio messages
-* `concert_world` is a sample world with the concert arena built out so that you can see how the effects impact.
+- `audio_winforms` is a Visual Studio 2022 project that uses Winforms and more classic .net APIs to capture inbound audio, and push messages in via the /scriptevent command.
+- `concert_packs` is a behavior/resource pack in Minecraft that can process the inbound events and provide in-game effects from the audio messages
+- `concert_world` is a sample world with the concert arena built out so that you can see how the effects impact.
 
 1. To make your own environment look like the example, create a folder on your `C:\` drive and call it **projects**. Create a subfolder called **concerts**.
 
@@ -62,7 +62,7 @@ There are three subfolders with various facets of this project.
    npm run local-deploy
    ```
 
-1. Copy the `concert_world` folder to `%localappdata%\Packages\Microsoft.MinecraftUWP_8wekyb3d8bbwe\LocalState\games\com.mojang\minecraftWorlds`. 
+1. Copy the `concert_world` folder to `%appdata%\Minecraft Bedrock\users\shared\games\com.mojang\minecraftWorlds`.
 
 1. Open `audio_winforms\AudioWinforms.sln` in Visual Studio, and hit F5 to run it
 
