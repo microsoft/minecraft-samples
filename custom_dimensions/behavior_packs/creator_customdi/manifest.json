@@ -1,0 +1,30 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Custom dimensions",
+    "description": "Custom dimensions description",
+    "uuid": "942979ee-53e8-4488-a830-93b8da3431d4",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 10]
+  },
+  "modules": [
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "74a419dc-f24e-48e0-bb4c-402181910378",
+      "version": [1, 0, 0],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "module_name": "@minecraft/server",
+      "version": "beta"
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": "2.0.0"
+    }
+  ]
+}
