@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Custom dimensions",
+    "description": "Custom dimensions resource pack",
+    "uuid": "ac24d440-c829-4b42-b945-802febeb7c4d",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 10]
+  },
+  "modules": [
+    {
+      "description": "My Resource Pack",
+      "type": "resources",
+      "uuid": "503fe660-142b-46a2-8fec-34a54e944720",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "942979ee-53e8-4488-a830-93b8da3431d4",
+      "version": [1, 0, 0]
+    }
+  ]
+}
