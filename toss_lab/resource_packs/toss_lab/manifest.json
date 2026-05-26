@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Toss Lab",
+    "description": "Toss Lab",
+    "uuid": "5b74cd67-9ef5-4d9b-9a47-0ec0ae452fcc",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 30]
+  },
+  "modules": [
+    {
+      "description": "Add-on Pack Resources",
+      "type": "resources",
+      "uuid": "180e9126-69f5-4c85-aefd-6bcdd6817fc3",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "a1da103e-ee1f-4b62-bedf-b7800c253a22",
+      "version": [1, 0, 0]
+    }
+  ]
+}

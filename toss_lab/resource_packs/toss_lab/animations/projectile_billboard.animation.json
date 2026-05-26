@@ -1,0 +1,13 @@
+{
+  "format_version": "1.10.0",
+  "animations": {
+    "animation.toss_lab.billboard": {
+      "loop": true,
+      "bones": {
+        "body": {
+          "rotation": ["query.camera_rotation(0)", "query.camera_rotation(1) - query.body_y_rotation", 0.0]
+        }
+      }
+    }
+  }
+}

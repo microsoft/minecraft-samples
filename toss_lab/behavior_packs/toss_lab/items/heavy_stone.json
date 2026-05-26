@@ -1,0 +1,22 @@
+{
+  "format_version": "1.21.3",
+  "minecraft:item": {
+    "description": {
+      "identifier": "toss_lab:heavy_stone",
+      "menu_category": {
+        "category": "items"
+      }
+    },
+    "components": {
+      "minecraft:icon": "toss_lab:heavy_stone",
+      "minecraft:max_stack_size": 64,
+      "minecraft:use_modifiers": {
+        "use_duration": 3.0,
+        "movement_modifier": 1.0
+      },
+      "minecraft:display_name": {
+        "value": "Heavy Stone"
+      }
+    }
+  }
+}

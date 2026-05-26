@@ -1,0 +1,40 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Toss Lab",
+    "description": "Toss Lab Behavior Pack",
+    "uuid": "a1da103e-ee1f-4b62-bedf-b7800c253a22",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 26, 30]
+  },
+  "modules": [
+    {
+      "description": "Behavior",
+      "version": [1, 0, 0],
+      "uuid": "c79d7ff3-2390-495b-810d-4bdd7f513108",
+      "type": "data"
+    },
+    {
+      "description": "Script resources",
+      "language": "javascript",
+      "type": "script",
+      "uuid": "619717ec-05b6-4dcf-9d7c-3a133928ca44",
+      "version": [0, 0, 1],
+      "entry": "scripts/main.js"
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "5b74cd67-9ef5-4d9b-9a47-0ec0ae452fcc",
+      "version": [1, 0, 0]
+    },
+    {
+      "module_name": "@minecraft/server",
+      "version": [2, 6, 0]
+    },
+    {
+      "module_name": "@minecraft/server-ui",
+      "version": [2, 0, 0]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "resource_pack_name": "toss_lab",
+  "texture_name": "atlas.items",
+  "texture_data": {
+    "toss_lab:rubber_sphere": {
+      "textures": "textures/items/rubber_sphere"
+    },
+    "toss_lab:heavy_stone": {
+      "textures": "textures/items/heavy_stone"
+    },
+    "toss_lab:cotton_puff": {
+      "textures": "textures/items/cotton_puff"
+    },
+    "toss_lab:ice_disc": {
+      "textures": "textures/items/ice_disc"
+    },
+    "toss_lab:sticky_glob": {
+      "textures": "textures/items/sticky_glob"
+    }
+  }
+}

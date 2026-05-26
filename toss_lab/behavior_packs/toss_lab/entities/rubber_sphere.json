@@ -1,0 +1,33 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "toss_lab:rubber_sphere",
+      "is_experimental": false,
+      "is_summonable": true,
+      "is_spawnable": false,
+      "spawn_category": "misc"
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "height": 0.3,
+        "width": 0.3
+      },
+      "minecraft:physics": {},
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:bounciness": {
+        "value": 0.75,
+        "minimum_bounce_velocity": 0.1
+      },
+      "minecraft:air_drag_modifier": {
+        "value": 1.0
+      },
+      "minecraft:uses_uniform_air_drag": {}
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "format_version": "1.10.0",
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "toss_lab:rubber_sphere",
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/items/rubber_sphere" },
+      "geometry": { "default": "geometry.item_sprite" },
+      "render_controllers": ["controller.render.toss_lab_projectile"],
+      "animations": { "flying": "animation.toss_lab.billboard" },
+      "scripts": { "animate": ["flying"] }
+    }
+  }
+}

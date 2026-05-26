@@ -1,0 +1,46 @@
+{
+  "format_version": "1.26.30",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "toss_lab:sticky_glob",
+      "is_experimental": false,
+      "is_summonable": true,
+      "is_spawnable": false,
+      "spawn_category": "misc"
+    },
+    "components": {
+      "minecraft:collision_box": {
+        "height": 0.4,
+        "width": 0.4
+      },
+      "minecraft:physics": {},
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "cause": "all",
+          "deals_damage": "no"
+        }
+      },
+      "minecraft:bounciness": {
+        "value": 0.0
+      },
+      "minecraft:air_drag_modifier": {
+        "value": 1.5
+      },
+      "minecraft:uses_uniform_air_drag": {},
+      "minecraft:friction_modifier": {
+        "value": 6.0
+      },
+      "minecraft:pushable_by_entity": {
+        "presets": [
+          {
+            "push_mode": "default",
+            "strength_multiplier": 0.05,
+            "min_distance": 0.1,
+            "push_scale_self": 0.1,
+            "push_scale_other": 0.9
+          }
+        ]
+      }
+    }
+  }
+}
