@@ -14,11 +14,11 @@ export const PLAYER_FACING_YAW = -90;
 export const LEVEL_Y = 100;
 
 /** How many blocks below ground a fall counts as a death. */
-export const FALL_DEPTH = 3;
+export const FALL_DEPTH = 2;
 
 /** Consecutive ticks the player must stay below the fall threshold before a
  *  death triggers. Gives a grace period to recover from small dips. */
-export const FALL_GRACE_TICKS = 40; // 2s @ 20 tps
+export const FALL_GRACE_TICKS = 20; // 1s @ 20 tps
 
 /** How far behind the playing plane (positive Z toward camera) to clear blocks for visibility. */
 export const CLEAR_Z_BEHIND = 14;
@@ -73,11 +73,11 @@ export const INITIAL_PREBUILD_BLOCKS = 120;
 export const PRUNE_BEHIND_BLOCKS = 120;
 
 /** Approximate spacing between puzzle segments (range, in segment counts). */
-export const PUZZLE_INTERVAL_MIN = 6;
-export const PUZZLE_INTERVAL_MAX = 10;
+export const PUZZLE_INTERVAL_MIN = 3;
+export const PUZZLE_INTERVAL_MAX = 6;
 
-/** Print a milestone message every N segments. */
-export const MILESTONE_INTERVAL_SEGMENTS = 20;
+/** Print a milestone message every N blocks of forward progress made by the player. */
+export const MILESTONE_INTERVAL_BLOCKS = 50;
 
 // ── Aim & Throw ─────────────────────────────────────────────────────────────
 
@@ -128,7 +128,7 @@ export const PROJECTILES: ProjectileDef[] = [
     label: "Rubber Sphere",
     forceMultiplier: 1.0,
   },
-  { itemId: "toss_lab:heavy_stone", entityId: "toss_lab:heavy_stone", label: "Heavy Stone", forceMultiplier: 1.2 },
+  { itemId: "toss_lab:heavy_stone", entityId: "toss_lab:heavy_stone", label: "Heavy Stone", forceMultiplier: 0.4 },
   { itemId: "toss_lab:cotton_puff", entityId: "toss_lab:cotton_puff", label: "Cotton Puff", forceMultiplier: 0.8 },
   { itemId: "toss_lab:ice_disc", entityId: "toss_lab:ice_disc", label: "Ice Disc", forceMultiplier: 0.9 },
   { itemId: "toss_lab:sticky_glob", entityId: "toss_lab:sticky_glob", label: "Sticky Glob", forceMultiplier: 1.0 },

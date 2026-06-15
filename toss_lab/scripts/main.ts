@@ -1,9 +1,101 @@
 import { world, system, Player } from "@minecraft/server";
+import { ActionFormData, FormCancelationReason } from "@minecraft/server-ui";
 import { TossLabGame } from "./tossLabGame";
 import { PROJECTILES, THROW_FORCE } from "./config";
 
 /** Active games keyed by player ID. */
 const activeGames = new Map<string, TossLabGame>();
+
+/** Cancel fall damage for players actively in a Toss Lab game so a gap is
+ *  always handled by checkFall() (teleport back) rather than a real death
+ *  that would send the player to world spawn outside the game. */
+world.beforeEvents.entityHurt.subscribe((event) => {
+  if (event.damageSource.cause !== "fall") return;
+  const hurt = event.hurtEntity;
+  if (!(hurt instanceof Player)) return;
+  const game = activeGames.get(hurt.id);
+  if (game?.isRunning) {
+    event.cancel = true;
+  }
+});
+
+/** Player IDs that have already seen the welcome dialog this script session. */
+const welcomeShown = new Set<string>();
+
+/** Start (or restart) a Toss Lab game for the given player. */
+function startGame(player: Player): void {
+  const existing = activeGames.get(player.id);
+  if (existing?.isRunning) {
+    existing.stop();
+  }
+  const game = new TossLabGame(player);
+  activeGames.set(player.id, game);
+  game.start();
+}
+
+/** Show the welcome dialog introducing Toss Lab. Safe to call repeatedly —
+ *  only the first call per player per script session opens the form. */
+function showWelcomeDialog(player: Player): void {
+  if (welcomeShown.has(player.id)) return;
+  welcomeShown.add(player.id);
+
+  const form = new ActionFormData()
+    .title("Welcome to Toss Lab!")
+    .body(
+      "§eToss Lab§r is a side-scrolling puzzle game where you throw objects to solve challenges.\n\n" +
+        "Each projectile has unique properties — bouncy rubber spheres, heavy stones, sticky globs, " +
+        "icy discs, and floaty cotton puffs.\n\n" +
+        "§7Hold§r an item to charge your throw, then §7release§r to toss.\n" +
+        "§7Sneak§r to aim and run.\n\n" +
+        "Ready to play?"
+    )
+    .button("§aPlay Toss Lab")
+    .button("§cClose");
+
+  form
+    .show(player)
+    .then((response) => {
+      // If the player was busy (UI was already open), try again shortly.
+      if (response.canceled && response.cancelationReason === FormCancelationReason.UserBusy) {
+        welcomeShown.delete(player.id);
+        system.runTimeout(() => {
+          if (player.isValid) showWelcomeDialog(player);
+        }, 40);
+        return;
+      }
+      if (response.canceled) return;
+      if (response.selection === 0) {
+        startGame(player);
+      }
+    })
+    .catch((e) => {
+      console.warn(`Toss Lab welcome dialog failed: ${e}`);
+    });
+}
+
+/** Schedule the welcome dialog after a short delay so the client UI is ready. */
+function scheduleWelcomeDialog(player: Player): void {
+  if (welcomeShown.has(player.id)) return;
+  system.runTimeout(() => {
+    if (player.isValid) {
+      showWelcomeDialog(player);
+    }
+  }, 40);
+}
+
+// On script load, prompt any players already in the world (covers behavior-pack
+// reloads & /reload, where playerSpawn won't fire for already-present players).
+system.run(() => {
+  for (const player of world.getAllPlayers()) {
+    scheduleWelcomeDialog(player);
+  }
+});
+
+// Clean up tracking when a player leaves so a rejoin shows the dialog again.
+world.afterEvents.playerLeave.subscribe((event) => {
+  welcomeShown.delete(event.playerId);
+  activeGames.delete(event.playerId);
+});
 
 // ── Charged throw mechanic ─────────────────────────────────────────────────
 // Items have `minecraft:use_modifiers` so they can be held to charge.
@@ -93,25 +185,19 @@ system.runInterval(() => {
 }, 2);
 
 // ── Listen for /scriptevent commands ────────────────────────────────────────
+// Accept both `tosslab:*` and `toss_lab:*` for convenience.
+
+const START_EVENT_IDS = new Set(["tosslab:start", "toss_lab:start"]);
+const STOP_EVENT_IDS = new Set(["tosslab:stop", "toss_lab:stop"]);
 
 system.afterEvents.scriptEventReceive.subscribe(
   (event) => {
     const player = event.sourceEntity;
     if (!(player instanceof Player)) return;
 
-    if (event.id === "tosslab:start") {
-      // Stop existing game if any
-      const existing = activeGames.get(player.id);
-      if (existing?.isRunning) {
-        existing.stop();
-      }
-
-      const game = new TossLabGame(player);
-      activeGames.set(player.id, game);
-      game.start();
-    }
-
-    if (event.id === "tosslab:stop") {
+    if (START_EVENT_IDS.has(event.id)) {
+      startGame(player);
+    } else if (STOP_EVENT_IDS.has(event.id)) {
       const game = activeGames.get(player.id);
       if (game?.isRunning) {
         game.stop();
@@ -121,13 +207,39 @@ system.afterEvents.scriptEventReceive.subscribe(
       }
     }
   },
-  { namespaces: ["tosslab"] }
+  { namespaces: ["tosslab", "toss_lab"] }
 );
 
-// ── Handle respawns ─────────────────────────────────────────────────────────
+// ── Startup cleanup ─────────────────────────────────────────────────────────
+// Ticking areas persist on the world across script reloads. If we don't clean
+// them up, recreating a slab with the same ID throws "Identifier already exists".
+system.run(() => {
+  try {
+    const mgr = world.tickingAreaManager;
+    for (const area of mgr.getAllTickingAreas()) {
+      if (area.identifier.startsWith("tossLab_")) {
+        try {
+          mgr.removeTickingArea(area.identifier);
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+  } catch (e) {
+    console.warn(`Toss Lab ticking-area cleanup failed: ${e}`);
+  }
+});
+
+// ── Handle respawns & first-join welcome ────────────────────────────────────
 
 world.afterEvents.playerSpawn.subscribe((event) => {
-  if (event.initialSpawn) return; // Skip first join; only handle death respawns
+  if (event.initialSpawn) {
+    // First time joining this world session — introduce Toss Lab.
+    scheduleWelcomeDialog(event.player);
+    return;
+  }
+
+  // Death respawn — notify any active game.
   const game = activeGames.get(event.player.id);
   if (game?.isRunning) {
     game.onRespawn();

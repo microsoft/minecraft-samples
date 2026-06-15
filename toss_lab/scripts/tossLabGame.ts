@@ -10,6 +10,7 @@ import {
   ButtonState,
   EasingType,
   Entity,
+  GameMode,
   system,
   world,
 } from "@minecraft/server";
@@ -36,10 +37,11 @@ import {
   LOOKAHEAD_BLOCKS,
   INITIAL_PREBUILD_BLOCKS,
   PRUNE_BEHIND_BLOCKS,
-  MILESTONE_INTERVAL_SEGMENTS,
+  MILESTONE_INTERVAL_BLOCKS,
 } from "./config";
 import { scoutBestSite, ScoutedSite, waitForAreaLoaded } from "./levelScout";
 import { LevelBuilder, SegmentBuilt } from "./levelBuilder";
+import { getActiveHint } from "./puzzles";
 
 export class TossLabGame {
   private player: Player;
@@ -70,6 +72,8 @@ export class TossLabGame {
   private facingRight = true;
   /** Number of deaths (falls) this run. */
   private deaths = 0;
+  /** Game mode the player was in before start(); restored on stop(). */
+  private originalGameMode: GameMode | undefined;
 
   // ── Aim & Throw state ──
   /** Aim angle in degrees: 0 = right (3 o'clock), 90 = up (12), 180 = left (9). */
@@ -92,6 +96,11 @@ export class TossLabGame {
   /** Active play-area slabs, ordered left-to-right by `toX`. */
   private playAreas: { id: string; fromX: number; toX: number }[] = [];
   private nextSlabSeq = 0;
+  /** Per-instance suffix to keep slab IDs unique across script reloads &
+   *  back-to-back game starts. Without this, recreating a slab after a script
+   *  reload throws "Identifier already exists" because ticking areas persist
+   *  on the world. */
+  private readonly slabIdSuffix = `${Date.now().toString(36)}_${Math.floor(Math.random() * 1e6).toString(36)}`;
   /** Yaw for facing east — right side profile visible to camera at +Z. */
   private static readonly YAW_RIGHT = -90;
   /** Yaw for facing west — left side profile visible to camera at +Z. */
@@ -132,6 +141,27 @@ export class TossLabGame {
     // Teleport the player to the start.
     this.teleportToStart();
 
+    // Save current game mode and switch to Survival so the platformer feels right.
+    try {
+      this.originalGameMode = this.player.getGameMode();
+      this.player.setGameMode(GameMode.Survival);
+    } catch (e) {
+      this.player.sendMessage(`§cCould not set survival mode: ${e}`);
+    }
+
+    // Pin the respawn point to the level start so a fatal hit doesn't send the
+    // player back to world spawn outside the game.
+    try {
+      this.player.setSpawnPoint({
+        x: Math.floor(this.originX + 3),
+        y: Math.floor(this.groundY + 1),
+        z: Math.floor(this.playZ),
+        dimension: this.dimension,
+      });
+    } catch {
+      /* setSpawnPoint may fail in some dimensions; not critical */
+    }
+
     // Restrict input
     this.applyInputRestrictions();
 
@@ -146,7 +176,7 @@ export class TossLabGame {
 
     this.player.sendMessage("§aSide-scroller started! W = right, S = left, Space = jump.");
     this.player.sendMessage("§7A/D = aim, Shift = throw. Hotbar 1-5 picks projectile.");
-    this.player.sendMessage("§7Run §f/scriptevent tossLab:stop§7 to exit.");
+    this.player.sendMessage("§7Run §f/scriptevent toss_lab:stop§7 to exit.");
 
     // Start tick loop
     this.tick();
@@ -161,6 +191,15 @@ export class TossLabGame {
       this.player.inputPermissions.setPermissionCategory(InputPermissionCategory.Camera, true);
       this.removeEffects();
       this.destroyReticle();
+
+      // Restore the player's original game mode.
+      if (this.originalGameMode !== undefined) {
+        try {
+          this.player.setGameMode(this.originalGameMode);
+        } catch {
+          /* ignore */
+        }
+      }
 
       // Remove all play-area slabs
       const mgr = world.tickingAreaManager;
@@ -224,7 +263,7 @@ export class TossLabGame {
     } catch (e) {
       // Log but don't swallow — fall back to start
       this.player.teleport(
-        { x: this.originX + 3, y: this.groundY + 1, z: this.playZ },
+        { x: this.originX + 3.5, y: this.groundY + 1, z: this.playZ + 0.5 },
         { rotation: { x: 0, y: TossLabGame.YAW_RIGHT } }
       );
       this.firstTick = true;
@@ -324,10 +363,13 @@ export class TossLabGame {
     const desiredYaw = this.facingRight ? TossLabGame.YAW_RIGHT : TossLabGame.YAW_LEFT;
     const desiredPitch = this.getAimPitch();
 
-    // Snap Z back if the player drifted
-    if (Math.abs(loc.z - this.playZ) > 0.15) {
+    // Snap Z back if the player drifted. Target is the block center
+    // (playZ + 0.5), not the integer edge — otherwise the player's bbox
+    // overlaps the back barrier at playZ - 1.
+    const targetZ = this.playZ + 0.5;
+    if (Math.abs(loc.z - targetZ) > 0.15) {
       this.player.teleport(
-        { x: loc.x, y: loc.y, z: this.playZ },
+        { x: loc.x, y: loc.y, z: targetZ },
         { keepVelocity: true, rotation: { x: desiredPitch, y: desiredYaw } }
       );
       return;
@@ -354,13 +396,13 @@ export class TossLabGame {
     }
   }
 
-  /** Print a milestone message every N segments. */
+  /** Print a milestone message every N blocks the player has actually walked forward. */
   private checkMilestone(): void {
-    const seg = this.builder.totalSegments;
-    const milestone = Math.floor(seg / MILESTONE_INTERVAL_SEGMENTS);
+    const distance = Math.floor(this.player.location.x - this.originX);
+    const milestone = Math.floor(distance / MILESTONE_INTERVAL_BLOCKS);
     if (milestone > this.lastMilestone) {
       this.lastMilestone = milestone;
-      const distance = Math.floor(this.player.location.x - this.originX);
+      const seg = this.builder.totalSegments;
       this.player.sendMessage(`§a§lMilestone! §r§a${distance} blocks · ${seg} segments · Deaths: §e${this.deaths}`);
     }
   }
@@ -398,11 +440,16 @@ export class TossLabGame {
 
       // Add a new slab that overlaps the previous one slightly so there is no gap.
       const fromX = Math.max(this.originX - MARGIN_X, this.loadedMaxX - 8);
-      const id = TossLabGame.TICKING_AREA_ID_PREFIX + this.nextSlabSeq++;
+      const id = `${TossLabGame.TICKING_AREA_ID_PREFIX}${this.slabIdSuffix}_${this.nextSlabSeq++}`;
+      // Slab Z range must extend at least to the camera position, otherwise the
+      // engine logs "Placing the camera outside a loaded and ticking chunk".
+      // CLEAR_Z_BEHIND drives visibility clearing; the camera sits at
+      // playZ + CAMERA_Z_OFFSET, so take the max of both (plus a small margin).
+      const slabMaxZ = this.playZ + Math.max(CLEAR_Z_BEHIND, CAMERA_Z_OFFSET + 4);
       const options = {
         dimension: this.dimension,
         from: { x: fromX, y: this.groundY - 25, z: this.playZ - 5 },
-        to: { x: newMaxX, y: this.groundY + 35, z: this.playZ + CLEAR_Z_BEHIND },
+        to: { x: newMaxX, y: this.groundY + 35, z: slabMaxZ },
       };
 
       // If the manager still doesn't have room, evict the oldest slabs (those
@@ -472,7 +519,7 @@ export class TossLabGame {
       safe = { x: Math.max(fallX - 3, this.originX + 3), y: this.groundY };
     }
     this.player.teleport(
-      { x: safe.x + 0.5, y: safe.y + 1, z: this.playZ },
+      { x: safe.x + 0.5, y: safe.y + 1, z: this.playZ + 0.5 },
       { rotation: { x: 0, y: TossLabGame.YAW_RIGHT } }
     );
     this.facingRight = true;
@@ -529,9 +576,12 @@ export class TossLabGame {
       this.aimAngle = Math.min(180, this.aimAngle + AIM_SPEED);
     }
 
-    // Show aim angle and selected projectile on action bar
+    // Show aim angle and selected projectile on action bar, with the active
+    // puzzle hint (if any) appended on a second line.
     const def = this.getSelectedProjectile();
-    this.player.onScreenDisplay.setActionBar(`§e${def.label}§r  Aim: ${this.aimAngle.toFixed(0)}°`);
+    const hint = getActiveHint();
+    const base = `§e${def.label}§r  Aim: ${this.aimAngle.toFixed(0)}°`;
+    this.player.onScreenDisplay.setActionBar(hint ? `${base}\n${hint}` : base);
 
     if (this.throwCooldown > 0) {
       this.throwCooldown--;
@@ -762,11 +812,12 @@ export class TossLabGame {
     const mgr = world.tickingAreaManager;
     const initialMaxX = this.originX + INITIAL_PREBUILD_BLOCKS + MARGIN_X;
     const fromX = this.originX - MARGIN_X;
-    const id = TossLabGame.TICKING_AREA_ID_PREFIX + this.nextSlabSeq++;
+    const id = `${TossLabGame.TICKING_AREA_ID_PREFIX}${this.slabIdSuffix}_${this.nextSlabSeq++}`;
+    const slabMaxZ = this.playZ + Math.max(CLEAR_Z_BEHIND, CAMERA_Z_OFFSET + 4);
     await mgr.createTickingArea(id, {
       dimension: this.dimension,
       from: { x: fromX, y: this.groundY - 25, z: this.playZ - 5 },
-      to: { x: initialMaxX, y: this.groundY + 35, z: this.playZ + CLEAR_Z_BEHIND },
+      to: { x: initialMaxX, y: this.groundY + 35, z: slabMaxZ },
     });
     await waitForAreaLoaded(id, 10000);
     this.playAreas.push({ id, fromX, toX: initialMaxX });
@@ -775,8 +826,11 @@ export class TossLabGame {
 
   private teleportToStart(): void {
     this.facingRight = true;
+    // Center the player in the play column: integer Z is the edge between
+    // blocks, which would clip the player's 0.6-wide bbox into the back
+    // barrier at playZ - 1. playZ + 0.5 puts them at the block center.
     this.player.teleport(
-      { x: this.originX + 3, y: this.groundY + 1, z: this.playZ },
+      { x: this.originX + 3.5, y: this.groundY + 1, z: this.playZ + 0.5 },
       { rotation: { x: 0, y: TossLabGame.YAW_RIGHT } }
     );
   }
@@ -799,6 +853,13 @@ export class TossLabGame {
       amplifier: 1,
       showParticles: false,
     });
+    // Resistance V (amplifier 4) — absorbs fall damage so a deep gap is a
+    // "reset" via checkFall(), not a real death that sends the player to
+    // world spawn outside the game.
+    this.player.addEffect("minecraft:resistance", duration, {
+      amplifier: 4,
+      showParticles: false,
+    });
   }
 
   /** Remove toss lab effects. */
@@ -806,6 +867,7 @@ export class TossLabGame {
     try {
       this.player.removeEffect("minecraft:speed");
       this.player.removeEffect("minecraft:jump_boost");
+      this.player.removeEffect("minecraft:resistance");
     } catch {
       // Player may have disconnected
     }

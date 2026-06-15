@@ -21,11 +21,10 @@
         }
       },
       "minecraft:bounciness": {
-        "value": 0.75,
-        "minimum_bounce_velocity": 0.1
+        "value": 0.98
       },
       "minecraft:air_drag_modifier": {
-        "value": 1.0
+        "value": 0.6
       },
       "minecraft:uses_uniform_air_drag": {}
     }
