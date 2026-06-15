@@ -729,10 +729,25 @@ export class TossLabGame {
 
       tp.age++;
 
+      // ── Per-type passive effects while in flight ──
+      // Ice disc: leave a trail of packed_ice one block below the disc as it
+      // flies, so a disc skimmed across a gap freezes a walkable bridge in its
+      // wake. Runs every tick so the trail is continuous, not just at the
+      // landing point (the iceSlideBridge puzzle's flight-path tracking is a
+      // bonus on top of this generic behavior).
+      if (tp.itemId === "toss_lab:ice_disc") {
+        try {
+          this.layIceTrail(tp.entity);
+        } catch {
+          /* ignore — block may be in an unloaded chunk */
+        }
+      }
+
       let atRest = false;
+      let speed = Infinity;
       try {
         const v = tp.entity.getVelocity();
-        const speed = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+        speed = Math.sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
         if (speed < PROJECTILE_REST_VELOCITY) {
           tp.restTicks++;
           if (tp.restTicks >= PROJECTILE_REST_TICKS) atRest = true;
@@ -741,6 +756,38 @@ export class TossLabGame {
         }
       } catch {
         // If velocity is unavailable, fall back to age-only logic.
+      }
+
+      // Sticky glob: convert to a slime block the instant it stops moving so
+      // the player can stack throws into a staircase. We can't wait for the
+      // full PROJECTILE_REST_TICKS — that's 5 seconds and the player needs
+      // the next step to appear immediately to keep momentum. High friction
+      // + zero bounciness on the entity guarantees it stops within a tick or
+      // two of landing.
+      if (tp.itemId === "toss_lab:sticky_glob") {
+        let onGround = false;
+        try {
+          onGround = tp.entity.isOnGround;
+        } catch {
+          /* ignore */
+        }
+        if (tp.age > 2 && (onGround || speed < PROJECTILE_REST_VELOCITY)) {
+          let loc;
+          try {
+            loc = tp.entity.location;
+          } catch {
+            continue;
+          }
+          if (this.placeSlimeAt(loc)) {
+            try {
+              tp.entity.remove();
+            } catch {
+              /* ignore */
+            }
+            // No item drop — the glob is consumed into the slime block.
+            continue;
+          }
+        }
       }
 
       const expired = tp.age >= PROJECTILE_MAX_LIFETIME_TICKS;
@@ -777,6 +824,66 @@ export class TossLabGame {
     }
 
     this.trackedProjectiles = remaining;
+  }
+
+  /**
+   * Freeze the cell directly below an in-flight ice disc into packed_ice.
+   * Called every tick the disc is alive. Only fires when the disc is in the
+   * play corridor and the cell below is currently air, so the disc both:
+   *   - leaves a visible trail along its flight path, and
+   *   - never tries to replace existing terrain (or its own freshly-placed ice).
+   * The block below the disc (not the disc's own cell) is targeted so the
+   * disc doesn't immediately collide with the ice it just spawned.
+   */
+  private layIceTrail(entity: Entity): void {
+    let loc;
+    try {
+      loc = entity.location;
+    } catch {
+      return;
+    }
+    // Stay strictly inside the play plane — placing on z = playZ ± 1 would
+    // collide with the back/front barrier walls.
+    if (Math.floor(loc.z) !== Math.floor(this.playZ)) return;
+    const bx = Math.floor(loc.x);
+    const by = Math.floor(loc.y) - 1;
+    const bz = Math.floor(loc.z);
+    const block = this.dimension.getBlock({ x: bx, y: by, z: bz });
+    if (!block || block.typeId !== "minecraft:air") return;
+    block.setPermutation(BlockPermutation.resolve("minecraft:packed_ice"));
+  }
+
+  /**
+   * Convert a resting sticky glob into a slime block at its current cell.
+   * Returns true when a block was placed so the caller knows to despawn the
+   * glob entity. If the glob is stacked on top of an existing block (e.g.,
+   * landing on a previously-placed slime stair), the cell above the obstacle
+   * is used so successive throws build vertically.
+   */
+  private placeSlimeAt(loc: { x: number; y: number; z: number }): boolean {
+    if (Math.floor(loc.z) !== Math.floor(this.playZ)) return false;
+    const bx = Math.floor(loc.x);
+    const bz = Math.floor(loc.z);
+    let by = Math.floor(loc.y);
+    try {
+      let target = this.dimension.getBlock({ x: bx, y: by, z: bz });
+      // If the glob's cell is already solid (sitting flush on top of a block
+      // it just barely overlapped with), step one cell up to find air.
+      if (target && target.typeId !== "minecraft:air") {
+        by += 1;
+        target = this.dimension.getBlock({ x: bx, y: by, z: bz });
+      }
+      if (!target || target.typeId !== "minecraft:air") return false;
+      target.setPermutation(BlockPermutation.resolve("minecraft:slime"));
+      try {
+        this.dimension.runCommand(`playsound mob.slime.big @a ${bx} ${by} ${bz}`);
+      } catch {
+        /* ignore — sound is cosmetic */
+      }
+      return true;
+    } catch {
+      return false;
+    }
   }
   private getSelectedProjectile(): ProjectileDef {
     const slot = this.player.selectedSlotIndex;

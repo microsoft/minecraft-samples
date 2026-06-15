@@ -32,8 +32,7 @@
           {
             "horizontal_power": 1.6,
             "vertical_power": 0.5,
-            "vertical_velocity_cap": 1.0,
-            "scale_with_damage": true
+            "vertical_velocity_cap": 1.0
           }
         ]
       }
