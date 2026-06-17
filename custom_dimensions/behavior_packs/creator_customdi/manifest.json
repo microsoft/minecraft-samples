@@ -20,7 +20,7 @@
   "dependencies": [
     {
       "module_name": "@minecraft/server",
-      "version": "beta"
+      "version": "2.8.0"
     },
     {
       "module_name": "@minecraft/server-ui",
