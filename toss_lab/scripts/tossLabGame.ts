@@ -19,6 +19,7 @@ import {
   CAMERA_Y_OFFSET,
   FALL_DEPTH,
   FALL_GRACE_TICKS,
+  MAX_SAFE_DESCENT_PER_TICK,
   CLEAR_Z_BEHIND,
   CLEAR_HEIGHT,
   MARGIN_X,
@@ -64,6 +65,8 @@ export class TossLabGame {
   private builder!: LevelBuilder;
   private playZ = 0;
   private groundY = 0;
+  /** Highest surface height currently considered safe for the player. */
+  private currentSafeGroundY = 0;
   private deathY = 0;
   private belowGroundTicks = 0;
   private originX = 0;
@@ -122,8 +125,16 @@ export class TossLabGame {
     this.site = await scoutBestSite(this.player);
     this.playZ = this.site.playZ;
     this.groundY = this.site.groundY;
-    this.deathY = this.groundY - FALL_DEPTH;
+    this.currentSafeGroundY = this.groundY;
+    this.deathY = this.currentSafeGroundY - FALL_DEPTH;
     this.originX = this.site.originX;
+
+    // Start each run at daytime so the opening view is always readable.
+    try {
+      this.dimension.runCommand("time set day");
+    } catch {
+      /* ignore — time control may be unavailable in some dimensions */
+    }
 
     // Promote the winning site into a long-lived play ticking area covering
     // the prebuilt range; we'll grow it implicitly as new chunks are touched.
@@ -259,6 +270,7 @@ export class TossLabGame {
 
     // Fall check runs first and must not be swallowed
     try {
+      this.refreshDeathThreshold();
       this.checkFall();
     } catch (e) {
       // Log but don't swallow — fall back to start
@@ -313,11 +325,19 @@ export class TossLabGame {
   private updateCamera(): void {
     const loc = this.player.location;
 
-    // On first tick, the player's teleport may not have applied yet — skip
-    // until they've actually arrived at the play plane to avoid the engine's
-    // "Placing the camera outside a loaded and ticking chunk" warning.
-    if (this.firstTick && Math.abs(loc.z - this.playZ) > 1) {
-      return;
+    // On the first tick after a (re)spawn the player's teleport may not have
+    // applied yet, so player.location can still report the *old* position in a
+    // far-away, unticked chunk. Placing the camera there triggers the engine's
+    // "Placing the camera outside a loaded and ticking chunk" warning. Wait
+    // until the player has actually arrived inside the loaded play area —
+    // checking both axes, since the old Z alone can coincidentally match the
+    // play plane while X is still far away.
+    if (this.firstTick) {
+      const insideX = loc.x >= this.originX - MARGIN_X && loc.x <= this.loadedMaxX;
+      const insideZ = Math.abs(loc.z - (this.playZ + 0.5)) <= 1.5;
+      if (!insideX || !insideZ) {
+        return;
+      }
     }
 
     const cameraPos = {
@@ -497,6 +517,47 @@ export class TossLabGame {
     });
   }
 
+  /**
+   * Keep the fall-death threshold aligned with the surface directly under the
+   * player, so random ramps and dips do not accumulate into a false death.
+   * If there is no surface in the current column, preserve the last known safe
+   * height so gaps still count as falls.
+   */
+  private refreshDeathThreshold(): void {
+    const surfaceY = this.findSurfaceY(Math.floor(this.player.location.x));
+    if (surfaceY === undefined) return;
+    // Let the safe ground rise freely (player climbed up), but only descend a
+    // little per tick. A ramp/dip lowers the surface gradually as the player
+    // walks; a crevice the player falls into drops the column surface many
+    // blocks in a single tick — refusing to chase that keeps deathY above the
+    // pit so checkFall() registers the fall.
+    if (surfaceY >= this.currentSafeGroundY) {
+      this.currentSafeGroundY = surfaceY;
+    } else {
+      const descent = Math.min(this.currentSafeGroundY - surfaceY, MAX_SAFE_DESCENT_PER_TICK);
+      this.currentSafeGroundY -= descent;
+    }
+    this.deathY = this.currentSafeGroundY - FALL_DEPTH;
+  }
+
+  /** Find the highest solid block in the play plane at the given X column. */
+  private findSurfaceY(x: number): number | undefined {
+    const scanTop = this.site.groundY + 31;
+    const scanBottom = this.site.groundY - 20;
+
+    for (let y = scanTop; y >= scanBottom; y--) {
+      try {
+        const block = this.dimension.getBlock({ x, y, z: this.playZ });
+        if (block && block.typeId !== "minecraft:air") {
+          return y;
+        }
+      } catch {
+        return undefined;
+      }
+    }
+    return undefined;
+  }
+
   /** Detect if the player fell below the death threshold and respawn them. */
   private checkFall(): void {
     if (this.player.location.y > this.deathY) {
@@ -523,6 +584,8 @@ export class TossLabGame {
       { rotation: { x: 0, y: TossLabGame.YAW_RIGHT } }
     );
     this.facingRight = true;
+    this.currentSafeGroundY = safe.y;
+    this.deathY = this.currentSafeGroundY - FALL_DEPTH;
     this.firstTick = true;
     this.applyEffects();
     this.giveProjectileItems();
@@ -933,6 +996,8 @@ export class TossLabGame {
 
   private teleportToStart(): void {
     this.facingRight = true;
+    this.currentSafeGroundY = this.groundY;
+    this.deathY = this.currentSafeGroundY - FALL_DEPTH;
     // Center the player in the play column: integer Z is the edge between
     // blocks, which would clip the player's 0.6-wide bbox into the back
     // barrier at playZ - 1. playZ + 0.5 puts them at the block center.

@@ -14,11 +14,18 @@ export const PLAYER_FACING_YAW = -90;
 export const LEVEL_Y = 100;
 
 /** How many blocks below ground a fall counts as a death. */
-export const FALL_DEPTH = 2;
+export const FALL_DEPTH = 4;
 
 /** Consecutive ticks the player must stay below the fall threshold before a
  *  death triggers. Gives a grace period to recover from small dips. */
-export const FALL_GRACE_TICKS = 20; // 1s @ 20 tps
+export const FALL_GRACE_TICKS = 30; // 1.5s @ 20 tps
+
+/** Max blocks per tick the fall-death threshold may descend to follow the
+ *  surface under the player. Walking a ramp/dip lowers the surface gradually
+ *  (well under 1 block/tick), but a crevice the player falls into drops the
+ *  column surface many blocks in a single tick — we refuse to chase that, so
+ *  the gap is correctly registered as a fall. */
+export const MAX_SAFE_DESCENT_PER_TICK = 1;
 
 /** How far behind the playing plane (positive Z toward camera) to clear blocks for visibility. */
 export const CLEAR_Z_BEHIND = 14;

@@ -1,5 +1,5 @@
 import { world, system, Player } from "@minecraft/server";
-import { ActionFormData, FormCancelationReason } from "@minecraft/server-ui";
+import { MessageBox, DataDrivenScreenClosedReason } from "@minecraft/server-ui";
 import { TossLabGame } from "./tossLabGame";
 import { PROJECTILES, THROW_FORCE } from "./config";
 
@@ -39,32 +39,30 @@ function showWelcomeDialog(player: Player): void {
   if (welcomeShown.has(player.id)) return;
   welcomeShown.add(player.id);
 
-  const form = new ActionFormData()
-    .title("Welcome to Toss Lab!")
+  const form = new MessageBox(player, "Welcome to Toss Lab!")
     .body(
-      "§eToss Lab§r is a side-scrolling puzzle game where you throw objects to solve challenges.\n\n" +
-        "Each projectile has unique properties — bouncy rubber spheres, heavy stones, sticky globs, " +
-        "icy discs, and floaty cotton puffs.\n\n" +
-        "§7Hold§r an item to charge your throw, then §7release§r to toss.\n" +
-        "§7Sneak§r to aim and run.\n\n" +
+      "Toss Lab is a side-scrolling puzzle game about throwing objects to solve challenges.\n\n" +
+        "Hold an item to charge your throw, then release to toss.\n" +
+        "Sneak to aim and run.\n\n" +
         "Ready to play?"
     )
-    .button("§aPlay Toss Lab")
-    .button("§cClose");
+    .button1("Play Toss Lab")
+    .button2("Close");
 
   form
-    .show(player)
+    .show()
     .then((response) => {
       // If the player was busy (UI was already open), try again shortly.
-      if (response.canceled && response.cancelationReason === FormCancelationReason.UserBusy) {
+      if (response.closeReason === DataDrivenScreenClosedReason.UserBusy) {
         welcomeShown.delete(player.id);
         system.runTimeout(() => {
           if (player.isValid) showWelcomeDialog(player);
         }, 40);
         return;
       }
-      if (response.canceled) return;
-      if (response.selection === 0) {
+      // MessageBox's first button (button1 = "Play Toss Lab") resolves with
+      // selection 1; the second button (button2 = "Close") resolves with 0.
+      if (response.selection === 1) {
         startGame(player);
       }
     })
