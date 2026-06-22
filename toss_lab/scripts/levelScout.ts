@@ -53,8 +53,6 @@ export async function scoutBestSite(player: Player): Promise<ScoutedSite> {
     });
   }
 
-  player.sendMessage(`§7Scouting ${candidates.length} candidate sites...`);
-
   const results: ScoutedSite[] = [];
   let nextIdx = 0;
 
@@ -92,10 +90,6 @@ export async function scoutBestSite(player: Player): Promise<ScoutedSite> {
 
   results.sort((a, b) => b.score - a.score);
   const winner = results[0];
-  player.sendMessage(
-    `§aPicked ${winner.theme} site at (${winner.originX}, ${winner.groundY}, ${winner.playZ}) ` +
-      `score=${winner.score.toFixed(1)} (of ${results.length} probed)`
-  );
   return winner;
 }
 

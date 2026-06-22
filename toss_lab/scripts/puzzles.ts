@@ -15,6 +15,8 @@ export interface Puzzle {
   onTick?(playerLoc: { x: number; y: number; z: number }, site: ScoutedSite): void;
   /** Called when a tracked projectile rests inside [xStart, xEnd]. */
   onProjectileRest?(itemId: string, loc: { x: number; y: number; z: number }, site: ScoutedSite): void;
+  /** Called the moment a heavy projectile impacts a block inside [xStart, xEnd]. */
+  onProjectileImpact?(itemId: string, loc: { x: number; y: number; z: number }, site: ScoutedSite): void;
 }
 
 export interface PuzzleDef {
@@ -80,15 +82,21 @@ function showHint(
   }
 }
 
-/** Build a tall, color-coded "this is a puzzle" beacon at the entry of a
- *  puzzle segment. Visible from far down the corridor so the player can tell
- *  puzzle terrain from plain jump-across terrain at a glance.
+/** Build a color-coded "this is a puzzle" marker at the entry of a puzzle
+ *  segment so the player can tell puzzle terrain from plain jump-across terrain
+ *  at a glance, plus an optional note sign describing the puzzle.
+ *
+ *  Both pieces are kept OUT of the 1-wide lane the player walks through:
+ *    - the colored marker floats above head height (it used to be a 3-tall
+ *      solid column at lane height — a "pre-wall" the player had to climb over
+ *      before they could even attempt the puzzle), and
+ *    - the note sign has no collision and mounts on a hidden support behind the
+ *      lane, so the player can read it and still walk straight through.
  *  - `color`: the BlockPermutation for the marker cap (typically wool).
- *  - `body`: optional column material (defaults to glowstone). Use a material
+ *  - `body`: optional marker material (defaults to glowstone). Use a material
  *    that suggests the required projectile (slime, packed_ice, stone, etc.)
  *    to make the puzzle's intent unmissable.
- *  - `label`: optional sign text naming the required projectile. Placed as a
- *    wall sign on the camera-facing side of the beacon at eye level. */
+ *  - `label`: optional sign text naming the required projectile. */
 function buildPuzzleBeacon(
   ctx: SegmentContext,
   color: BlockPermutation,
@@ -100,32 +108,32 @@ function buildPuzzleBeacon(
   const z = ctx.playZ;
   try {
     const beaconBody = body ?? BlockPermutation.resolve("minecraft:glowstone");
-    // 3-tall body column, capped with the colored marker.
-    ctx.dimension.fillBlocks(
-      new BlockVolume({ x: bx, y: groundY + 1, z }, { x: bx, y: groundY + 3, z }),
-      beaconBody
-    );
-    ctx.dimension.setBlockPermutation({ x: bx, y: groundY + 4, z }, color);
-
-    // Glowstone "lamps" flanking the column at ground level so it's also
-    // bright even when the body is opaque (slime, ice, stone, etc.).
-    const lamp = BlockPermutation.resolve("minecraft:glowstone");
-    try {
-      ctx.dimension.setBlockPermutation({ x: bx, y: groundY + 1, z: z - 1 }, lamp);
-    } catch { /* ignore */ }
+    // Floating marker above head height — flags the puzzle from a distance and
+    // hints at the projectile, without blocking the lane.
+    ctx.dimension.setBlockPermutation({ x: bx, y: groundY + 5, z }, beaconBody);
+    ctx.dimension.setBlockPermutation({ x: bx, y: groundY + 6, z }, beaconBody);
+    ctx.dimension.setBlockPermutation({ x: bx, y: groundY + 7, z }, color);
 
     if (label) {
-      // Wall sign on the camera-facing (+Z, south) side at eye level.
+      // Note sign at eye level, facing the camera (+Z, south). It mounts on a
+      // hidden barrier support behind the lane (z - 1, where the back barrier
+      // sits) and signs have no collision, so the lane stays completely clear.
       // facing_direction:3 = south = text visible from +Z (camera side).
+      ctx.dimension.setBlockPermutation(
+        { x: bx, y: groundY + 2, z: z - 1 },
+        BlockPermutation.resolve("minecraft:barrier")
+      );
       const sign = BlockPermutation.resolve("minecraft:oak_wall_sign", { facing_direction: 3 });
-      const signPos = { x: bx, y: groundY + 2, z: z + 1 };
+      const signPos = { x: bx, y: groundY + 2, z };
       ctx.dimension.setBlockPermutation(signPos, sign);
       try {
         const block = ctx.dimension.getBlock(signPos);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const signComp = block?.getComponent("minecraft:sign") as any;
         if (signComp?.setText) signComp.setText(label);
-      } catch { /* ignore — sign without text is still a visual cue */ }
+      } catch {
+        /* ignore — sign without text is still a visual cue */
+      }
     }
   } catch {
     /* ignore */
@@ -329,14 +337,16 @@ const iceSlideBridge: PuzzleDef = {
         try {
           ctx.dimension.setBlockPermutation({ x: xi, y: groundY, z: playZ }, ice);
           count++;
-        } catch { /* ignore */ }
+        } catch {
+          /* ignore */
+        }
       }
       if (count > 0) {
         try {
-          ctx.dimension.runCommand(
-            `playsound block.glass.break @a ${(leftEdge + rightEdge) / 2} ${groundY} ${playZ}`
-          );
-        } catch { /* ignore */ }
+          ctx.dimension.runCommand(`playsound block.glass.break @a ${(leftEdge + rightEdge) / 2} ${groundY} ${playZ}`);
+        } catch {
+          /* ignore */
+        }
       }
       return count;
     };
@@ -368,7 +378,11 @@ const iceSlideBridge: PuzzleDef = {
         const seenIds = new Set<string>();
         for (const d of discs) {
           let loc;
-          try { loc = d.location; } catch { continue; }
+          try {
+            loc = d.location;
+          } catch {
+            continue;
+          }
           if (Math.abs(loc.z - playZ) > 2.5) continue;
 
           // Out of this puzzle's x-extent entirely.
@@ -390,10 +404,10 @@ const iceSlideBridge: PuzzleDef = {
             track.add(xi);
             // Tiny ice particle puff while flying — shows the trail forming.
             try {
-              ctx.dimension.runCommand(
-                `particle minecraft:basic_crit_particle ${loc.x} ${loc.y + 0.2} ${loc.z}`
-              );
-            } catch { /* ignore */ }
+              ctx.dimension.runCommand(`particle minecraft:basic_crit_particle ${loc.x} ${loc.y + 0.2} ${loc.z}`);
+            } catch {
+              /* ignore */
+            }
           }
 
           // Success: disc has reached the far platform alive.
@@ -404,11 +418,15 @@ const iceSlideBridge: PuzzleDef = {
               // If the path covered most of the gap, mark the puzzle solved
               // so the hint clears. Otherwise keep playing \u2014 partial paths
               // still leave their ice and the player can throw more discs.
-              const gapWidth = (rightEdge - 1) - (leftEdge + 1) + 1;
+              const gapWidth = rightEdge - 1 - (leftEdge + 1) + 1;
               if (placed >= gapWidth - 1) bridged = true;
             }
             tracks.delete(d.id);
-            try { d.remove(); } catch { /* ignore */ }
+            try {
+              d.remove();
+            } catch {
+              /* ignore */
+            }
           } else if (loc.y < groundY - 3) {
             // Disc fell into the pit \u2014 no ice for you.
             tracks.delete(d.id);
@@ -558,10 +576,7 @@ const cottonBridge: PuzzleDef = {
     return { xStart: ctx.xStart, xEnd: ctx.xEnd, exitGroundY: groundY };
   },
   makeInstance(ctx, id): Puzzle {
-    const groundY = ctx.entryGroundY;
-    const playZ = ctx.playZ;
     const leftEdge = ctx.xStart + 5;
-    const rightEdge = ctx.xEnd - 5;
     const hint: HintState = { published: false };
     return {
       id,
@@ -571,25 +586,11 @@ const cottonBridge: PuzzleDef = {
         showHint(
           ctx,
           hint,
-          "\u00a7fToss Cotton Puffs into the gap to build a bridge!",
+          "\u00a7fString Cotton Puffs from the edge to bridge the gap!",
           leftEdge - 3,
           playerLoc.x,
           false
         );
-      },
-      onProjectileRest(itemId, loc) {
-        if (itemId !== "toss_lab:cotton_puff") return;
-        if (loc.x < leftEdge + 1 || loc.x > rightEdge - 1) return;
-        if (loc.y > groundY + 1 || loc.y < groundY - 6) return;
-        try {
-          const wool = BlockPermutation.resolve("minecraft:white_wool");
-          const cx = Math.round(loc.x);
-          ctx.dimension.setBlockPermutation({ x: cx, y: groundY, z: playZ }, wool);
-          // Soft particle/sound so the player gets feedback.
-          ctx.dimension.runCommand(`playsound block.wool.place @a ${cx} ${groundY} ${playZ}`);
-        } catch {
-          /* ignore */
-        }
       },
     };
   },
@@ -709,10 +710,10 @@ const stickyClimb: PuzzleDef = {
             // Visible burst at the glob's location so the player sees that
             // detection fired.
             try {
-              ctx.dimension.runCommand(
-                `particle minecraft:large_explosion ${gLoc.x} ${gLoc.y + 0.3} ${gLoc.z}`
-              );
-            } catch { /* ignore */ }
+              ctx.dimension.runCommand(`particle minecraft:large_explosion ${gLoc.x} ${gLoc.y + 0.3} ${gLoc.z}`);
+            } catch {
+              /* ignore */
+            }
             placeNextStep();
             try {
               g.remove();
@@ -797,6 +798,13 @@ const tntBlast: PuzzleDef = {
       xEnd: ctx.xEnd,
       onTick(playerLoc) {
         showHint(ctx, hint, "\u00a7cBlast the TNT with a Heavy Stone!", wallX - 6, playerLoc.x, exploded);
+      },
+      onProjectileImpact(itemId, loc) {
+        if (exploded) return;
+        if (itemId !== "toss_lab:heavy_stone") return;
+        if (Math.abs(loc.x - tntX) > 1.5) return;
+        if (Math.abs(loc.y - (groundY + 1)) > 2) return;
+        detonate();
       },
       onProjectileRest(itemId, loc) {
         if (exploded) return;

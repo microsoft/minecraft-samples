@@ -55,6 +55,11 @@ export class TossLabGame {
   private barrierFrontierMaxX = 0;
   /** Right edge (X) of the currently loaded play ticking area. */
   private loadedMaxX = 0;
+  /** A slab that was registered but hadn't finished loading its chunks yet, so
+   *  we deferred adopting its extent. Filling barriers/corridor over unloaded
+   *  chunks throws and permanently skips a segment's clearing (leaving an
+   *  uncleared wall), so we wait for it to load before advancing loadedMaxX. */
+  private pendingSlab: { id: string; toX: number } | undefined;
   /** True while an extend-the-play-area request is in flight. */
   private extendingArea = false;
   /** X of the temporary safety wall blocking the player at the built frontier. */
@@ -73,8 +78,8 @@ export class TossLabGame {
   private lastMilestone = 0;
   /** true = facing east (+X, right), false = facing west (-X, left) */
   private facingRight = true;
-  /** Number of deaths (falls) this run. */
-  private deaths = 0;
+  /** Number of falls this run. */
+  private falls = 0;
   /** Game mode the player was in before start(); restored on stop(). */
   private originalGameMode: GameMode | undefined;
 
@@ -141,7 +146,6 @@ export class TossLabGame {
     await this.ensureChunksLoaded();
 
     // Phase 2: prebuild the streaming level ahead of the player.
-    this.player.sendMessage(`§eBuilding ${this.site.theme} level...`);
     this.builder = new LevelBuilder(this.site);
     this.barrierFrontierMaxX = this.originX - MARGIN_X;
     this.lastClearedMinX = this.originX - MARGIN_X;
@@ -222,6 +226,7 @@ export class TossLabGame {
         }
       }
       this.playAreas = [];
+      this.pendingSlab = undefined;
     } catch {
       // Player may have disconnected
     }
@@ -423,7 +428,7 @@ export class TossLabGame {
     if (milestone > this.lastMilestone) {
       this.lastMilestone = milestone;
       const seg = this.builder.totalSegments;
-      this.player.sendMessage(`§a§lMilestone! §r§a${distance} blocks · ${seg} segments · Deaths: §e${this.deaths}`);
+      this.player.sendMessage(`§a§lMilestone! §r§a${distance} blocks · ${seg} segments · Falls: §e${this.falls}`);
     }
   }
 
@@ -452,6 +457,21 @@ export class TossLabGame {
     this.extendingArea = true;
     try {
       const mgr = world.tickingAreaManager;
+
+      // If a previously-registered slab is still finishing its chunk load,
+      // adopt its extent once it's ready rather than stacking another slab on
+      // top. We only advance the build frontier (loadedMaxX) over chunks that
+      // are actually loaded; building barriers/corridor over unloaded chunks
+      // throws in fillBlocks and permanently skips a segment, leaving an
+      // uncleared wall in front of the player.
+      if (this.pendingSlab) {
+        if (await waitForAreaLoaded(this.pendingSlab.id, 8000)) {
+          this.loadedMaxX = Math.max(this.loadedMaxX, this.pendingSlab.toX);
+          this.pendingSlab = undefined;
+        }
+        return;
+      }
+
       const newMaxX = Math.max(this.loadedMaxX, Math.ceil(targetMaxX) + MARGIN_X);
       if (newMaxX <= this.loadedMaxX) return;
 
@@ -486,9 +506,18 @@ export class TossLabGame {
       }
 
       await mgr.createTickingArea(id, options);
-      await waitForAreaLoaded(id, 8000);
       this.playAreas.push({ id, fromX, toX: newMaxX });
-      this.loadedMaxX = newMaxX;
+
+      // Only advance the build frontier once the slab's chunks are actually
+      // loaded. If it times out, defer: keep the slab (it will keep loading)
+      // and adopt its extent on a later tick. Advancing loadedMaxX early would
+      // let the builder fill barriers/corridor over unloaded chunks, which
+      // throws and leaves an uncleared wall the player runs into.
+      if (await waitForAreaLoaded(id, 8000)) {
+        this.loadedMaxX = newMaxX;
+      } else {
+        this.pendingSlab = { id, toX: newMaxX };
+      }
     } catch (e) {
       // Surface so we can see why generation may have stalled.
       try {
@@ -524,25 +553,45 @@ export class TossLabGame {
    * height so gaps still count as falls.
    */
   private refreshDeathThreshold(): void {
-    const surfaceY = this.findSurfaceY(Math.floor(this.player.location.x));
+    const surfaceY = this.findSurfaceY(Math.floor(this.player.location.x), this.player.location.y);
     if (surfaceY === undefined) return;
-    // Let the safe ground rise freely (player climbed up), but only descend a
-    // little per tick. A ramp/dip lowers the surface gradually as the player
-    // walks; a crevice the player falls into drops the column surface many
-    // blocks in a single tick — refusing to chase that keeps deathY above the
-    // pit so checkFall() registers the fall.
+    // Let the safe ground rise freely (player climbed up), but only descend
+    // while the player is actually standing on the surface and isn't already
+    // mid-fall. A fall starts slow (gravity accelerates), so if we keep
+    // following the surface down every tick the death threshold "chases" the
+    // falling player — it stays within FALL_DEPTH the whole way down and a real
+    // pit never registers. Requiring the player to be grounded and still above
+    // the threshold freezes deathY during a fall (so it counts) while still
+    // tracking gentle ramps and small step-downs the player walks over.
     if (surfaceY >= this.currentSafeGroundY) {
       this.currentSafeGroundY = surfaceY;
     } else {
-      const descent = Math.min(this.currentSafeGroundY - surfaceY, MAX_SAFE_DESCENT_PER_TICK);
-      this.currentSafeGroundY -= descent;
+      let grounded = false;
+      try {
+        grounded = this.player.isOnGround;
+      } catch {
+        /* ignore — treat as airborne */
+      }
+      if (grounded && this.player.location.y > this.deathY) {
+        const descent = Math.min(this.currentSafeGroundY - surfaceY, MAX_SAFE_DESCENT_PER_TICK);
+        this.currentSafeGroundY -= descent;
+      }
     }
     this.deathY = this.currentSafeGroundY - FALL_DEPTH;
   }
 
-  /** Find the highest solid block in the play plane at the given X column. */
-  private findSurfaceY(x: number): number | undefined {
-    const scanTop = this.site.groundY + 31;
+  /**
+   * Find the walkable surface in the play plane at column `x`, scanning DOWN
+   * from just above the player's feet (`fromY`). Starting at the player rather
+   * than the sky is essential: trees at the play plane drape overhanging leaves
+   * above the corridor (the corridor clear can't remove play-plane blocks
+   * because puzzles live there), and a top-down scan would return that canopy
+   * as the "ground" — inflating the death threshold so simply standing on the
+   * real ground reads as a fall. Scanning from the feet down finds the block
+   * the player is actually standing on and ignores anything above them.
+   */
+  private findSurfaceY(x: number, fromY: number): number | undefined {
+    const scanTop = Math.min(Math.floor(fromY) + 1, this.site.groundY + 31);
     const scanBottom = this.site.groundY - 20;
 
     for (let y = scanTop; y >= scanBottom; y--) {
@@ -571,7 +620,7 @@ export class TossLabGame {
     if (this.belowGroundTicks < FALL_GRACE_TICKS) return;
     this.belowGroundTicks = 0;
 
-    this.deaths++;
+    this.falls++;
     const fallX = Math.floor(this.player.location.x);
     let safe: { x: number; y: number };
     try {
@@ -589,7 +638,7 @@ export class TossLabGame {
     this.firstTick = true;
     this.applyEffects();
     this.giveProjectileItems();
-    this.player.sendMessage(`§cYou fell! Deaths: §e${this.deaths}§c. Respawning...`);
+    this.player.sendMessage(`§cYou fell! Falls: §e${this.falls}§c. Respawning...`);
   }
 
   /**
@@ -612,7 +661,7 @@ export class TossLabGame {
     for (let x = startX; x >= minX; x--) {
       for (let y = scanTop; y >= scanBottom; y--) {
         const block = this.dimension.getBlock({ x, y, z: this.playZ });
-        if (!block || block.typeId === "minecraft:air") continue;
+        if (!block || block.typeId === "minecraft:air" || this.isFoliage(block.typeId)) continue;
         // Found a solid block. Confirm 2-block air clearance above for the player.
         const above1 = this.dimension.getBlock({ x, y: y + 1, z: this.playZ });
         const above2 = this.dimension.getBlock({ x, y: y + 2, z: this.playZ });
@@ -625,6 +674,28 @@ export class TossLabGame {
     }
     // Fallback: start of run, at base ground (always above deathY).
     return { x: this.originX + 3, y: baseY };
+  }
+
+  /**
+   * True for tree canopy / trunk / vegetation blocks that line the play plane.
+   * These must never be treated as walkable ground, or the player respawns
+   * stranded on top of a tree after a fall.
+   */
+  private isFoliage(typeId: string): boolean {
+    return (
+      typeId.endsWith("_leaves") ||
+      typeId.endsWith("_log") ||
+      typeId.endsWith("_wood") ||
+      typeId.endsWith("_stem") ||
+      typeId.endsWith("_hyphae") ||
+      typeId.endsWith("_sapling") ||
+      typeId === "minecraft:leaves" ||
+      typeId === "minecraft:leaves2" ||
+      typeId === "minecraft:log" ||
+      typeId === "minecraft:log2" ||
+      typeId === "minecraft:vine" ||
+      typeId === "minecraft:bamboo"
+    );
   }
 
   // ────────────────────────── Aim & Throw ────────────────────────────
@@ -806,6 +877,58 @@ export class TossLabGame {
         }
       }
 
+      // Heavy stone: detonate any TNT block it strikes, the instant it makes
+      // contact. Unlike the other projectiles' rest-based puzzle hooks, the
+      // blast fires on impact so the player gets immediate feedback. The
+      // detonation is a safe, non-destructive scripted blast (see
+      // detonateTntNear) — it clears TNT + plays effects, but never damages
+      // the player or surrounding terrain.
+      if (tp.itemId === "toss_lab:heavy_stone") {
+        let loc;
+        try {
+          loc = tp.entity.location;
+        } catch {
+          continue;
+        }
+        if (this.detonateTntNear(loc)) {
+          try {
+            tp.entity.kill();
+          } catch {
+            /* ignore */
+          }
+          try {
+            this.dimension.spawnItem(new ItemStack(tp.itemId, 1), loc);
+          } catch {
+            /* ignore */
+          }
+          continue;
+        }
+      }
+
+      // Cotton puff: light as silk — the instant it drifts up against a solid
+      // block on its left, it catches and sets into a bridge block. This is
+      // what makes the cotton_bridge puzzle solvable: the puff used to need a
+      // full 5s rest, but it falls straight through the open gap and never
+      // rests, so it never converted. Now the player strings a bridge one puff
+      // at a time, building rightward from the left solid edge.
+      if (tp.itemId === "toss_lab:cotton_puff") {
+        let loc;
+        try {
+          loc = tp.entity.location;
+        } catch {
+          continue;
+        }
+        if (tp.age > 2 && this.placeCottonStrandAt(loc)) {
+          try {
+            tp.entity.kill();
+          } catch {
+            /* ignore */
+          }
+          // Consumed into the bridge — no item drop.
+          continue;
+        }
+      }
+
       let atRest = false;
       let speed = Infinity;
       try {
@@ -821,27 +944,19 @@ export class TossLabGame {
         // If velocity is unavailable, fall back to age-only logic.
       }
 
-      // Sticky glob: convert to a slime block the instant it stops moving so
-      // the player can stack throws into a staircase. We can't wait for the
-      // full PROJECTILE_REST_TICKS — that's 5 seconds and the player needs
-      // the next step to appear immediately to keep momentum. High friction
-      // + zero bounciness on the entity guarantees it stops within a tick or
-      // two of landing.
+      // Sticky glob: sticks ONLY when it smacks into a block on its right (+X,
+      // the direction the player throws). This makes it a deliberate tool — you
+      // have to splat it against a wall to build a step — instead of it setting
+      // in mid-air the moment it slows at the top of its arc.
       if (tp.itemId === "toss_lab:sticky_glob") {
-        let onGround = false;
-        try {
-          onGround = tp.entity.isOnGround;
-        } catch {
-          /* ignore */
-        }
-        if (tp.age > 2 && (onGround || speed < PROJECTILE_REST_VELOCITY)) {
+        if (tp.age > 2) {
           let loc;
           try {
             loc = tp.entity.location;
           } catch {
             continue;
           }
-          if (this.placeSlimeAt(loc)) {
+          if (this.stickSlimeToWall(loc)) {
             try {
               tp.entity.remove();
             } catch {
@@ -917,27 +1032,152 @@ export class TossLabGame {
   }
 
   /**
-   * Convert a resting sticky glob into a slime block at its current cell.
-   * Returns true when a block was placed so the caller knows to despawn the
-   * glob entity. If the glob is stacked on top of an existing block (e.g.,
-   * landing on a previously-placed slime stair), the cell above the obstacle
-   * is used so successive throws build vertically.
+   * If a cotton puff has drifted up against a solid block on its left, set its
+   * own (air) cell to a white_wool "strand" the player can walk on, and return
+   * true so the caller can despawn the puff. Requiring a solid block on the
+   * left means strands only form chained out from a platform edge (or an
+   * already-placed strand) — never floating in open space — so the player
+   * bridges a gap one puff at a time, building rightward. A solid block is used
+   * rather than a cobweb because a cobweb over an open gap would let the player
+   * sink through and fall.
    */
-  private placeSlimeAt(loc: { x: number; y: number; z: number }): boolean {
+  private placeCottonStrandAt(loc: { x: number; y: number; z: number }): boolean {
     if (Math.floor(loc.z) !== Math.floor(this.playZ)) return false;
     const bx = Math.floor(loc.x);
+    const by = Math.floor(loc.y);
     const bz = Math.floor(loc.z);
-    let by = Math.floor(loc.y);
+
+    let cell;
     try {
-      let target = this.dimension.getBlock({ x: bx, y: by, z: bz });
-      // If the glob's cell is already solid (sitting flush on top of a block
-      // it just barely overlapped with), step one cell up to find air.
-      if (target && target.typeId !== "minecraft:air") {
-        by += 1;
-        target = this.dimension.getBlock({ x: bx, y: by, z: bz });
+      cell = this.dimension.getBlock({ x: bx, y: by, z: bz });
+    } catch {
+      return false;
+    }
+    if (!cell || cell.typeId !== "minecraft:air") return false;
+
+    const isSolid = (x: number): boolean => {
+      try {
+        const b = this.dimension.getBlock({ x, y: by, z: bz });
+        return !!b && b.typeId !== "minecraft:air";
+      } catch {
+        return false;
       }
-      if (!target || target.typeId !== "minecraft:air") return false;
-      target.setPermutation(BlockPermutation.resolve("minecraft:slime"));
+    };
+    if (!isSolid(bx - 1)) return false;
+
+    try {
+      cell.setPermutation(BlockPermutation.resolve("minecraft:white_wool"));
+      this.dimension.runCommand(`playsound block.wool.place @a ${bx} ${by} ${bz}`);
+    } catch {
+      return false;
+    }
+    return true;
+  }
+
+  /**
+   * If a heavy stone is touching one or more `minecraft:tnt` blocks, detonate
+   * them with a safe, non-destructive scripted blast: the TNT is cleared, an
+   * explosion sound + particle play, and any puzzle covering that X is
+   * notified so it can react (e.g. clear a blast wall). Returns true when at
+   * least one TNT block was detonated, so the caller can despawn the stone.
+   */
+  private detonateTntNear(loc: { x: number; y: number; z: number }): boolean {
+    const cx = Math.floor(loc.x);
+    const cy = Math.floor(loc.y);
+    const cz = Math.floor(loc.z);
+
+    // Find a TNT block adjacent to the stone (3x3 on the play plane).
+    let hit: { x: number; y: number; z: number } | undefined;
+    for (let dx = -1; dx <= 1 && !hit; dx++) {
+      for (let dy = -1; dy <= 1 && !hit; dy++) {
+        const pos = { x: cx + dx, y: cy + dy, z: cz };
+        let block;
+        try {
+          block = this.dimension.getBlock(pos);
+        } catch {
+          continue;
+        }
+        if (block && block.typeId === "minecraft:tnt") hit = pos;
+      }
+    }
+    if (!hit) return false;
+
+    this.clearTntCluster(hit);
+
+    try {
+      this.dimension.runCommand(`playsound random.explode @a ${hit.x} ${hit.y} ${hit.z}`);
+    } catch {
+      /* ignore — sound is cosmetic */
+    }
+    try {
+      this.dimension.spawnParticle("minecraft:huge_explosion_emitter", {
+        x: hit.x + 0.5,
+        y: hit.y + 0.5,
+        z: hit.z + 0.5,
+      });
+    } catch {
+      /* ignore */
+    }
+
+    // Let any puzzle covering this X react (e.g. clear its blast wall).
+    try {
+      this.builder.onProjectileImpact("toss_lab:heavy_stone", { x: hit.x, y: hit.y, z: hit.z });
+    } catch {
+      /* swallow puzzle bugs */
+    }
+
+    return true;
+  }
+
+  /**
+   * Replace every `minecraft:tnt` block in a small box around `center` with
+   * air. Bounded scan (never a true flood-fill) so a chain reaction can't tear
+   * up the level; the box is tall enough to swallow the 3-tall beacon column
+   * and the single puzzle TNT, both of which sit on the play plane.
+   */
+  private clearTntCluster(center: { x: number; y: number; z: number }): void {
+    const air = BlockPermutation.resolve("minecraft:air");
+    for (let dx = -1; dx <= 1; dx++) {
+      for (let dy = -1; dy <= 4; dy++) {
+        const pos = { x: center.x + dx, y: center.y + dy, z: center.z };
+        let block;
+        try {
+          block = this.dimension.getBlock(pos);
+        } catch {
+          continue;
+        }
+        if (block && block.typeId === "minecraft:tnt") {
+          try {
+            block.setPermutation(air);
+          } catch {
+            /* ignore */
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * Stick a sticky glob to a wall on its right. If the cell immediately to the
+   * glob's right (+X, the direction the player throws) is solid, set the glob's
+   * own (air) cell to a slime block and return true so the caller can despawn
+   * it. Returns false when there's no wall on the right, so a glob lobbed into
+   * open space never sets — the player has to splat it against a wall to build
+   * a step.
+   */
+  private stickSlimeToWall(loc: { x: number; y: number; z: number }): boolean {
+    if (Math.floor(loc.z) !== Math.floor(this.playZ)) return false;
+    const bx = Math.floor(loc.x);
+    const by = Math.floor(loc.y);
+    const bz = Math.floor(loc.z);
+    try {
+      // Require a solid block immediately to the right (+X).
+      const right = this.dimension.getBlock({ x: bx + 1, y: by, z: bz });
+      if (!right || right.typeId === "minecraft:air") return false;
+      // Only fill the glob's own cell, and only if it's empty.
+      const cell = this.dimension.getBlock({ x: bx, y: by, z: bz });
+      if (!cell || cell.typeId !== "minecraft:air") return false;
+      cell.setPermutation(BlockPermutation.resolve("minecraft:slime"));
       try {
         this.dimension.runCommand(`playsound mob.slime.big @a ${bx} ${by} ${bz}`);
       } catch {
@@ -989,7 +1229,18 @@ export class TossLabGame {
       from: { x: fromX, y: this.groundY - 25, z: this.playZ - 5 },
       to: { x: initialMaxX, y: this.groundY + 35, z: slabMaxZ },
     });
-    await waitForAreaLoaded(id, 10000);
+    // Wait until the slab's chunks are actually loaded before we build into
+    // them. Proceeding early makes the barrier/corridor fills throw on unloaded
+    // chunks (leaving an uncleared wall) and trips the engine's "camera outside
+    // a loaded and ticking chunk" warning on the first camera placement. Far
+    // scouted sites stream in slowly, so retry the wait a few times.
+    let loaded = false;
+    for (let attempt = 0; attempt < 3 && !loaded; attempt++) {
+      loaded = await waitForAreaLoaded(id, 10000);
+    }
+    if (!loaded) {
+      this.player.sendMessage("§eLevel area is still loading; the start may take a moment to appear.");
+    }
     this.playAreas.push({ id, fromX, toX: initialMaxX });
     this.loadedMaxX = initialMaxX;
   }
@@ -1065,7 +1316,7 @@ export class TossLabGame {
     if (this.safetyWallX === newX) return;
     const air = BlockPermutation.resolve("minecraft:air");
     const barrier = BlockPermutation.resolve("minecraft:barrier");
-    const yMin = this.groundY - BARRIER_DEPTH;
+    const yMin = this.groundY - 20 - BARRIER_DEPTH;
     const yMax = this.groundY + BARRIER_HEIGHT;
     try {
       if (this.safetyWallX !== undefined) {
@@ -1087,23 +1338,37 @@ export class TossLabGame {
     }
   }
 
-  /** Place barrier walls at playZ ± 1 across an X range. */
+  /** Place barrier walls at playZ ± 1 across an X range. The band spans the
+   *  whole height the lane can reach — the level builder clamps the ground to
+   *  20 blocks below the site start, so the barriers must reach below that or a
+   *  descended section leaves visible natural terrain at playZ + 1, occluding
+   *  the player from the camera. Bounds stay inside the loaded slab
+   *  (groundY - 25 .. groundY + 35). */
   private placeBarrierRange(xMin: number, xMax: number): void {
     const barrier = BlockPermutation.resolve("minecraft:barrier");
-    const yMin = this.groundY - BARRIER_DEPTH;
+    const yMin = this.groundY - 20 - BARRIER_DEPTH;
     const yMax = this.groundY + BARRIER_HEIGHT;
     this.chunkedFill({ x: xMin, y: yMin, z: this.playZ - 1 }, { x: xMax, y: yMax, z: this.playZ - 1 }, barrier);
     this.chunkedFill({ x: xMin, y: yMin, z: this.playZ + 1 }, { x: xMax, y: yMax, z: this.playZ + 1 }, barrier);
   }
 
-  /** Clear the visibility corridor across an X range. */
+  /** Clear the visibility corridor across an X range. The vertical window
+   *  follows the built lane height at each column (from the level builder's
+   *  recorded profile), so the corridor stays clear even where the level has
+   *  descended far from the site's starting height. A fixed window anchored at
+   *  the original groundY left foreground terrain occluding the camera once the
+   *  level dropped more than BARRIER_DEPTH blocks; scanning the play plane was
+   *  also unreliable, since natural terrain can sit above a descended lane. */
   private clearCorridorRange(xMin: number, xMax: number): void {
     const air = BlockPermutation.resolve("minecraft:air");
-    this.chunkedFill(
-      { x: xMin, y: this.groundY - BARRIER_DEPTH, z: this.playZ + 2 },
-      { x: xMax, y: this.groundY + CLEAR_HEIGHT, z: this.playZ + CLEAR_Z_BEHIND },
-      air
-    );
+    for (let x = xMin; x <= xMax; x++) {
+      const groundAtX = this.builder.groundYAt(x);
+      this.chunkedFill(
+        { x, y: groundAtX - BARRIER_DEPTH, z: this.playZ + 2 },
+        { x, y: groundAtX + CLEAR_HEIGHT, z: this.playZ + CLEAR_Z_BEHIND },
+        air
+      );
+    }
   }
 
   /** Clear a strip of blocks in the visibility corridor (legacy). */

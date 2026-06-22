@@ -35,6 +35,12 @@ export class LevelBuilder {
   private nextPuzzleAt: number;
   /** Puzzles indexed by id; each puzzle owns the X range it occupies. */
   private puzzles = new Map<string, Puzzle>();
+  /** Recorded ground profile per built segment, so the game can anchor its
+   *  corridor clearing / barriers to the actual lane height even where the
+   *  level has descended — scanning the play plane there is unreliable because
+   *  natural terrain can sit above a descended lane. Pruned from the front so
+   *  it stays bounded over long runs. */
+  private groundProfile: { xStart: number; xEnd: number; entryY: number; exitY: number }[] = [];
 
   constructor(public readonly site: ScoutedSite) {
     this.nextSegmentX = site.originX;
@@ -81,6 +87,12 @@ export class LevelBuilder {
     this.nextSegmentX = result.xEnd + 1;
     this.segmentsBuilt++;
     void isPuzzle;
+
+    // Record the lane-height profile for this segment (entry → exit), pruning
+    // the oldest entries so the list stays bounded on long runs.
+    this.groundProfile.push({ xStart: ctx.xStart, xEnd: result.xEnd, entryY: ctx.entryGroundY, exitY: clampedExit });
+    if (this.groundProfile.length > 512) this.groundProfile.shift();
+
     return { ...result, exitGroundY: clampedExit };
   }
 
@@ -108,6 +120,24 @@ export class LevelBuilder {
     return this.nextSegmentX - 1;
   }
 
+  /** Approximate the built lane surface height at column `x` from the recorded
+   *  segment profile (entry → exit, interpolated across the segment). Used by
+   *  the game to anchor corridor clearing and barriers to the real ground even
+   *  on descended sections, where scanning the play plane is fooled by natural
+   *  terrain sitting above the lane. Falls back to the current ground height
+   *  for columns outside the recorded profile. */
+  groundYAt(x: number): number {
+    for (let i = this.groundProfile.length - 1; i >= 0; i--) {
+      const s = this.groundProfile[i];
+      if (x >= s.xStart && x <= s.xEnd) {
+        const span = Math.max(1, s.xEnd - s.xStart);
+        const t = Math.min(1, Math.max(0, (x - s.xStart) / span));
+        return Math.round(s.entryY + (s.exitY - s.entryY) * t);
+      }
+    }
+    return this.currentGroundY;
+  }
+
   get totalSegments(): number {
     return this.segmentsBuilt;
   }
@@ -130,6 +160,19 @@ export class LevelBuilder {
       if (loc.x >= p.xStart && loc.x <= p.xEnd) {
         try {
           p.onProjectileRest?.(itemId, loc, this.site);
+        } catch {
+          /* swallow */
+        }
+      }
+    }
+  }
+
+  /** Called by the game when a heavy projectile impacts/detonates a block. */
+  onProjectileImpact(itemId: string, loc: { x: number; y: number; z: number }): void {
+    for (const p of this.puzzles.values()) {
+      if (loc.x >= p.xStart && loc.x <= p.xEnd) {
+        try {
+          p.onProjectileImpact?.(itemId, loc, this.site);
         } catch {
           /* swallow */
         }
