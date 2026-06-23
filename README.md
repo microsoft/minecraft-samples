@@ -12,7 +12,8 @@ This project contains samples that further extend the [Minecraft: Bedrock Editio
  * [Features Samples](https://github.com/microsoft/minecraft-samples/blob/main/FeaturesSamples.mcaddon) - A sample pack that can be used as a tutorial on how features and feature rules work.
  * [Custom Items](custom_items/README.md) - Build and create custom items for Minecraft
  * [Custom Sounds](custom_sounds/README.md) - Demonstrates techniques for adding custom sounds to Minecraft.
- * [Debug Tools](debug_tools/README.md) - Contains a set of simple debug tools for adding in-game and editor watches.
+  * [Debug Tools](debug_tools/README.md) - Contains a set of simple debug tools for adding in-game and editor watches.
+ * [Deferred Lighting Starter](deferred_lighting_starter/README.md) - A starter pack for exploring deferred lighting and PBR rendering features in Bedrock Edition.
  * [Jigsaws](jigsaws/README.md) - This sample is the behavior pack used in the [Jigsaw Block Tutorial](https://learn.microsoft.com/minecraft/creator/documents/structures/jigsawtutorial)
  * [Minecraft Live 2022 Add-Ons](mclive2022_addon) - Behavior Pack and Resource Pack that accompany the [Minecraft Live 2022 Creator Recap](https://learn.microsoft.com/minecraft/creator/documents/minecraftlive2022creatorrecap)
  * [NPC Dialog Sample](npc_dialogue_sample/README.md) - See the [NPC Dialogue](https://learn.microsoft.com/minecraft/creator/documents/NPCDialogue) documentation for the full walkthrough adding custom dialogue for an NPC
