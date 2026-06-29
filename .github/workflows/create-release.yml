@@ -2,6 +2,15 @@ name: Create Release
 
 on:
   workflow_dispatch:
+    inputs:
+      bump:
+        description: "Version part to increment for this release"
+        type: choice
+        default: patch
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   build-and-publish:
@@ -23,17 +32,40 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Bump version
+      - name: Determine next version
         id: version
-        uses: vemel/nextversion@0.1.1
-        with:
-          path: ./addon_starter/complete/package.json
-          type: semver
-          result: ${{ github.event.inputs.bump }}
-          release: ${{ github.event.inputs.release }}
-          update: |
-            ./addon_starter/complete/package.json
-            ./addon_starter/complete/README.md
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          BUMP="${{ github.event.inputs.bump }}"
+          BUMP="${BUMP:-patch}"
+
+          # Highest MAJOR.MINOR.PATCH across all existing releases, including
+          # drafts and prereleases (which the /releases/latest endpoint skips).
+          LATEST=$(gh api --paginate "repos/${{ github.repository }}/releases" \
+            --jq '.[].tag_name' \
+            | sed -E 's/^v//; s/-.*$//' \
+            | grep -E '^[0-9]+\.[0-9]+\.[0-9]+$' \
+            | sort -t. -k1,1n -k2,2n -k3,3n \
+            | tail -n1 || true)
+
+          if [ -z "$LATEST" ]; then
+            # No releases yet: bootstrap from package.json, used as-is.
+            NEXT=$(node -p "require('./addon_starter/complete/package.json').version")
+            echo "No prior releases found; bootstrapping to $NEXT"
+          else
+            IFS='.' read -r MAJOR MINOR PATCH <<< "$LATEST"
+            case "$BUMP" in
+              major) MAJOR=$((MAJOR + 1)); MINOR=0; PATCH=0 ;;
+              minor) MINOR=$((MINOR + 1)); PATCH=0 ;;
+              *)     PATCH=$((PATCH + 1)) ;;
+            esac
+            NEXT="$MAJOR.$MINOR.$PATCH"
+            echo "Latest released version $LATEST -> next $NEXT ($BUMP)"
+          fi
+
+          echo "version=$NEXT" >> "$GITHUB_OUTPUT"
 
       - name: Build
         env:
@@ -56,19 +88,13 @@ jobs:
           npm run mcaddon
           popd
 
-      - name: Get Package Version
-        id: get-package-version
-        with:
-          path: addon_starter/complete/
-        uses: stevenbenitez/get-package-version-action@v1
-
       - name: Create draft Minecraft Samples release
         id: create_samples_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ steps.get-package-version.outputs.version }}-alpha
+          tag_name: v${{ steps.version.outputs.version }}-alpha
           release_name: Minecraft Samples
           draft: true
           prerelease: true
@@ -81,7 +107,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
           asset_path: ./addon_starter/complete/dist/packages/aop_mobs.mcaddon
-          asset_name: addon_starter_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_name: addon_starter_complete_v${{ steps.version.outputs.version }}.mcaddon
           asset_content_type: application/zip
 
       - name: Upload chill_dreams_complete_v.mcaddon to node_module release
@@ -92,7 +118,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
           asset_path: ./casual_creator/chill_dreams/complete/dist/packages/mamm_cds.mcaddon
-          asset_name: chill_dreams_complete_v${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_name: chill_dreams_complete_v${{ steps.version.outputs.version }}.mcaddon
           asset_content_type: application/zip
 
       - name: Upload gray_wave_v.mcaddon to node_module release
@@ -103,7 +129,7 @@ jobs:
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
           asset_path: ./casual_creator/gray_wave/dist/packages/mikeamm_gwve.mcaddon
-          asset_name: gray_wave_v${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_name: gray_wave_v${{ steps.version.outputs.version }}.mcaddon
           asset_content_type: application/zip
 
       - name: Upload toss_lab_v.mcaddon to node_module release
@@ -114,14 +140,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_samples_release.outputs.upload_url }}
           asset_path: ./toss_lab/dist/packages/toss_lab.mcaddon
-          asset_name: toss_lab_v${{ steps.get-package-version.outputs.version }}.mcaddon
+          asset_name: toss_lab_v${{ steps.version.outputs.version }}.mcaddon
           asset_content_type: application/zip
-
-      - name: Commit version changes
-        run: |
-          VERSION=${{ toJSON(steps.version.outputs.result) }}
-          BRANCH="main"
-          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git commit -am "Bump version to $VERSION"
-          git push origin $BRANCH
