@@ -4,6 +4,9 @@
   "texture_data": {
     "light_post_item": {
 			"textures": "textures/items/light_post_item"
-		}
+		},
+    "horizontal_log_item": {
+      "textures": "textures/items/horizontal_log"
+    }
   }
 }

@@ -9,6 +9,12 @@
 		},
 		"light_post_off": {
 			"textures": "textures/blocks/light_post_off"
+		},
+		"horizontal_log_top": {
+			"textures": "textures/blocks/log_birch_top"
+		},
+		"horizontal_log_side": {
+			"textures": "textures/blocks/log_birch"
 		}
 	}
 }

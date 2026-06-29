@@ -1,0 +1,74 @@
+{
+    "format_version": "1.26.40",
+    "minecraft:block": {
+        "description": {
+            "identifier": "multi_block:horizontal_log",
+            "traits": {
+                "minecraft:placement_direction": {
+					"enabled_states": [
+						"minecraft:cardinal_direction"
+					]
+				},
+                "minecraft:multi_block": {
+                    "enabled_states": ["minecraft:multi_block_part"],
+                    "parts": 4, 
+                    "direction": "north"
+                }
+            }
+        },
+        
+        "components": {
+            "minecraft:geometry": "minecraft:geometry.full_block",
+            "minecraft:material_instances": {
+                "up": {"texture": "horizontal_log_side"},
+                "down": {"texture": "horizontal_log_side"},
+                "north": {"texture": "horizontal_log_top"},
+                "south": {"texture": "horizontal_log_top"},
+                "west": {"texture": "horizontal_log_side"},
+                "east": {"texture": "horizontal_log_side"}
+            },
+            "minecraft:collision_box": true,
+            "minecraft:movable": {"movement_type": "immovable"},
+            "minecraft:destructible_by_mining": {
+				"seconds_to_destroy": 3
+			},
+			"minecraft:destructible_by_explosion": {
+				"explosion_resistance": 3
+			}
+        },
+        "permutations": [
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'north'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,0,0]
+				}
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'south'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,180,0]
+				}
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'west'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,90,0]
+				}
+			}
+		},
+		{
+			"condition": "q.block_state('minecraft:cardinal_direction') == 'east'",
+			"components": {
+				"minecraft:transformation": {
+					"rotation": [0,270,0]
+				}
+			}
+		}
+		]
+    }
+}

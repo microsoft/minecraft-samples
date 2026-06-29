@@ -1,0 +1,27 @@
+{
+  "format_version": "1.21.100",
+  "minecraft:item": {
+    "description": {
+      "identifier": "multi_block:horizontal_log"
+    },
+
+    "components": {
+      "minecraft:icon": {
+        "textures": {
+          "default": "horizontal_log_item"
+        }
+      },
+      "minecraft:block_placer": {
+        "block": "multi_block:horizontal_log",
+        "replace_block_item": true
+      },
+      "minecraft:display_name": {
+        "value": "horizontal log"
+      },
+      "minecraft:tags": {
+        "tags": [ "minecraft:logs_that_burn" ]
+      },
+      "minecraft:max_stack_size": 64
+    }
+  }
+}
