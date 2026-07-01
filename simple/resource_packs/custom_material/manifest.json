@@ -1,0 +1,24 @@
+{
+  "format_version": 2,
+  "header": {
+    "name": "Custom Material Sample Add-on",
+    "description": "This addon demonstrates creating a custom material!",
+    "uuid": "4e90133b-3c12-45df-8b89-5d013ac2ce5a",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 30]
+  },
+  "modules": [
+    {
+      "description": "Custom Material Sample Resources",
+      "type": "resources",
+      "uuid": "95d05e2a-47a8-4124-a016-2d3bca395534",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "31d087fc-6ef8-43c2-8748-f7cebf720a25",
+      "version": [1, 0, 0]
+    }
+  ]
+}

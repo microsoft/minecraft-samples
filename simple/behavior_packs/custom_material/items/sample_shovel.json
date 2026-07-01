@@ -1,0 +1,16 @@
+{
+  "format_version": "1.21.70",
+  "minecraft:item": {
+    "description": {
+      "identifier": "example:sample_shovel",
+      "menu_category": {
+        "category": "equipment",
+        "group": "minecraft:itemGroup.name.shovel"
+      }
+    },
+    "components": {
+      "minecraft:icon": "example:sample_shovel",
+      "minecraft:max_stack_size": 1
+    }
+  }
+}

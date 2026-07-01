@@ -1,0 +1,40 @@
+{
+  "texture_data": {
+    "example:sample": {
+      "textures": "textures/items/sample"
+    },
+    "example:raw_sample": {
+      "textures": "textures/items/raw_sample"
+    },
+    "example:sample_sword": {
+      "textures": "textures/items/sample_sword"
+    },
+    "example:sample_pickaxe": {
+      "textures": "textures/items/sample_pickaxe"
+    },
+    "example:sample_axe": {
+      "textures": "textures/items/sample_axe"
+    },
+    "example:sample_shovel": {
+      "textures": "textures/items/sample_shovel"
+    },
+    "example:sample_hoe": {
+      "textures": "textures/items/sample_hoe"
+    },
+    "example:sample_spear": {
+      "textures": "textures/items/sample_spear"
+    },
+    "example:sample_helmet": {
+      "textures": "textures/items/sample_helmet"
+    },
+    "example:sample_chestplate": {
+      "textures": "textures/items/sample_chestplate"
+    },
+    "example:sample_leggings": {
+      "textures": "textures/items/sample_leggings"
+    },
+    "example:sample_boots": {
+      "textures": "textures/items/sample_boots"
+    }
+  }
+}

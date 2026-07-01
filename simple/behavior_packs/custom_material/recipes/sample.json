@@ -1,0 +1,11 @@
+{
+  "format_version": "1.17.41",
+  "minecraft:recipe_furnace": {
+    "description": {
+      "identifier": "example:sample"
+    },
+    "tags": ["furnace", "blast_furnace"],
+    "input": "example:raw_sample",
+    "output": "example:sample"
+  }
+}

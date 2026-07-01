@@ -1,0 +1,16 @@
+{
+  "texture_data": {
+    "example:sample_ore": {
+      "textures": "textures/blocks/sample_ore"
+    },
+    "example:deepslate_sample_ore": {
+      "textures": "textures/blocks/deepslate_sample_ore"
+    },
+    "example:raw_sample_block": {
+      "textures": "textures/blocks/raw_sample_block"
+    },
+    "example:sample_block": {
+      "textures": "textures/blocks/sample_block"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+item.example:sample=Sample
+item.example:raw_sample=Raw Sample
+item.example:sample_helmet=Sample Helmet
+item.example:sample_chestplate=Sample Chestplate
+item.example:sample_leggings=Sample Leggings
+item.example:sample_boots=Sample Boots
+item.example:sample_sword=Sample Sword
+item.example:sample_pickaxe=Sample Pickaxe
+item.example:sample_axe=Sample Axe
+item.example:sample_shovel=Sample Shovel
+item.example:sample_hoe=Sample Hoe
+item.example:sample_spear=Sample Spear
+tile.example:sample_ore=Sample Ore
+tile.example:deepslate_sample_ore=Deepslate Sample Ore
+tile.example:sample_block=Block of Sample 
+tile.example:raw_sample_block=Block of Raw Sample

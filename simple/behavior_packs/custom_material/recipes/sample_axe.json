@@ -1,0 +1,21 @@
+{
+  "format_version": "1.12.0",
+  "minecraft:recipe_shaped": {
+    "description": {
+      "identifier": "example:sample_axe"
+    },
+    "tags": ["crafting_table"],
+    "pattern": ["SS", "#S", "# "],
+    "key": {
+      "#": {
+        "item": "minecraft:stick"
+      },
+      "S": {
+        "item": "example:sample"
+      }
+    },
+    "result": {
+      "item": "example:sample_axe"
+    }
+  }
+}

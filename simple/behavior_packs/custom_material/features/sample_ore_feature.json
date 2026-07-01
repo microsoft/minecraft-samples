@@ -1,0 +1,19 @@
+{
+  "format_version": "1.17.0",
+  "minecraft:ore_feature": {
+    "description": {
+      "identifier": "example:sample_ore_feature"
+    },
+    "count": 8,
+    "replace_rules": [
+      {
+        "places_block": "example:sample_ore",
+        "may_replace": ["minecraft:stone", "minecraft:granite", "minecraft:andesite", "minecraft:diorite"]
+      },
+      {
+        "places_block": "example:deepslate_sample_ore",
+        "may_replace": ["minecraft:deepslate", "minecraft:tuff"]
+      }
+    ]
+  }
+}
