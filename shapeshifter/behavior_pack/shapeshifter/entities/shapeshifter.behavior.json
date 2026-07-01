@@ -102,10 +102,9 @@
         "target_teleport_chance": 0.05,
         "light_teleport_chance": 0.05
       },
-      "minecraft:lookat": {
-        "search_radius": 64,
-        "set_target": true,
-        "look_cooldown": 5,
+      "minecraft:behavior.look_at_entity": {
+        "priority": 10,
+        "look_distance": 64,
         "filters": {
           "all_of": [
             {
