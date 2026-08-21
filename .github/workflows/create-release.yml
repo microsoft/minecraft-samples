@@ -21,11 +21,11 @@ jobs:
       statuses: none
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
 
       - name: Bump version
         id: version
-        uses: vemel/nextversion@0.1.1
+        uses: vemel/nextversion@3d6568bf8a2b4b7c4f98216c28e390629285d3f3 # 0.1.1
         with:
           path: ./addon_starter/complete/package.json
           type: semver
@@ -60,11 +60,11 @@ jobs:
         id: get-package-version
         with:
           path: addon_starter/complete/
-        uses: stevenbenitez/get-package-version-action@v1
+        uses: stevenbenitez/get-package-version-action@8220857033e9653a710c79d5c07be24b13795bdd # v1
 
       - name: Create draft Minecraft Samples release
         id: create_samples_release
-        uses: actions/create-release@v1
+        uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -75,7 +75,7 @@ jobs:
 
       - name: Upload aop_mobsbp_complete_v.mcaddon to node_module release
         id: upload_aop_mobsbp_complete_v
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload chill_dreams_complete_v.mcaddon to node_module release
         id: chill_dreams_complete_v
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -97,7 +97,7 @@ jobs:
 
       - name: Upload gray_wave_v.mcaddon to node_module release
         id: gray_wave_v
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -108,7 +108,7 @@ jobs:
 
       - name: Upload toss_lab_v.mcaddon to node_module release
         id: toss_lab_v
-        uses: actions/upload-release-asset@v1.0.1
+        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
