@@ -21,11 +21,11 @@ jobs:
       statuses: none
 
     steps:
-      - uses: actions/checkout@a37ce9120846195fa4ece8f58b268e6043cb2f26 # v3.7.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
       - name: Bump version
         id: version
-        uses: vemel/nextversion@3d6568bf8a2b4b7c4f98216c28e390629285d3f3 # 0.1.1
+        uses: vemel/nextversion@d290de3e5de2caeb2b82c8e47dd7d17820248d7c # 0.2.0
         with:
           path: ./addon_starter/complete/package.json
           type: semver
@@ -75,7 +75,7 @@ jobs:
 
       - name: Upload aop_mobsbp_complete_v.mcaddon to node_module release
         id: upload_aop_mobsbp_complete_v
-        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
+        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -86,7 +86,7 @@ jobs:
 
       - name: Upload chill_dreams_complete_v.mcaddon to node_module release
         id: chill_dreams_complete_v
-        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
+        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -97,7 +97,7 @@ jobs:
 
       - name: Upload gray_wave_v.mcaddon to node_module release
         id: gray_wave_v
-        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
+        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -108,7 +108,7 @@ jobs:
 
       - name: Upload toss_lab_v.mcaddon to node_module release
         id: toss_lab_v
-        uses: actions/upload-release-asset@64e5e85fc528f162d7ba7ce2d15a3bb67efb3d80 # v1.0.1
+        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1.0.2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
